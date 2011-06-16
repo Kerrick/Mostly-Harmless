@@ -1,0 +1,30 @@
+// UNSAVE
+Request URL:http://www.reddit.com/api/unsave
+Request Method:POST
+Form Data:
+	id:t3_i0jf9
+	executed:unsaved
+	r:blog
+	uh:z59wa0u7v99260aa07baf45a198ac9434c5472f353f64dec22
+	renderstyle:html
+
+// SAVE
+Request URL:http://www.reddit.com/api/save
+Request Method:POST
+Form Data:
+	id:t3_i0jf9
+	executed:saved
+	r:blog
+	uh:1omqs0c192e8af3ad69b008c7de53875a6247774fc08173f07
+	renderstyle:html
+
+// SEARCH REDDIT NAMES
+Request URL:http://www.reddit.com/api/search_reddit_names
+Request Method:POST
+Form Data:
+	query:rp
+	uh:zvs6d0sz4he44b5174238157140615b04be2d0185a5a9b4879
+	renderstyle:html
+
+// IDEAS
+How about parsing imgur to look for direct AND imgur links?

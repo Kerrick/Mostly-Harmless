@@ -1,0 +1,14 @@
+{
+	"name": "Best Reddit Check",
+	"version": "0.1",
+	"description": "Easily see how many times URL has been posted to reddit, join the discussion, submit or repost it, and more!",
+	"browser_action": {
+		"default_icon": "alien.png"
+	},
+	"permissions": [
+		"http://*.reddit.com/",
+		"tabs",
+		"cookies"
+	],
+	"background_page": "background.html"
+}

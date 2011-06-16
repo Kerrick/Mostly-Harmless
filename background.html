@@ -1,0 +1,114 @@
+<script>
+	var reddit_session = null;
+	setBadgeDefaults();
+	window.localStorage.clear();
+	chrome.tabs.onUpdated.addListener(listenToTabs);
+	chrome.tabs.onRemoved.addListener(cleanCache);
+	chrome.cookies.get({url: 'http://reddit.com', name: 'reddit_session'}, function(cookie){
+		reddit_session = cookie.value;
+		console.log('cookie.value = ' + cookie.value);
+	});
+	
+	function setBadgeDefaults(tabId) {
+		chrome.browserAction.setBadgeBackgroundColor({
+			color: [192,192,192,255] //r,g,b,a
+		});
+		chrome.browserAction.onClicked.removeListener(submitToReddit);
+		if(tabId) {
+			chrome.browserAction.setBadgeText({
+				text: '?',
+				tabId: tabId
+			});
+			chrome.browserAction.setTitle({
+				title: 'Refresh the page to load data.',
+				tabId: tabId
+			});
+		} else {
+			chrome.browserAction.setBadgeText({
+				text: '?',
+			});
+			chrome.browserAction.setTitle({
+				title: 'Refresh the page to load data.'
+			});
+		}
+	}
+	function cleanCache() {
+		// find old caches from localStorage and remove anything older than ___.
+	}
+	function listenToTabs(tabId,changeInfo,tab){
+		if(changeInfo.status === 'loading') {
+			grabData(tab.url,tabId);
+		}
+	}
+	function grabData(url,tabId) {
+		//check if the url has been cached recently
+		if(window.localStorage.getItem(url) === null || JSON.parse(window.localStorage.getItem(url)).cachetime - new Date < -60000) {
+			console.log('Loading from reddit api...');
+			var reqUrl = 'http://www.reddit.com/api/info.json?url=' + encodeURI(url);
+			var api = new XMLHttpRequest();
+			api.open('GET',reqUrl,false);
+			api.send(null);
+			if(api.status !== 200) {
+				console.error('Error loading API.\nURL: ' + reqUrl + '\nStatus: ' + api.status);
+				console.log(api);
+				setBadgeDefaults(tabId);
+			}
+			api.onload = prepareButton(JSON.parse(api.responseText),url,tabId);
+		} else {
+			console.log('Loading from cache...');
+			prepareButton(JSON.parse(window.localStorage.getItem(url)).response,url,tabId);
+		}
+	}
+	function prepareButton(response,pageUrl,tabId) {
+		// add response to cache to reduce API calls
+		if(window.localStorage.getItem(pageUrl) === null || JSON.parse(window.localStorage.getItem(pageUrl)).cachetime - new Date < -60000) {
+			var toCache = new Object();
+			toCache.cachetime = new Date();
+			toCache.response = response;
+			window.localStorage.setItem(pageUrl,JSON.stringify(toCache));
+			delete toCache;
+		}
+		
+		// counts submissions and prepare the browserAction button appropriately
+		var numberOfSubmissions = response.data.children.length.toString();
+		if(numberOfSubmissions > 0) {
+			chrome.browserAction.setTitle({
+				title: 'This page has been submitted to reddit ' + numberOfSubmissions + ' times.',
+				tabId: tabId
+			});
+			chrome.browserAction.setBadgeText({
+				text: numberOfSubmissions,
+				tabId: tabId
+			});
+			chrome.browserAction.setPopup({
+				popup: 'popup.html',
+				tabId: tabId
+			});
+			chrome.browserAction.setBadgeBackgroundColor({
+				color: [255,69,0,255], //r,g,b,a,
+				tabId: tabId
+			});
+			chrome.browserAction.onClicked.removeListener(submitToReddit);
+		} else {
+			chrome.browserAction.setTitle({
+				title: 'Submit this page to reddit',
+				tabId: tabId
+			});
+			chrome.browserAction.setBadgeText({
+				text: '',
+				tabId: tabId
+			});
+			chrome.browserAction.setPopup({
+				popup: '',
+				tabId: tabId
+			});
+			chrome.browserAction.onClicked.removeListener(submitToReddit);
+			chrome.browserAction.onClicked.addListener(submitToReddit);
+		}
+	}
+	function submitToReddit(tab){
+		chrome.tabs.create({
+			url: 'http://www.reddit.com/submit?url=' + encodeURI(tab.url)
+		});
+	}
+</script>
