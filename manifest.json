@@ -1,6 +1,6 @@
 {
-	"name": "Best Reddit Check",
-	"version": "0.1",
+	"name": "Mostly Harmless",
+	"version": "0.2",
 	"description": "Easily see how many times URL has been posted to reddit, join the discussion, submit or repost it, and more!",
 	"browser_action": {
 		"default_icon": "alien.png"
