@@ -11,12 +11,17 @@
 			installDefaults();
 		}
 		db.transaction(function(tx){
+			// Load preferences
 			tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['cacheTime'], function(tx, results) {
 				cacheTime = results.rows.item(0).choice;
 			});
 			tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['over18'], function(tx, results) {
 				over18 = results.rows.item(0).choice;
 			});
+			
+			// Clear cache and post data
+			tx.executeSql('DELETE FROM cache');
+			tx.executeSql('DELETE FROM posts');
 		});
 	}
 	
