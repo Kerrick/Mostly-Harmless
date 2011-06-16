@@ -1,0 +1,11 @@
+This is an upcoming reddit extension for Google Chrome.
+
+1. It looks and functions just like reddit, but is API driven (I'm not just iframing reddit or anything).
+
+2. It is going to support everything reddit does, including share, report, and hide.
+
+3. Its submit dialog will bring up a submission box in the popup, and it will support subreddit suggestions as you type, and have a brand new function... Forced reposts! If something has already been posted to a subreddit you are trying to submit it to, the extension will append a URL query string to it so it still goes through.
+
+4. Once infobars come out of the expiremental API, I'll be implementing a UI similar to Socialite as well.
+
+5. I hope to open source this and get it officially endorsed by reddit in the same way Socialite and RedditAddict are.
