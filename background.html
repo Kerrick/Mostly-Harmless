@@ -1,13 +1,35 @@
 <script>
-	var reddit_session = null;
-	setBadgeDefaults();
-	window.localStorage.clear();
-	chrome.tabs.onUpdated.addListener(listenToTabs);
-	chrome.tabs.onRemoved.addListener(cleanCache);
-	chrome.cookies.get({url: 'http://reddit.com', name: 'reddit_session'}, function(cookie){
-		reddit_session = cookie.value;
-		console.log('cookie.value = ' + cookie.value);
-	});
+	var db = openDatabase('mhdb', '1.0', 'Mostly Harmless Database', 5 * 1024 * 1024);
+	var cacheTime;
+	var over18;
+	init();
+	
+	function init() {
+		setBadgeDefaults();
+		chrome.tabs.onUpdated.addListener(listenToTabs);
+		if(window.localStorage.getItem('installed') !== 'true') {
+			installDefaults();
+		}
+		db.transaction(function(tx){
+			tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['cacheTime'], function(tx, results) {
+				cacheTime = results.rows.item(0).choice;
+			});
+			tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['over18'], function(tx, results) {
+				over18 = results.rows.item(0).choice;
+			});
+		});
+	}
+	
+	function installDefaults(tx) {
+		window.localStorage.setItem('installed','true');
+		db.transaction(function(tx) {
+			tx.executeSql('CREATE TABLE IF NOT EXISTS cache (pageUrl unique, cacheTime, howManyPosts)');
+			tx.executeSql('CREATE TABLE IF NOT EXISTS posts (id unique, name, likes, domain, subreddit, author, score, over_18, hidden, thumbnail, downs, permalink, created_utc, url, title, num_comments, ups, modhash)')
+			tx.executeSql('CREATE TABLE IF NOT EXISTS prefs (pref unique, choice)');
+			tx.executeSql('INSERT INTO prefs (pref, choice) VALUES (?, ?)', ['cacheTime','1']);
+			tx.executeSql('INSERT INTO prefs (pref, choice) VALUES (?, ?)', ['over18','false']);
+		});
+	}
 	
 	function setBadgeDefaults(tabId) {
 		chrome.browserAction.setBadgeBackgroundColor({
@@ -32,83 +54,169 @@
 			});
 		}
 	}
-	function cleanCache() {
-		// find old caches from localStorage and remove anything older than ___.
-	}
+	
 	function listenToTabs(tabId,changeInfo,tab){
 		if(changeInfo.status === 'loading') {
 			grabData(tab.url,tabId);
 		}
 	}
+	
 	function grabData(url,tabId) {
-		//check if the url has been cached recently
-		if(window.localStorage.getItem(url) === null || JSON.parse(window.localStorage.getItem(url)).cachetime - new Date < -60000) {
-			console.log('Loading from reddit api...');
-			var reqUrl = 'http://www.reddit.com/api/info.json?url=' + encodeURI(url);
-			var api = new XMLHttpRequest();
-			api.open('GET',reqUrl,false);
-			api.send(null);
-			if(api.status !== 200) {
-				console.error('Error loading API.\nURL: ' + reqUrl + '\nStatus: ' + api.status);
-				console.log(api);
-				setBadgeDefaults(tabId);
-			}
-			api.onload = prepareButton(JSON.parse(api.responseText),url,tabId);
-		} else {
-			console.log('Loading from cache...');
-			prepareButton(JSON.parse(window.localStorage.getItem(url)).response,url,tabId);
-		}
+		// If the URL hasn't been cached recently, fetch it from the API.
+		db.transaction(function(tx) {
+			tx.executeSql('SELECT * FROM cache WHERE pageUrl=?', [url], function(tx, results) {
+				var cache = results.rows;
+				if(cache.length === 0 || -(cache.item(0).cacheTime - epoch()) > 60  * cacheTime ) { // cacheTime in minutes
+					console.log('Loading from reddit api...');
+					var reqUrl = 'http://www.reddit.com/api/info.json?url=' + encodeURI(url);
+					var api = new XMLHttpRequest();
+					api.open('GET',reqUrl,false);
+					api.send(null);
+					if(api.status !== 200) {
+						console.error('Error loading API.\nURL: ' + reqUrl + '\nStatus: ' + api.status);
+						console.log(api);
+						setBadgeDefaults(tabId);
+					}
+					api.onload = cacheData(JSON.parse(api.responseText),url,tabId);
+				} else {
+					console.log('Loading from cache...');
+					preparePopup(url,tabId);
+				}
+			});
+		});
 	}
-	function prepareButton(response,pageUrl,tabId) {
+	
+	function epoch() {
+		return Math.floor(new Date().getTime()/1000);
+	}
+	
+	function cacheData(response,pageUrl,tabId) {
 		// add response to cache to reduce API calls
-		if(window.localStorage.getItem(pageUrl) === null || JSON.parse(window.localStorage.getItem(pageUrl)).cachetime - new Date < -60000) {
-			var toCache = new Object();
-			toCache.cachetime = new Date();
-			toCache.response = response;
-			window.localStorage.setItem(pageUrl,JSON.stringify(toCache));
-			delete toCache;
-		}
-		
-		// counts submissions and prepare the browserAction button appropriately
-		var numberOfSubmissions = response.data.children.length.toString();
-		if(numberOfSubmissions > 0) {
-			chrome.browserAction.setTitle({
-				title: 'This page has been submitted to reddit ' + numberOfSubmissions + ' times.',
-				tabId: tabId
+		if(response.data.children.length === 0) {
+			db.transaction(function(tx) {
+				tx.executeSql('INSERT OR REPLACE INTO cache (pageUrl, cacheTime, howManyPosts) VALUES (?, ?, ?)',[pageUrl, epoch(), '0',]);
 			});
-			chrome.browserAction.setBadgeText({
-				text: numberOfSubmissions,
-				tabId: tabId
-			});
-			chrome.browserAction.setPopup({
-				popup: 'popup.html',
-				tabId: tabId
-			});
-			chrome.browserAction.setBadgeBackgroundColor({
-				color: [255,69,0,255], //r,g,b,a,
-				tabId: tabId
-			});
-			chrome.browserAction.onClicked.removeListener(submitToReddit);
 		} else {
-			chrome.browserAction.setTitle({
-				title: 'Submit this page to reddit',
-				tabId: tabId
+			db.transaction(function(tx) {
+				for(var i = 0; i < response.data.children.length; i++) {
+					var data = response.data.children[i].data;
+					tx.executeSql(
+						'INSERT OR REPLACE INTO posts' +
+						'(id, name, likes, domain, subreddit, author, score, over_18, hidden, thumbnail, downs, permalink, created_utc, url, title, num_comments, ups, modhash)' +
+						'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+						[data.id, data.name, data.likes, data.domain, data.subreddit, data.author, data.score, data.over_18, data.hidden, data.thumbnail, data.downs, data.permalink, data.created_utc, data.url, data.title, data.num_comments, data.ups, response.data.modhash],
+						function(tx) {
+							tx.executeSql('INSERT OR REPLACE INTO cache (pageUrl, cacheTime, howManyPosts) VALUES (?, ?, ?)',[pageUrl, epoch(), response.data.children.length]);
+						});
+				}
 			});
-			chrome.browserAction.setBadgeText({
-				text: '',
-				tabId: tabId
-			});
-			chrome.browserAction.setPopup({
-				popup: '',
-				tabId: tabId
-			});
-			chrome.browserAction.onClicked.removeListener(submitToReddit);
-			chrome.browserAction.onClicked.addListener(submitToReddit);
 		}
+		preparePopup(pageUrl,tabId);
 	}
+	
+	function preparePopup(url,tabId) {
+		// counts submissions and prepare the browserAction button appropriately
+		var numberOfSubmissions;
+		db.transaction(function(tx){
+			tx.executeSql('SELECT * FROM cache WHERE pageUrl=?', [url], function(tx, results) {
+				numberOfSubmissions = results.rows.item(0).howManyPosts;
+				if(numberOfSubmissions > 0) {
+					chrome.browserAction.setTitle({
+						title: 'This page has been submitted to reddit ' + numberOfSubmissions + ' times.',
+						tabId: tabId
+					});
+					chrome.browserAction.setBadgeText({
+						text: numberOfSubmissions.toString(),
+						tabId: tabId
+					});
+					chrome.browserAction.setPopup({
+						popup: 'popup.html',
+						tabId: tabId
+					});
+					chrome.browserAction.setBadgeBackgroundColor({
+						color: [255,69,0,255], //r,g,b,a,
+						tabId: tabId
+					});
+					chrome.browserAction.onClicked.removeListener(submitToReddit);
+				} else {
+					chrome.browserAction.setTitle({
+						title: 'Submit this page to reddit',
+						tabId: tabId
+					});
+					chrome.browserAction.setBadgeText({
+						text: '',
+						tabId: tabId
+					});
+					chrome.browserAction.setPopup({
+						popup: '',
+						tabId: tabId
+					});
+					chrome.browserAction.onClicked.removeListener(submitToReddit);
+					chrome.browserAction.onClicked.addListener(submitToReddit);
+				}
+			});
+		});
+	}
+	
 	function submitToReddit(tab){
 		chrome.tabs.create({
 			url: 'http://www.reddit.com/submit?url=' + encodeURI(tab.url)
 		});
 	}
+	
+	/*
+			 * JavaScript Pretty Date
+			 * Thanks to Dean Landolt's comment on
+			 * http://ejohn.org/blog/javascript-pretty-date/#postcomment
+			 */
+			// Takes an ISO time and returns a string representing how
+			// long ago the date represents.
+			function prettyDate(date_str){
+			  var time = ('' + date_str).replace(/-/g,"/").replace(/[TZ]/g," ");
+			  var seconds = (new Date - new Date(time)) / 1000;
+			  var token = 'ago', list_choice = 1;
+			  if (seconds < 0) {
+				seconds = Math.abs(seconds);
+				token = 'from now';
+				list_choice = 2;
+			  }
+			  var i = 0, format;
+			  while (format = time_formats[i++]) if (seconds < format[0]) {
+				if (typeof format[2] == 'string')
+				  return format[list_choice];
+				else
+				  return Math.floor(seconds / format[2]) + ' ' + format[1] + ' ' + token;
+			  }
+			  return time;
+			};
+			var time_formats = [
+			  [60, 'just now', 1], // 60
+			  [120, '1 minute ago', '1 minute from now'], // 60*2
+			  [3600, 'minutes', 60], // 60*60, 60
+			  [7200, '1 hour ago', '1 hour from now'], // 60*60*2
+			  [86400, 'hours', 3600], // 60*60*24, 60*60
+			  [172800, 'yesterday', 'tomorrow'], // 60*60*24*2
+			  [604800, 'days', 86400], // 60*60*24*7, 60*60*24
+			  [1209600, 'last week', 'next week'], // 60*60*24*7*4*2
+			  [2419200, 'weeks', 604800], // 60*60*24*7*4, 60*60*24*7
+			  [4838400, 'last month', 'next month'], // 60*60*24*7*4*2
+			  [29030400, 'months', 2419200], // 60*60*24*7*4*12, 60*60*24*7*4
+			  [58060800, 'last year', 'next year'], // 60*60*24*7*4*12*2
+			  [2903040000, 'years', 29030400], // 60*60*24*7*4*12*100, 60*60*24*7*4*12
+			  [5806080000, 'last century', 'next century'], // 60*60*24*7*4*12*100*2
+			  [58060800000, 'centuries', 2903040000] // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
+			];
+			
+			/*
+			 * ISO 8601 Formatted Dates
+			 * Gotten from the Mozilla Developer Center
+			 */
+			function ISODateString(d){
+			 function pad(n){return n<10 ? '0'+n : n}
+			 return d.getUTCFullYear()+'-'
+				  + pad(d.getUTCMonth()+1)+'-'
+				  + pad(d.getUTCDate())+'T'
+				  + pad(d.getUTCHours())+':'
+				  + pad(d.getUTCMinutes())+':'
+				  + pad(d.getUTCSeconds())+'Z'}
 </script>

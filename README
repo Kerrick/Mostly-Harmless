@@ -1,3 +1,5 @@
+## Mostly Harmless ##
+
 This is an upcoming reddit extension for Google Chrome.
 
 1. It looks and functions just like reddit, but is API driven (I'm not just iframing reddit or anything).
@@ -9,3 +11,7 @@ This is an upcoming reddit extension for Google Chrome.
 4. Once infobars come out of the expiremental API, I'll be implementing a UI similar to Socialite as well.
 
 5. I hope to open source this and get it officially endorsed by reddit in the same way Socialite and RedditAddict are.
+
+## Known Issues ##
+
+* After clicking a vote icon, the state doesn't *appear* to change unless you hover over it again. This is a [known bug in Google Chrome](http://code.google.com/p/chromium/issues/detail?id=77246).

@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
 	<head>
-		<title>TESTING the title</title>
 		<meta charset="utf-8">
 		<style>
 			body {
@@ -161,165 +160,183 @@
 			}
 		</style>
 		<script>
-			chrome.windows.getCurrent(function(currWindow) {
-				chrome.tabs.getSelected(currWindow.id, function(currTab) {
-					processApi(JSON.parse(window.localStorage.getItem(currTab.url)).response);
-				});
-			});
-			function processApi(response) {
-				document.getElementById('posts').setAttribute('data-modhash',response.data.modhash);
-				document.getElementById('posts').setAttribute('data-url',response.data.children[0].data.url);
-				var children = response.data.children;
-				var now = new Date();
-				for(var i = 0; i < children.length; i++) {
-					var data = children[i].data;
-					var entry = document.createElement('li');
-						entry.id = data.name;
-						if (data.likes === true)  entry.setAttribute('data-dir','1');
-						if (data.likes === null)  entry.setAttribute('data-dir','0');
-						if (data.likes === false) entry.setAttribute('data-dir','-1');
-						var votes = document.createElement('div');
-							votes.className = 'votes';
-							var upmod = document.createElement('a');
-								upmod.className = 'upmod';
-								upmod.addEventListener('click',upmodPost);
-								votes.appendChild(upmod);
-							var count = document.createElement('span');
-								count.className = 'count';
-								count.id = 'count_' + data.name;
-								count.innerHTML = data.score;
-								count.title = data.ups + ' up votes, ' + data.downs + ' down votes';
-								votes.appendChild(count);
-							var downmod = document.createElement('a');
-								downmod.className = 'downmod';
-								downmod.id = 'down_' + data.name;
-								votes.appendChild(downmod);
-							entry.appendChild(votes);
-						var thumblink = document.createElement('a');
-							thumblink.className = 'thumblink';
-							thumblink.href = 'http://www.reddit.com' + data.permalink;
-							thumblink.target = '_blank';
-							thumblink.title = 'View this submission on reddit';
-							var thumb = document.createElement('img');
-								thumb.className = 'thumb';
-								data.thumbnail.indexOf('/') === 0 ? thumb.src = 'http://www.reddit.com' + data.thumbnail : thumb.src = data.thumbnail;
-								thumb.alt = data.title;
-								thumblink.appendChild(thumb);
-							entry.appendChild(thumblink);
-						var post = document.createElement('div');
-							post.className = 'post';
-							var link = document.createElement('a');
-								link.className = 'link';
-								link.href = 'http://www.reddit.com' + data.permalink;
-								link.target = '_blank';
-								link.innerHTML = data.title;
-								link.title = 'View this submission on reddit';
-								post.appendChild(link);
-							var space = document.createTextNode(' ');
-								post.appendChild(space);
-							var domain = document.createElement('a');
-								domain.className = 'domain';
-								domain.href = 'http://www.reddit.com/domain/' + data.domain + '/';
-								domain.target = '_href';
-								domain.innerHTML = '(' + data.domain + ')';
-								post.appendChild(domain);
-							var meta = document.createElement('div');
-								meta.className = 'meta';
-								var timestamp = document.createElement('span');
-									timestamp.className = 'timestamp';
-									timestamp.innerHTML = 'submitted ' + prettyDate(ISODateString(new Date(data.created_utc * 1000)));
-									meta.appendChild(timestamp);
-								var by = document.createTextNode(' by ');
-									meta.appendChild(by);
-								var submitter = document.createElement('a');
-									submitter.className = 'submitter';
-									submitter.href = 'http://www.reddit.com/user/' + data.author + '/';
-									submitter.target = '_blank';
-									submitter.innerHTML = data.author;
-									meta.appendChild(submitter);
-								var to = document.createTextNode(' to ');
-									meta.appendChild(to);
-								var subreddit = document.createElement('a');
-									subreddit.className = 'subreddit';
-									subreddit.href = 'http://www.reddit.com/r/' + data.subreddit + '/';
-									subreddit.target = '_blank';
-									subreddit.innerHTML = data.subreddit;
-									meta.appendChild(subreddit);
-								post.appendChild(meta);
-							var actions = document.createElement('div');
-								actions.className = 'actions';
-								var comments = document.createElement('a');
-									comments.className = 'comments';
-									comments.href = 'http://www.reddit.com' + data.permalink;
-									comments.target = '_blank';
-									comments.innerHTML = data.num_comments + ' comments';
-									actions.appendChild(comments);
-								post.appendChild(actions);
-								var share = document.createElement('a');
-									share.className = 'share';
-									share.innerHTML = 'share';
-									actions.appendChild(share);
-								var save = document.createElement('a');
-									save.className = 'save';
-									save.innerHTML = data.saved === true ? 'saved' : 'save';
-									actions.appendChild(save);
-								var hide = document.createElement('a');
-									hide.className = 'hide';
-									if(data.hidden === true) {
-										entry.className += ' hidden';
-										hide.innerHTML = 'unhide'
-									} else {
-										hide.innerHTML = 'hide';
-									}
-									actions.appendChild(hide);
-								var report = document.createElement('a');
-									report.className = 'report';
-									report.innerHTML = 'report';
-									actions.appendChild(report);
-							entry.appendChild(post);
-						document.getElementById('posts').appendChild(entry);
+			var db = openDatabase('mhdb', '1.0', 'Mostly Harmless Database', 5 * 1024 * 1024);
+			var cacheTime;
+			var over18;
+			init();
+			
+			function init() {
+				if(window.localStorage.getItem('installed') !== 'true') {
+					installDefaults();
 				}
-				document.getElementById('submit').href = 'http://www.reddit.com/submit?url=' + encodeURI(document.getElementById('posts').getAttribute('data-url'));
+				db.transaction(function(tx){
+					tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['cacheTime'], function(tx, results) {
+						cacheTime = results.rows.item(0).choice;
+					});
+					tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['over18'], function(tx, results) {
+						over18 = results.rows.item(0).choice;
+					});
+				});
+			}
+			chrome.tabs.getSelected(undefined, function(currTab) {
+				buildPage(currTab.url);
+			});
+			function buildPage(pageUrl) {
+				db.transaction(function(tx){
+					console.log(pageUrl);
+					tx.executeSql('SELECT * FROM posts WHERE url=?', [pageUrl], function(tx, results) {
+						console.log(results.rows.item(0));
+						document.getElementById('posts').setAttribute('data-modhash',results.rows.item(0).modhash);
+						document.getElementById('posts').setAttribute('data-url',pageUrl);
+						var children = results.rows;
+						var now = new Date();
+						for(var i = 0; i < children.length; i++) {
+							var data = children.item(i);
+							var entry = document.createElement('li');
+								entry.id = data.name;
+								if (data.likes === 'true')  entry.setAttribute('data-dir','1');
+								if (data.likes === null)  entry.setAttribute('data-dir','0');
+								if (data.likes === 'false') entry.setAttribute('data-dir','-1');
+								var votes = document.createElement('div');
+									votes.className = 'votes';
+									var upmod = document.createElement('a');
+										upmod.className = 'upmod';
+										upmod.addEventListener('click',upmodPost);
+										votes.appendChild(upmod);
+									var count = document.createElement('span');
+										count.className = 'count';
+										count.id = 'count_' + data.name;
+										count.innerHTML = data.score;
+										count.title = data.ups + ' up votes, ' + data.downs + ' down votes';
+										votes.appendChild(count);
+									var downmod = document.createElement('a');
+										downmod.className = 'downmod';
+										downmod.id = 'down_' + data.name;
+										votes.appendChild(downmod);
+									entry.appendChild(votes);
+								var thumblink = document.createElement('a');
+									thumblink.className = 'thumblink';
+									thumblink.href = 'http://www.reddit.com' + data.permalink;
+									thumblink.target = '_blank';
+									thumblink.title = 'View this submission on reddit';
+									var thumb = document.createElement('img');
+										thumb.className = 'thumb';
+										data.thumbnail.indexOf('/') === 0 ? thumb.src = 'http://www.reddit.com' + data.thumbnail : thumb.src = data.thumbnail;
+										thumb.alt = data.title;
+										thumblink.appendChild(thumb);
+									entry.appendChild(thumblink);
+								var post = document.createElement('div');
+									post.className = 'post';
+									var link = document.createElement('a');
+										link.className = 'link';
+										link.href = 'http://www.reddit.com' + data.permalink;
+										link.target = '_blank';
+										link.innerHTML = data.title;
+										link.title = 'View this submission on reddit';
+										post.appendChild(link);
+									var space = document.createTextNode(' ');
+										post.appendChild(space);
+									var domain = document.createElement('a');
+										domain.className = 'domain';
+										domain.href = 'http://www.reddit.com/domain/' + data.domain + '/';
+										domain.target = '_href';
+										domain.innerHTML = '(' + data.domain + ')';
+										post.appendChild(domain);
+									var meta = document.createElement('div');
+										meta.className = 'meta';
+										var timestamp = document.createElement('span');
+											timestamp.className = 'timestamp';
+											timestamp.innerHTML = 'submitted ' + prettyDate(ISODateString(new Date(data.created_utc * 1000)));
+											meta.appendChild(timestamp);
+										var by = document.createTextNode(' by ');
+											meta.appendChild(by);
+										var submitter = document.createElement('a');
+											submitter.className = 'submitter';
+											submitter.href = 'http://www.reddit.com/user/' + data.author + '/';
+											submitter.target = '_blank';
+											submitter.innerHTML = data.author;
+											meta.appendChild(submitter);
+										var to = document.createTextNode(' to ');
+											meta.appendChild(to);
+										var subreddit = document.createElement('a');
+											subreddit.className = 'subreddit';
+											subreddit.href = 'http://www.reddit.com/r/' + data.subreddit + '/';
+											subreddit.target = '_blank';
+											subreddit.innerHTML = data.subreddit;
+											meta.appendChild(subreddit);
+										post.appendChild(meta);
+									var actions = document.createElement('div');
+										actions.className = 'actions';
+										var comments = document.createElement('a');
+											comments.className = 'comments';
+											comments.href = 'http://www.reddit.com' + data.permalink;
+											comments.target = '_blank';
+											comments.innerHTML = data.num_comments + ' comments';
+											actions.appendChild(comments);
+										post.appendChild(actions);
+										var share = document.createElement('a');
+											share.className = 'share';
+											share.innerHTML = 'share';
+											actions.appendChild(share);
+										var save = document.createElement('a');
+											save.className = 'save';
+											save.innerHTML = data.saved === true ? 'saved' : 'save';
+											actions.appendChild(save);
+										var hide = document.createElement('a');
+											hide.className = 'hide';
+											if(data.hidden === true) {
+												entry.className += ' hidden';
+												hide.innerHTML = 'unhide'
+											} else {
+												hide.innerHTML = 'hide';
+											}
+											actions.appendChild(hide);
+										var report = document.createElement('a');
+											report.className = 'report';
+											report.innerHTML = 'report';
+											actions.appendChild(report);
+									entry.appendChild(post);
+								document.getElementById('posts').appendChild(entry);
+						}
+						document.getElementById('submit').href = 'http://www.reddit.com/submit?url=' + encodeURI(document.getElementById('posts').getAttribute('data-url'));
+					});
+				});
 			}
 			
 			function upmodPost() {
 				var formData = new FormData();
-				formData.append('id',this.parentNode.parentNode.id);
+				var listItem = this.parentNode.parentNode;
+				formData.append('id',listItem.id);
 				formData.append('uh',document.getElementById('posts').getAttribute('data-modhash'));
 				var voteWas = this.parentNode.parentNode.getAttribute('data-dir');
-				var voteCount = document.getElementById('count_' + this.parentNode.parentNode.id)
+				var voteCount = document.getElementById('count_' + listItem.id)
 				if(voteWas === '1') formData.append('dir','0');
 				if(voteWas === '0') formData.append('dir','1');
 				if(voteWas === '-1') formData.append('dir','1');
 				var api = new XMLHttpRequest();
 				api.open('POST','http://www.reddit.com/api/vote',false);
 				api.send(formData);
-				if (api.statusText === 'OK') {
-					if(voteWas === '1') {
-						this.parentNode.parentNode.setAttribute('data-dir','0');
-						voteCount.innerHTML --;
+				db.transaction(function(tx) {
+					if (api.statusText === 'OK') {
+						if(voteWas === '1') {
+							listItem.setAttribute('data-dir','0');
+							tx.executeSql('UPDATE posts SET likes=? WHERE name=?', [null, listItem.id]);
+						}
+						if(voteWas === '0') {
+							listItem.setAttribute('data-dir','1');
+							tx.executeSql('UPDATE posts SET likes=? WHERE name=?', ['true', listItem.id]);
+						}
+						if(voteWas === '-1') {
+							listItem.setAttribute('data-dir','1');
+							tx.executeSql('UPDATE posts SET likes=? WHERE name=?', ['true', listItem.id]);
+						}
+						voteCount.title = 'Voted!';
+					} else {
+						console.error('Error voting.\n' + api.statusText);
+						console.warn(api);
+						return false;
 					}
-					if(voteWas === '0') {
-						this.parentNode.parentNode.setAttribute('data-dir','1');
-						voteCount.innerHTML ++;
-					}
-					if(voteWas === '-1') {
-						this.parentNode.parentNode.setAttribute('data-dir','1');
-						voteCount.innerHTML ++;
-						voteCount.innerHTML ++;
-					}
-					voteCount.title = 'Voted!';
-					window.localStorage.removeItem(document.getElementById('posts').getAttribute('data-url'));
-					// 	TODO:
-					//  Since I'm removing the data from the cache after voting, I need to add a
-					//  message passing function so that if the url isn't in the cache when the
-					//  popup is invoked, background.html will request the data and cache it so
-					//  the popup can read it.
-				} else {
-					console.error('Error voting.\n' + api.statusText);
-					console.warn(api);
-					return false;
-				}
+				});
 			}
 			
 			
