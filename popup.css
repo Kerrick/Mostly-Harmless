@@ -1,0 +1,155 @@
+body {
+				min-width: 700px;
+				overflow-x: hidden;
+				overflow-y: auto;
+				font: normal x-small verdana, arial, helvetica, sans-serif;
+			}
+			a {
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			#posts {
+				list-style-type: none;
+				margin:0;
+				padding:0;
+			}
+			#posts > li:before {
+				content: counter(postCount) " ";
+	counter-increment: postCount;
+	float: left;
+	margin-top: 15px;
+	color: #C6C6C6;
+	font-size: medium;
+	text-align: right;
+	font-family: arial;
+}
+#posts:first-child {
+	counter-reset: postCount;
+}
+#posts li {
+	margin: 0;
+	padding: 0;
+	padding-left: 3px;
+	margin-bottom: 8px;
+	clear:both;
+	overflow:auto;
+}
+li.hidden .votes, li.hidden .thumblink, li.hidden .link, li.hidden .domain, li.hidden .meta, li.hidden .actions *:not(.hide){
+	opacity: 0.4;
+}
+.votes {
+	float: left;
+	margin-right: 4px;
+	margin-left: 7px;
+	font-size: small;
+	width: 5ex;
+	overflow: hidden;
+	font-weight: bold;
+}
+.upmod, .downmod {
+	margin: 2px 0px 0px 0px;
+	width: 100%;
+	height: 14px;
+	display: block;
+	cursor: pointer;
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url('sprite.png');
+}
+.upmod {
+	background-position: -4px -271px;
+}
+li[data-dir='1'] .upmod {
+	background-position: -4px -227px;
+}
+.downmod {
+	background-position: -4px -293px;
+}
+li[data-dir='-1'] .downmod {
+	background-position: -4px -249px;
+}
+.count {
+	text-align: center;
+	color: #C6C6C6;
+	display: block;
+}
+.thumblink {
+	float: left;
+	margin: 0px 5px;
+	overflow: hidden;
+	width: 70px;
+}
+.post {
+	overflow: hidden;
+	margin-left: 3px;
+}
+.link {
+	font-size: medium;
+	font-weight: normal;
+	margin-bottom: 1px;
+}
+.domain {
+	color: #888;
+	font-size: x-small;
+}
+.meta {
+	color: #888;
+	font-size: x-small;
+}
+.meta a {
+	color: #369;
+}
+.actions a {
+	color: #888;
+	font-weight: bold;
+	padding: 0 4px;
+}
+.actions a:first-child {
+	padding-left:0;
+}
+.morelink {
+	 display:block;
+	 text-align:center;
+	 position:relative;
+	 -moz-border-radius-topleft:6px;
+	 -moz-border-radius-bottomleft:6px;
+	 border:1px solid #c4dbf1;
+	 background:white none repeat-x scroll center left;
+	 background-image:url('gradient-button.png');
+	 font-size:150%;
+	 font-weight:bold;
+	 letter-spacing:-1px;
+	 line-height:29px;
+	 height:29px;
+}
+.morelink:hover, .mlh {
+	 border-color:#879eb4;
+	 background-image:url('gradient-button-hover.png');
+}
+.morelink a {
+	 display:block;
+	 width:100%;
+	 color:#369;
+}
+.morelink:hover a {
+ 	color:white;
+}
+.morelink .nub {
+	 position:absolute;
+	 top:-1px;
+	 right:-1px;
+	 height:31px;
+	 width:24px;
+	 background:white none no-repeat scroll center left;
+	 background-image:url('sprite.png');
+	 background-position:-4px -4px;
+}
+.morelink:hover .nub, .mlhn {
+	 background-image:url('sprite.png');
+	 background-position:-4px -43px;
+}
