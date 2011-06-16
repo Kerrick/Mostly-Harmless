@@ -183,9 +183,7 @@
 			});
 			function buildPage(pageUrl) {
 				db.transaction(function(tx){
-					console.log(pageUrl);
 					tx.executeSql('SELECT * FROM posts WHERE url=?', [pageUrl], function(tx, results) {
-						console.log(results.rows.item(0));
 						document.getElementById('posts').setAttribute('data-modhash',results.rows.item(0).modhash);
 						document.getElementById('posts').setAttribute('data-url',pageUrl);
 						var children = results.rows;
@@ -280,11 +278,11 @@
 											actions.appendChild(share);
 										var save = document.createElement('a');
 											save.className = 'save';
-											save.innerHTML = data.saved === true ? 'saved' : 'save';
+											save.innerHTML = data.saved === 'true' ? 'saved' : 'save';
 											actions.appendChild(save);
 										var hide = document.createElement('a');
 											hide.className = 'hide';
-											if(data.hidden === true) {
+											if(data.hidden === 'true') {
 												entry.className += ' hidden';
 												hide.innerHTML = 'unhide'
 											} else {
