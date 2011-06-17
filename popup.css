@@ -42,7 +42,7 @@ a:hover {
 	overflow:auto;
 }
 li.hidden .votes, li.hidden .thumblink, li.hidden .link, li.hidden .domain, li.hidden .meta, li.hidden .actions *:not(.hide){
-	opacity: 0.4;
+	opacity: 0.25;
 }
 .votes {
 	float: left;
