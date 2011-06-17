@@ -1,4 +1,4 @@
-The following images in the are (C) 2008 CondeNet, Inc. All rights reserved:
+The following images are (C) 2008 CondeNet, Inc. All rights reserved:
 	alien.png
 	gradient-button.png
 	gradient-button-hover.png
