@@ -28,3 +28,4 @@ Form Data:
 
 // IDEAS
 How about parsing imgur to look for direct AND imgur links?
+I could sort by post date, highest score, most comments and more. Something for preferences?
