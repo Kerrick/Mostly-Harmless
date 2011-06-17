@@ -185,7 +185,9 @@ function upmodPost() {
 // long ago the date represents.
 function prettyDate(date_str){
   var time = ('' + date_str).replace(/-/g,"/").replace(/[TZ]/g," ");
-  var seconds = (new Date - new Date(time)) / 1000;
+  then = new Date(time);
+  utcTime = Date.UTC(then.getFullYear(), then.getMonth(), then.getDate(), then.getHours(), then.getMinutes(), then.getSeconds(), then.getMilliseconds())
+  var seconds = (new Date - new Date(utcTime)) / 1000;
   var token = 'ago', list_choice = 1;
   if (seconds < 0) {
 	seconds = Math.abs(seconds);
