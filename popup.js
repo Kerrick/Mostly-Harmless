@@ -140,9 +140,9 @@ function buildPage(pageUrl) {
 }
 
 function apiCall(call, postId) {
+	var formData = new FormData();
+	var apiUrl = new String();
 	switch(call) {
-		var formData = new FormData();
-		var apiUrl = new String();
 		case 'upmod':
 			apiUrl = 'http://www.reddit.com/api/vote';
 			formData.append('id',postId);
