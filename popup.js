@@ -171,6 +171,7 @@ function apiCall(call, postId) {
 		default:
 			console.warn('apiCall was called without a proper "call" argument.');
 			break;
+		}
 		var api = new XMLHttpRequest();
 		api.open('POST',apiUrl,false);
 		api.send(formData);
@@ -179,7 +180,6 @@ function apiCall(call, postId) {
 			console.warn(api);
 			// Todo: roll back changes?
 		}
-	}
 }
 
 
