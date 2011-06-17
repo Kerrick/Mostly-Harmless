@@ -1,22 +1,27 @@
+/*
+ * Much of this styling is based on and/or copied from the http://www.reddit.com/static/reddit.css file.
+ * That code would be Copyright (C) 2008 CondeNet, Inc. All rights reserved.
+ */
+
 body {
-				min-width: 700px;
-				overflow-x: hidden;
-				overflow-y: auto;
-				font: normal x-small verdana, arial, helvetica, sans-serif;
-			}
-			a {
-				text-decoration: none;
-			}
-			a:hover {
-				text-decoration: underline;
-			}
-			#posts {
-				list-style-type: none;
-				margin:0;
-				padding:0;
-			}
-			#posts > li:before {
-				content: counter(postCount) " ";
+	min-width: 700px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	font: normal x-small verdana, arial, helvetica, sans-serif;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+#posts {
+	list-style-type: none;
+	margin:0;
+	padding:0;
+}
+#posts > li:before {
+	content: counter(postCount) " ";
 	counter-increment: postCount;
 	float: left;
 	margin-top: 15px;
