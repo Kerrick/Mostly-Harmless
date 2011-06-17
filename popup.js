@@ -37,7 +37,7 @@ function buildPage(pageUrl) {
 						votes.className = 'votes';
 						var upmod = document.createElement('a');
 							upmod.className = 'upmod';
-							upmod.addEventListener('click',upmodPost);
+							upmod.setAttribute('onclick','apiCall("upmod", "' + data.name + '")');
 							votes.appendChild(upmod);
 						var count = document.createElement('span');
 							count.className = 'count';
@@ -139,40 +139,47 @@ function buildPage(pageUrl) {
 	});
 }
 
-function upmodPost() {
-	var formData = new FormData();
-	var listItem = this.parentNode.parentNode;
-	formData.append('id',listItem.id);
-	formData.append('uh',document.getElementById('posts').getAttribute('data-modhash'));
-	var voteWas = this.parentNode.parentNode.getAttribute('data-dir');
-	var voteCount = document.getElementById('count_' + listItem.id)
-	if(voteWas === '1') formData.append('dir','0');
-	if(voteWas === '0') formData.append('dir','1');
-	if(voteWas === '-1') formData.append('dir','1');
-	var api = new XMLHttpRequest();
-	api.open('POST','http://www.reddit.com/api/vote',false);
-	api.send(formData);
-	db.transaction(function(tx) {
-		if (api.statusText === 'OK') {
-			if(voteWas === '1') {
-				listItem.setAttribute('data-dir','0');
-				tx.executeSql('UPDATE posts SET likes=? WHERE name=?', [null, listItem.id]);
-			}
-			if(voteWas === '0') {
-				listItem.setAttribute('data-dir','1');
-				tx.executeSql('UPDATE posts SET likes=? WHERE name=?', ['true', listItem.id]);
-			}
-			if(voteWas === '-1') {
-				listItem.setAttribute('data-dir','1');
-				tx.executeSql('UPDATE posts SET likes=? WHERE name=?', ['true', listItem.id]);
-			}
-			voteCount.title = 'Voted!';
-		} else {
+function apiCall(call, postId) {
+	switch(call) {
+		var formData = new FormData();
+		var apiUrl = new String();
+		case 'upmod':
+			apiUrl = 'http://www.reddit.com/api/vote';
+			formData.append('id',postId);
+			formData.append('uh',document.getElementById('posts').getAttribute('data-modhash'));
+			var listItem = document.getElementById(postId);
+			var voteWas = listItem.getAttribute('data-dir');
+			var voteCount = document.getElementById('count_' + postId)
+			if(voteWas === '1') formData.append('dir','0');
+			if(voteWas === '0') formData.append('dir','1');
+			if(voteWas === '-1') formData.append('dir','1');
+			db.transaction(function(tx) {
+				if(voteWas === '1') {
+						listItem.setAttribute('data-dir','0');
+						tx.executeSql('UPDATE posts SET likes=? WHERE name=?', [null, postId]);
+					}
+					if(voteWas === '0') {
+						listItem.setAttribute('data-dir','1');
+						tx.executeSql('UPDATE posts SET likes=? WHERE name=?', ['true', postId]);
+					}
+					if(voteWas === '-1') {
+						listItem.setAttribute('data-dir','1');
+						tx.executeSql('UPDATE posts SET likes=? WHERE name=?', ['true', postId]);
+					}
+			});
+			break;
+		default:
+			console.warn('apiCall was called without a proper "call" argument.');
+			break;
+		var api = new XMLHttpRequest();
+		api.open('POST',apiUrl,false);
+		api.send(formData);
+		if (api.statusText !== 'OK') {
 			console.error('Error voting.\n' + api.statusText);
 			console.warn(api);
-			return false;
+			// Todo: roll back changes?
 		}
-	});
+	}
 }
 
 
