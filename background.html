@@ -119,13 +119,14 @@
 				for(var i = 0; i < response.data.children.length; i++) {
 					var data = response.data.children[i].data;
 					var insertUrl = isCommentsPage ? 'http://www.reddit.com' + data.permalink : data.url;
+					var insertNum = isCommentsPage ? '...' : response.data.children.length;
 					tx.executeSql(
 						'INSERT OR REPLACE INTO posts' +
 						'(id, name, likes, domain, subreddit, author, score, over_18, hidden, thumbnail, downs, permalink, created_utc, url, title, num_comments, ups, modhash)' +
 						'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
 						[data.id, data.name, data.likes, data.domain, data.subreddit, data.author, data.score, data.over_18, data.hidden, data.thumbnail, data.downs, data.permalink, data.created_utc, insertUrl, data.title, data.num_comments, data.ups, response.data.modhash],
 						function(tx) {
-							tx.executeSql('INSERT OR REPLACE INTO cache (pageUrl, cacheTime, howManyPosts) VALUES (?, ?, ?)',[pageUrl, epoch(), response.data.children.length]);
+							tx.executeSql('INSERT OR REPLACE INTO cache (pageUrl, cacheTime, howManyPosts) VALUES (?, ?, ?)',[pageUrl, epoch(), insertNum]);
 						});
 				}
 			});
@@ -146,6 +147,24 @@
 					});
 					chrome.browserAction.setBadgeText({
 						text: numberOfSubmissions.toString(),
+						tabId: tabId
+					});
+					chrome.browserAction.setPopup({
+						popup: 'popup.html',
+						tabId: tabId
+					});
+					chrome.browserAction.setBadgeBackgroundColor({
+						color: [255,69,0,255], //r,g,b,a,
+						tabId: tabId
+					});
+					chrome.browserAction.onClicked.removeListener(submitToReddit);
+				} else if(numberOfSubmissions === '...') {
+					chrome.browserAction.setTitle({
+						title: 'You are currently viewing the comments for this page.',
+						tabId: tabId
+					});
+					chrome.browserAction.setBadgeText({
+						text: numberOfSubmissions,
 						tabId: tabId
 					});
 					chrome.browserAction.setPopup({
