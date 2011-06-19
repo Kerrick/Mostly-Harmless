@@ -1,6 +1,8 @@
 var db = openDatabase('mhdb', '1.0', 'Mostly Harmless Database', 5 * 1024 * 1024);
 var cacheTime;
 var over18;
+var commentsMatchPattern = /https?:\/\/www\.reddit\.com(\/r\/(.+?))?\/comments\/(.+?)\/.*/;
+var isCommentsPage = false;
 init();
 
 function init() {
@@ -18,6 +20,7 @@ function init() {
 }
 chrome.tabs.getSelected(undefined, function(currTab) {
 	buildPage(currTab.url);
+	isCommentsPage = commentsMatchPattern.test(currTab.url);
 });
 function buildPage(pageUrl) {
 	db.transaction(function(tx){
@@ -134,7 +137,11 @@ function buildPage(pageUrl) {
 						entry.appendChild(post);
 					document.getElementById('posts').appendChild(entry);
 			}
-			document.getElementById('submit').href = 'http://www.reddit.com/submit?url=' + encodeURI(document.getElementById('posts').getAttribute('data-url'));
+			if(!isCommentsPage) {
+				document.getElementById('submit').href = 'http://www.reddit.com/submit?resubmit=true&url=' + encodeURI(document.getElementById('posts').getAttribute('data-url'));
+			} else {
+				document.getElementById('submit').parentNode.style.display = 'none';
+			}
 		});
 	});
 }
