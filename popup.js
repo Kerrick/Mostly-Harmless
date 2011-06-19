@@ -50,6 +50,7 @@ function buildPage(pageUrl) {
 							votes.appendChild(count);
 						var downmod = document.createElement('a');
 							downmod.className = 'downmod';
+							downmod.setAttribute('onclick','apiCall("downmod", "' + data.name + '")');
 							downmod.id = 'down_' + data.name;
 							votes.appendChild(downmod);
 						entry.appendChild(votes);
@@ -172,6 +173,31 @@ function apiCall(call, postId) {
 					if(voteWas === '-1') {
 						listItem.setAttribute('data-dir','1');
 						tx.executeSql('UPDATE posts SET likes=? WHERE name=?', ['true', postId]);
+					}
+			});
+			break;
+		case 'downmod':
+			apiUrl = 'http://www.reddit.com/api/vote';
+			formData.append('id',postId);
+			formData.append('uh',document.getElementById('posts').getAttribute('data-modhash'));
+			var listItem = document.getElementById(postId);
+			var voteWas = listItem.getAttribute('data-dir');
+			var voteCount = document.getElementById('count_' + postId)
+			if(voteWas === '-1') formData.append('dir','0');
+			if(voteWas === '0') formData.append('dir','-1');
+			if(voteWas === '1') formData.append('dir','-1');
+			db.transaction(function(tx) {
+				if(voteWas === '-1') {
+						listItem.setAttribute('data-dir','0');
+						tx.executeSql('UPDATE posts SET likes=? WHERE name=?', [null, postId]);
+					}
+					if(voteWas === '0') {
+						listItem.setAttribute('data-dir','-1');
+						tx.executeSql('UPDATE posts SET likes=? WHERE name=?', ['false', postId]);
+					}
+					if(voteWas === '1') {
+						listItem.setAttribute('data-dir','-1');
+						tx.executeSql('UPDATE posts SET likes=? WHERE name=?', ['false', postId]);
 					}
 			});
 			break;
