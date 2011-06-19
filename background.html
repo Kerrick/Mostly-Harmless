@@ -2,6 +2,7 @@
 	var db = openDatabase('mhdb', '1.0', 'Mostly Harmless Database', 5 * 1024 * 1024);
 	var cacheTime;
 	var over18;
+	var commentsMatchPattern = /https?:\/\/www\.reddit\.com(\/r\/(.+?))?\/comments\/(.+?)\/.*/;
 	init();
 	
 	function init() {
@@ -62,7 +63,12 @@
 	
 	function listenToTabs(tabId,changeInfo,tab){
 		if(changeInfo.status === 'loading') {
-			grabData(tab.url,tabId);
+			//If the user is at /comments instead of /r/subreddit/comments, redirect them.
+			if(commentsMatchPattern.test(tab.url) && !(/https?:\/\/www\.reddit\.com\/r\/(.+?)\/comments\/(.+?)\/.*/.test(tab.url))) {
+				chrome.tabs.update(tabId,{url:'http://redd.it/' + tab.url.match(commentsMatchPattern)[3]});	
+			} else {
+				grabData(tab.url,tabId);
+			}
 		}
 	}
 	
@@ -71,9 +77,16 @@
 		db.transaction(function(tx) {
 			tx.executeSql('SELECT * FROM cache WHERE pageUrl=?', [url], function(tx, results) {
 				var cache = results.rows;
+				var isCommentsPage = commentsMatchPattern.test(url);
 				if(cache.length === 0 || -(cache.item(0).cacheTime - epoch()) > 60  * cacheTime ) { // cacheTime in minutes
 					console.log('Loading from reddit api...');
-					var reqUrl = 'http://www.reddit.com/api/info.json?url=' + encodeURI(url);
+					var reqUrl = new String();
+					if(isCommentsPage) {
+						var matches = url.match(commentsMatchPattern);
+						reqUrl = 'http://www.reddit.com/by_id/t3_' + matches[3] + '.json';
+					} else {
+						reqUrl = 'http://www.reddit.com/api/info.json?url=' + encodeURI(url);
+					}
 					var api = new XMLHttpRequest();
 					api.open('GET',reqUrl,false);
 					api.send(null);
@@ -82,7 +95,7 @@
 						console.log(api);
 						setBadgeDefaults(tabId);
 					}
-					api.onload = cacheData(JSON.parse(api.responseText),url,tabId);
+					api.onload = cacheData(JSON.parse(api.responseText),url,tabId,isCommentsPage);
 				} else {
 					console.log('Loading from cache...');
 					preparePopup(url,tabId);
@@ -95,7 +108,7 @@
 		return Math.floor(new Date().getTime()/1000);
 	}
 	
-	function cacheData(response,pageUrl,tabId) {
+	function cacheData(response,pageUrl,tabId,isCommentsPage) {
 		// add response to cache to reduce API calls
 		if(response.data.children.length === 0) {
 			db.transaction(function(tx) {
@@ -105,11 +118,12 @@
 			db.transaction(function(tx) {
 				for(var i = 0; i < response.data.children.length; i++) {
 					var data = response.data.children[i].data;
+					var insertUrl = isCommentsPage ? 'http://www.reddit.com' + data.permalink : data.url;
 					tx.executeSql(
 						'INSERT OR REPLACE INTO posts' +
 						'(id, name, likes, domain, subreddit, author, score, over_18, hidden, thumbnail, downs, permalink, created_utc, url, title, num_comments, ups, modhash)' +
 						'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-						[data.id, data.name, data.likes, data.domain, data.subreddit, data.author, data.score, data.over_18, data.hidden, data.thumbnail, data.downs, data.permalink, data.created_utc, data.url, data.title, data.num_comments, data.ups, response.data.modhash],
+						[data.id, data.name, data.likes, data.domain, data.subreddit, data.author, data.score, data.over_18, data.hidden, data.thumbnail, data.downs, data.permalink, data.created_utc, insertUrl, data.title, data.num_comments, data.ups, response.data.modhash],
 						function(tx) {
 							tx.executeSql('INSERT OR REPLACE INTO cache (pageUrl, cacheTime, howManyPosts) VALUES (?, ?, ?)',[pageUrl, epoch(), response.data.children.length]);
 						});
