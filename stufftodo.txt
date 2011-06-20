@@ -65,4 +65,5 @@ Excluded sites
 		https:\/\/chaseonline\.chase\.com\/.*
 		https:\/\/online\.wellsfargo\.com\/.*
 		https:\/\/.+?\.bankofamerica\.com\/.*
-		https:\/\/.+?\.usbank\.com\/.*		
+		https:\/\/.+?\.usbank\.com\/.*
+Only show fresh content! User configurable by number of days/weeks/months.
