@@ -31,7 +31,7 @@ function buildPage(pageUrl) {
 			var now = new Date();
 			for(var i = 0; i < children.length; i++) {
 				var data = children.item(i);
-				var voteDir;
+				var voteDir; // Is there a more terse way to do this?
 					if (data.likes === 'true')  voteDir = 1;
 					if (data.likes === null)  voteDir = 0;
 					if (data.likes === 'false') voteDir = -1;
