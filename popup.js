@@ -38,7 +38,7 @@ function buildPage(pageUrl) {
 				var entry = new String();
 					var hiddenText = data.saved === 'true' ? 'hidden' : 'hide';
 					var saveText = data.saved === 'true' ? 'saved' : 'save';
-					entry += '<li id="' + data.name + ' ' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '">';
+					entry += '<li id="' + data.name + '" class="' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '">';
 						entry += '<div class="votes">';
 							entry += '<a class="upmod" onclick="apiCall(\'upmod\', \'' + data.name + '\')"></a>';
 							entry += '<span class="count" id="count_' + data.name + '" title="' + data.ups + ' up votes, ' + data.downs + ' down votes">' + data.score + '</span>';
