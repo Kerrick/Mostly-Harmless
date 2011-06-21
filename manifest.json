@@ -9,6 +9,5 @@
 		"http://*.reddit.com/",
 		"tabs"
 	],
-	"background_page": "background.html",
-	"options_page": "options.html"
+	"background_page": "background.html"
 }
