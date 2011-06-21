@@ -121,8 +121,8 @@ li[data-dir='-1'] .downmod {
 	 display:block;
 	 text-align:center;
 	 position:relative;
-	 -moz-border-radius-topleft:6px;
-	 -moz-border-radius-bottomleft:6px;
+	 -webkit-border-top-left-radius:6px;
+	 -webkit-border-bottom-left-radius:6px;
 	 border:1px solid #c4dbf1;
 	 background:white none repeat-x scroll center left;
 	 background-image:url('gradient-button.png');
