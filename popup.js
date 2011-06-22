@@ -20,11 +20,14 @@ function init() {
 }
 chrome.tabs.getSelected(undefined, function(currTab) {
 	buildPage(currTab.url);
-	isCommentsPage = commentsMatchPattern.test(currTab.url);
 });
 function buildPage(pageUrl) {
+	isCommentsPage = commentsMatchPattern.test(pageUrl);
+	var sqlQuery = isCommentsPage ? 'SELECT * FROM posts WHERE id=?' : 'SELECT * FROM posts WHERE url=?';
+	var sqlSearch = isCommentsPage ? pageUrl.match(commentsMatchPattern)[3] : pageUrl;
 	db.transaction(function(tx){
-		tx.executeSql('SELECT * FROM posts WHERE url=?', [pageUrl], function(tx, results) {
+		tx.executeSql(sqlQuery, [sqlSearch], function(tx, results) {
+			console.log(results.rows);
 			document.getElementById('posts').setAttribute('data-modhash',results.rows.item(0).modhash);
 			document.getElementById('posts').setAttribute('data-url',pageUrl);
 			var children = results.rows;
