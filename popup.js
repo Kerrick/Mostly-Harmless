@@ -39,7 +39,7 @@ function buildPage(pageUrl) {
 					if (data.likes === null)  voteDir = 0;
 					if (data.likes === 'false') voteDir = -1;
 				var entry = new String();
-					var hiddenText = data.saved === 'true' ? 'hidden' : 'hide';
+					var hiddenText = data.hidden === 'true' ? 'hidden' : 'hide';
 					var saveText = data.saved === 'true' ? 'saved' : 'save';
 					entry += '<li id="' + data.name + '" class="' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '">';
 						entry += '<div class="votes">';
