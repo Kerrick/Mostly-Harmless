@@ -1,6 +1,8 @@
 var db = openDatabase('mhdb', '1.0', 'Mostly Harmless Database', 5 * 1024 * 1024);
-var cacheTime;
-var over18;
+var settings = new Store("settings", {
+    "cacheTime": 1,
+    "freshCutoff": 90
+}).toObject();
 var commentsMatchPattern = /https?:\/\/www\.reddit\.com(\/r\/(.+?))?\/comments\/(.+?)\/.*/;
 init();
 
@@ -11,14 +13,6 @@ function init() {
 		installDefaults();
 	}
 	db.transaction(function(tx){
-		// Load preferences
-		tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['cacheTime'], function(tx, results) {
-			cacheTime = results.rows.item(0).choice;
-		});
-		tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['over18'], function(tx, results) {
-			over18 = results.rows.item(0).choice;
-		});
-		
 		// Clear cache and post data
 		tx.executeSql('DELETE FROM cache');
 		tx.executeSql('DELETE FROM posts');
@@ -28,11 +22,8 @@ function init() {
 function installDefaults(tx) {
 	window.localStorage.setItem('installed','true');
 	db.transaction(function(tx) {
-		tx.executeSql('CREATE TABLE IF NOT EXISTS cache (pageUrl unique, cacheTime, howManyPosts)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS cache (pageUrl unique, cacheDate, howManyPosts)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS posts (id unique, name, likes, domain, subreddit, author, score, over_18, hidden, thumbnail, downs, permalink, created_utc, url, title, num_comments, ups, modhash)')
-		tx.executeSql('CREATE TABLE IF NOT EXISTS prefs (pref unique, choice)');
-		tx.executeSql('INSERT INTO prefs (pref, choice) VALUES (?, ?)', ['cacheTime','1']);
-		tx.executeSql('INSERT INTO prefs (pref, choice) VALUES (?, ?)', ['over18','false']);
 	});
 }
 
@@ -77,7 +68,7 @@ function grabData(url,tabId) {
 		tx.executeSql('SELECT * FROM cache WHERE pageUrl=?', [url], function(tx, results) {
 			var cache = results.rows;
 			var isCommentsPage = commentsMatchPattern.test(url);
-			if(cache.length === 0 || -(cache.item(0).cacheTime - epoch()) > 60  * cacheTime ) { // cacheTime in minutes
+			if(cache.length === 0 || -(cache.item(0).cacheDate - epoch()) > 60  * settings.cacheTime ) {
 				console.log('Loading from reddit api...');
 				var reqUrl = new String();
 				if(isCommentsPage) {
@@ -108,28 +99,37 @@ function epoch() {
 }
 
 function cacheData(response,pageUrl,tabId,isCommentsPage) {
-	// add response to cache to reduce API calls
-	if(response.data.children.length === 0) {
+	var wasCached = false;
+	var freshPosts = [];
+	for(var i = 0; i < response.data.children.length; i++) {
+		var data = response.data.children[i].data;
+		var isFreshEnough = data.created_utc >= epoch() - settings.freshCutoff * 24 * 60 * 60;
+		if(isFreshEnough) {
+			wasCached = true;
+			freshPosts.push(data);
+		}
+	}
+	if(wasCached === true) {
 		db.transaction(function(tx) {
-			tx.executeSql('INSERT OR REPLACE INTO cache (pageUrl, cacheTime, howManyPosts) VALUES (?, ?, ?)',[pageUrl, epoch(), '0',]);
-		});
-	} else {
-		db.transaction(function(tx) {
-			for(var i = 0; i < response.data.children.length; i++) {
-				var data = response.data.children[i].data;
-				var insertUrl = isCommentsPage ? 'http://www.reddit.com' + data.permalink : data.url;
-				var insertNum = isCommentsPage ? '...' : response.data.children.length;
+			var insertNum = isCommentsPage ? '...' : freshPosts.length;
+			tx.executeSql('INSERT OR REPLACE INTO cache (pageUrl, cacheDate, howManyPosts) VALUES (?, ?, ?)',[pageUrl, epoch(), freshPosts.length]);
+			for(var j = freshPosts.length - 1; j >= 0; j--) {
+				var insertUrl = isCommentsPage ? 'http://www.reddit.com' + freshPosts[j].permalink : freshPosts[j].url.split('#')[0];
 				tx.executeSql(
 					'INSERT OR REPLACE INTO posts' +
 					'(id, name, likes, domain, subreddit, author, score, over_18, hidden, thumbnail, downs, permalink, created_utc, url, title, num_comments, ups, modhash)' +
 					'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-					[data.id, data.name, data.likes, data.domain, data.subreddit, data.author, data.score, data.over_18, data.hidden, data.thumbnail, data.downs, data.permalink, data.created_utc, insertUrl, data.title, data.num_comments, data.ups, response.data.modhash],
-					function(tx) {
-						tx.executeSql('INSERT OR REPLACE INTO cache (pageUrl, cacheTime, howManyPosts) VALUES (?, ?, ?)',[pageUrl, epoch(), insertNum]);
-					});
+					[freshPosts[j].id, freshPosts[j].name, freshPosts[j].likes, freshPosts[j].domain, freshPosts[j].subreddit, freshPosts[j].author, freshPosts[j].score, freshPosts[j].over_18, freshPosts[j].hidden, freshPosts[j].thumbnail, freshPosts[j].downs, freshPosts[j].permalink, freshPosts[j].created_utc, insertUrl, freshPosts[j].title, freshPosts[j].num_comments, freshPosts[j].ups, response.data.modhash]
+				);
 			}
 		});
+	} else {
+		db.transaction(function(tx) {
+			tx.executeSql('INSERT OR REPLACE INTO cache (pageUrl, cacheDate, howManyPosts) VALUES (?, ?, ?)',[pageUrl, epoch(), '0',]);
+		});
 	}
+	console.log(freshPosts);
+	
 	preparePopup(pageUrl,tabId);
 }
 

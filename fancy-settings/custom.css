@@ -1,0 +1,13 @@
+/*
+// Add your own style rules here, not in css/main.css
+// or css/setting.css for easy updating reasons.
+*/
+#icon {
+	width: 19px;
+	height: 19px;
+	top: 15px;
+	left: 17px;
+}
+textarea {
+	font-family: Consolas, "Lucida Console", Monaco, monospace
+}

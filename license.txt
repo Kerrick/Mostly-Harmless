@@ -4,6 +4,11 @@ The following images are (C) 2008 CondeNet, Inc. All rights reserved:
 	gradient-button-hover.png
 	sprite.png
 
+The files found in the fancy-settings/ directory are based on Fancy Settings,
+by Frank Kohlhepp, licensed under the GNU GPL v2.1, which is available at the
+URL http://www.gnu.org/licenses/lgpl-2.1.html online. Fancy Settings can be
+found and forked at https://github.com/frankkohlhepp/fancy-settings/ on Github.
+
 The following license applies to all other files unless noted within the file:
 
 Copyright (C) 2011 by Kerrick Long

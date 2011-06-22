@@ -1,30 +1,17 @@
 var db = openDatabase('mhdb', '1.0', 'Mostly Harmless Database', 5 * 1024 * 1024);
-var cacheTime;
-var over18;
+var settings = new Store("settings", {
+    "cacheTime": 1
+}).toObject();
 var commentsMatchPattern = /https?:\/\/www\.reddit\.com(\/r\/(.+?))?\/comments\/(.+?)\/.*/;
 var isCommentsPage = false;
-init();
 
-function init() {
-	if(window.localStorage.getItem('installed') !== 'true') {
-		installDefaults();
-	}
-	db.transaction(function(tx){
-		tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['cacheTime'], function(tx, results) {
-			cacheTime = results.rows.item(0).choice;
-		});
-		tx.executeSql('SELECT * FROM prefs WHERE pref=?', ['over18'], function(tx, results) {
-			over18 = results.rows.item(0).choice;
-		});
-	});
-}
 chrome.tabs.getSelected(undefined, function(currTab) {
 	buildPage(currTab.url);
 });
 function buildPage(pageUrl) {
 	isCommentsPage = commentsMatchPattern.test(pageUrl);
 	var sqlQuery = isCommentsPage ? 'SELECT * FROM posts WHERE id=?' : 'SELECT * FROM posts WHERE url=?';
-	var sqlSearch = isCommentsPage ? pageUrl.match(commentsMatchPattern)[3] : pageUrl;
+	var sqlSearch = isCommentsPage ? pageUrl.match(commentsMatchPattern)[3] : pageUrl.split('#')[0];
 	db.transaction(function(tx){
 		tx.executeSql(sqlQuery, [sqlSearch], function(tx, results) {
 			console.log(results.rows);
