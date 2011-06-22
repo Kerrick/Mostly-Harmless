@@ -171,7 +171,7 @@ function preparePopup(url,tabId) {
 					tabId: tabId
 				});
 				chrome.browserAction.setBadgeBackgroundColor({
-					color: [255,69,0,255], //r,g,b,a,
+					color: [95,153,207,255], //r,g,b,a,
 					tabId: tabId
 				});
 				chrome.browserAction.onClicked.removeListener(submitToReddit);
