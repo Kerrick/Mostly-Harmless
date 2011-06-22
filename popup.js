@@ -43,7 +43,7 @@ function buildPage(pageUrl) {
 							entry += '<a class="domain" href="http://www.reddit.com/domain/' + data.domain + '" target="_blank">(' + data.domain + ')</a>';
 							entry += '<div class="meta">';
 								entry += '<span class="timestamp">submitted ' + prettyDate(ISODateString(new Date(data.created_utc * 1000))) + '</span> by ';
-								entry += '<a class="submitter" href="http://www.reddit.com/user/' + data.author + '" target="_blank">' + data.author + '</a> to';
+								entry += '<a class="submitter" href="http://www.reddit.com/user/' + data.author + '" target="_blank">' + data.author + '</a> to ';
 								entry += '<a class="subreddit" href="http://www.reddit.com/r/' + data.subreddit + '/" target="_blank">' + data.subreddit + '</a>';
 							entry += '</div>';
 							entry += '<div class="actions">';
