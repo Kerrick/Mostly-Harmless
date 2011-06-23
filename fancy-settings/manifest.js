@@ -69,18 +69,20 @@ this.manifest = {
         	"name": "freshCutoff",
         	"type": "slider",
         	"label": "",
-        	"max": 90,
+        	"max": 91,
         	"min": 1,
         	"step": 1,
         	"display": true,
         	"displayModifier": function(value) {
         		if(value === 1)
-        			return value.toString() + " day";
+        			return "Show posts less than " + value.toString() + " day old";
         		if(value <= 2 * 7)
-        			return value.toString() + " days";
+        			return "Show posts less than " + value.toString() + " days old";
         		if(value > 2 * 7 && value < 7 * 7)
-        			return Math.floor(value / 7).toString() + " weeks";
-        		return Math.ceil(value / 30).toString() + " months";
+        			return "Show posts less than " + Math.floor(value / 7).toString() + " weeks old";
+        		if(value >= 7 * 7 && value < 91)
+        			return "Show posts less than " + Math.ceil(value / 30).toString() + " months old";
+        		return "Show posts from all time";
         	}
         },
         {

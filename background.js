@@ -1,7 +1,7 @@
 var db = openDatabase('mhdb', '1.0', 'Mostly Harmless Database', 5 * 1024 * 1024);
 var settings = new Store("settings", {
     "cacheTime": 1,
-    "freshCutoff": 90
+    "freshCutoff": 91
 }).toObject();
 var commentsMatchPattern = /https?:\/\/www\.reddit\.com(\/r\/(.+?))?\/comments\/(.+?)\/.*/;
 init();
@@ -104,7 +104,7 @@ function cacheData(response,pageUrl,tabId,isCommentsPage) {
 	var insertUrl = isCommentsPage ? 'http://www.reddit.com' + pageUrl.split('#')[0] : pageUrl.split('#')[0];
 	for(var i = 0; i < response.data.children.length; i++) {
 		var data = response.data.children[i].data;
-		var isFreshEnough = data.created_utc >= epoch() - settings.freshCutoff * 24 * 60 * 60;
+		var isFreshEnough = settings.freshCutoff === 91 ? true : data.created_utc >= epoch() - settings.freshCutoff * 24 * 60 * 60;
 		if(isFreshEnough) {
 			wasCached = true;
 			freshPosts.push(data);
