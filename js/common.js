@@ -269,13 +269,13 @@ RedditAPI.prototype.getInfo = function (url) {
 };
 
 /**
- * Votes a thing up.
- * @alias						RedditAPI.voteUp(event)
+ * Votes a post thing up.
+ * @alias						RedditAPI.voteUpPost(event)
  * @param	{String}	thing	The FULLNAME of the thing to vote up.
  * @return	{Boolean}			Returns true.
  * @method
  */
-RedditAPI.prototype.voteUp = function (e) {
+RedditAPI.prototype.voteUpPost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
 	
 	listItem = e.srcElement.parentNode.parentNode;
@@ -392,9 +392,9 @@ Popup.prototype.createListHTML = function (url) {
 		
 		listHTML += '<li id="' + data.name + '" class="' + freshText + ' ' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '">';
 			listHTML += '<div class="votes">';
-				listHTML += '<a class="upmod" onclick="reddit.voteUp(event)"></a>';
+				listHTML += '<a class="upmod" onclick="reddit.voteUpPost(event)"></a>';
 				listHTML += '<span class="count" id="count_' + data.name + '" title="' + data.ups + ' up votes, ' + data.downs + ' down votes">' + data.score + '</span>';
-				listHTML += '<a class="downmod" onclick="reddit.voteDown(event)"></a>';
+				listHTML += '<a class="downmod" onclick="reddit.voteDownPost(event)"></a>';
 			listHTML += '</div>';
 			listHTML += '<a class="thumblink" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="View this post on reddit">';
 				listHTML += '<img class="thumb" src="' + thumbSrc + '" alt="' + data.title + '" width="70"/>';
