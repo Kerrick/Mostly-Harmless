@@ -240,7 +240,7 @@ RedditAPI.prototype.getInfo = function (url) {
 		matches = url.match(this.commentsMatchPattern);
 		reqUrl = 'http://' + this.domain + '/by_id/t3_' + matches[3] + '.json';
 	} else {
-		reqUrl = 'http://' + this.domain + '/api/info.json?url=' + encodeURI(url);
+		reqUrl = 'http://' + this.domain + '/api/info.json?url=' + encodeURIComponent(url);
 	}
 	
 	response = this.apiTransmit('GET', reqUrl, false);
