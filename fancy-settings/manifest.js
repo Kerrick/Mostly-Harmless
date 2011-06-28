@@ -1,7 +1,7 @@
 // SAMPLE
 this.manifest = {
     "name": "Mostly Harmless",
-    "icon": "../alien.png",
+    "icon": "/pix/alien.png",
     "settings": [
         {
         	"tab": "Performance",

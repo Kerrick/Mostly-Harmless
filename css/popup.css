@@ -4,10 +4,14 @@
  */
 
 body {
-	min-width: 700px;
+	width: 64;
 	overflow-x: hidden;
 	overflow-y: auto;
 	font: normal x-small verdana, arial, helvetica, sans-serif;
+}
+#loading {
+	display: block;
+	margin: auto;
 }
 a {
 	text-decoration: none;
@@ -64,7 +68,7 @@ li.hidden .votes, li.hidden .thumblink, li.hidden .link, li.hidden .domain, li.h
 	width: 15px;
 	margin-left: auto;
 	margin-right: auto;
-	background-image: url('sprite.png');
+	background-image: url('/pix/sprite.png');
 }
 .upmod {
 	background-position: -4px -271px;
@@ -125,7 +129,7 @@ li[data-dir='-1'] .downmod {
 	 -webkit-border-bottom-left-radius:6px;
 	 border:1px solid #c4dbf1;
 	 background:white none repeat-x scroll center left;
-	 background-image:url('gradient-button.png');
+	 background-image:url('/pix/gradient-button.png');
 	 font-size:150%;
 	 font-weight:bold;
 	 letter-spacing:-1px;
@@ -134,7 +138,7 @@ li[data-dir='-1'] .downmod {
 }
 .morelink:hover, .mlh {
 	 border-color:#879eb4;
-	 background-image:url('gradient-button-hover.png');
+	 background-image:url('/pix/gradient-button-hover.png');
 }
 .morelink a {
 	 display:block;
@@ -151,10 +155,10 @@ li[data-dir='-1'] .downmod {
 	 height:31px;
 	 width:24px;
 	 background:white none no-repeat scroll center left;
-	 background-image:url('sprite.png');
+	 background-image:url('/pix/sprite.png');
 	 background-position:-4px -4px;
 }
 .morelink:hover .nub, .mlhn {
-	 background-image:url('sprite.png');
+	 background-image:url('/pix/sprite.png');
 	 background-position:-4px -43px;
 }

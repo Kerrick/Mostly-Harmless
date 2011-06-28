@@ -1,14 +1,15 @@
 {
 	"name": "Mostly Harmless",
-	"version": "0.2",
+	"version": "0.3",
 	"description": "Easily see how many times URL has been posted to reddit, join the discussion, submit or repost it, and more!",
 	"browser_action": {
-		"default_icon": "alien.png"
+		"default_icon": "/pix/alien.png",
+		"popup": "/html/popup.html"
 	},
 	"permissions": [
 		"http://*.reddit.com/",
 		"tabs"
 	],
-	"background_page": "background.html",
-	"options_page": "fancy-settings/index.html"
+	"background_page": "/html/background.html",
+	"options_page": "/fancy-settings/index.html"
 }

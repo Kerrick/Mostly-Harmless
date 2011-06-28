@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Mostly Harmless Background Processes</title>
+		
+		<script type="text/javascript" src="/fancy-settings/lib/store.js"></script>
+		<script type="text/javascript" src="/js/common.js"></script>
+		<script type="text/javascript">
+			var background;
+			
+			background = new Background();
+			
+			function initBackground() {
+				cache.removeAll();
+				button.setBadgeDefaults();
+				chrome.tabs.onUpdated.addListener(background.prepareBrowserAction);
+			}
+			
+			window.onload = initBackground;
+		</script>
+	</head>
+	<body id="body"></body>
+</html>
