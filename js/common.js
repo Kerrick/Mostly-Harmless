@@ -153,14 +153,14 @@ BrowserAction.prototype.setBadgeFor = function (url, tabId) {
 		chrome.browserAction.setTitle({'title': 'You are currently viewing the comments for this page.', 'tabId': tabId});
 		chrome.browserAction.setBadgeBackgroundColor({'color': [95, 153, 207, 255], 'tabId': tabId});
 		chrome.browserAction.setPopup({popup: '/html/popup.html', tabId: tabId});
-	} else if (cachedPosts.api.length === 0) {
+	} else if (cachedPosts.count === 0) {
 		chrome.browserAction.setBadgeText({'text': '+', 'tabId': tabId});
 		chrome.browserAction.setTitle({'title': 'Submit this page.', 'tabId': tabId});
 		chrome.browserAction.setBadgeBackgroundColor({'color': [0, 0, 0, 255], 'tabId': tabId});
 		chrome.browserAction.setPopup({popup: '/html/popup.html', tabId: tabId});
 	} else {
-		chrome.browserAction.setBadgeText({'text': cachedPosts.api.length.toString(), 'tabId': tabId});
-		chrome.browserAction.setTitle({'title': 'This page has been submitted ' + cachedPosts.api.length.toString() + ' times.', 'tabId': tabId});
+		chrome.browserAction.setBadgeText({'text': cachedPosts.count.toString(), 'tabId': tabId});
+		chrome.browserAction.setTitle({'title': 'This page has been submitted ' + cachedPosts.count.toString() + ' times.', 'tabId': tabId});
 		chrome.browserAction.setBadgeBackgroundColor({'color': [255, 69, 0, 255], 'tabId': tabId});
 		chrome.browserAction.setPopup({popup: '/html/popup.html', tabId: tabId});
 	}
@@ -196,7 +196,7 @@ function RedditAPI(domain) {
  * @method
  */
 RedditAPI.prototype.getInfo = function (url) {
-	var reqUrl, isCommentsPage, req;
+	var isCommentsPage, reqUrl, response, postsObj, postCount;
 	
 	isCommentsPage = this.commentsMatchPattern.test(url);
 	
@@ -209,21 +209,29 @@ RedditAPI.prototype.getInfo = function (url) {
 		reqUrl = 'http://' + this.domain + '/api/info.json?url=' + encodeURI(url);
 	}
 	
-	req = new XMLHttpRequest();
 	req.open('GET', reqUrl, false);
 	req.send(null);
+	response = this.apiTransmit('GET', reqUrl, false);
+	postsObj = {};
+	postCount = 0;
 	
-	if (req.status !== 200) {
-		console.warn(req);
-		throw 'Error loading API.\nURL: ' + reqUrl + '\nStatus: ' + req.status.toString();
+	for (i = 0; i < response.data.children.length; i++) {
+		var child;
+		
+		child =  response.data.children[i];
+		postsObj[child.data.name] = {
+			'url': url,
+			'data': child.data
+		};
+		postCount++;
 	}
 	
 	cache.set(url, {
-		'api': JSON.parse(req.responseText).data.children,
+		'count': postCount,
+		'posts': postsObj,
 		'cacheDate': utils.epoch(),
 		'isCommentsPage': isCommentsPage
 	});
-	
 	return true;
 };
 
@@ -294,11 +302,10 @@ Popup.prototype.createListHTML = function (url) {
 	listHTML = '<ol id="posts" data-url="' + url + '">';
 	staleCounter = 0;
 	
-	for(var i = 0; i < cache.get(url).api.length; i++) {
-		var data, voteDir, entry, hiddenText, saveText, isFreshEnough, freshText, thumbSrc;
+	utils.forEachIn(cache.get(url).posts, function (name, value) {
+		var data, voteDir, hiddenText, saveText, isFreshEnough, freshText, thumbSrc;
 		
-		data = cache.get(url).api[i].data;
-		console.log(data);
+		data = value.data;
 		if (data.likes === true) voteDir = 1;
 		if (data.likes === null)  voteDir = 0;
 		if (data.likes === false) voteDir = -1;
@@ -335,7 +342,7 @@ Popup.prototype.createListHTML = function (url) {
 				listHTML += '</div>';
 			listHTML += '</div>'
 		listHTML += '</li>';
-	}
+	});
 	
 	listHTML += '</ol>'
 	
