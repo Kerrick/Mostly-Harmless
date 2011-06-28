@@ -1,6 +1,6 @@
 var settings, cache, utils, button, reddit, background;
 
-settings = new Store('settings').toObject();
+settings = new Store('settings');
 cache = new Store('cache');
 
 /**
@@ -253,7 +253,7 @@ Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 	if (info.status === 'loading') {
 		button.setBadgeDefaults(tabId);
 		
-		if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.cacheTime) {
+		if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
 			console.log('Grabbing data from the API...');
 			reddit.getInfo(tab.url);
 		} else {
@@ -304,7 +304,7 @@ Popup.prototype.createListHTML = function (url) {
 		if (data.likes === false) voteDir = -1;
 		hiddenText = data.hidden === true ? 'hidden' : 'hide';
 		saveText = data.saved === true ? 'saved' : 'save';
-		isFreshEnough = settings.freshCutoff === 91 ? 'true' : data.created_utc >= utils.epoch() - settings.freshCutoff * 24 * 60 * 60;
+		isFreshEnough = settings.get('freshCutoff') === 91 ? 'true' : data.created_utc >= utils.epoch() - settings.get('freshCutoff') * 24 * 60 * 60;
 		if (!isFreshEnough) staleCounter++;
 		freshText = isFreshEnough ? 'fresh' : 'stale';
 		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
