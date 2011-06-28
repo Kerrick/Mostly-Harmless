@@ -20,8 +20,7 @@
 				});
 			}
 			
-			// Show the loader for a little while, just to make it look like the extension is working hard. ;)
-			window.setTimeout('initPopup()', 500);
+			window.addEventListener('load', initPopup);
 		</script>
 	</head>
 	<body id="body">
