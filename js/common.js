@@ -35,6 +35,20 @@ MHUtils.prototype.epoch = function () {
 	return Math.floor(new Date().getTime() / 1000);
 };
 
+/**
+ * Iterate over an object.
+ * @alias						MHUtils.forEachIn(object, action)
+ * @return	{Boolean}			Returns true.
+ * @method
+ */
+MHUtils.prototype.forEachIn = function (object, action) {
+	for (var property in object) {
+		if (object.hasOwnProperty(property)) {
+			action(property, object[property]);
+		}
+	}
+};
+
 /*
  * JavaScript Pretty Date
  * Thanks to Dean Landolt's comment on
