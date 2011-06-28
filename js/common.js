@@ -189,6 +189,40 @@ function RedditAPI(domain) {
 }
 
 /**
+ * Transmits info to the API and returns the response.
+ * @alias						RedditAPI.apiTransmit(type, url, async, data)
+ * @param	{String}	type	The type of HTTP request: 'GET' or 'POST'.
+ * @param	{String}	url		The URL to request.
+ * @param	{Boolean}	async	If true, the request will be asynchronous.
+ * @param	{Object}	data	If it exists, send this as a FormData() object.
+ * @return	{Object}			Returns the API's response as an object.
+ * @method 
+ */
+RedditAPI.prototype.apiTransmit = function (type, url, async, data) {
+	var req;
+	
+	req = new XMLHttpRequest();
+	req.open(type, url, async);
+	
+	if (data) {
+		req.send(data);
+	} else {
+		req.send(null);
+	}
+	
+	if (req.status !== 200) {
+		console.warn(req);
+		throw 'Error loading API.\nURL: ' + url + '\nStatus: ' + req.status.toString();
+	} else if (JSON.parse(req.responseText).jquery && JSON.parse(req.responseText).jquery[3][3][0] === '.error.USER_REQUIRED') {
+		console.warn(req);
+		throw 'Error doing API action.\nURL: ' + url + '\nUser not logged in.';
+	}
+	
+	return JSON.parse(req.responseText);
+};
+
+
+/**
  * Grabs info about a URL via the reddit API and caches it.
  * @alias						RedditAPI.getInfo(url)
  * @param	{String}	url		The URL of the page to grab info about.
@@ -209,9 +243,8 @@ RedditAPI.prototype.getInfo = function (url) {
 		reqUrl = 'http://' + this.domain + '/api/info.json?url=' + encodeURI(url);
 	}
 	
-	req.open('GET', reqUrl, false);
-	req.send(null);
 	response = this.apiTransmit('GET', reqUrl, false);
+	settings.set('modhash', response.data.modhash);
 	postsObj = {};
 	postCount = 0;
 	
@@ -233,6 +266,47 @@ RedditAPI.prototype.getInfo = function (url) {
 		'isCommentsPage': isCommentsPage
 	});
 	return true;
+};
+
+/**
+ * Votes a thing up.
+ * @alias						RedditAPI.voteUp(event)
+ * @param	{String}	thing	The FULLNAME of the thing to vote up.
+ * @return	{Boolean}			Returns true.
+ * @method
+ */
+RedditAPI.prototype.voteUp = function (e) {
+	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
+	
+	listItem = e.srcElement.parentNode.parentNode;
+	fullName = listItem.id;
+	voteWas = listItem.getAttribute('data-dir');
+	url = listItem.parentNode.getAttribute('data-url');
+	console.log(fullName);
+	console.log(url);
+	reqUrl = 'http://' + this.domain + '/api/vote';
+	oldCache = cache.get(url);
+	console.log(oldCache.posts[fullName]);
+	formData = new FormData();
+	formData.append('id', fullName);
+	formData.append('uh', settings.get('modhash'));
+	
+	if (voteWas === '1') {
+		formData.append('dir','0');
+		listItem.setAttribute('data-dir','0');
+		oldCache.posts[fullName].likes = null;
+	} else if (voteWas === '0') {
+		formData.append('dir','1');
+		listItem.setAttribute('data-dir','1');
+		oldCache.posts[fullName].likes = true;
+	} else if (voteWas === '-1') {
+		formData.append('dir','1');
+		listItem.setAttribute('data-dir','1');
+		oldCache.posts[fullName].likes = true;
+	}
+	
+	cache.set(url, oldCache);
+	this.apiTransmit('POST', reqUrl, false, formData);
 };
 
 reddit = new RedditAPI('www.reddit.com');
@@ -318,9 +392,9 @@ Popup.prototype.createListHTML = function (url) {
 		
 		listHTML += '<li id="' + data.name + '" class="' + freshText + ' ' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '">';
 			listHTML += '<div class="votes">';
-				listHTML += '<a class="upmod" onclick="reddit.voteUp(\'' + data.name + '\')"></a>';
+				listHTML += '<a class="upmod" onclick="reddit.voteUp(event)"></a>';
 				listHTML += '<span class="count" id="count_' + data.name + '" title="' + data.ups + ' up votes, ' + data.downs + ' down votes">' + data.score + '</span>';
-				listHTML += '<a class="downmod" onclick="reddit.voteDown(\'' + data.name + '\')"></a>';
+				listHTML += '<a class="downmod" onclick="reddit.voteDown(event)"></a>';
 			listHTML += '</div>';
 			listHTML += '<a class="thumblink" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="View this post on reddit">';
 				listHTML += '<img class="thumb" src="' + thumbSrc + '" alt="' + data.title + '" width="70"/>';
