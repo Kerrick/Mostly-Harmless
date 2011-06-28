@@ -90,7 +90,7 @@ this.manifest = {
         	"group": "Fresh Content",
         	"name": "freshCutoffDescription",
         	"type": "description",
-        	"text": "<p>This setting allows you to choose the oldest reddit posts you&rsquo;d like to see. Anything posted before the value you&rsquo;ve chosen will not be indicated in the browser button's total, and will not be shown in the popup."
+        	"text": "<p>This setting allows you to choose the oldest reddit posts you&rsquo;d like to see. Anything posted before the value you&rsquo;ve chosen will be indicated in the browser button's total, but will not be shown in the popup."
         }
     ]
 };
