@@ -269,7 +269,7 @@ RedditAPI.prototype.getInfo = function (url) {
 };
 
 /**
- * Votes a post thing up.
+ * Votes a post up.
  * @alias						RedditAPI.voteUpPost(event)
  * @param	{String}	thing	The FULLNAME of the thing to vote up.
  * @return	{Boolean}			Returns true.
@@ -303,6 +303,47 @@ RedditAPI.prototype.voteUpPost = function (e) {
 		formData.append('dir','1');
 		listItem.setAttribute('data-dir','1');
 		oldCache.posts[fullName].likes = true;
+	}
+	
+	cache.set(url, oldCache);
+	this.apiTransmit('POST', reqUrl, false, formData);
+};
+
+/**
+ * Votes a post down.
+ * @alias						RedditAPI.voteDownPost(event)
+ * @param	{String}	thing	The FULLNAME of the thing to vote up.
+ * @return	{Boolean}			Returns true.
+ * @method
+ */
+RedditAPI.prototype.voteDownPost = function (e) {
+	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
+	
+	listItem = e.srcElement.parentNode.parentNode;
+	fullName = listItem.id;
+	voteWas = listItem.getAttribute('data-dir');
+	url = listItem.parentNode.getAttribute('data-url');
+	console.log(fullName);
+	console.log(url);
+	reqUrl = 'http://' + this.domain + '/api/vote';
+	oldCache = cache.get(url);
+	console.log(oldCache.posts[fullName]);
+	formData = new FormData();
+	formData.append('id', fullName);
+	formData.append('uh', settings.get('modhash'));
+	
+	if (voteWas === '1') {
+		formData.append('dir','-1');
+		listItem.setAttribute('data-dir','-1');
+		oldCache.posts[fullName].likes = false;
+	} else if (voteWas === '0') {
+		formData.append('dir','-1');
+		listItem.setAttribute('data-dir','-1');
+		oldCache.posts[fullName].likes = false;
+	} else if (voteWas === '-1') {
+		formData.append('dir','0');
+		listItem.setAttribute('data-dir','0');
+		oldCache.posts[fullName].likes = null;
 	}
 	
 	cache.set(url, oldCache);
