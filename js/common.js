@@ -271,16 +271,17 @@ function Popup() {
  * @method
  */
 Popup.prototype.createListHTML = function (url) {
-	var listHTML;
+	var listHTML, staleCounter;
 	
 	if (cache.get(url) === undefined) {
 		throw 'Cannot create list HTML for a non-cached URL.';
 	}
 	
 	listHTML = '<ol id="posts" data-url="' + url + '">';
+	staleCounter = 0;
 	
 	for(var i = 0; i < cache.get(url).api.length; i++) {
-		var data, voteDir, entry, hiddenText, saveText, thumbSrc;
+		var data, voteDir, entry, hiddenText, saveText, isFreshEnough, freshText, thumbSrc;
 		
 		data = cache.get(url).api[i].data;
 		console.log(data);
@@ -289,9 +290,12 @@ Popup.prototype.createListHTML = function (url) {
 		if (data.likes === false) voteDir = -1;
 		hiddenText = data.hidden === true ? 'hidden' : 'hide';
 		saveText = data.saved === true ? 'saved' : 'save';
+		isFreshEnough = settings.freshCutoff === 91 ? 'true' : data.created_utc >= utils.epoch() - settings.freshCutoff * 24 * 60 * 60;
+		if (!isFreshEnough) staleCounter++;
+		freshText = isFreshEnough ? 'fresh' : 'stale';
 		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
 		
-		listHTML += '<li id="' + data.name + '" class="' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '">';
+		listHTML += '<li id="' + data.name + '" class="' + freshText + ' ' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '">';
 			listHTML += '<div class="votes">';
 				listHTML += '<a class="upmod" onclick="reddit.voteUp(\'' + data.name + '\')"></a>';
 				listHTML += '<span class="count" id="count_' + data.name + '" title="' + data.ups + ' up votes, ' + data.downs + ' down votes">' + data.score + '</span>';
@@ -320,6 +324,11 @@ Popup.prototype.createListHTML = function (url) {
 	}
 	
 	listHTML += '</ol>'
+	
+	if (staleCounter > 0) {
+		listHTML += '<div class="information">Hiding ' + staleCounter.toString() + ' stale posts. Visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.</div>';
+	}
+	
 	return listHTML;
 	
 };

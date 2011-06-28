@@ -45,6 +45,9 @@ a:hover {
 	clear:both;
 	overflow:auto;
 }
+#posts li.stale {
+	display: none;
+}
 li.hidden .votes, li.hidden .thumblink, li.hidden .link, li.hidden .domain, li.hidden .meta, li.hidden .actions *:not(.hide){
 	opacity: 0.25;
 }
