@@ -7,7 +7,7 @@ cache = new Store('cache');
  * Create a new framework of utility functions.
  * @classDescription			Creates a new framework of utility functions.
  * @type	{Object}
- * @return	{Boolean}			Returns true.
+ * @return	{Boolean}		Returns true.
  * @constructor
  */
 function MHUtils() {
@@ -16,9 +16,9 @@ function MHUtils() {
 
 /**
  * Escape special RegExp characters.
- * @alias						MHUtils.regexEscape(str)
- * @param	{String}	str		The string to be escaped
- * @return	{String}			Returns an escaped string
+ * @alias				MHUtils.regexEscape(str)
+ * @param	{String}	str	The string to be escaped
+ * @return	{String}		Returns an escaped string
  * @method
  */
 MHUtils.prototype.regexEscape = function (str) {
@@ -27,8 +27,8 @@ MHUtils.prototype.regexEscape = function (str) {
 
 /**
  * Find the UNIX epoch time.
- * @alias						MHUtils.epoch()
- * @return	{Number}			Returns the current epoch time
+ * @alias				MHUtils.epoch()
+ * @return	{Number}		Returns the current epoch time
  * @method
  */
 MHUtils.prototype.epoch = function () {
@@ -37,8 +37,8 @@ MHUtils.prototype.epoch = function () {
 
 /**
  * Iterate over an object.
- * @alias						MHUtils.forEachIn(object, action)
- * @return	{Boolean}			Returns true.
+ * @alias				MHUtils.forEachIn(object, action)
+ * @return	{Boolean}		Returns true.
  * @method
  */
 MHUtils.prototype.forEachIn = function (object, action) {
@@ -114,7 +114,7 @@ utils = new MHUtils();
  * Create a new instance of the browser action button and its popup. ONLY CALL THIS ONCE!
  * @classDescription			Creates a new browser icon.
  * @type	{Object}
- * @return	{Boolean}			Returns true.
+ * @return	{Boolean}		Returns true.
  * @constructor
  */
 function BrowserAction() {
@@ -123,9 +123,9 @@ function BrowserAction() {
 
 /**
  * Set the browser icon badge to its defaults.
- * @alias						BrowserAction.setBadgeDefaults()
+ * @alias				BrowserAction.setBadgeDefaults()
  * @param	{Number}	tabId	If given, only sets badge defaults for this tab.
- * @return	{Boolean}			Returns true.
+ * @return	{Boolean}		Returns true.
  * @method
  */
 BrowserAction.prototype.setBadgeDefaults = function (tabId) {
@@ -137,10 +137,10 @@ BrowserAction.prototype.setBadgeDefaults = function (tabId) {
 
 /**
  * Set the browser icon badge for a page.
- * @alias						BrowserAction.setBadgeFor(url, tabId)
- * @param	{String}	url		Sets the badge according to this URL.
+ * @alias				BrowserAction.setBadgeFor(url, tabId)
+ * @param	{String}	url	Sets the badge according to this URL.
  * @param	{Number}	tabId	Sets the badge for this tab, if specified.
- * @return	{Boolean}			Returns true.
+ * @return	{Boolean}		Returns true.
  * @method
  */
 BrowserAction.prototype.setBadgeFor = function (url, tabId) {
@@ -175,7 +175,7 @@ button = new BrowserAction();
  * @classDescription			Creates a new reddit-powered website.
  * @param	{String}	domain	The base domain of the reddit-powered website. (e.g. 'www.reddit.com')
  * @type	{Object}
- * @return	{Boolean}			Returns true.
+ * @return	{Boolean}		Returns true.
  * @constructor
  */
 function RedditAPI(domain) {
@@ -190,12 +190,12 @@ function RedditAPI(domain) {
 
 /**
  * Transmits info to the API and returns the response.
- * @alias						RedditAPI.apiTransmit(type, url, async, data)
+ * @alias				RedditAPI.apiTransmit(type, url, async, data)
  * @param	{String}	type	The type of HTTP request: 'GET' or 'POST'.
- * @param	{String}	url		The URL to request.
+ * @param	{String}	url	The URL to request.
  * @param	{Boolean}	async	If true, the request will be asynchronous.
  * @param	{Object}	data	If it exists, send this as a FormData() object.
- * @return	{Object}			Returns the API's response as an object.
+ * @return	{Object}		Returns the API's response as an object.
  * @method 
  */
 RedditAPI.prototype.apiTransmit = function (type, url, async, data) {
@@ -224,9 +224,9 @@ RedditAPI.prototype.apiTransmit = function (type, url, async, data) {
 
 /**
  * Grabs info about a URL via the reddit API and caches it.
- * @alias						RedditAPI.getInfo(url)
- * @param	{String}	url		The URL of the page to grab info about.
- * @return	{Boolean}			Returns true.
+ * @alias				RedditAPI.getInfo(url)
+ * @param	{String}	url	The URL of the page to grab info about.
+ * @return	{Boolean}		Returns true.
  * @method
  */
 RedditAPI.prototype.getInfo = function (url) {
@@ -270,9 +270,9 @@ RedditAPI.prototype.getInfo = function (url) {
 
 /**
  * Votes a post up.
- * @alias						RedditAPI.voteUpPost(event)
+ * @alias				RedditAPI.voteUpPost(event)
  * @param	{String}	thing	The FULLNAME of the thing to vote up.
- * @return	{Boolean}			Returns true.
+ * @return	{Boolean}		Returns true.
  * @method
  */
 RedditAPI.prototype.voteUpPost = function (e) {
@@ -311,9 +311,9 @@ RedditAPI.prototype.voteUpPost = function (e) {
 
 /**
  * Votes a post down.
- * @alias						RedditAPI.voteDownPost(event)
+ * @alias				RedditAPI.voteDownPost(event)
  * @param	{String}	thing	The FULLNAME of the thing to vote up.
- * @return	{Boolean}			Returns true.
+ * @return	{Boolean}		Returns true.
  * @method
  */
 RedditAPI.prototype.voteDownPost = function (e) {
@@ -356,7 +356,7 @@ reddit = new RedditAPI('www.reddit.com');
  * Creates a new framework of background processes
  * @classDescription			Creates a new framework of background processes.
  * @type	{Object}
- * @return	{Boolean}			Returns true.
+ * @return	{Boolean}		Returns true.
  * @constructor
  */
 function Background() {
@@ -365,11 +365,11 @@ function Background() {
 
 /**
  * Prepare the browser action (badge, popup, etc.) for a given tab.
- * @alias						Background.prepareBrowserAction(tabId, info, tab)
+ * @alias				Background.prepareBrowserAction(tabId, info, tab)
  * @param	{Number}	tabId	The ID of the tab to get data for.
  * @param	{Object}	info	The info for the change as sent by Chrome.
- * @param	{Object}	tab		The info for the tab as sent by Chrome.
- * @return	{Boolean}			Returns true.
+ * @param	{Object}	tab	The info for the tab as sent by Chrome.
+ * @return	{Boolean}		Returns true.
  * @method
  */
 Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
@@ -393,7 +393,7 @@ Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
  * Creates a new framework of popup processes
  * @classDescription			Creates a new framework of background processes.
  * @type	{Object}
- * @return	{Boolean}			Returns true.
+ * @return	{Boolean}		Returns true.
  * @constructor
  */
 function Popup() {
@@ -402,9 +402,9 @@ function Popup() {
 
 /**
  * Create and store the HTML for a list of posts.
- * @alias						Popup.createListHTML(url)
- * @param	{String}	url		The URL of the page to create the HTML for.
- * @return	{String}			Returns the generated HTML.
+ * @alias				Popup.createListHTML(url)
+ * @param	{String}	url	The URL of the page to create the HTML for.
+ * @return	{String}		Returns the generated HTML.
  * @method
  */
 Popup.prototype.createListHTML = function (url) {
