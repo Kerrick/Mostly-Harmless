@@ -121,6 +121,9 @@ li[data-dir='-1'] .downmod {
 	font-weight: bold;
 	padding: 0 4px;
 }
+.actions a[onclick] {
+	cursor: pointer;
+}
 .actions a:first-child {
 	padding-left:0;
 }
