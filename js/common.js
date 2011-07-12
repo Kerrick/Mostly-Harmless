@@ -371,8 +371,38 @@ RedditAPI.prototype.savePost = function (e) {
 	listItem.className.replace(/\bsaved\b/,'');
 	listItem.className += ' unsave';
 	e.srcElement.innerHTML = 'unsave';
-	e.srcElement.onclick = 'reddit.unsavePost(event)';
+	e.srcElement.onclick = function (event) {reddit.unsavePost(event)};
 	oldCache.posts[fullName].saved = true;
+	cache.set(url, oldCache);
+	this.apiTransmit('POST', reqUrl, false, formData);
+};
+
+/**
+ * Unsaves a post.
+ * @alias				RedditAPI.unsavePost(event)
+ * @param	{String}	thing	The FULLNAME of the thing to vote up.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.unsavePost = function (e) {
+	var listItem, fullName, url, reqUrl, oldCache, saveStatusWas, formData;
+	
+	listItem = e.srcElement.parentNode.parentNode.parentNode;
+	console.log(listItem);
+	fullName = listItem.id;
+	saveStatusWas = listItem.getAttribute('data-savestatus');
+	url = listItem.parentNode.getAttribute('data-url');
+	reqUrl = 'http://' + this.domain + '/api/unsave';
+	oldCache = cache.get(url);
+	formData = new FormData();
+	formData.append('id', fullName);
+	formData.append('uh', settings.get('modhash'));
+	listItem.setAttribute('data-saved', 'false');
+	listItem.className.replace(/\bunsave\b/,'');
+	listItem.className += ' saved';
+	e.srcElement.innerHTML = 'save';
+	e.srcElement.onclick = function (event) {reddit.savePost(event)};
+	oldCache.posts[fullName].saved = false;
 	cache.set(url, oldCache);
 	this.apiTransmit('POST', reqUrl, false, formData);
 };
@@ -445,7 +475,7 @@ Popup.prototype.createListHTML = function (url) {
 	staleCounter = 0;
 	
 	utils.forEachIn(cache.get(url).posts, function (name, value) {
-		var data, voteDir, hiddenText, saveText, saveStatus, isFreshEnough, freshText, thumbSrc;
+		var data, voteDir, hiddenText, saveText, saveStatus, saveAction, isFreshEnough, freshText, thumbSrc;
 		
 		data = value.data;
 		if (data.likes === true) voteDir = 1;
@@ -454,6 +484,7 @@ Popup.prototype.createListHTML = function (url) {
 		hiddenText = data.hidden === true ? 'hidden' : 'hide';
 		saveStatus = data.saved;
 		saveText = saveStatus === true ? 'unsave' : 'save';
+		saveAction = saveStatus === true ? 'reddit.unsavePost(event)' : 'reddit.savePost(event)';
 		isFreshEnough = settings.get('freshCutoff') === 91 ? 'true' : data.created_utc >= utils.epoch() - settings.get('freshCutoff') * 24 * 60 * 60;
 		if (!isFreshEnough) staleCounter++;
 		freshText = isFreshEnough ? 'fresh' : 'stale';
@@ -479,7 +510,7 @@ Popup.prototype.createListHTML = function (url) {
 				listHTML += '<div class="actions">';
 					listHTML += '<a class="comments" href="http://www.reddit.com' + data.permalink + '" target="_blank">' + data.num_comments + ' comments</a>';
 					listHTML += '<a class="share">share</a>';
-					listHTML += '<a class="save" onclick="reddit.savePost(event)">' + saveText + '</a>';
+					listHTML += '<a class="save" onclick="' + saveAction + '">' + saveText + '</a>';
 					listHTML += '<a class="hide">' + hiddenText + '</a>';
 					listHTML += '<a class="report">report</a>';
 				listHTML += '</div>';
