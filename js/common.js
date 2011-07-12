@@ -323,11 +323,8 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
 	url = listItem.parentNode.getAttribute('data-url');
-	console.log(fullName);
-	console.log(url);
 	reqUrl = 'http://' + this.domain + '/api/vote';
 	oldCache = cache.get(url);
-	console.log(oldCache.posts[fullName]);
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', settings.get('modhash'));
