@@ -48,7 +48,7 @@ a:hover {
 #posts li.stale {
 	display: none;
 }
-li.hidden .votes, li.hidden .thumblink, li.hidden .link, li.hidden .domain, li.hidden .meta, li.hidden .actions *:not(.hide){
+li[data-hidestatus="true"] .votes, li[data-hidestatus="true"] .thumblink, li[data-hidestatus="true"] .link, li[data-hidestatus="true"] .domain, li[data-hidestatus="true"] .meta, li[data-hidestatus="true"] .actions *:not(.hide){
 	opacity: 0.25;
 }
 .votes {

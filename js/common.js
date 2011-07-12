@@ -294,15 +294,15 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	if (voteWas === '1') {
 		formData.append('dir','0');
 		listItem.setAttribute('data-dir','0');
-		oldCache.posts[fullName].likes = null;
+		oldCache.posts[fullName].data.likes = null;
 	} else if (voteWas === '0') {
 		formData.append('dir','1');
 		listItem.setAttribute('data-dir','1');
-		oldCache.posts[fullName].likes = true;
+		oldCache.posts[fullName].data.likes = true;
 	} else if (voteWas === '-1') {
 		formData.append('dir','1');
 		listItem.setAttribute('data-dir','1');
-		oldCache.posts[fullName].likes = true;
+		oldCache.posts[fullName].data.likes = true;
 	}
 	
 	cache.set(url, oldCache);
@@ -332,15 +332,15 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	if (voteWas === '1') {
 		formData.append('dir','-1');
 		listItem.setAttribute('data-dir','-1');
-		oldCache.posts[fullName].likes = false;
+		oldCache.posts[fullName].data.likes = false;
 	} else if (voteWas === '0') {
 		formData.append('dir','-1');
 		listItem.setAttribute('data-dir','-1');
-		oldCache.posts[fullName].likes = false;
+		oldCache.posts[fullName].data.likes = false;
 	} else if (voteWas === '-1') {
 		formData.append('dir','0');
 		listItem.setAttribute('data-dir','0');
-		oldCache.posts[fullName].likes = null;
+		oldCache.posts[fullName].data.likes = null;
 	}
 	
 	cache.set(url, oldCache);
@@ -350,17 +350,16 @@ RedditAPI.prototype.voteDownPost = function (e) {
 /**
  * Saves a post.
  * @alias				RedditAPI.savePost(event)
- * @param	{String}	thing	The FULLNAME of the thing to vote up.
+ * @param	{String}	thing	The FULLNAME of the thing to save.
  * @return	{Boolean}		Returns true.
  * @method
  */
 RedditAPI.prototype.savePost = function (e) {
-	var listItem, fullName, url, reqUrl, oldCache, saveStatusWas, formData;
+	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	console.log(listItem);
 	fullName = listItem.id;
-	saveStatusWas = listItem.getAttribute('data-savestatus');
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/save';
 	oldCache = cache.get(url);
@@ -372,7 +371,7 @@ RedditAPI.prototype.savePost = function (e) {
 	listItem.className += ' unsave';
 	e.srcElement.innerHTML = 'unsave';
 	e.srcElement.onclick = function (event) {reddit.unsavePost(event)};
-	oldCache.posts[fullName].saved = true;
+	oldCache.posts[fullName].data.saved = true;
 	cache.set(url, oldCache);
 	this.apiTransmit('POST', reqUrl, false, formData);
 };
@@ -380,17 +379,16 @@ RedditAPI.prototype.savePost = function (e) {
 /**
  * Unsaves a post.
  * @alias				RedditAPI.unsavePost(event)
- * @param	{String}	thing	The FULLNAME of the thing to vote up.
+ * @param	{String}	thing	The FULLNAME of the thing to unsave.
  * @return	{Boolean}		Returns true.
  * @method
  */
 RedditAPI.prototype.unsavePost = function (e) {
-	var listItem, fullName, url, reqUrl, oldCache, saveStatusWas, formData;
+	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	console.log(listItem);
 	fullName = listItem.id;
-	saveStatusWas = listItem.getAttribute('data-savestatus');
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/unsave';
 	oldCache = cache.get(url);
@@ -402,7 +400,63 @@ RedditAPI.prototype.unsavePost = function (e) {
 	listItem.className += ' saved';
 	e.srcElement.innerHTML = 'save';
 	e.srcElement.onclick = function (event) {reddit.savePost(event)};
-	oldCache.posts[fullName].saved = false;
+	oldCache.posts[fullName].data.saved = false;
+	cache.set(url, oldCache);
+	this.apiTransmit('POST', reqUrl, false, formData);
+};
+
+/**
+ * Hides a post.
+ * @alias				RedditAPI.hidePost(event)
+ * @param	{String}	thing	The FULLNAME of the thing to hide.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.hidePost = function (e) {
+	var listItem, fullName, url, reqUrl, oldCache, formData;
+	
+	listItem = e.srcElement.parentNode.parentNode.parentNode;
+	console.log(listItem);
+	fullName = listItem.id;
+	url = listItem.parentNode.getAttribute('data-url');
+	reqUrl = 'http://' + this.domain + '/api/hide';
+	oldCache = cache.get(url);
+	formData = new FormData();
+	formData.append('id', fullName);
+	formData.append('uh', settings.get('modhash'));
+	listItem.setAttribute('data-hidestatus', 'true');
+	e.srcElement.innerHTML = 'unhide';
+	e.srcElement.onclick = function (event) {reddit.unhidePost(event)};
+	console.log(oldCache.posts[fullName]);
+	oldCache.posts[fullName].data.hidden = true;
+	cache.set(url, oldCache);
+	this.apiTransmit('POST', reqUrl, false, formData);
+};
+
+/**
+ * Unhides a post.
+ * @alias				RedditAPI.unhidePost(event)
+ * @param	{String}	thing	The FULLNAME of the thing to unhide.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.unhidePost = function (e) {
+	var listItem, fullName, url, reqUrl, oldCache, formData;
+	
+	listItem = e.srcElement.parentNode.parentNode.parentNode;
+	console.log(listItem);
+	fullName = listItem.id;
+	url = listItem.parentNode.getAttribute('data-url');
+	reqUrl = 'http://' + this.domain + '/api/unhide';
+	oldCache = cache.get(url);
+	formData = new FormData();
+	formData.append('id', fullName);
+	formData.append('uh', settings.get('modhash'));
+	listItem.setAttribute('data-hidestatus', 'false');
+	e.srcElement.innerHTML = 'hide';
+	e.srcElement.onclick = function (event) {reddit.hidePost(event)};
+	console.log(oldCache.posts[fullName]);
+	oldCache.posts[fullName].data.hidden = false;
 	cache.set(url, oldCache);
 	this.apiTransmit('POST', reqUrl, false, formData);
 };
@@ -475,13 +529,15 @@ Popup.prototype.createListHTML = function (url) {
 	staleCounter = 0;
 	
 	utils.forEachIn(cache.get(url).posts, function (name, value) {
-		var data, voteDir, hiddenText, saveText, saveStatus, saveAction, isFreshEnough, freshText, thumbSrc;
+		var data, voteDir, hiddenText, hideStatus, hideAction, saveText, saveStatus, saveAction, isFreshEnough, freshText, thumbSrc;
 		
 		data = value.data;
 		if (data.likes === true) voteDir = 1;
 		if (data.likes === null)  voteDir = 0;
 		if (data.likes === false) voteDir = -1;
-		hiddenText = data.hidden === true ? 'hidden' : 'hide';
+		hideStatus = data.hidden;
+		hiddenText = hideStatus === true ? 'unhide' : 'hide';
+		hideAction = hideStatus === true ? 'reddit.unhidePost(event)' : 'reddit.hidePost(event)'; 
 		saveStatus = data.saved;
 		saveText = saveStatus === true ? 'unsave' : 'save';
 		saveAction = saveStatus === true ? 'reddit.unsavePost(event)' : 'reddit.savePost(event)';
@@ -490,7 +546,7 @@ Popup.prototype.createListHTML = function (url) {
 		freshText = isFreshEnough ? 'fresh' : 'stale';
 		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
 		
-		listHTML += '<li id="' + data.name + '" class="' + freshText + ' ' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '" data-savestatus="' + saveStatus + '">';
+		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
 			listHTML += '<div class="votes">';
 				listHTML += '<a class="upmod" onclick="reddit.voteUpPost(event)"></a>';
 				listHTML += '<span class="count" id="count_' + data.name + '" title="' + data.ups + ' up votes, ' + data.downs + ' down votes">' + data.score + '</span>';
@@ -511,7 +567,7 @@ Popup.prototype.createListHTML = function (url) {
 					listHTML += '<a class="comments" href="http://www.reddit.com' + data.permalink + '" target="_blank">' + data.num_comments + ' comments</a>';
 					listHTML += '<a class="share">share</a>';
 					listHTML += '<a class="save" onclick="' + saveAction + '">' + saveText + '</a>';
-					listHTML += '<a class="hide">' + hiddenText + '</a>';
+					listHTML += '<a class="hide" onclick="' + hideAction + '">' + hiddenText + '</a>';
 					listHTML += '<a class="report">report</a>';
 				listHTML += '</div>';
 			listHTML += '</div>'
