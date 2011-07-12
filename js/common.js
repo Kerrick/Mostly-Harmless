@@ -347,6 +347,36 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	this.apiTransmit('POST', reqUrl, false, formData);
 };
 
+/**
+ * Saves a post.
+ * @alias				RedditAPI.savePost(event)
+ * @param	{String}	thing	The FULLNAME of the thing to vote up.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.savePost = function (e) {
+	var listItem, fullName, url, reqUrl, oldCache, saveStatusWas, formData;
+	
+	listItem = e.srcElement.parentNode.parentNode.parentNode;
+	console.log(listItem);
+	fullName = listItem.id;
+	saveStatusWas = listItem.getAttribute('data-savestatus');
+	url = listItem.parentNode.getAttribute('data-url');
+	reqUrl = 'http://' + this.domain + '/api/save';
+	oldCache = cache.get(url);
+	formData = new FormData();
+	formData.append('id', fullName);
+	formData.append('uh', settings.get('modhash'));
+	listItem.setAttribute('data-saved', 'true');
+	listItem.className.replace(/\bsaved\b/,'');
+	listItem.className += ' unsave';
+	e.srcElement.innerHTML = 'unsave';
+	e.srcElement.onclick = 'reddit.unsavePost(event)';
+	oldCache.posts[fullName].saved = true;
+	cache.set(url, oldCache);
+	this.apiTransmit('POST', reqUrl, false, formData);
+};
+
 reddit = new RedditAPI('www.reddit.com');
 
 /**
@@ -415,20 +445,21 @@ Popup.prototype.createListHTML = function (url) {
 	staleCounter = 0;
 	
 	utils.forEachIn(cache.get(url).posts, function (name, value) {
-		var data, voteDir, hiddenText, saveText, isFreshEnough, freshText, thumbSrc;
+		var data, voteDir, hiddenText, saveText, saveStatus, isFreshEnough, freshText, thumbSrc;
 		
 		data = value.data;
 		if (data.likes === true) voteDir = 1;
 		if (data.likes === null)  voteDir = 0;
 		if (data.likes === false) voteDir = -1;
 		hiddenText = data.hidden === true ? 'hidden' : 'hide';
-		saveText = data.saved === true ? 'saved' : 'save';
+		saveStatus = data.saved;
+		saveText = saveStatus === true ? 'unsave' : 'save';
 		isFreshEnough = settings.get('freshCutoff') === 91 ? 'true' : data.created_utc >= utils.epoch() - settings.get('freshCutoff') * 24 * 60 * 60;
 		if (!isFreshEnough) staleCounter++;
 		freshText = isFreshEnough ? 'fresh' : 'stale';
 		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
 		
-		listHTML += '<li id="' + data.name + '" class="' + freshText + ' ' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '">';
+		listHTML += '<li id="' + data.name + '" class="' + freshText + ' ' + hiddenText + ' ' + saveText + '" data-dir="' + voteDir.toString() + '" data-savestatus="' + saveStatus + '">';
 			listHTML += '<div class="votes">';
 				listHTML += '<a class="upmod" onclick="reddit.voteUpPost(event)"></a>';
 				listHTML += '<span class="count" id="count_' + data.name + '" title="' + data.ups + ' up votes, ' + data.downs + ' down votes">' + data.score + '</span>';
@@ -448,7 +479,7 @@ Popup.prototype.createListHTML = function (url) {
 				listHTML += '<div class="actions">';
 					listHTML += '<a class="comments" href="http://www.reddit.com' + data.permalink + '" target="_blank">' + data.num_comments + ' comments</a>';
 					listHTML += '<a class="share">share</a>';
-					listHTML += '<a class="save">' + saveText + '</a>';
+					listHTML += '<a class="save" onclick="reddit.savePost(event)">' + saveText + '</a>';
 					listHTML += '<a class="hide">' + hiddenText + '</a>';
 					listHTML += '<a class="report">report</a>';
 				listHTML += '</div>';
