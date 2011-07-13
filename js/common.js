@@ -543,7 +543,7 @@ Popup.prototype.createListHTML = function (url) {
 		throw 'Cannot create list HTML for a non-cached URL.';
 	}
 	
-	listHTML = '<ol id="posts" style="width: ' + settings.get('popupWidth') + 'px;" data-url="' + url + '">';
+	listHTML = '<ol id="posts" data-url="' + url + '">';
 	staleCounter = 0;
 	
 	utils.forEachIn(cache.get(url).posts, function (name, value) {
@@ -595,7 +595,7 @@ Popup.prototype.createListHTML = function (url) {
 	listHTML += '</ol>'
 	
 	if (staleCounter > 0) {
-		listHTML += '<div class="information" style="width: ' + settings.get('popupWidth') + 'px;">Hiding ' + staleCounter.toString() + ' stale posts. Visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.</div>';
+		listHTML += '<div class="information">Hiding ' + staleCounter.toString() + ' stale posts. Visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.</div>';
 	}
 	
 	return listHTML;
