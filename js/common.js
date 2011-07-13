@@ -1,6 +1,9 @@
 var settings, cache, utils, button, reddit, background;
 
-settings = new Store('settings');
+settings = new Store('settings', {
+	'cacheTime': 1,
+	'freshCutoff': 7
+});
 cache = new Store('cache');
 
 /**

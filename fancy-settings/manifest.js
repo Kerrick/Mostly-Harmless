@@ -27,38 +27,38 @@ this.manifest = {
         	"text": "<p>Mostly Harmless grabs data from the Reddit API every time you load a page. However, that data can be cached, or saved for a short time, to improve performance and reduce the load on the reddit API.</p><p>This option allows you to change how long a page's data is cached. Longer cache times mean less bandwidth, faster results, and less load on reddit. Shorter cache times mean fresher data.</p>"
         },
         {
-        	"tab": "Preferences",
-        	"group": "Excluded Sites",
+        	"tab": "Privacy",
+        	"group": "Warning!",
         	"name": "excludedDescription",
         	"type": "description",
-        	"text": "<h3>Excluding sites does not work yet!</h3><p><big>I am waiting on Fancy Settings to support textareas.</big></p><p>Mostly Harmless grabs data from the Reddit API every time you load a page. This takes time and bandwidth, taxes the reddit API, and sends the unencrypted URL to reddit. However, you can exclude certain domains or URL patterns from being looked up.</p>"
+        	"text": "<h3>Exclusions do not work yet!</h3><p><big>I am waiting on Fancy Settings to support textareas.</big></p><p>Mostly Harmless grabs data from the Reddit API every time you load a page. This takes time and bandwidth, taxes the reddit API, and sends the unencrypted URL to reddit. However, you can exclude certain domains or URL patterns from being looked up.</p>"
         },
         {
-    		"tab": "Preferences",
-    		"group": "Excluded Sites",
+    		"tab": "Privacy",
+    		"group": "Excluded Domains",
     		"name": "excludedDomains",
     		"type": "text",
     		"label": "Excluded domains:",
     		"text": "secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com"
         },
         {
-        	"tab": "Preferences",
-        	"group": "Excluded Sites",
+        	"tab": "Privacy",
+        	"group": "Excluded Domains",
         	"name": "excludedDomainsDescription",
         	"type": "description",
         	"text": "<p>Put domains or subdomains, one per line, in the above text box. Any page on the listed domains will <strong>not</strong> activate Mostly Harmless.</p>"
         },
         {
-        	"tab": "Preferences",
-        	"group": "Excluded Sites",
+        	"tab": "Privacy",
+        	"group": "Excluded Regex",
         	"name": "excludedRegex",
         	"type": "text",
         	"label": "Excluded regex matches",
         	"text": "chrome:\/\/.*\nhttps?:\/\/www\.google\.com\/search.*\nhttps?:\/\/search\.yahoo\.com\/search.*\nhttps?:\/\/www\.bing\.com\/search.*"
         },
         {
-        	"tab": "Preferences",
-        	"group": "Excluded Sites",
+        	"tab": "Privacy",
+        	"group": "Excluded Regex",
         	"name": "excludedRegexDescription",
         	"type": "description",
         	"text": "<p>Put regular expressions, one per line, in the above text box. Please do not use the <code>\\n</code> character, because there should be no newlines in a URL. Any page that matches the listed regular expressions will <strong>not</strong> activate Mostly Harmless."
