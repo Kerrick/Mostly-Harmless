@@ -2,16 +2,28 @@
 
 This is an upcoming reddit extension for Google Chrome.
 
-1. It looks and functions just like reddit, but is API driven (I'm not just iframing reddit or anything).
+### Roadmap
 
-2. It is going to support everything reddit does, including share, report, and hide.
+1. Share -- get it working or not?
 
-3. Its submit dialog will bring up a submission box in the popup, and it will support subreddit suggestions as you type, and have a brand new function... Forced reposts! If something has already been posted to a subreddit you are trying to submit it to, the extension will append a URL query string to it so it still goes through.
+2. Submission dialog for pages that haven't been submitted to reddit.
 
-4. Once infobars come out of the expiremental API, I'll be implementing a UI similar to Socialite as well.
+3. Submission dialog for pages that have been submitted to reddit, provided you're not reposting the same link to a subreddit.
 
-5. I hope to open source this and get it officially endorsed by reddit in the same way Socialite and RedditAddict are.
+4. Depending on user feedback, I might add special support for reposts. The extension could append a URL query string to it so it still goes through.
+
+5. Comment dialog for pages that are reddit comment pages.
+
+6. Comment dialog upon clicking an action (near save, hide, etc.) for all posts.
+
+7. **Privacy** - when [Fancy Settings](https://github.com/frankkohlhepp/fancy-settings) supports textareas, I'll add the capability to exclude domains and regular expression matches from being looked up.
+
+8. When infobars come out of the expiremental API, I may be implementing a UI similar to Socialite as well. However, [chromakode](https://github.com/chromakode)'s [shine](https://github.com/chromakode/shine) is more like Socialite, and our two extensions' functionalities have been taking different paths.
+
+9. I hope to open source this and get it officially endorsed by reddit in the same way Socialite and RedditAddict are.
 
 ## Known Issues ##
 
-* After clicking a vote icon, the state doesn't *appear* to change unless you hover over it again. This is a [known bug in Google Chrome](http://code.google.com/p/chromium/issues/detail?id=77246).
+* After clicking a vote icon, hide, or report, the state may not *appear* to change unless you move your mouse over what you just clicked. However, often you move your mouse to get away from the element, so you won't usually see this. This is a [known bug in Google Chrome](http://code.google.com/p/chromium/issues/detail?id=77246).
+
+* Share doesn't work yet.
