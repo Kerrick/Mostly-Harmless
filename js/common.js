@@ -300,11 +300,8 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
 	url = listItem.parentNode.getAttribute('data-url');
-	console.log(fullName);
-	console.log(url);
 	reqUrl = 'http://' + this.domain + '/api/vote';
 	oldCache = cache.get(url);
-	console.log(oldCache.posts[fullName]);
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
@@ -376,7 +373,6 @@ RedditAPI.prototype.savePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
-	console.log(listItem);
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/save';
@@ -405,7 +401,6 @@ RedditAPI.prototype.unsavePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
-	console.log(listItem);
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/unsave';
@@ -434,7 +429,6 @@ RedditAPI.prototype.hidePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
-	console.log(listItem);
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/hide';
@@ -445,7 +439,6 @@ RedditAPI.prototype.hidePost = function (e) {
 	listItem.setAttribute('data-hidestatus', 'true');
 	e.srcElement.innerHTML = 'unhide';
 	e.srcElement.onclick = function (event) {reddit.unhidePost(event)};
-	console.log(oldCache.posts[fullName]);
 	oldCache.posts[fullName].data.hidden = true;
 	cache.set(url, oldCache);
 	this.apiTransmit('POST', reqUrl, false, formData);
@@ -462,7 +455,6 @@ RedditAPI.prototype.unhidePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
-	console.log(listItem);
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/unhide';
@@ -473,7 +465,6 @@ RedditAPI.prototype.unhidePost = function (e) {
 	listItem.setAttribute('data-hidestatus', 'false');
 	e.srcElement.innerHTML = 'hide';
 	e.srcElement.onclick = function (event) {reddit.hidePost(event)};
-	console.log(oldCache.posts[fullName]);
 	oldCache.posts[fullName].data.hidden = false;
 	cache.set(url, oldCache);
 	this.apiTransmit('POST', reqUrl, false, formData);
