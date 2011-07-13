@@ -129,6 +129,18 @@ li[data-dir='-1'] .downmod {
 #posts li[data-hidestatus="true"] .actions a.hide {
 	color: #000;
 }
+#posts li[data-reportstatus="true"] {
+	opacity: 0.25;
+	background: rgba(255, 0, 0, 0.25);
+}
+.actions .report-confirm {
+	font-weight:normal;
+	color:#f00;
+}
+.actions .report-confirm:hover {
+	text-decoration:none;
+	cursor: default;
+}
 .morelink {
 	 display:block;
 	 text-align:center;

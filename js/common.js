@@ -479,6 +479,62 @@ RedditAPI.prototype.unhidePost = function (e) {
 	this.apiTransmit('POST', reqUrl, false, formData);
 };
 
+/**
+ * Brings up the report confirmation dialog.
+ * @alias				RedditAPI.confirmReport(event)
+ * @param	{Object}	event	The event object.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.confirmReport = function (e) {
+	e.srcElement.className = 'report-confirm';
+	e.srcElement.removeAttribute('onclick');
+	e.srcElement.innerHTML = 'are you sure? <a onclick="reddit.reportPost(event)">yes</a>/<a onclick="reddit.denyReport(event)">no</a>';
+	return true;
+};
+
+/**
+ * Resets the report link.
+ * @alias				RedditAPI.denyReport(event)
+ * @param	{Object}	event	The event object.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.denyReport = function (e) {
+	e.srcElement.parentNode.className = 'report';
+	e.srcElement.parentNode.setAttribute('onclick', 'reddit.confirmReport(event)');
+	e.srcElement.parentNode.innerHTML = 'report';
+	return true;
+};
+
+/**
+ * Reports a post.
+ * @alias				RedditAPI.reportPost(event)
+ * @param	{Object}	event	The event object.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.reportPost = function (e) {
+	var listItem, fullName, url, reqUrl, oldCache, formData;
+	
+	listItem = e.srcElement.parentNode.parentNode.parentNode.parentNode;
+	fullName = listItem.id;
+	url = listItem.parentNode.getAttribute('data-url');
+	reqUrl = 'http://' + this.domain + '/api/report';
+	oldCache = cache.get(url);
+	formData = new FormData();
+	formData.append('id', fullName);
+	formData.append('uh', cache.get('modhash'));
+	this.apiTransmit('POST', reqUrl, false, formData);
+	listItem.setAttribute('data-hidestatus', 'true');
+	e.srcElement.parentNode.parentNode.childNodes[3].innerHTML = 'unhide';
+	e.srcElement.parentNode.parentNode.childNodes[3].onclick = function (event) {reddit.unhidePost(event)};
+	oldCache.posts[fullName].data.hidden = true;
+	cache.set(url, oldCache);
+	listItem.setAttribute('data-reportstatus', 'true');
+	e.srcElement.parentNode.innerHTML = 'reported!';
+};
+
 reddit = new RedditAPI('www.reddit.com');
 
 /**
@@ -586,7 +642,7 @@ Popup.prototype.createListHTML = function (url) {
 					listHTML += '<a class="share">share</a>';
 					listHTML += '<a class="save" onclick="' + saveAction + '">' + saveText + '</a>';
 					listHTML += '<a class="hide" onclick="' + hideAction + '">' + hiddenText + '</a>';
-					listHTML += '<a class="report">report</a>';
+					listHTML += '<a class="report" onclick="reddit.confirmReport(event)">report</a>';
 				listHTML += '</div>';
 			listHTML += '</div>'
 		listHTML += '</li>';
@@ -601,3 +657,14 @@ Popup.prototype.createListHTML = function (url) {
 	return listHTML;
 	
 };
+
+/**
+ * Create the HTML for a submission form.
+ * @alias				Popup.createSubmitForm(url)
+ * @param	{String}	url	The URL of the page to create the HTML for.
+ * @return	{String}		Returns the generated Form.
+ * @method
+ */
+Popup.prototype.createSubmitForm = function (url) {
+	return 'Submit form not yet programmed.';
+}
