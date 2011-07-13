@@ -18,6 +18,7 @@
 						document.getElementById('body').style.width = '700px';
 					}
 				});
+				document.getElementById('body').setAttribute('style', 'max-width: ' + settings.get('popupWidth') + 'px');
 			}
 			
 			window.addEventListener('load', initPopup);

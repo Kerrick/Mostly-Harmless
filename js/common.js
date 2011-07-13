@@ -2,7 +2,8 @@ var settings, cache, utils, button, reddit, background;
 
 settings = new Store('settings', {
 	'cacheTime': 1,
-	'freshCutoff': 7
+	'freshCutoff': 7,
+	'popupWidth': 640
 });
 cache = new Store('cache');
 
@@ -50,7 +51,21 @@ MHUtils.prototype.forEachIn = function (object, action) {
 			action(property, object[property]);
 		}
 	}
+	return true;
 };
+
+/**
+ * Iterates over an array.
+ * @alias				MHUtils.forEach(array, action)
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+MHUtils.prototype.forEach = function (array, action) {
+	for (var i = 0; i < array.length; i++) {
+		action(array[i]);
+	}
+	return true;
+}
 
 /*
  * JavaScript Pretty Date
@@ -247,7 +262,7 @@ RedditAPI.prototype.getInfo = function (url) {
 	}
 	
 	response = this.apiTransmit('GET', reqUrl, false);
-	settings.set('modhash', response.data.modhash);
+	cache.set('modhash', response.data.modhash);
 	postsObj = {};
 	postCount = 0;
 	
@@ -292,7 +307,7 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	console.log(oldCache.posts[fullName]);
 	formData = new FormData();
 	formData.append('id', fullName);
-	formData.append('uh', settings.get('modhash'));
+	formData.append('uh', cache.get('modhash'));
 	
 	if (voteWas === '1') {
 		formData.append('dir','0');
@@ -330,7 +345,7 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
-	formData.append('uh', settings.get('modhash'));
+	formData.append('uh', cache.get('modhash'));
 	
 	if (voteWas === '1') {
 		formData.append('dir','-1');
@@ -368,7 +383,7 @@ RedditAPI.prototype.savePost = function (e) {
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
-	formData.append('uh', settings.get('modhash'));
+	formData.append('uh', cache.get('modhash'));
 	listItem.setAttribute('data-saved', 'true');
 	listItem.className.replace(/\bsaved\b/,'');
 	listItem.className += ' unsave';
@@ -397,7 +412,7 @@ RedditAPI.prototype.unsavePost = function (e) {
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
-	formData.append('uh', settings.get('modhash'));
+	formData.append('uh', cache.get('modhash'));
 	listItem.setAttribute('data-saved', 'false');
 	listItem.className.replace(/\bunsave\b/,'');
 	listItem.className += ' saved';
@@ -426,7 +441,7 @@ RedditAPI.prototype.hidePost = function (e) {
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
-	formData.append('uh', settings.get('modhash'));
+	formData.append('uh', cache.get('modhash'));
 	listItem.setAttribute('data-hidestatus', 'true');
 	e.srcElement.innerHTML = 'unhide';
 	e.srcElement.onclick = function (event) {reddit.unhidePost(event)};
@@ -454,7 +469,7 @@ RedditAPI.prototype.unhidePost = function (e) {
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
-	formData.append('uh', settings.get('modhash'));
+	formData.append('uh', cache.get('modhash'));
 	listItem.setAttribute('data-hidestatus', 'false');
 	e.srcElement.innerHTML = 'hide';
 	e.srcElement.onclick = function (event) {reddit.hidePost(event)};
@@ -528,7 +543,7 @@ Popup.prototype.createListHTML = function (url) {
 		throw 'Cannot create list HTML for a non-cached URL.';
 	}
 	
-	listHTML = '<ol id="posts" data-url="' + url + '">';
+	listHTML = '<ol id="posts" style="width: ' + settings.get('popupWidth') + 'px;" data-url="' + url + '">';
 	staleCounter = 0;
 	
 	utils.forEachIn(cache.get(url).posts, function (name, value) {
@@ -580,7 +595,7 @@ Popup.prototype.createListHTML = function (url) {
 	listHTML += '</ol>'
 	
 	if (staleCounter > 0) {
-		listHTML += '<div class="information">Hiding ' + staleCounter.toString() + ' stale posts. Visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.</div>';
+		listHTML += '<div class="information" style="width: ' + settings.get('popupWidth') + 'px;">Hiding ' + staleCounter.toString() + ' stale posts. Visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.</div>';
 	}
 	
 	return listHTML;
