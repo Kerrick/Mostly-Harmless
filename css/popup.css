@@ -126,6 +126,9 @@ li[data-dir='-1'] .downmod {
 .actions a:first-child {
 	padding-left:0;
 }
+#posts li[data-hidestatus="true"] .actions a.hide {
+	color: #000;
+}
 .morelink {
 	 display:block;
 	 text-align:center;
