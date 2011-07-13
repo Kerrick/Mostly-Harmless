@@ -1,1 +1,2 @@
-.deploy/
+# Ignore the files needed to deploy to the Chrome Web Store. 
+deploy/**/* 
