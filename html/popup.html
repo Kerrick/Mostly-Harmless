@@ -13,9 +13,11 @@
 			
 			function initPopup() {
 				chrome.tabs.getSelected(null, function(currTab) {
-					if (cache.get(currTab.url) !== undefined) {
+					if (cache.get(currTab.url) !== undefined && cache.get(currTab.url).count >= 1) {
 						document.getElementById('body').innerHTML = popup.createListHTML(currTab.url);
-						document.getElementById('body').style.width = '700px';
+						document.getElementById('body').style.width = settings.get('popupWidth') + 'px';
+					} else {
+						document.getElementById('body').innerHTML = popup.createSubmitForm(currTab.url);
 					}
 				});
 				document.getElementById('body').setAttribute('style', 'max-width: ' + settings.get('popupWidth') + 'px');
