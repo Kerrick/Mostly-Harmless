@@ -106,7 +106,7 @@ li[data-dir='-1'] .downmod {
 	font-weight: normal;
 	margin-bottom: 1px;
 }
-.domain {
+a.domain {
 	color: #888;
 	font-size: x-small;
 }
