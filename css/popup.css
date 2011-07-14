@@ -12,8 +12,10 @@ body {
 	display: block;
 	margin: auto;
 }
-a {
+a:link, a[onclick], a:visited {
 	text-decoration: none;
+	color: blue;
+	cursor:pointer;
 }
 a:hover {
 	text-decoration: underline;
@@ -119,9 +121,6 @@ li[data-dir='-1'] .downmod {
 	color: #888;
 	font-weight: bold;
 	padding: 0 4px;
-}
-.actions a[onclick] {
-	cursor: pointer;
 }
 .actions a:first-child {
 	padding-left:0;
