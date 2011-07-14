@@ -642,7 +642,7 @@ Popup.prototype.createListHTML = function (url) {
 	listHTML += '</ol>'
 	
 	if (staleCounter > 0) {
-		listHTML += '<div class="information">Hiding ' + staleCounter.toString() + ' stale posts. Visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.</div>';
+		listHTML += '<div id="information">Hiding ' + staleCounter.toString() + ' stale posts. <a onclick="popup.showStalePosts()">Show them now</a>, or visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.</div>';
 	}
 	
 	return listHTML;
@@ -659,3 +659,20 @@ Popup.prototype.createListHTML = function (url) {
 Popup.prototype.createSubmitForm = function (url) {
 	return 'Submit form not yet programmed.';
 }
+
+/**
+ * Show stale posts.
+ * @alias				Popup.showStalePosts()
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+Popup.prototype.showStalePosts = function () {
+	var stalePosts;
+	
+	stalePosts = document.getElementsByClassName('stale');
+	document.getElementById('information').innerHTML = 'Showing stale posts. Visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.';
+	
+	while (stalePosts.length > 0) {
+		stalePosts[0].className = 'stale-shown';
+	}
+};
