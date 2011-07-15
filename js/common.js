@@ -323,7 +323,7 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 	
 	function handleTimeout () {
 		req.abort();
-		button.setBadgeError(tabId, 'API Timeout after ' + settings.get('timeoutLength') + '. Click to try again.');
+		button.setBadgeError(tabId, 'API Timeout after ' + settings.get('timeoutLength') + ' seconds. Click to try again.');
 	}
 	
 	button.setBadgeLoading(tabId);
