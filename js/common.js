@@ -1,7 +1,7 @@
 var settings, cache, utils, button, reddit, background;
 
 settings = new Store('settings', {
-	'cacheTime': 1,
+	'cacheTime': 3,
 	'freshCutoff': 7,
 	'popupWidth': 640
 });
