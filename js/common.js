@@ -252,14 +252,50 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 
 
 /**
- * Grabs info about a URL via the reddit API and caches it.
+ * Grabs info about a URL via the reddit API and caches it, then sets the browser button.
  * @alias				RedditAPI.getInfo(url)
  * @param	{String}	url	The URL of the page to grab info about.
+ * @param	{Number}	tabId	The ID of the tab to prepare.
  * @return	{Boolean}		Returns true.
  * @method
  */
-RedditAPI.prototype.getInfo = function (url) {
-	var isCommentsPage, reqUrl, response, postsObj, postCount;
+RedditAPI.prototype.getInfo = function (url, tabId) {
+	var isCommentsPage, reqUrl, req, postsObj, postCount;
+	
+	function processInfo () {
+		if (req.readyState === 4) {
+			if (req.status === 200) {
+				var response;
+				
+				response = JSON.parse(req.responseText);
+				cache.set('modhash', response.data.modhash);
+				postsObj = {};
+				postCount = 0;
+				
+				for (i = 0; i < response.data.children.length; i++) {
+					var child;
+					
+					child =  response.data.children[i];
+					postsObj[child.data.name] = {
+						'url': url,
+						'data': child.data
+					};
+					postCount++;
+				}
+				
+				cache.set(url, {
+					'count': postCount,
+					'posts': postsObj,
+					'cacheDate': utils.epoch(),
+					'isCommentsPage': isCommentsPage
+				});
+				button.setBadgeFor(url, tabId);
+				return true;
+			} else {
+				throw 'Error loading info from the API. HTTP Status: ' + req.status;
+			}
+		}
+	}
 	
 	isCommentsPage = this.commentsMatchPattern.test(url);
 	
@@ -272,29 +308,10 @@ RedditAPI.prototype.getInfo = function (url) {
 		reqUrl = 'http://' + this.domain + '/api/info.json?url=' + encodeURIComponent(url);
 	}
 	
-	response = this.apiTransmit('GET', reqUrl, false);
-	cache.set('modhash', response.data.modhash);
-	postsObj = {};
-	postCount = 0;
-	
-	for (i = 0; i < response.data.children.length; i++) {
-		var child;
-		
-		child =  response.data.children[i];
-		postsObj[child.data.name] = {
-			'url': url,
-			'data': child.data
-		};
-		postCount++;
-	}
-	
-	cache.set(url, {
-		'count': postCount,
-		'posts': postsObj,
-		'cacheDate': utils.epoch(),
-		'isCommentsPage': isCommentsPage
-	});
-	return true;
+	req = new XMLHttpRequest();
+	req.open('GET', reqUrl, true);
+	req.onreadystatechange = processInfo;
+	req.send(null);
 };
 
 /**
@@ -561,16 +578,15 @@ function Background() {
  */
 Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 	if (info.status === 'loading') {
-		button.setBadgeDefaults(tabId);
+		button.setBadgeLoading(tabId);
 		
 		if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
 			console.log('Grabbing data from the API...');
-			reddit.getInfo(tab.url);
+			reddit.getInfo(tab.url, tabId);
 		} else {
 			console.log('Grabbing data from the cache...');
+			button.setBadgeFor(tab.url, tabId);
 		}
-		
-		button.setBadgeFor(tab.url, tabId);
 	}
 	
 	return true;
