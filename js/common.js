@@ -703,7 +703,7 @@ Popup.prototype.createListHTML = function (url) {
 					listHTML += '<a class="subreddit" href="http://www.reddit.com/r/' + data.subreddit + '/" target="_blank">' + data.subreddit + '</a>';
 				listHTML += '</div>';
 				listHTML += '<div class="actions">';
-					listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + data.num_comments + ' comments</a>';
+					listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">add to the ' + data.num_comments + ' comments</a>';
 					listHTML += '<a class="share">share</a>';
 					listHTML += '<a class="save" onclick="' + saveAction + '">' + saveText + '</a>';
 					listHTML += '<a class="hide" onclick="' + hideAction + '">' + hiddenText + '</a>';
