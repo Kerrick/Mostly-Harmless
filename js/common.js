@@ -283,13 +283,14 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
  * @method
  */
 RedditAPI.prototype.getInfo = function (url, tabId) {
-	var isCommentsPage, reqUrl, req, postsObj, postCount;
+	var apiTimeout, isCommentsPage, reqUrl, req, postsObj, postCount;
 	
 	function processInfo () {
 		if (req.readyState === 4) {
 			if (req.status === 200) {
 				var response;
 				
+				clearTimeout(apiTimeout);
 				response = JSON.parse(req.responseText);
 				cache.set('modhash', response.data.modhash);
 				postsObj = {};
@@ -320,6 +321,12 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 		}
 	}
 	
+	function handleTimeout () {
+		req.abort();
+		button.setBadgeError(tabId, 'The Reddit API Timed Out. Refresh to try loading again.');
+	}
+	
+	button.setBadgeLoading(tabId);
 	isCommentsPage = this.commentsMatchPattern.test(url);
 	
 	if (isCommentsPage) {
@@ -335,6 +342,7 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 	req.open('GET', reqUrl, true);
 	req.onreadystatechange = processInfo;
 	req.send(null);
+	apiTimeout = setTimeout(handleTimeout, settings.get('timeoutLength'));
 };
 
 /**
@@ -601,8 +609,6 @@ function Background() {
  */
 Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 	if (info.status === 'loading') {
-		button.setBadgeLoading(tabId);
-		
 		if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
 			console.log('Grabbing data from the API...');
 			reddit.getInfo(tab.url, tabId);
