@@ -141,7 +141,7 @@ function BrowserAction() {
 
 /**
  * Set the browser icon badge to its defaults.
- * @alias				BrowserAction.setBadgeDefaults()
+ * @alias				BrowserAction.setBadgeDefaults(tabId)
  * @param	{Number}	tabId	If given, only sets badge defaults for this tab.
  * @return	{Boolean}		Returns true.
  * @method
