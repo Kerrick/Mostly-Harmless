@@ -27,6 +27,29 @@ this.manifest = {
         	"text": "<p>Mostly Harmless grabs data from the Reddit API every time you load a page. However, that data can be cached, or saved for a short time, to improve performance and reduce the load on the reddit API.</p><p>This option allows you to change how long a page's data is cached. Longer cache times mean less bandwidth, faster results, and less load on reddit. Shorter cache times mean fresher data.</p>"
         },
         {
+        	"tab": "Performance",
+        	"group": "Timeout Length",
+        	"name": "timeoutLength",
+        	"type": "slider",
+        	"label": "",
+        	"max": 15,
+        	"min": 1,
+        	"step": 1,
+        	"display": true,
+        	"displayModifier": function(value) {
+        		if(value === 1)
+        			return value.toString() + " second";
+        		return value.toString() + " seconds";
+        	}
+        },
+        {
+        	"tab": "Performance",
+        	"group": "Timeout Length",
+        	"name": "tiemoutDescription",
+        	"type": "description",
+        	"text": "<p>Mostly Harmless uses the reddit API, but sometimes the API will be slow or down. If that happens, Mostly Harmless can display an error after trying to reach the API for a certain amount of time.</p><p>This option allows you to change how long Mostly Harmless should try to reach the Reddit API. Longer timeout lengths mean more time waiting for a result from the reddit API. Shorter timeout lengths mean a higher possibility of timing out when reddit may only be slow instead of down."
+        },
+        {
         	"tab": "Privacy",
         	"group": "Warning!",
         	"name": "excludedDescription",
