@@ -148,9 +148,12 @@ function BrowserAction() {
  */
 BrowserAction.prototype.setBadgeDefaults = function (tabId) {
 	chrome.browserAction.setBadgeText({'text': '?', 'tabId': tabId});
-	chrome.browserAction.setTitle({'title': 'Refresh the page to load data.', 'tabId': tabId});
+	chrome.browserAction.setTitle({'title': 'Click to load data.', 'tabId': tabId});
 	chrome.browserAction.setBadgeBackgroundColor({'color': [192, 192, 192, 255], 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
+	chrome.browserAction.onClicked.addListener(function(tab) {
+		reddit.getInfo(tab.url, tab.id);
+	});
 	return true;
 };
 
