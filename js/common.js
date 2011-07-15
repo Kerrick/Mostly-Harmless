@@ -172,6 +172,25 @@ BrowserAction.prototype.setBadgeLoading = function (tabId) {
 };
 
 /**
+ * Set the browser icon badge to its error state.
+ * @alias				BrowserAction.setBadgeError(tabId, text)
+ * @param	{Number}	tabId	If given, only sets loading state for this tab.
+ * @param	{String}	text	Sets the badge's hover text.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+BrowserAction.prototype.setBadgeError = function (tabId, text) {
+	chrome.browserAction.setBadgeText({'text': '×', 'tabId': tabId});
+	chrome.browserAction.setTitle({'title': text, 'tabId': tabId});
+	chrome.browserAction.setBadgeBackgroundColor({'color': [255, 0, 255, 255], 'tabId': tabId});
+	chrome.browserAction.setPopup({popup: '', tabId: tabId});
+	chrome.browserAction.onClicked.addListener(function(tab) {
+		reddit.getInfo(tab.url, tab.id);
+	});
+	return true;
+};
+
+/**
  * Set the browser icon badge for a page.
  * @alias				BrowserAction.setBadgeFor(url, tabId)
  * @param	{String}	url	Sets the badge according to this URL.
