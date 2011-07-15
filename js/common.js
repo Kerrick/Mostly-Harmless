@@ -183,7 +183,7 @@ BrowserAction.prototype.setBadgeLoading = function (tabId) {
 BrowserAction.prototype.setBadgeError = function (tabId, text) {
 	chrome.browserAction.setBadgeText({'text': '×', 'tabId': tabId});
 	chrome.browserAction.setTitle({'title': text, 'tabId': tabId});
-	chrome.browserAction.setBadgeBackgroundColor({'color': [255, 0, 255, 255], 'tabId': tabId});
+	chrome.browserAction.setBadgeBackgroundColor({'color': [200, 0, 0, 255], 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
 	chrome.browserAction.onClicked.addListener(function(tab) {
 		reddit.getInfo(tab.url, tab.id);
@@ -316,14 +316,14 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 				button.setBadgeFor(url, tabId);
 				return true;
 			} else {
-				throw 'Error loading info from the API. HTTP Status: ' + req.status;
+				button.setBadgeError(tabId, 'API Error. HTTP Status: ' + req.status + '. Click to try again.');
 			}
 		}
 	}
 	
 	function handleTimeout () {
 		req.abort();
-		button.setBadgeError(tabId, 'The Reddit API Timed Out. Click to try loading again.');
+		button.setBadgeError(tabId, 'API Timeout after ' + settings.get('timeoutLength') + '. Click to try again.');
 	}
 	
 	button.setBadgeLoading(tabId);
@@ -342,7 +342,9 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 	req.open('GET', reqUrl, true);
 	req.onreadystatechange = processInfo;
 	req.send(null);
-	apiTimeout = setTimeout(handleTimeout, settings.get('timeoutLength') * 1000);
+	if (settings.get('timeoutLength') !== 16) {
+		apiTimeout = setTimeout(handleTimeout, settings.get('timeoutLength') * 1000);
+	}
 };
 
 /**

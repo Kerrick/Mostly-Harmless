@@ -32,14 +32,16 @@ this.manifest = {
         	"name": "timeoutLength",
         	"type": "slider",
         	"label": "",
-        	"max": 15,
+        	"max": 16,
         	"min": 1,
         	"step": 1,
         	"display": true,
         	"displayModifier": function(value) {
         		if(value === 1)
         			return value.toString() + " second";
-        		return value.toString() + " seconds";
+        		if(value <= 15)
+        			return value.toString() + " seconds";
+        		return "Do not timeout; Only error when the API is down."
         	}
         },
         {
