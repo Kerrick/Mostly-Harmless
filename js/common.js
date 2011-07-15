@@ -587,6 +587,21 @@ RedditAPI.prototype.reportPost = function (e) {
 	e.srcElement.parentNode.innerHTML = 'reported!';
 };
 
+/**
+ * Submits a comment.
+ * @alias				RedditAPI.submitComment(event)
+ * @param	{Object}	event	The event object.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.submitComment = function (e) {
+	var listItem, fullName;
+	
+	listItem = e.srcElement.parentNode.parentNode.parentNode;
+	fullName = listItem.id;
+	e.srcElement.parentNode.getElementsByClassName('status')[0].innerHTML = 'Not yet programmed. ID: ' + fullName;
+};
+
 reddit = new RedditAPI('www.reddit.com');
 
 /**
@@ -648,11 +663,11 @@ Popup.prototype.createListHTML = function (url) {
 		throw 'Cannot create list HTML for a non-cached URL.';
 	}
 	
-	listHTML = '<ol id="posts" data-url="' + url + '">';
+	listHTML = '<ol id="posts" data-url="' + url + '" data-commentspage="' + cache.get(url).isCommentsPage.toString() + '">';
 	staleCounter = 0;
 	
 	utils.forEachIn(cache.get(url).posts, function (name, value) {
-		var data, voteDir, hiddenText, hideStatus, hideAction, saveText, saveStatus, saveAction, isFreshEnough, freshText, thumbSrc;
+		var data, voteDir, hiddenText, hideStatus, hideAction, saveText, saveStatus, saveAction, isFreshEnough, freshText, thumbSrc, commentText;
 		
 		data = value.data;
 		if (data.likes === true) voteDir = 1;
@@ -665,6 +680,7 @@ Popup.prototype.createListHTML = function (url) {
 		saveText = saveStatus === true ? 'unsave' : 'save';
 		saveAction = saveStatus === true ? 'reddit.unsavePost(event)' : 'reddit.savePost(event)';
 		isFreshEnough = settings.get('freshCutoff') === 91 ? 'true' : data.created_utc >= utils.epoch() - settings.get('freshCutoff') * 24 * 60 * 60;
+		commentText = data.savedCommentText === undefined ? '' : data.savedCommentText;
 		if (!isFreshEnough) staleCounter++;
 		freshText = isFreshEnough ? 'fresh' : 'stale';
 		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
@@ -687,13 +703,22 @@ Popup.prototype.createListHTML = function (url) {
 					listHTML += '<a class="subreddit" href="http://www.reddit.com/r/' + data.subreddit + '/" target="_blank">' + data.subreddit + '</a>';
 				listHTML += '</div>';
 				listHTML += '<div class="actions">';
-					listHTML += '<a class="comments" href="http://www.reddit.com' + data.permalink + '" target="_blank">' + data.num_comments + ' comments</a>';
+					listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + data.num_comments + ' comments</a>';
 					listHTML += '<a class="share">share</a>';
 					listHTML += '<a class="save" onclick="' + saveAction + '">' + saveText + '</a>';
 					listHTML += '<a class="hide" onclick="' + hideAction + '">' + hiddenText + '</a>';
 					listHTML += '<a class="report" onclick="reddit.confirmReport(event)">report</a>';
 				listHTML += '</div>';
-			listHTML += '</div>'
+			listHTML += '</div>';
+			listHTML += '<form class="comment">';
+				listHTML += '<fieldset>';
+					listHTML += '<legend>Leave a comment</legend>';
+					listHTML += '<textarea rows="8">' + commentText + '</textarea>';
+					listHTML += '<button type="button" class="submit" onclick="reddit.submitComment(event)">save</button>';
+					listHTML += '<button type="button" class="cancel" onclick="this.parentNode.parentNode.style.display = \'none\'">cancel</button>';
+					listHTML += '<span class="status"></span>';
+				listHTML += '</fieldset>';
+			listHTML += '</form>';
 		listHTML += '</li>';
 	});
 	
@@ -733,4 +758,16 @@ Popup.prototype.showStalePosts = function () {
 	while (stalePosts.length > 0) {
 		stalePosts[0].className = 'stale-shown';
 	}
+};
+
+/**
+ * Show the comment form for a given post.
+ * @alias				Popup.showCommentForm(postId)
+ * @param	{String}	postId	The ID of the thing to show the comment form for.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+Popup.prototype.showCommentForm = function (postId) {
+	document.getElementById(postId).getElementsByClassName('comment')[0].style.display = 'block';
+	return true;
 };

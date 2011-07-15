@@ -140,6 +140,35 @@ a.domain {
 	text-decoration:none;
 	cursor: default;
 }
+.comment {
+	display: none;
+}
+ol[data-commentspage="true"] .comment {
+	display: block;
+}
+ol[data-commentspage="true"] button.cancel {
+	display: none;
+}
+.comment fieldset {
+	margin: 12px 0 0;
+	padding: 0;
+	border: 0;
+}
+.comment textarea {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-shadow: inset 0px 0px 2px black;
+	font: normal small verdana, arial, helvetica, sans-serif;
+}
+.comment button {
+	margin: 5px 5px 0 0;
+}
+.comment .status {
+	color: red;
+}
 .morelink {
 	 display:block;
 	 text-align:center;
