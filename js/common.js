@@ -155,6 +155,20 @@ BrowserAction.prototype.setBadgeDefaults = function (tabId) {
 };
 
 /**
+ * Set the browser icon badge to its loading state.
+ * @alias				BrowserAction.setBadgeLoading(tabId)
+ * @param	{Number}	tabId	If given, only sets loading state for this tab.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+BrowserAction.prototype.setBadgeLoading = function (tabId) {
+	chrome.browserAction.setBadgeText({'text': '', 'tabId': tabId});
+	chrome.browserAction.setTitle({'title': 'Loading data...', 'tabId': tabId});
+	chrome.browserAction.setPopup({popup: '', tabId: tabId});
+	return true;
+};
+
+/**
  * Set the browser icon badge for a page.
  * @alias				BrowserAction.setBadgeFor(url, tabId)
  * @param	{String}	url	Sets the badge according to this URL.
