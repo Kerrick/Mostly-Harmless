@@ -211,22 +211,18 @@ function RedditAPI(domain) {
  * @alias				RedditAPI.apiTransmit(type, url, async, data)
  * @param	{String}	type	The type of HTTP request: 'GET' or 'POST'.
  * @param	{String}	url	The URL to request.
- * @param	{Boolean}	async	If true, the request will be asynchronous.
  * @param	{Object}	data	If it exists, send this as a FormData() object.
+ * @param	{Function}	cback	If it exists, call this function when the request is complete. (doesn't work yet)
  * @return	{Object}		Returns the API's response as an object.
  * @method 
  */
-RedditAPI.prototype.apiTransmit = function (type, url, async, data) {
+RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 	var req;
 	
 	req = new XMLHttpRequest();
-	req.open(type, url, async);
+	req.open(type, url, false);
 	
-	if (data) {
-		req.send(data);
-	} else {
-		req.send(null);
-	}
+	req.send(data);
 	
 	if (req.status !== 200) {
 		console.warn(req);
@@ -321,7 +317,7 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	}
 	
 	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, false, formData);
+	this.apiTransmit('POST', reqUrl, formData);
 };
 
 /**
@@ -359,7 +355,7 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	}
 	
 	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, false, formData);
+	this.apiTransmit('POST', reqUrl, formData);
 };
 
 /**
@@ -387,7 +383,7 @@ RedditAPI.prototype.savePost = function (e) {
 	e.srcElement.onclick = function (event) {reddit.unsavePost(event)};
 	oldCache.posts[fullName].data.saved = true;
 	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, false, formData);
+	this.apiTransmit('POST', reqUrl, formData);
 };
 
 /**
@@ -415,7 +411,7 @@ RedditAPI.prototype.unsavePost = function (e) {
 	e.srcElement.onclick = function (event) {reddit.savePost(event)};
 	oldCache.posts[fullName].data.saved = false;
 	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, false, formData);
+	this.apiTransmit('POST', reqUrl, formData);
 };
 
 /**
@@ -441,7 +437,7 @@ RedditAPI.prototype.hidePost = function (e) {
 	e.srcElement.onclick = function (event) {reddit.unhidePost(event)};
 	oldCache.posts[fullName].data.hidden = true;
 	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, false, formData);
+	this.apiTransmit('POST', reqUrl, formData);
 };
 
 /**
@@ -467,7 +463,7 @@ RedditAPI.prototype.unhidePost = function (e) {
 	e.srcElement.onclick = function (event) {reddit.hidePost(event)};
 	oldCache.posts[fullName].data.hidden = false;
 	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, false, formData);
+	this.apiTransmit('POST', reqUrl, formData);
 };
 
 /**
@@ -516,7 +512,7 @@ RedditAPI.prototype.reportPost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	this.apiTransmit('POST', reqUrl, false, formData);
+	this.apiTransmit('POST', reqUrl, formData);
 	listItem.setAttribute('data-hidestatus', 'true');
 	e.srcElement.parentNode.parentNode.childNodes[3].innerHTML = 'unhide';
 	e.srcElement.parentNode.parentNode.childNodes[3].onclick = function (event) {reddit.unhidePost(event)};
