@@ -342,7 +342,7 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 	req.open('GET', reqUrl, true);
 	req.onreadystatechange = processInfo;
 	req.send(null);
-	apiTimeout = setTimeout(handleTimeout, settings.get('timeoutLength'));
+	apiTimeout = setTimeout(handleTimeout, settings.get('timeoutLength') * 1000);
 };
 
 /**
