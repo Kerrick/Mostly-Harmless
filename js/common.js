@@ -185,6 +185,7 @@ BrowserAction.prototype.setBadgeIgnore = function (tabId) {
  * @method
  */
 BrowserAction.prototype.setBadgeLoading = function (tabId) {
+	chrome.browserAction.setIcon({'path': '/pix/alien.png', 'tabId': tabId});
 	chrome.browserAction.setBadgeText({'text': '', 'tabId': tabId});
 	chrome.browserAction.setTitle({'title': 'Loading data...', 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
@@ -223,6 +224,7 @@ BrowserAction.prototype.setBadgeFor = function (url, tabId) {
 	var cachedPosts;
 	
 	cachedPosts = cache.get(url);
+	chrome.browserAction.setIcon({'path': '/pix/alien.png', 'tabId': tabId});
 	
 	if (cachedPosts.isCommentsPage === true) {
 		chrome.browserAction.setBadgeText({'text': '...', 'tabId': tabId});
