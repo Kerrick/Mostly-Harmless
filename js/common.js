@@ -788,3 +788,22 @@ Popup.prototype.showCommentForm = function (postId) {
 	document.getElementById(postId).getElementsByClassName('comment')[0].style.display = 'block';
 	return true;
 };
+
+/**
+ * Cache a comment for a given post.
+ * @alias				Popup.cacheComment(event)
+ * @param	{Object}	event	The event object of the keyup.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+Popup.prototype.cacheComment = function (e) {
+	var value, postId, url, oldCache;
+	
+	value = e.srcElement.value;
+	postId = e.srcElement.parentNode.parentNode.parentNode.id
+	url = e.srcElement.parentNode.parentNode.parentNode.parentNode.getAttribute('data-url');
+	oldCache = cache.get(url);
+	oldCache.posts[postId].savedCommentText = value;
+	cache.set(url, oldCache);
+	return true;
+};
