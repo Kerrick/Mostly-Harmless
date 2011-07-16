@@ -18,7 +18,8 @@ body{overflow-y:scroll;-moz-border-radius:10px;-moz-box-shadow:rgba(34,34,34,.8)
 h1 {color: #444;text-shadow: 0px 2px 2px #fff;font:bold 144px OstrichSansBold, Arial, Helvetica, sans-serif;line-height:120px;text-transform:uppercase;text-align:center;border-bottom:1px solid #a6a6a6;letter-spacing:-5px;margin: 0 -16px;padding: 0 0 8px;}
 p a, ol a{color:#fff;text-decoration:none;border-bottom:1px solid #fff;}
 p a:hover, ol a:hover{color:#bbb;border-bottom:1px solid #bbb;}
-code, pre{font-family:'Anonymous Pro', 'Courier New', monospace;}
+code, pre{font-family:Consolas, 'Courier New', monospace;}
+pre{background:black;color:#0f0;padding:10px 5px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
 .article ol{list-style:decimal inside;}
 ul#nav{border-bottom:1px solid #a6a6a6;border-top:1px solid #fff;margin:0 -16px;}
 ul#nav li{display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;_height:29px;height:29px;margin:9px 14px 12px;width:144px;}
