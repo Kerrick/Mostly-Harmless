@@ -680,7 +680,7 @@ Popup.prototype.createListHTML = function (url) {
 		saveText = saveStatus === true ? 'unsave' : 'save';
 		saveAction = saveStatus === true ? 'reddit.unsavePost(event)' : 'reddit.savePost(event)';
 		isFreshEnough = settings.get('freshCutoff') === 91 ? 'true' : data.created_utc >= utils.epoch() - settings.get('freshCutoff') * 24 * 60 * 60;
-		commentText = data.savedCommentText === undefined ? '' : data.savedCommentText;
+		commentText = value.savedCommentText === undefined ? '' : value.savedCommentText;
 		if (!isFreshEnough) staleCounter++;
 		freshText = isFreshEnough ? 'fresh' : 'stale';
 		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
@@ -713,7 +713,7 @@ Popup.prototype.createListHTML = function (url) {
 			listHTML += '<form class="comment">';
 				listHTML += '<fieldset>';
 					listHTML += '<legend>Leave a comment</legend>';
-					listHTML += '<textarea rows="8">' + commentText + '</textarea>';
+					listHTML += '<textarea rows="8" onkeyup="popup.cacheComment(event)" style="width:' + (settings.get('popupWidth') - 10) + 'px;">' + commentText + '</textarea>';
 					listHTML += '<button type="button" class="submit" onclick="reddit.submitComment(event)">save</button>';
 					listHTML += '<button type="button" class="cancel" onclick="this.parentNode.parentNode.style.display = \'none\'">cancel</button>';
 					listHTML += '<span class="status"></span>';

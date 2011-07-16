@@ -156,11 +156,6 @@ ol[data-commentspage="true"] button.cancel {
 }
 .comment textarea {
 	display: block;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	box-shadow: inset 0px 0px 2px black;
 	font: normal small verdana, arial, helvetica, sans-serif;
 }
 .comment button {
