@@ -612,11 +612,46 @@ RedditAPI.prototype.reportPost = function (e) {
  * @method
  */
 RedditAPI.prototype.submitComment = function (e) {
-	var listItem, fullName;
+	var listItem, fullName, status, submitButton, cancelButton, textarea, formData;
 	
-	listItem = e.srcElement.parentNode.parentNode.parentNode;
+	function afterSubmission (response) {
+		var url, oldCache;
+		
+		status.innerHTML = '';
+		submitButton.innerHTML = 'saved';
+		cancelButton.innerHTML = 'hide this form';
+		submitButton.setAttribute('disabled');
+		textarea.setAttribute('readonly');
+		textarea.onkeyup = function () {return true;};
+		url = document.getElementById(fullName).parentNode.getAttribute('data-url');
+		oldCache = cache.get(url);
+		console.log(oldCache);
+		oldCache.posts[fullName].savedCommentText = '';
+		console.log(oldCache);
+		cache.set(url, oldCache);
+	}
+	
+	submitButton = e.srcElement;
+	listItem = submitButton.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
-	e.srcElement.parentNode.getElementsByClassName('status')[0].innerHTML = 'Not yet programmed. ID: ' + fullName;
+	status = submitButton.parentNode.getElementsByClassName('status')[0];
+	cancelButton = submitButton.parentNode.getElementsByClassName('cancel')[0];
+	textarea = e.srcElement.parentNode.getElementsByTagName('textarea')[0];
+	
+	if (textarea.value === '') {
+		status.innerHTML = 'There needs to be something here.';
+	} else {
+		formData = new FormData();
+		formData.append('thing_id', fullName);
+		formData.append('text', textarea.value);
+		formData.append('uh', cache.get('modhash'));
+		status.innerHTML = 'submitting...';
+		try {
+			reddit.apiTransmit('POST', 'http://www.reddit.com/api/comment', formData, afterSubmission);
+		} catch (error) {
+			status.innerHTML = error;
+		}
+	}
 };
 
 reddit = new RedditAPI('www.reddit.com');
