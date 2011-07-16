@@ -148,9 +148,28 @@ function BrowserAction() {
  * @method
  */
 BrowserAction.prototype.setBadgeDefaults = function (tabId) {
+	chrome.browserAction.setIcon({'path': '/pix/alien-fade.png', 'tabId': tabId});
 	chrome.browserAction.setBadgeText({'text': '?', 'tabId': tabId});
 	chrome.browserAction.setTitle({'title': 'Click to load data.', 'tabId': tabId});
 	chrome.browserAction.setBadgeBackgroundColor({'color': [192, 192, 192, 255], 'tabId': tabId});
+	chrome.browserAction.setPopup({popup: '', tabId: tabId});
+	chrome.browserAction.onClicked.addListener(function(tab) {
+		reddit.getInfo(tab.url, tab.id);
+	});
+	return true;
+};
+
+/**
+ * Set the browser icon badge to its ignore state.
+ * @alias				BrowserAction.setBadgeIgnore(tabId)
+ * @param	{Number}	tabId	If given, only sets ignore state for this tab.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+BrowserAction.prototype.setBadgeIgnore = function (tabId) {
+	chrome.browserAction.setIcon({'path': '/pix/alien-fade.png', 'tabId': tabId});
+	chrome.browserAction.setBadgeText({'text': '', 'tabId': tabId});
+	chrome.browserAction.setTitle({'title': 'Mostly Harmless is not activated for this page. Click to activate.', 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
 	chrome.browserAction.onClicked.addListener(function(tab) {
 		reddit.getInfo(tab.url, tab.id);
@@ -181,6 +200,7 @@ BrowserAction.prototype.setBadgeLoading = function (tabId) {
  * @method
  */
 BrowserAction.prototype.setBadgeError = function (tabId, text) {
+	chrome.browserAction.setIcon({'path': '/pix/alien-fade.png', 'tabId': tabId});
 	chrome.browserAction.setBadgeText({'text': '×', 'tabId': tabId});
 	chrome.browserAction.setTitle({'title': text, 'tabId': tabId});
 	chrome.browserAction.setBadgeBackgroundColor({'color': [200, 0, 0, 255], 'tabId': tabId});
