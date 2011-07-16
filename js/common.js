@@ -255,22 +255,39 @@ function RedditAPI(domain) {
  * @method 
  */
 RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
-	var req;
+	var req, apiTimeout;
 	
-	req = new XMLHttpRequest();
-	req.open(type, url, false);
-	
-	req.send(data);
-	
-	if (req.status !== 200) {
-		console.warn(req);
-		throw 'Error loading API.\nURL: ' + url + '\nStatus: ' + req.status.toString();
-	} else if (JSON.parse(req.responseText).jquery && JSON.parse(req.responseText).jquery[3][3][0] === '.error.USER_REQUIRED') {
-		console.warn(req);
-		throw 'Error doing API action.\nURL: ' + url + '\nUser not logged in.';
+	function processResponse () {
+		if (req.readyState === 4) {
+			if (req.status === 200) {
+				if (JSON.parse(req.responseText).jquery && JSON.parse(req.responseText).jquery[3][3][0] === '.error.USER_REQUIRED') {
+					throw 'You have to be logged in to do that. <a href="http://www.reddit.com/login" target="_blank">Click to open the login page.</a>';
+				}
+				
+				clearTimeout(apiTimeout);
+				
+				if (cback) {
+					cback(JSON.parse(req.responseText));
+				}
+				return JSON.parse(req.responseText);
+			} else {
+				throw 'API Error. HTTP Status: ' + req.status + '. Try again?';
+			}
+		}
 	}
 	
-	return JSON.parse(req.responseText);
+	function handleTimeout () {
+		req.abort();
+		throw 'API Timeout after ' + settings.get('timeoutLength') + ' seconds. Click to try again.';
+	}
+	
+	req = new XMLHttpRequest();
+	req.open(type, url, true);
+	req.onreadystatechange = processResponse;
+	req.send(data);
+	if (settings.get('timeoutLength') !== 16) {
+		apiTimeout = setTimeout(handleTimeout, settings.get('timeoutLength') * 1000);
+	}
 };
 
 
@@ -285,7 +302,7 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 RedditAPI.prototype.getInfo = function (url, tabId) {
 	var apiTimeout, isCommentsPage, reqUrl, req, postsObj, postCount;
 	
-	function processInfo () {
+	function processResponse () {
 		if (req.readyState === 4) {
 			if (req.status === 200) {
 				var response;
@@ -340,7 +357,7 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 	
 	req = new XMLHttpRequest();
 	req.open('GET', reqUrl, true);
-	req.onreadystatechange = processInfo;
+	req.onreadystatechange = processResponse;
 	req.send(null);
 	if (settings.get('timeoutLength') !== 16) {
 		apiTimeout = setTimeout(handleTimeout, settings.get('timeoutLength') * 1000);
