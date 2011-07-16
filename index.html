@@ -1,119 +1,91 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
 	<head>
-		<meta charset='utf-8' />
-		<title>
-			Kerrick/Mostly-Harmless @ GitHub
-		</title>
-		<style type="text/css">
-/*<![CDATA[*/
-		body {
-		margin-top: 1.0em;
-		background-color: #CEE3F8;
-		font-family: Helvetica, Arial, FreeSans, san-serif;
-		color: #000000;
-		}
-		#container {
-		margin: 0 auto;
-		width: 700px;
-		}
-		h1 { font-size: 3.8em; color: #311c07; margin-bottom: 3px; }
-		h1 .small { font-size: 0.4em; }
-		h1 a { text-decoration: none }
-		h2 { font-size: 1.5em; color: #311c07; }
-		h3 { text-align: center; color: #311c07; }
-		a { color: #311c07; }
-		.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-		.download { float: right; }
-		pre { background: #000; color: #fff; padding: 15px; overflow-x: auto;}
-		hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-		.footer { text-align:center; padding-top:30px; font-style: italic; }
-		/*]]>*/
-		</style>
+		<meta charset="UTF-8">
+		<title>Mostly Harmless</title>
+		
+		<link rel="stylesheet" media="screen" href="style.css">
+		<link rel="shortcut icon" href="icons/favicon.ico">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		
+		<meta name="viewport" content="width=500">
+		<meta name="date" content="2009-11-30">
+		<meta name="keywords" content="Kerrick Design, Websites, Web Design, Small Business, Personal">
+		<meta name="description" content="Kerrick Design: Small business and individual websites with quality.">
 	</head>
 	<body>
-		<p>
-			<a href="http://github.com/Kerrick/Mostly-Harmless"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-		</p>
-		<div id="container">
-			<div class="download">
-				<a href="http://github.com/Kerrick/Mostly-Harmless/zipball/master"><img border="0" width="90" src="http://github.com/images/modules/download/zip.png" /></a> <a href="http://github.com/Kerrick/Mostly-Harmless/tarball/master"><img border="0" width="90" src="http://github.com/images/modules/download/tar.png" /></a>
+		<h1>Mostly Harmless</h1>
+		<ul id="nav">
+			<li><a href="#features">Features</a></li><li><a href="#download">Download</a></li><li><a href="#open-source">Open Source</a></li><li><a href="#credits">Credits</a></li><li><a href="#license">License</a></li>
+		</ul>
+		<div class="section">
+			<div class="article" id="features">
+				<h2>Mostly Harmless Features</h2>
+				<p>Mostly Harmless is currently under rapid development, so its features are constantly changing. Once v1.0.0 is released, I will list and demonstrate features here.</p>
 			</div>
-			<h1>
-				<a href="http://github.com/Kerrick/Mostly-Harmless">Mostly-Harmless</a> <span class="small">by <a href="http://github.com/Kerrick">Kerrick</a></span>
-			</h1>
-			<div class="description">
-				A reddit extension for Google Chrome
+			<div class="article" id="download">
+				<!-- Move this to #open-source upon release. -->
+				<h2>Download the Source</h2>
+				<a href="http://github.com/Kerrick/Mostly-Harmless/zipball/master" title="Click to download the latest zipball"><img width="144" height="142" alt="zip" src="https://github.com/images/modules/download/zip.png" /></a>
+				<a href="http://github.com/Kerrick/Mostly-Harmless/tarball/master" title="Click to download the latest tarball"><img width="144" height="142" alt="tar" src="https://github.com/images/modules/download/tar.png" /></a>
+				<p>To install from source:</p>
+				<ol>
+					<li>Download the latest ZIP and extract it</li>
+					<li>Navigate to <code>chrome://extensions</code></li>
+					<li>Turn on <strong>developer mode</strong> if it isn&rsquo;t already</li>
+					<li>Choose <strong>load unpacked extension</strong>, and navigate to the extracted code.</li>
+				</ol>
 			</div>
-			<p>
-				The project is currently in a limited beta!
-			</p>
-			<h2>
-				Dependencies
-			</h2>
-			<p>
-				<a href="https://github.com/frankkohlhepp/fancy-settings">Fancy Settings 1.2</a>
-			</p>
-			<h2>
-				Install
-			</h2>
-			<p>
-				Download the latest ZIP and extract it, navigate to <code>chrome://extensions</code>, turn on Developer mode, choose Load unpacked extension, and find the extracted code.
-			</p>
-			<h2>
-				License
-			</h2>
-			<pre>
-Copyright (C) 2011 by Kerrick Long
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-</pre>
-			<h2>
-				Authors
-			</h2>
-			<ul>
-				<li>Kerrick Long (kerrick.long@gmail.com)
-				</li>
-			</ul>
-			<h2>
-				Contact
-			</h2>
-			<ul>
-				<li>Kerrick Long (kerrick.long@gmail.com)
-				</li>
-			</ul>
-			<h2>
-				Download
-			</h2>
-			<p>
-				You can download this project in either <a href="http://github.com/Kerrick/Mostly-Harmless/zipball/master">zip</a> or <a href="http://github.com/Kerrick/Mostly-Harmless/tarball/master">tar</a> formats.
-			</p>
-			<p>
-				You can also clone the project with <a href="http://git-scm.com">Git</a> by running:
-			</p>
-			<pre>
-$ git clone git://github.com/Kerrick/Mostly-Harmless
-</pre>
-			<div class="footer">
-				get the source code on GitHub : <a href="http://github.com/Kerrick/Mostly-Harmless">Kerrick/Mostly-Harmless</a>
+			<div class="article" id="open-source">
+				<h2>Download the Source</h2>
+				<p><a href="#download">Please see the Download section for now.</a></p>
+				<h2>Submit a Ticket</h2>
+				<p>I need to write something about feature requests and bug reports.</p>
+				<h2>Fork me on Github</h2>
+				<p>I need to write something about Github forking and pull requests.</p>
 			</div>
-		</div><script type="text/javascript">
-//<![CDATA[
-		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-		//]]>
-		</script><script type="text/javascript">
-//<![CDATA[
-		try {
-		var pageTracker = _gat._getTracker("UA-18432597-7");
-		pageTracker._trackPageview();
-		} catch(err) {}
-		//]]>
+			<div class="article" id="credits">
+				<h2>Dependencies &amp; Libraries</h2>
+				<ul>
+					<li><a href="http://code.google.com/chrome/extensions/docs.html"><strong>Chrome Extensions</strong>Everything Google Chrome!</a></li
+					><li><a href="https://github.com/reddit/reddit/"><strong>Reddit API 1.0</strong>Everything reddit!</a></li
+					><li><a href="https://github.com/frankkohlhepp/fancy-settings"><strong>Fancy Settings 1.2</strong>Chrome extension settings</a></li
+					><li><a href="https://github.com/frankkohlhepp/store-js"><strong>Store.js 2.3</strong><code>localStorage</code> abstraction</a></li>
+				</ul>
+				<h2>Authors &amp; Contributors</h2>
+				<ul>
+					<li><a href="http://www.reddit.com/user/KerrickLong/"><strong>Kerrick Long</strong>Mostly Harmless Creator</a></li
+					><li><a href="http://www.reddit.com/user/benjaminmktn121/"><strong>benjaminmktn121</strong>Beta Tester</a></li
+					><li><a href="http://www.reddit.com/user/MrArmStrong/"><strong>MrArmStrong</strong>Beta Tester</a></li
+					><li><a href="http://www.reddit.com/user/iamfromreallife/"><strong>iamfromreallife</strong>Beta Tester</a></li>
+				</ul>
+			</div>
+			<div class="article" id="license">
+				<h2>MIT License</h2>
+				<blockquote id="license">
+					<p>Copyright &copy; 2011 by Kerrick Long</p>
+					<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+					<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+					<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+				</blockquote>
+			</div>
+		</div>
+		<a href="http://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://gs1.wac.edgecastcdn.net/80460E/assets/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+		<div class="footer">
+			<p>&copy; 2011 <a href="http://www.kerricklong.com/">Kerrick Long</a>, under the <a href="#open-source">MIT License</a>.</p>
+		</div>
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			try {
+				var pageTracker = _gat._getTracker("UA-10562222-1");
+				pageTracker._trackPageview();
+			} 
+			catch (err) {
+			}
 		</script>
 	</body>
 </html>
