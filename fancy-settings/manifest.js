@@ -4,6 +4,70 @@ this.manifest = {
     "icon": "/pix/alien.png",
     "settings": [
         {
+        	"tab": "Preferences",
+        	"group": "Fresh Content",
+        	"name": "freshCutoff",
+        	"type": "slider",
+        	"label": "",
+        	"max": 91,
+        	"min": 1,
+        	"step": 1,
+        	"display": true,
+        	"displayModifier": function(value) {
+        		if(value === 1)
+        			return "Show posts less than " + value.toString() + " day old";
+        		if(value <= 2 * 7)
+        			return "Show posts less than " + value.toString() + " days old";
+        		if(value > 2 * 7 && value < 7 * 7)
+        			return "Show posts less than " + Math.floor(value / 7).toString() + " weeks old";
+        		if(value >= 7 * 7 && value < 91)
+        			return "Show posts less than " + Math.ceil(value / 30).toString() + " months old";
+        		return "Show posts from all time";
+        	}
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Fresh Content",
+        	"name": "freshCutoffDescription",
+        	"type": "description",
+        	"text": "<p>This setting allows you to choose the oldest reddit posts you&rsquo;d like to see. Anything posted before the value you&rsquo;ve chosen will be indicated in the browser button's total, but will not be shown in the popup."
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Popup Width",
+        	"name": "popupWidth",
+        	"type": "slider",
+        	"label": "",
+        	"max": 784,
+        	"min": 480,
+        	"step": 1,
+        	"display": true,
+        	"displayModifier": function(value) {
+        		return value.toString() + "px";
+        	}
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Popup Width",
+        	"name": "popupWidthDescription",
+        	"type": "description",
+        	"text": "<p>This setting allows you to set the width of the browser action popup."
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Shameless Plug",
+        	"name": "shamelessPlug",
+        	"type": "checkbox",
+        	"label": "Show the shameless plug",
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Shameless Plug",
+        	"name": "shamelessPlugDescription",
+        	"type": "description",
+        	"text": "<p>When checked, this will add the following to each commment you post from within Mostly Harmless:</p><p><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em></p>"
+        },
+        {
         	"tab": "Performance",
         	"group": "Cache Time",
         	"name": "cacheTime",
@@ -87,56 +151,6 @@ this.manifest = {
         	"name": "excludedRegexDescription",
         	"type": "description",
         	"text": "<p>Put regular expressions, one per line, in the above text box. Please do not use the <code>\\n</code> character, because there should be no newlines in a URL. Any page that matches the listed regular expressions will <strong>not</strong> activate Mostly Harmless."
-        },
-        {
-        	"tab": "Preferences",
-        	"group": "Fresh Content",
-        	"name": "freshCutoff",
-        	"type": "slider",
-        	"label": "",
-        	"max": 91,
-        	"min": 1,
-        	"step": 1,
-        	"display": true,
-        	"displayModifier": function(value) {
-        		if(value === 1)
-        			return "Show posts less than " + value.toString() + " day old";
-        		if(value <= 2 * 7)
-        			return "Show posts less than " + value.toString() + " days old";
-        		if(value > 2 * 7 && value < 7 * 7)
-        			return "Show posts less than " + Math.floor(value / 7).toString() + " weeks old";
-        		if(value >= 7 * 7 && value < 91)
-        			return "Show posts less than " + Math.ceil(value / 30).toString() + " months old";
-        		return "Show posts from all time";
-        	}
-        },
-        {
-        	"tab": "Preferences",
-        	"group": "Fresh Content",
-        	"name": "freshCutoffDescription",
-        	"type": "description",
-        	"text": "<p>This setting allows you to choose the oldest reddit posts you&rsquo;d like to see. Anything posted before the value you&rsquo;ve chosen will be indicated in the browser button's total, but will not be shown in the popup."
-        },
-        {
-        	"tab": "Preferences",
-        	"group": "Popup Width",
-        	"name": "popupWidth",
-        	"type": "slider",
-        	"label": "",
-        	"max": 784,
-        	"min": 480,
-        	"step": 1,
-        	"display": true,
-        	"displayModifier": function(value) {
-        		return value.toString() + "px";
-        	}
-        },
-        {
-        	"tab": "Preferences",
-        	"group": "Popup Width",
-        	"name": "popupWidthDescription",
-        	"type": "description",
-        	"text": "<p>This setting allows you to set the width of the browser action popup."
         }
     ]
 };

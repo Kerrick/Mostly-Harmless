@@ -11,3 +11,6 @@
 textarea {
 	font-family: Consolas, "Lucida Console", Monaco, monospace
 }
+.setting.label.checkbox {
+	color: #666;
+}

@@ -4,7 +4,8 @@ settings = new Store('settings', {
 	'cacheTime': 3,
 	'timeoutLength': 5,
 	'freshCutoff': 7,
-	'popupWidth': 640
+	'popupWidth': 640,
+	'shamelessPlug': false
 });
 cache = new Store('cache');
 
@@ -634,7 +635,7 @@ RedditAPI.prototype.reportPost = function (e) {
  * @method
  */
 RedditAPI.prototype.submitComment = function (e) {
-	var listItem, fullName, status, submitButton, cancelButton, textarea, formData;
+	var listItem, fullName, status, submitButton, cancelButton, textarea, comment, formData;
 	
 	function afterSubmission (response) {
 		var url, oldCache;
@@ -659,13 +660,14 @@ RedditAPI.prototype.submitComment = function (e) {
 	status = submitButton.parentNode.getElementsByClassName('status')[0];
 	cancelButton = submitButton.parentNode.getElementsByClassName('cancel')[0];
 	textarea = e.srcElement.parentNode.getElementsByTagName('textarea')[0];
+	comment = settings.get('shamelessPlug') ? textarea.value + '\n\n*Posted from [Mostly Harmless](http://kerrick.github.com/Mostly-Harmless), a Google Chrome extension for awesome redditors.*' : textarea.value;
 	
 	if (textarea.value === '') {
 		status.innerHTML = 'There needs to be something here.';
 	} else {
 		formData = new FormData();
 		formData.append('thing_id', fullName);
-		formData.append('text', textarea.value);
+		formData.append('text', comment);
 		formData.append('uh', cache.get('modhash'));
 		status.innerHTML = 'submitting...';
 		try {
