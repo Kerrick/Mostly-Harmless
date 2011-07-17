@@ -3,19 +3,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 :focus{outline:0;}
 ol,ul{list-style:none;}
 
-/*The fonts included are copyrighted by the vendor listed below.
- * @vendor:     The League of Moveable Type
- * @vendorurl:  http://www.theleagueofmoveabletype.com
- * @licenseurl: http://www.fontsquirrel.com/license/ChunkFive
- */
-@font-face {font-family: 'ChunkFiveRegular';src: url('fonts/Chunkfive.eot');src: local('ChunkFive Regular'), local('ChunkFive'), url('fonts/Chunkfive.woff') format('woff'), url('fonts/Chunkfive.otf') format('opentype'), url('fonts/Chunkfive.svg#ChunkFive') format('svg');}
-@font-face {font-family: 'OstrichSansBold';src: url('fonts/ostrich-bold-webfont.eot');src: url('fonts/ostrich-bold-webfont.eot?#iefix') format('embedded-opentype'),url('fonts/ostrich-bold-webfont.woff') format('woff'),url('fonts/ostrich-bold-webfont.ttf') format('truetype'),url('fonts/ostrich-bold-webfont.svg#OstrichSansBold') format('svg');font-weight: normal;font-style: normal;}
-@font-face {font-family: 'OstrichSansBlack';src: url('fonts/ostrich-black-webfont.eot');src: url('fonts/ostrich-black-webfont.eot?#iefix') format('embedded-opentype'),url('fonts/ostrich-black-webfont.woff') format('woff'),url('fonts/ostrich-black-webfont.ttf') format('truetype'),url('fonts/ostrich-black-webfont.svg#OstrichSansBlack') format('svg');font-weight: normal;font-style: normal;}
-
 /* Page Styles  */
 html{background:#5f99cf url(bg.gif) top center no-repeat;}
 body{overflow-y:scroll;-moz-border-radius:10px;-moz-box-shadow:rgba(34,34,34,.8) 0 5px 10px;-webkit-border-radius:10px;-webkit-box-shadow:rgba(34,34,34,.8) 0 5px 10px;background:#ddd;border:1px solid #fff;color:#000;line-height:1;margin:20px auto;padding:15px 15px 0;width:830px;}
-h1 {color: #444;text-shadow: 0px 2px 2px #fff;font:bold 144px OstrichSansBold, Arial, Helvetica, sans-serif;line-height:120px;text-transform:uppercase;text-align:center;border-bottom:1px solid #a6a6a6;letter-spacing:-5px;margin: 0 -16px;padding: 0 0 8px;}
+h1 {color: #444;text-shadow: 0px 2px 2px #fff;font:normal 100px 'Carter One', sans-serif;line-height:120px;text-indent:-10px;text-transform:uppercase;text-align:center;border-bottom:1px solid #a6a6a6;letter-spacing:-5px;margin: 0 -16px;padding: 0 0 8px;}
 p a, ol a{color:#fff;text-decoration:none;border-bottom:1px solid #fff;}
 p a:hover, ol a:hover{color:#bbb;border-bottom:1px solid #bbb;}
 code, pre{font-family:Consolas, 'Courier New', monospace;}
