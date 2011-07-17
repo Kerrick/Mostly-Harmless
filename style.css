@@ -5,7 +5,7 @@ ol,ul{list-style:none;}
 
 /* Page Styles  */
 html{background:#5f99cf url(bg.gif) top center no-repeat;}
-body{overflow-y:scroll;-moz-border-radius:10px;-moz-box-shadow:rgba(34,34,34,.8) 0 5px 10px;-webkit-border-radius:10px;-webkit-box-shadow:rgba(34,34,34,.8) 0 5px 10px;background:#ddd;border:1px solid #fff;color:#000;line-height:1;margin:20px auto;padding:15px 15px 0;width:830px;}
+body{overflow-y:scroll;-moz-border-radius:10px;-moz-box-shadow:rgba(34,34,34,.8) 0 5px 10px;-webkit-border-radius:10px;-webkit-box-shadow:rgba(34,34,34,.8) 0 5px 10px;background:#ddd;border:1px solid #fff;color:#000;line-height:1;margin:20px auto 65px;padding:15px 15px 0;width:830px;}
 h1 {color: #444;text-shadow: 0px 2px 2px #fff;font:normal 100px 'Carter One', sans-serif;line-height:90px;text-indent:-10px;text-transform:uppercase;text-align:center;border-bottom:1px solid #a6a6a6;letter-spacing:-5px;margin: 0 -16px;padding: 0 0 8px;}
 p a, ol a{color:#fff;text-decoration:none;border-bottom:1px solid #fff;}
 p a:hover, ol a:hover{color:#bbb;border-bottom:1px solid #bbb;}
@@ -32,5 +32,5 @@ div.article ul li a[href*='github.com/reddit/reddit']{background-image:url(icons
 div.article ul li a[href*='frankkohlhepp']{background-image:url(icons/frank.png);}
 div.article ul li a[href*='chrome/extensions']{background-image:url(icons/chrome.png);}
 div.article ul li a[href*='user/KerrickLong']{background-image:url(icons/kerrick.png);}
-div.footer{bottom:5px;color:#fff;font:10px Arial, Helvetica, sans-serif;line-height:14px;position:absolute;right:5px;text-align:right;z-index:-1;}
-#guide{font: 100px / 90px 'Carter One', sans-serif;position: absolute;bottom: -45px;left: 0;text-align: center;width: 100%;display: block;text-transform: uppercase;color: rgba(255, 255, 255, 0.5);z-index: 5;-webkit-text-stroke: 2px black;}
+div.footer{bottom:5px;color:#fff;font:10px Arial, Helvetica, sans-serif;line-height:14px;position:fixed;right:5px;text-align:right;z-index:-1;}
+#guide{font: 100px / 90px 'Carter One', sans-serif;position: fixed;bottom: -45px;left: 0;text-align: center;width: 100%;display: block;text-transform: uppercase;color: rgba(255, 255, 255, 0.5);z-index: 5;-webkit-text-stroke: 2px black;}
