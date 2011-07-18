@@ -340,10 +340,10 @@
 		"message": "to"
 	},
 	"add_comment_zero": {
-		"message": "add to the one comment"
+		"message": "add a comment"
 	},
 	"add_comment_one": {
-		"message": "add a comment"
+		"message": "add to the one comment"
 	},
 	"add_comment_many": {
 		"message": "add to the $NUM$ comments",
@@ -358,7 +358,7 @@
 		"message": "Leave a comment"
 	},
 	"stale_posts_hiding": {
-		"message": "Hiding $NUM$ stale posts. $BEGIN_LINK_SHOW$Show them now$END_LINK_SHOW, or visit the $BEGIN_LINK_OPTIONS$options page$END_LINK_OPTIONS$ to change your Fresh Content preferences.",
+		"message": "Hiding $NUM$ stale posts. $BEGIN_LINK_SHOW$Show them now$END_LINK_SHOW$, or visit the $BEGIN_LINK_OPTIONS$options page$END_LINK_OPTIONS$ to change your Fresh Content preferences.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",

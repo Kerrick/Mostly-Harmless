@@ -784,10 +784,10 @@ Popup.prototype.createListHTML = function (url) {
 							listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + chrome.i18n.getMessage('add_comment_zero') + '</a>';
 							break;
 						case 1:
-							listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + chrome.i18n.getMessage('add_comment_zero') + '</a>';
+							listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + chrome.i18n.getMessage('add_comment_one') + '</a>';
 							break;
 						default:
-							listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + chrome.i18n.getMessage('add_comment_zero', data.num_comments.toString()) + '</a>';
+							listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + chrome.i18n.getMessage('add_comment_many', data.num_comments.toString()) + '</a>';
 							break;
 					}
 					listHTML += '<a class="share">' + chrome.i18n.getMessage('action_share') + '</a>';
