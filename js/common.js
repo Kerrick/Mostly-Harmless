@@ -753,7 +753,7 @@ function Background() {
  */
 Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 	if (info.status === 'loading') {
-		if (settings.get('waitForClick') === 'true') {
+		if (settings.get('waitForClick') === false) {
 			if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
 				console.log(chrome.i18n.getMessage('loading_api'));
 				console.log(utils.parseURL(tab.url));
