@@ -1,0 +1,392 @@
+{
+	"just_now": {
+		"message": "just now",
+		"description": "Describe that something just happened."
+		
+	},
+	"a_minute_ago": {
+		"message": "a minute ago",
+		"description": "Describe that something happened a minute ago."
+		
+	},
+	"a_minute_from_now": {
+		"message": "a minute from now",
+		"decription": "Describe that something will happen in a minute."
+	},
+	"minutes_ago": {
+		"message": "$NUM$ minutes ago",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"minutes_from_now": {
+		"message": "$NUM$ minutes from now",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"an_hour_ago": {
+		"message": "an hour ago",
+		"description": "Describe that something happened an hour ago."
+	},
+	"an_hour_from_now": {
+		"message": "an hour from now",
+		"description": "Describe that will happen in an hour."
+	},
+	"hours_ago": {
+		"message": "$NUM$ hours ago",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"hours_from_now": {
+		"message": "$NUM$ hours from now",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"yesterday": {
+		"message": "yesterday",
+		"description": "The day before today."
+	},
+	"tomorrow": {
+		"message": "tomorrow",
+		"description": "The day after today."
+	},
+	"days_ago": {
+		"message": "$NUM$ days ago",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"days_from_now": {
+		"message": "$NUM$ days from now",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_week": {
+		"message": "last week",
+		"description": "The week before this one."
+	},
+	"next_week": {
+		"message": "next week",
+		"description": "The week after this one."
+	},
+	"weeks_ago": {
+		"message": "$NUM$ weeks ago",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"weeks_from_now": {
+		"message": "$NUM$ weeks from now",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_month": {
+		"message": "last month",
+		"description": "The month before this one."
+	},
+	"next_month": {
+		"message": "next month",
+		"description": "The month after this one."
+	},
+	"months_ago": {
+		"message": "$NUM$ months ago",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"months_from_now": {
+		"message": "$NUM$ months from now",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_year": {
+		"message": "last year",
+		"description": "The year before this one."
+	},
+	"next_year": {
+		"message": "next year",
+		"description": "The year after this one."
+	},
+	"years_ago": {
+		"message": "$NUM$ years ago",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"years_from_now": {
+		"message": "$NUM$ years from now",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_century": {
+		"message": "last century",
+		"description": "The century before this one."
+	},
+	"next_century": {
+		"message": "next century",
+		"description": "The century after this one."
+	},
+	"centuries_ago": {
+		"message": "$NUM$ centuries ago",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"centuries_from_now": {
+		"message": "$NUM$ centuries from now",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"not_activated": {
+		"message": "$APPNAME$ is not activated for this page. Click to activate.",
+		"placeholders": {
+			"APPNAME": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"loading": {
+		"message": "Loading data..."
+	},
+	"viewing_comments": {
+		"message": "You are currently viewing the comments for this page."
+	},
+	"submit_page": {
+		"message": "Submit this page to $REDDIT$.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_num_times": {
+		"message": "This page has been submitted $NUM$ times.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"login": {
+		"message": "You have to be logged in to do that. $BEGIN_LINK$Click to open the login page.$END_LINK$",
+		"placeholders": {
+			"BEGIN_LINK": {
+				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
+			},
+			"END_LINK": {
+				"content": "</a>"
+			}
+		}
+	},
+	"api_error": {
+		"message": "There was an API error. HTTP Status: $STATUS$. Click to try again.",
+		"placeholders": {
+			"STATUS": {
+				"content": "$1",
+				"example": "504"
+			}
+		}
+	},
+	"api_timeout": {
+		"message": "The API timed out after $NUM$ seconds. Click to try again.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"action_unsave": {
+		"message": "unsave"
+	},
+	"action_save": {
+		"message": "save"
+	},
+	"action_unhide": {
+		"message": "unhide"
+	},
+	"action_hide": {
+		"message": "hide"
+	},
+	"action_share": {
+		"message": "share"
+	},
+	"report_confirm": {
+		"message": "are you sure? $BEGIN_LINK_YES$yes$END_LINK_YES$/$BEGIN_LINK_NO$no$END_LINK_NO$",
+		"placeholders": {
+			"BEGIN_LINK_YES": {
+				"content": "<a onclick=\"reddit.reportPost(event)\">"
+			},
+			"END_LINK_YES": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_NO": {
+				"content": "<a onclick=\"reddit.denyReport(event)\">"
+			},
+			"END_LINK_NO": {
+				"content": "</a>"
+			}
+		}
+	},
+	"action_report": {
+		"message": "report"
+	},
+	"action_reported": {
+		"message": "reported!"
+	},
+	"button_submit": {
+		"message": "submit"
+	},
+	"button_hide": {
+		"message": "hide this form"
+	},
+	"error_empty": {
+		"message": "There needs to be something here."
+	},
+	"loading_api": {
+		"message": "Loading data from the API..."
+	},
+	"loading_cache": {
+		"message": "Loading data from the cache..."
+	},
+	"loading_cache": {
+		"message": "Cannot create list for a URL that has not been cached."
+	},
+	"score": {
+		"message": "$UPS$ upvotes, $DOWNS$ downvotes.",
+		"placeholders": {
+			"UPS": {
+				"content": "$1",
+				"example": "435"
+			},
+			"DOWNS": {
+				"content": "$2",
+				"example": "243"
+			}
+		}
+	},
+	"view_on_reddit": {
+		"message": "View this post on $REDDIT$",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_when": {
+		"message": "submitted $TIME$",
+		"placeholders": {
+			"TIME": {
+				"content": "$1",
+				"example": "an hour ago"
+			}
+		}
+	},
+	"by": {
+		"message": "by"
+	},
+	"to": {
+		"message": "to"
+	},
+	"add_comment_zero": {
+		"message": "add to the one comment"
+	},
+	"add_comment_one": {
+		"message": "add a comment"
+	},
+	"add_comment_many": {
+		"message": "add to the $NUM$ comments",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "42"
+			}
+		}
+	},
+	"leave_comment": {
+		"message": "Leave a comment"
+	},
+	"stale_posts_hiding": {
+		"message": "Hiding $NUM$ stale posts. $BEGIN_LINK_SHOW$Show them now$END_LINK_SHOW, or visit the $BEGIN_LINK_OPTIONS$options page$END_LINK_OPTIONS$ to change your Fresh Content preferences.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			},
+			"BEGIN_LINK_SHOW": {
+				"content": "<a onclick=\"popup.showStalePosts()\">"
+			},
+			"END_LINK_SHOW": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"stale_posts_showing": {
+		"message": "Showing stale posts. Visit the $BEGIN_LINK_OPTIONS$options page$END_LINK_OPTIONS$ to change your Fresh Content preferences.",
+		"placeholders": {
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	}
+}

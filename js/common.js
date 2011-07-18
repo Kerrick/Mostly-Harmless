@@ -78,20 +78,20 @@ MHUtils.prototype.forEach = function (array, action) {
 // long ago the date represents.
 MHUtils.prototype.prettyDate = function (date_str) {
   var time_formats = [
-  [60, 'just now', 1], // 60
-  [120, '1 minute ago', '1 minute from now'], // 60*2
+  [60, 'just_now', 1], // 60
+  [120, 'a_minute_ago', 'a_minute_from_now'], // 60*2
   [3600, 'minutes', 60], // 60*60, 60
-  [7200, '1 hour ago', '1 hour from now'], // 60*60*2
+  [7200, 'an_hour_ago', 'an_hour_from_now'], // 60*60*2
   [86400, 'hours', 3600], // 60*60*24, 60*60
   [172800, 'yesterday', 'tomorrow'], // 60*60*24*2
   [604800, 'days', 86400], // 60*60*24*7, 60*60*24
-  [1209600, 'last week', 'next week'], // 60*60*24*7*4*2
+  [1209600, 'last_week', 'next_week'], // 60*60*24*7*4*2
   [2419200, 'weeks', 604800], // 60*60*24*7*4, 60*60*24*7
-  [4838400, 'last month', 'next month'], // 60*60*24*7*4*2
+  [4838400, 'last_month', 'next_month'], // 60*60*24*7*4*2
   [29030400, 'months', 2419200], // 60*60*24*7*4*12, 60*60*24*7*4
-  [58060800, 'last year', 'next year'], // 60*60*24*7*4*12*2
+  [58060800, 'last_year', 'next_year'], // 60*60*24*7*4*12*2
   [2903040000, 'years', 29030400], // 60*60*24*7*4*12*100, 60*60*24*7*4*12
-  [5806080000, 'last century', 'next century'], // 60*60*24*7*4*12*100*2
+  [5806080000, 'last_century', 'next_century'], // 60*60*24*7*4*12*100*2
   [58060800000, 'centuries', 2903040000] // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
 ];
   var time = ('' + date_str).replace(/-/g,"/").replace(/[TZ]/g," ");
@@ -101,15 +101,15 @@ MHUtils.prototype.prettyDate = function (date_str) {
   var token = 'ago', list_choice = 1;
   if (seconds < 0) {
 	seconds = Math.abs(seconds);
-	token = 'from now';
+	token = 'from_now';
 	list_choice = 2;
   }
   var i = 0, format;
   while (format = time_formats[i++]) if (seconds < format[0]) {
 	if (typeof format[2] == 'string')
-	  return format[list_choice];
+	  return chrome.i18n.getMessage(format[list_choice]);
 	else
-	  return Math.floor(seconds / format[2]) + ' ' + format[1] + ' ' + token;
+	  return chrome.i18n.getMessage(format[1] + '_' + token, Math.floor(seconds / format[2]).toString());
   }
   return time;
 };
@@ -170,7 +170,7 @@ BrowserAction.prototype.setBadgeDefaults = function (tabId) {
 BrowserAction.prototype.setBadgeIgnore = function (tabId) {
 	chrome.browserAction.setIcon({'path': '/pix/alien-fade.png', 'tabId': tabId});
 	chrome.browserAction.setBadgeText({'text': '', 'tabId': tabId});
-	chrome.browserAction.setTitle({'title': 'Mostly Harmless is not activated for this page. Click to activate.', 'tabId': tabId});
+	chrome.browserAction.setTitle({'title': chrome.i18n.getMessage('not_activated'), 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
 	chrome.browserAction.onClicked.addListener(function(tab) {
 		reddit.getInfo(tab.url, tab.id);
@@ -188,7 +188,7 @@ BrowserAction.prototype.setBadgeIgnore = function (tabId) {
 BrowserAction.prototype.setBadgeLoading = function (tabId) {
 	chrome.browserAction.setIcon({'path': '/pix/alien.png', 'tabId': tabId});
 	chrome.browserAction.setBadgeText({'text': '', 'tabId': tabId});
-	chrome.browserAction.setTitle({'title': 'Loading data...', 'tabId': tabId});
+	chrome.browserAction.setTitle({'title': chrome.i18n.getMessage('loading'), 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
 	return true;
 };
@@ -229,17 +229,17 @@ BrowserAction.prototype.setBadgeFor = function (url, tabId) {
 	
 	if (cachedPosts.isCommentsPage === true) {
 		chrome.browserAction.setBadgeText({'text': '...', 'tabId': tabId});
-		chrome.browserAction.setTitle({'title': 'You are currently viewing the comments for this page.', 'tabId': tabId});
+		chrome.browserAction.setTitle({'title': chrome.i18n.getMessage('viewing_comments'), 'tabId': tabId});
 		chrome.browserAction.setBadgeBackgroundColor({'color': [95, 153, 207, 255], 'tabId': tabId});
 		chrome.browserAction.setPopup({popup: '/html/popup.html', tabId: tabId});
 	} else if (cachedPosts.count === 0) {
 		chrome.browserAction.setBadgeText({'text': '+', 'tabId': tabId});
-		chrome.browserAction.setTitle({'title': 'Submit this page.', 'tabId': tabId});
+		chrome.browserAction.setTitle({'title': chrome.i18n.getMessage('submit_page'), 'tabId': tabId});
 		chrome.browserAction.setBadgeBackgroundColor({'color': [0, 0, 0, 255], 'tabId': tabId});
 		chrome.browserAction.setPopup({popup: '/html/popup.html', tabId: tabId});
 	} else {
 		chrome.browserAction.setBadgeText({'text': cachedPosts.count.toString(), 'tabId': tabId});
-		chrome.browserAction.setTitle({'title': 'This page has been submitted ' + cachedPosts.count.toString() + ' times.', 'tabId': tabId});
+		chrome.browserAction.setTitle({'title': chrome.i18n.getMessage('submitted_num_times', cachedPosts.count.toString()), 'tabId': tabId});
 		chrome.browserAction.setBadgeBackgroundColor({'color': [255, 69, 0, 255], 'tabId': tabId});
 		chrome.browserAction.setPopup({popup: '/html/popup.html', tabId: tabId});
 	}
@@ -284,7 +284,7 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 		if (req.readyState === 4) {
 			if (req.status === 200) {
 				if (JSON.parse(req.responseText).jquery && JSON.parse(req.responseText).jquery[3][3][0] === '.error.USER_REQUIRED') {
-					throw 'You have to be logged in to do that. <a href="http://www.reddit.com/login" target="_blank">Click to open the login page.</a>';
+					throw chrome.i18n.getMessage('login');
 				}
 				
 				clearTimeout(apiTimeout);
@@ -294,14 +294,14 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 				}
 				return JSON.parse(req.responseText);
 			} else {
-				throw 'API Error. HTTP Status: ' + req.status + '. Try again?';
+				throw chrome.i18n.getMessage('api_error', req.status.toString());
 			}
 		}
 	}
 	
 	function handleTimeout () {
 		req.abort();
-		throw 'API Timeout after ' + settings.get('timeoutLength') + ' seconds. Click to try again.';
+		throw chrome.i18n.getMessage('api_timeout', settings.get('timeoutLength').toString());
 	}
 	
 	req = new XMLHttpRequest();
@@ -356,14 +356,14 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 				button.setBadgeFor(url, tabId);
 				return true;
 			} else {
-				button.setBadgeError(tabId, 'API Error. HTTP Status: ' + req.status + '. Click to try again.');
+				button.setBadgeError(tabId, chrome.i18n.getMessage('api_error', req.status.toString()));
 			}
 		}
 	}
 	
 	function handleTimeout () {
 		req.abort();
-		button.setBadgeError(tabId, 'API Timeout after ' + settings.get('timeoutLength') + ' seconds. Click to try again.');
+		button.setBadgeError(tabId, chrome.i18n.getMessage('api_timeout', settings.get('timeoutLength').toString()));
 	}
 	
 	button.setBadgeLoading(tabId);
@@ -484,7 +484,7 @@ RedditAPI.prototype.savePost = function (e) {
 	listItem.setAttribute('data-saved', 'true');
 	listItem.className.replace(/\bsaved\b/,'');
 	listItem.className += ' unsave';
-	e.srcElement.innerHTML = 'unsave';
+	e.srcElement.innerHTML = chrome.i18n.getMessage('action_unsave');
 	e.srcElement.onclick = function (event) {reddit.unsavePost(event)};
 	oldCache.posts[fullName].data.saved = true;
 	cache.set(url, oldCache);
@@ -512,7 +512,7 @@ RedditAPI.prototype.unsavePost = function (e) {
 	listItem.setAttribute('data-saved', 'false');
 	listItem.className.replace(/\bunsave\b/,'');
 	listItem.className += ' saved';
-	e.srcElement.innerHTML = 'save';
+	e.srcElement.innerHTML = chrome.i18n.getMessage('action_save');
 	e.srcElement.onclick = function (event) {reddit.savePost(event)};
 	oldCache.posts[fullName].data.saved = false;
 	cache.set(url, oldCache);
@@ -538,7 +538,7 @@ RedditAPI.prototype.hidePost = function (e) {
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
 	listItem.setAttribute('data-hidestatus', 'true');
-	e.srcElement.innerHTML = 'unhide';
+	e.srcElement.innerHTML = chrome.i18n.getMessage('action_unhide');
 	e.srcElement.onclick = function (event) {reddit.unhidePost(event)};
 	oldCache.posts[fullName].data.hidden = true;
 	cache.set(url, oldCache);
@@ -564,7 +564,7 @@ RedditAPI.prototype.unhidePost = function (e) {
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
 	listItem.setAttribute('data-hidestatus', 'false');
-	e.srcElement.innerHTML = 'hide';
+	e.srcElement.innerHTML = chrome.i18n.getMessage('action_hide');
 	e.srcElement.onclick = function (event) {reddit.hidePost(event)};
 	oldCache.posts[fullName].data.hidden = false;
 	cache.set(url, oldCache);
@@ -581,7 +581,7 @@ RedditAPI.prototype.unhidePost = function (e) {
 RedditAPI.prototype.confirmReport = function (e) {
 	e.srcElement.className = 'report-confirm';
 	e.srcElement.removeAttribute('onclick');
-	e.srcElement.innerHTML = 'are you sure? <a onclick="reddit.reportPost(event)">yes</a>/<a onclick="reddit.denyReport(event)">no</a>';
+	e.srcElement.innerHTML = chrome.i18n.getMessage('report_confirm');
 	return true;
 };
 
@@ -595,7 +595,7 @@ RedditAPI.prototype.confirmReport = function (e) {
 RedditAPI.prototype.denyReport = function (e) {
 	e.srcElement.parentNode.className = 'report';
 	e.srcElement.parentNode.setAttribute('onclick', 'reddit.confirmReport(event)');
-	e.srcElement.parentNode.innerHTML = 'report';
+	e.srcElement.parentNode.innerHTML = chrome.i18n.getMessage('action_report');
 	return true;
 };
 
@@ -624,7 +624,7 @@ RedditAPI.prototype.reportPost = function (e) {
 	oldCache.posts[fullName].data.hidden = true;
 	cache.set(url, oldCache);
 	listItem.setAttribute('data-reportstatus', 'true');
-	e.srcElement.parentNode.innerHTML = 'reported!';
+	e.srcElement.parentNode.innerHTML = chrome.i18n.getMessage('action_reported');
 };
 
 /**
@@ -641,8 +641,8 @@ RedditAPI.prototype.submitComment = function (e) {
 		var url, oldCache;
 		
 		status.innerHTML = '';
-		submitButton.innerHTML = 'saved';
-		cancelButton.innerHTML = 'hide this form';
+		submitButton.innerHTML = chrome.i18n.getMessage('button_submit');
+		cancelButton.innerHTML = chrome.i18n.getMessage('button_hide');
 		submitButton.setAttribute('disabled');
 		textarea.setAttribute('readonly');
 		textarea.onkeyup = function () {return true;};
@@ -663,7 +663,7 @@ RedditAPI.prototype.submitComment = function (e) {
 	comment = settings.get('shamelessPlug') ? textarea.value + '\n\n*Posted from [Mostly Harmless](http://kerrick.github.com/Mostly-Harmless), a Google Chrome extension for awesome redditors.*' : textarea.value;
 	
 	if (textarea.value === '') {
-		status.innerHTML = 'There needs to be something here.';
+		status.innerHTML = chrome.i18n.getMessage('error_empty');
 	} else {
 		formData = new FormData();
 		formData.append('thing_id', fullName);
@@ -703,10 +703,10 @@ function Background() {
 Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 	if (info.status === 'loading') {
 		if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
-			console.log('Grabbing data from the API...');
+			console.log(chrome.i18n.getMessage('loading_api'));
 			reddit.getInfo(tab.url, tabId);
 		} else {
-			console.log('Grabbing data from the cache...');
+			console.log(chrome.i18n.getMessage('loading_cache'));
 			button.setBadgeFor(tab.url, tabId);
 		}
 	}
@@ -736,7 +736,7 @@ Popup.prototype.createListHTML = function (url) {
 	var listHTML, staleCounter;
 	
 	if (cache.get(url) === undefined) {
-		throw 'Cannot create list HTML for a non-cached URL.';
+		throw chrome.i18n.getMessage('error_not_cached');
 	}
 	
 	listHTML = '<ol id="posts" data-url="' + url + '" data-commentspage="' + cache.get(url).isCommentsPage.toString() + '">';
@@ -764,34 +764,44 @@ Popup.prototype.createListHTML = function (url) {
 		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
 			listHTML += '<div class="votes">';
 				listHTML += '<a class="upmod" onclick="reddit.voteUpPost(event)"></a>';
-				listHTML += '<span class="count" id="count_' + data.name + '" title="' + data.ups + ' up votes, ' + data.downs + ' down votes">' + data.score + '</span>';
+				listHTML += '<span class="count" id="count_' + data.name + '" title="' + chrome.i18n.getMessage('score', [data.ups.toString(), data.downs.toString()]) + '">' + data.score + '</span>';
 				listHTML += '<a class="downmod" onclick="reddit.voteDownPost(event)"></a>';
 			listHTML += '</div>';
-			listHTML += '<a class="thumblink" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="View this post on reddit">';
+			listHTML += '<a class="thumblink" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">';
 				listHTML += '<img class="thumb" src="' + thumbSrc + '" alt="' + data.title + '" width="70"/>';
 			listHTML += '</a>';
 			listHTML += '<div class="post">';
-				listHTML += '<a class="link" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="View this post on reddit">' + data.title + '</a> ';
+				listHTML += '<a class="link" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">' + data.title + '</a> ';
 				listHTML += '<a class="domain" href="http://www.reddit.com/domain/' + data.domain + '" target="_blank">(' + data.domain + ')</a>';
 				listHTML += '<div class="meta">';
-					listHTML += '<span class="timestamp">submitted ' + utils.prettyDate(utils.ISODateString(new Date(data.created_utc * 1000))) + '</span> by ';
-					listHTML += '<a class="submitter" href="http://www.reddit.com/user/' + data.author + '" target="_blank">' + data.author + '</a> to ';
+					listHTML += '<span class="timestamp">' + chrome.i18n.getMessage('submitted_when', utils.prettyDate(utils.ISODateString(new Date(data.created_utc * 1000)))) + '</span> ' + chrome.i18n.getMessage('by') + ' ';
+					listHTML += '<a class="submitter" href="http://www.reddit.com/user/' + data.author + '" target="_blank">' + data.author + '</a> ' + chrome.i18n.getMessage('to') + ' ';
 					listHTML += '<a class="subreddit" href="http://www.reddit.com/r/' + data.subreddit + '/" target="_blank">' + data.subreddit + '</a>';
 				listHTML += '</div>';
 				listHTML += '<div class="actions">';
-					listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">add to the ' + data.num_comments + ' comments</a>';
-					listHTML += '<a class="share">share</a>';
-					listHTML += '<a class="save" onclick="' + saveAction + '">' + saveText + '</a>';
-					listHTML += '<a class="hide" onclick="' + hideAction + '">' + hiddenText + '</a>';
-					listHTML += '<a class="report" onclick="reddit.confirmReport(event)">report</a>';
+					switch (data.num_comments) {
+						case 0:
+							listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + chrome.i18n.getMessage('add_comment_zero') + '</a>';
+							break;
+						case 1:
+							listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + chrome.i18n.getMessage('add_comment_zero') + '</a>';
+							break;
+						default:
+							listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + chrome.i18n.getMessage('add_comment_zero', data.num_comments.toString()) + '</a>';
+							break;
+					}
+					listHTML += '<a class="share">' + chrome.i18n.getMessage('action_share') + '</a>';
+					listHTML += '<a class="save" onclick="' + saveAction + '">' + chrome.i18n.getMessage('action_save') + '</a>';
+					listHTML += '<a class="hide" onclick="' + hideAction + '">' + chrome.i18n.getMessage('action_hide') + '</a>';
+					listHTML += '<a class="report" onclick="reddit.confirmReport(event)">' + chrome.i18n.getMessage('action_report') + '</a>';
 				listHTML += '</div>';
 			listHTML += '</div>';
 			listHTML += '<form class="comment">';
 				listHTML += '<fieldset>';
-					listHTML += '<legend>Leave a comment</legend>';
+					listHTML += '<legend>' + chrome.i18n.getMessage('leave_comment') + '</legend>';
 					listHTML += '<textarea rows="8" onkeyup="popup.cacheComment(event)" style="width:' + (settings.get('popupWidth') - 10) + 'px;">' + commentText + '</textarea>';
-					listHTML += '<button type="button" class="submit" onclick="reddit.submitComment(event)">save</button>';
-					listHTML += '<button type="button" class="cancel" onclick="this.parentNode.parentNode.style.display = \'none\'">cancel</button>';
+					listHTML += '<button type="button" class="submit" onclick="reddit.submitComment(event)">' + chrome.i18n.getMessage('button_submit') + '</button>';
+					listHTML += '<button type="button" class="cancel" onclick="this.parentNode.parentNode.style.display = \'none\'">' + chrome.i18n.getMessage('button_hide') + '</button>';
 					listHTML += '<span class="status"></span>';
 				listHTML += '</fieldset>';
 			listHTML += '</form>';
@@ -801,7 +811,7 @@ Popup.prototype.createListHTML = function (url) {
 	listHTML += '</ol>'
 	
 	if (staleCounter > 0) {
-		listHTML += '<div id="information">Hiding ' + staleCounter.toString() + ' stale posts. <a onclick="popup.showStalePosts()">Show them now</a>, or visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.</div>';
+		listHTML += '<div id="information">' + chrome.i18n.getMessage('stale_posts_hiding', staleCounter.toString()) + '</div>';
 	}
 	
 	return listHTML;
@@ -829,7 +839,7 @@ Popup.prototype.showStalePosts = function () {
 	var stalePosts;
 	
 	stalePosts = document.getElementsByClassName('stale');
-	document.getElementById('information').innerHTML = 'Showing stale posts. Visit the <a target="_blank" href="/fancy-settings/index.html">options page</a> to change your Fresh Content preferences.';
+	document.getElementById('information').innerHTML = chrome.i18n.getMessage('stale_posts_showing');
 	
 	while (stalePosts.length > 0) {
 		stalePosts[0].className = 'stale-shown';

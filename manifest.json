@@ -11,5 +11,6 @@
 		"tabs"
 	],
 	"background_page": "html/background.html",
-	"options_page": "fancy-settings/index.html"
+	"options_page": "fancy-settings/index.html",
+	"default_locale": "en_US"
 }
