@@ -77,41 +77,41 @@ MHUtils.prototype.forEach = function (array, action) {
 // Takes an ISO time and returns a string representing how
 // long ago the date represents.
 MHUtils.prototype.prettyDate = function (date_str) {
-  var time_formats = [
-  [60, 'just_now', 1], // 60
-  [120, 'a_minute_ago', 'a_minute_from_now'], // 60*2
-  [3600, 'minutes', 60], // 60*60, 60
-  [7200, 'an_hour_ago', 'an_hour_from_now'], // 60*60*2
-  [86400, 'hours', 3600], // 60*60*24, 60*60
-  [172800, 'yesterday', 'tomorrow'], // 60*60*24*2
-  [604800, 'days', 86400], // 60*60*24*7, 60*60*24
-  [1209600, 'last_week', 'next_week'], // 60*60*24*7*4*2
-  [2419200, 'weeks', 604800], // 60*60*24*7*4, 60*60*24*7
-  [4838400, 'last_month', 'next_month'], // 60*60*24*7*4*2
-  [29030400, 'months', 2419200], // 60*60*24*7*4*12, 60*60*24*7*4
-  [58060800, 'last_year', 'next_year'], // 60*60*24*7*4*12*2
-  [2903040000, 'years', 29030400], // 60*60*24*7*4*12*100, 60*60*24*7*4*12
-  [5806080000, 'last_century', 'next_century'], // 60*60*24*7*4*12*100*2
-  [58060800000, 'centuries', 2903040000] // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
+	var time_formats = [
+	[60, 'just_now', 1], // 60
+	[120, 'a_minute_ago', 'a_minute_from_now'], // 60*2
+	[3600, 'minutes', 60], // 60*60, 60
+	[7200, 'an_hour_ago', 'an_hour_from_now'], // 60*60*2
+	[86400, 'hours', 3600], // 60*60*24, 60*60
+	[172800, 'yesterday', 'tomorrow'], // 60*60*24*2
+	[604800, 'days', 86400], // 60*60*24*7, 60*60*24
+	[1209600, 'last_week', 'next_week'], // 60*60*24*7*4*2
+	[2419200, 'weeks', 604800], // 60*60*24*7*4, 60*60*24*7
+	[4838400, 'last_month', 'next_month'], // 60*60*24*7*4*2
+	[29030400, 'months', 2419200], // 60*60*24*7*4*12, 60*60*24*7*4
+	[58060800, 'last_year', 'next_year'], // 60*60*24*7*4*12*2
+	[2903040000, 'years', 29030400], // 60*60*24*7*4*12*100, 60*60*24*7*4*12
+	[5806080000, 'last_century', 'next_century'], // 60*60*24*7*4*12*100*2
+	[58060800000, 'centuries', 2903040000] // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
 ];
-  var time = ('' + date_str).replace(/-/g,"/").replace(/[TZ]/g," ");
-  then = new Date(time);
-  utcTime = Date.UTC(then.getFullYear(), then.getMonth(), then.getDate(), then.getHours(), then.getMinutes(), then.getSeconds(), then.getMilliseconds())
-  var seconds = (new Date - new Date(utcTime)) / 1000;
-  var token = 'ago', list_choice = 1;
-  if (seconds < 0) {
-	seconds = Math.abs(seconds);
-	token = 'from_now';
-	list_choice = 2;
-  }
-  var i = 0, format;
-  while (format = time_formats[i++]) if (seconds < format[0]) {
+	var time = ('' + date_str).replace(/-/g,"/").replace(/[TZ]/g," ");
+	then = new Date(time);
+	utcTime = Date.UTC(then.getFullYear(), then.getMonth(), then.getDate(), then.getHours(), then.getMinutes(), then.getSeconds(), then.getMilliseconds())
+	var seconds = (new Date - new Date(utcTime)) / 1000;
+	var token = 'ago', list_choice = 1;
+	if (seconds < 0) {
+		seconds = Math.abs(seconds);
+		token = 'from_now';
+		list_choice = 2;
+	}
+	var i = 0, format;
+	while (format = time_formats[i++]) if (seconds < format[0]) {
 	if (typeof format[2] == 'string')
-	  return chrome.i18n.getMessage(format[list_choice]);
+		return chrome.i18n.getMessage(format[list_choice]);
 	else
-	  return chrome.i18n.getMessage(format[1] + '_' + token, Math.floor(seconds / format[2]).toString());
-  }
-  return time;
+		return chrome.i18n.getMessage(format[1] + '_' + token, Math.floor(seconds / format[2]).toString());
+	}
+	return time;
 };
 
 /*
