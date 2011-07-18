@@ -5,7 +5,8 @@ settings = new Store('settings', {
 	'timeoutLength': 5,
 	'freshCutoff': 7,
 	'popupWidth': 640,
-	'shamelessPlug': false
+	'shamelessPlug': false,
+	'waitForClick': false
 });
 cache = new Store('cache');
 
@@ -752,13 +753,17 @@ function Background() {
  */
 Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 	if (info.status === 'loading') {
-		if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
-			console.log(chrome.i18n.getMessage('loading_api'));
-			console.log(utils.parseURL(tab.url));
-			reddit.getInfo(tab.url, tabId);
+		if (settings.get('waitForClick') === 'true') {
+			if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
+				console.log(chrome.i18n.getMessage('loading_api'));
+				console.log(utils.parseURL(tab.url));
+				reddit.getInfo(tab.url, tabId);
+			} else {
+				console.log(chrome.i18n.getMessage('loading_cache'));
+				button.setBadgeFor(tab.url, tabId);
+			}
 		} else {
-			console.log(chrome.i18n.getMessage('loading_cache'));
-			button.setBadgeFor(tab.url, tabId);
+			button.setBadgeIgnore(tabId);
 		}
 	}
 	

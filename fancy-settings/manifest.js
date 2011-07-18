@@ -117,6 +117,21 @@ this.manifest = {
         },
         {
         	"tab": "Privacy",
+        	"group": "Wait for Click",
+        	"name": "waitForClick",
+        	"type": "checkbox",
+        	"label": "Wait for click"
+        	
+        },
+        {
+        	"tab": "Privacy",
+        	"group": "Wait for Click",
+        	"name": "waitForClickDescription",
+        	"type": "description",
+        	"text": "<p>If this checkbox is selected, Mostly Harmless will not activate unless you click its icon.</p>"
+        },
+        {
+        	"tab": "Privacy",
         	"group": "Warning!",
         	"name": "excludedDescription",
         	"type": "description",
