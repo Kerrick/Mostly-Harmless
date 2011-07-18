@@ -1,6 +1,6 @@
 {
 	"name": "Mostly Harmless",
-	"version": "0.6.0",
+	"version": "0.6.1",
 	"description": "Easily see how many times URL has been posted to reddit, join the discussion, submit or repost it, and more!",
 	"browser_action": {
 		"default_icon": "pix/alien.png",
