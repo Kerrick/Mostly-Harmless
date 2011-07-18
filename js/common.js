@@ -21,6 +21,21 @@ function MHUtils() {
 }
 
 /**
+ * Convert an array to an object with properties of the array each having empty values, for use in "in" statements.
+ * @alias				MHUtils.objConvert(arr)
+ * @param	{Array}		arr	The array to be converted
+ * @return	{Object}		Returns the object
+ * @method
+ */
+MHUtils.prototype.objConvert = function (arr) {
+	var obj = {};
+	for (var i = 0; i < arr.length; i++) {
+		obj[arr[i]]='';
+	}
+	return obj;
+};
+
+/**
  * Escape special RegExp characters.
  * @alias				MHUtils.regexEscape(str)
  * @param	{String}	str	The string to be escaped
