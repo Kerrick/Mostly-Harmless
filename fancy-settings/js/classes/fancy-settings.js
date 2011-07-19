@@ -35,7 +35,12 @@
                 tab.content = this.tab.create();
                 tab.content.tab.set("text", params.tab);
                 this.search.bind(tab.content.tab);
-                
+
+                var anchor = location.hash.substring(1);
+                if (params.tab == i18n.get(anchor) || params.tab == anchor) {
+                    tab.content.activate();
+                }
+
                 tab.content = tab.content.content;
                 (new Element("h2", {
                     "text": params.tab
@@ -144,7 +149,7 @@
             });
             document.body.removeClass("measuring");
         }
-        
+
         if (callback !== undefined) {
             callback(settings);
         }

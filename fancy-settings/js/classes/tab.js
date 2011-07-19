@@ -20,6 +20,7 @@
             if (this.creator.activeBundle && this.creator.activeBundle !== this) {
                 this.creator.activeBundle.deactivate();
             }
+
             this.tab.addClass("active");
             this.content.addClass("show");
             this.creator.activeBundle = this;

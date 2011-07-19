@@ -222,6 +222,54 @@
         }
     });
     
+    Bundle.Textarea = new Class({
+        // label, text
+        // action -> change & keyup
+        "Extends": Bundle,
+        
+        "createDOM": function () {
+            this.bundle = new Element("div", {
+                "class": "setting bundle textarea"
+            });
+            
+            this.container = new Element("div", {
+                "class": "setting container textarea"
+            });
+            
+            this.element = new Element("textarea", {
+                "class": "setting element textarea"
+            });
+            
+            this.label = new Element("label", {
+                "class": "setting label textarea"
+            });
+        },
+        
+        "setupDOM": function () {
+            if (this.params.label !== undefined) {
+                this.label.set("html", this.params.label);
+                this.label.inject(this.container);
+                this.params.searchString += this.params.label + "•";
+            }
+            
+            this.element.inject(this.container);
+            this.container.inject(this.bundle);
+        },
+        
+        "addEvents": function () {
+            var change = (function (event) {
+                if (this.params.name !== undefined) {
+                    settings.set(this.params.name, this.get());
+                }
+                
+                this.fireEvent("action", this.get());
+            }).bind(this);
+            
+            this.element.addEvent("change", change);
+            this.element.addEvent("keyup", change);
+        }
+    });
+    
     Bundle.Checkbox = new Class({
         // label
         // action -> change
@@ -410,14 +458,66 @@
             });
             
             if (this.params.options === undefined) { return; }
-            this.params.options.each((function (option) {
-                this.params.searchString += (option[1] || option[0]) + "•";
-                
-                (new Element("option", {
-                    "value": option[0],
-                    "text": option[1] || option[0]
-                })).inject(this.element);
-            }).bind(this));
+
+            // convert array syntax into object syntax for options
+            function arrayToObject(option) {
+                if (typeOf(option) == "array") {
+                    option = {
+                        "value": option[0],
+                        "text": option[1] || option[0],
+                    };
+                }
+                return option;
+            }
+
+            // convert arrays
+            if (typeOf(this.params.options) == "array") {
+                var values = [];
+                this.params.options.each((function(values, option) {
+                    values.push(arrayToObject(option));
+                }).bind(this, values));
+                this.params.options = { "values": values };
+            }
+
+            var groups;
+            if (this.params.options.groups !== undefined) {
+                groups = {};
+                this.params.options.groups.each((function (groups, group) {
+                    this.params.searchString += (group) + "•";
+                    groups[group] = (new Element("optgroup", {
+                        "label": group,
+                    }).inject(this.element));
+                }).bind(this, groups));
+            }
+
+            if (this.params.options.values !== undefined) {
+                this.params.options.values.each((function(groups, option) {
+                    option = arrayToObject(option);
+                    this.params.searchString += (option.text || option.value) + "•";
+
+                    // find the parent of this option - either a group or the main element
+                    var parent;
+                    if (option.group && this.params.options.groups) {
+                        if ((option.group - 1) in this.params.options.groups) {
+                            option.group = this.params.options.groups[option.group-1];
+                        }
+                        if (option.group in groups) {
+                            parent = groups[option.group];
+                        }
+                        else {
+                            parent = this.element;
+                        }
+                    }
+                    else {
+                        parent = this.element;
+                    }
+
+                    (new Element("option", {
+                        "value": option.value,
+                        "text": option.text || option.value,
+                    })).inject(parent);
+                }).bind(this, groups));
+            }
         },
         
         "setupDOM": function () {
@@ -573,6 +673,7 @@
                 "description": "Description",
                 "button": "Button",
                 "text": "Text",
+                "textarea": "Textarea",
                 "checkbox": "Checkbox",
                 "slider": "Slider",
                 "popupButton": "PopupButton",
