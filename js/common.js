@@ -826,8 +826,9 @@ Background.prototype.watchMail = function () {
 				window.clearTimeout(notificationTimeout);
 			};
 			notification.show();
-			window.setTimeout(checkPrefs, mailInterval);
 		}
+		
+		window.setTimeout(checkPrefs, mailInterval);
 	}
 	
 	function getMail () {
