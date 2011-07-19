@@ -1,9 +1,4 @@
 {
-	/**
-	 * POPUP TRANSLATIONS
-	 * 
-	 * The following translations are used in the Mostly Harmless popup and browser action.
-	 */
 	"just_now": {
 		"message": "just now",
 		"description": "Describe that something just happened."
@@ -405,11 +400,6 @@
 	"orangered_action": {
 		"message": "Click here to be taken to your inbox."
 	},
-	/**
-	 * OPTIONS TRANSLATIONS
-	 * 
-	 * The following translations are used in the Mostly Harmless options.
-	 */
 	"tab_preferences": {
 		"message": "Preferences"
 	},
