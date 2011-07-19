@@ -84,6 +84,13 @@ this.manifest = {
         {
         	"tab": "Preferences",
         	"group": "Orangered Notifications",
+        	"name": "mailSoundPreview",
+        	"type": "button",
+        	"text": "Preview the notification sound"
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Orangered Notifications",
         	"name": "mailInterval",
         	"type": "slider",
         	"label": "",
