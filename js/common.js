@@ -2,8 +2,8 @@ var settings, cache, utils, button, reddit, background;
 
 settings = new Store('settings', {
 	'cacheTime': 3,
-	'timeoutLength': 5,
-	'freshCutoff': 7,
+	'timeoutLength': 15,
+	'freshCutoff': 90,
 	'popupWidth': 640,
 	'shamelessPlug': false,
 	'waitForClick': false,
@@ -12,7 +12,7 @@ settings = new Store('settings', {
 	'mailDisplayTime': 10,
 	'mailSound': false,
 	'excludedDomains': 'secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com',
-	'excludedRegex': 'chrome://.*\nchrome-extension://.*\nview-source://.*\nftp://.*\nhttps?://www\.google\.com/search.*\nhttps?://search\.yahoo\.com/search.*\nhttps?://www\.bing\.com/search.*\nhttps?://www.reddit.com/(?:r/(?:\\w|\\+)+/?)?(?:$|\\?count)'
+	'excludedRegex': 'chrome://.*\nchrome-extension://.*\nview-source://.*\nftp://.*\nhttps?://www\\.google\\.com/search.*\nhttps?://search\\.yahoo\\.com/search.*\nhttps?://www\\.bing\\.com/search.*\nhttps?://www\\.reddit\\.com/(?:r/(?:\\w|\\+)+/?)?(?:$|\\?count)'
 });
 cache = new Store('cache');
 
@@ -365,7 +365,7 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 	req.open(type, url, true);
 	req.onreadystatechange = processResponse;
 	req.send(data);
-	if (settings.get('timeoutLength') !== 16) {
+	if (settings.get('timeoutLength') !== 31) {
 		apiTimeout = setTimeout(handleTimeout, settings.get('timeoutLength') * 1000);
 	}
 };
