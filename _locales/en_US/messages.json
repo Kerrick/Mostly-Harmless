@@ -1,4 +1,9 @@
 {
+	/**
+	 * POPUP TRANSLATIONS
+	 * 
+	 * The following translations are used in the Mostly Harmless popup and browser action.
+	 */
 	"just_now": {
 		"message": "just now",
 		"description": "Describe that something just happened."
@@ -399,5 +404,214 @@
 	},
 	"orangered_action": {
 		"message": "Click here to be taken to your inbox."
+	},
+	/**
+	 * OPTIONS TRANSLATIONS
+	 * 
+	 * The following translations are used in the Mostly Harmless options.
+	 */
+	"tab_preferences": {
+		"message": "Preferences"
+	},
+	"group_fresh_content": {
+		"message": "Fresh Content"
+	},
+	"fresh_content_show_one_day": {
+		"message": "Only show posts from today."
+	},
+	"fresh_content_show_days": {
+		"message": "Only show posts less than $NUM$ days old.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_weeks": {
+		"message": "Only show posts less than $NUM$ weeks old.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_months": {
+		"message": "Only show posts less than $NUM$ months old.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_all": {
+		"message": "Show posts from all time."
+	},
+	"fresh_content_description": {
+		"message": "This setting allows you to choose the oldest reddit posts you&rsquo;d like to see. Anything posted before the value you&rsquo;ve chosen will be indicated in the browser button&rsquo;s total, but will not be shown in the popup."
+	},
+	"group_popup_width": {
+		"message": "Popup Width"
+	},
+	"popup_width_description": {
+		"message": "This setting allows you to set the width of the browser action popup."
+	},
+	"group_shameless_plug": {
+		"message": "Shameless Plug"
+	},
+	"shameless_plug_label": {
+		"message": "Show the shameless plug"
+	},
+	"shameless_plug_description": {
+		"message": "When checked, this will add the following to each commment you post from within Mostly Harmless:$PLUG_TEXT$",
+		"placeholders": {
+			"PLUG_TEXT": {
+				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
+			}
+		}
+	},
+	"group_orangered_notifications": {
+		"message": "$ORANGERED$ Notifications",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_label": {
+		"message": "Play a sound when you have an $ORANGERED$",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_preview": {
+		"message": "Preview the notification sound"
+	},
+	"orangered_interval_30_seconds": {
+		"message": "Check every 30 seconds"
+	},
+	"orangered_interval_one_minute": {
+		"message": "Check every minute"
+	},
+	"orangered_interval_minutes": {
+		"message": "Check every $NUM$ minutes",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_display_time": {
+		"message": "Display notification for $NUM$ seconds",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_description": {
+		"message": "When checked, $MOSTLY_HARMLESS$ will check for new $ORANGERED$s at the interval you set. If you get an $ORANGERED$, it will display a desktop notification for five seconds.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			},
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"tab_performance": {
+		"message": "Performance"
+	},
+	"group_cache_time": {
+		"message": "Cache time"
+	},
+	"cache_time_one_minute": {
+		"message": "Cache data for one minute"
+	},
+	"cache_time_minutes": {
+		"message": "Cache data for $NUM$ minutes",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"cache_time_description": {
+		"message": "Data from the $REDDIT$ API can be cached, or saved for a short time, to improve performance. Longer cache times mean less bandwidth, faster results, and less load on $REDDIT$. Shorter cache times mean fresher data.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"group_timeout_length": {
+		"message": "Timeout length"
+	},
+	"timeout_length_seconds": {
+		"message": "Time out after $NUM$ seconds and show an error.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"timeout_length_never": {
+		"message": "Do not timeout; only show an error error when the API is down."
+	},
+	"timeout_length_description": {
+		"message": "If the $REDDIT$ API is slow or down, $MOSTLY_HARMLESS$ can display an error after trying to reach the API for a certain amount of time. Longer timeout lengths mean more time waiting for a result from the $REDDIT$ API. Shorter timeout lengths mean a higher possibility of timing out when $REDDIT$ may only be slow instead of down.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"tab_privacy": {
+		"message": "Privacy"
+	},
+	"group_wait_for_click": {
+		"message": "Wait for click"
+	},
+	"wait_for_click_description": {
+		"message": "If this checkbox is selected, $MOSTLY_HARMLESS$ will not activate unless you click its icon.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_domains": {
+		"message": "Excluded domains"
+	},
+	"excluded_domains_description": {
+		"message": "Put domains or subdomains, one per line, in the above text box. Any page on the listed domains will not activate $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_regex": {
+		"message": "Excluded regex"
+	},
+	"excluded_regex_description": {
+		"message": "Put regular expressions, one per line, in the above text box. Any page on the listed domains will not activate $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
 	}
 }

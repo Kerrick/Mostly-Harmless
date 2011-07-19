@@ -4,8 +4,8 @@ this.manifest = {
     "icon": "/pix/alien.png",
     "settings": [
         {
-        	"tab": "Preferences",
-        	"group": "Fresh Content",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_fresh_content'),
         	"name": "freshCutoff",
         	"type": "slider",
         	"label": "",
@@ -15,26 +15,26 @@ this.manifest = {
         	"display": true,
         	"displayModifier": function(value) {
         		if(value === 1)
-        			return "Show posts less than " + value.toString() + " day old";
+        			return chrome.i18n.getMessage('fresh_content_show_one_day');
         		if(value <= 2 * 7)
-        			return "Show posts less than " + value.toString() + " days old";
+        			return chrome.i18n.getMessage('fresh_content_show_days', value.toString());
         		if(value > 2 * 7 && value < 7 * 7)
-        			return "Show posts less than " + Math.floor(value / 7).toString() + " weeks old";
+        			return chrome.i18n.getMessage('fresh_content_show_weeks', Math.floor(value / 7).toString());
         		if(value >= 7 * 7 && value < 91)
-        			return "Show posts less than " + Math.ceil(value / 30).toString() + " months old";
-        		return "Show posts from all time";
+        			return chrome.i18n.getMessage('fresh_content_show_months', Math.ceil(value / 30).toString());
+        		return chrome.i18n.getMessage('fresh_content_show_all');
         	}
         },
         {
-        	"tab": "Preferences",
-        	"group": "Fresh Content",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_fresh_content'),
         	"name": "freshCutoffDescription",
         	"type": "description",
-        	"text": "<p>This setting allows you to choose the oldest reddit posts you&rsquo;d like to see. Anything posted before the value you&rsquo;ve chosen will be indicated in the browser button's total, but will not be shown in the popup."
+        	"text": chrome.i18n.getMessage('fresh_content_description')
         },
         {
-        	"tab": "Preferences",
-        	"group": "Popup Width",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_popup_width'),
         	"name": "popupWidth",
         	"type": "slider",
         	"label": "",
@@ -47,50 +47,50 @@ this.manifest = {
         	}
         },
         {
-        	"tab": "Preferences",
-        	"group": "Popup Width",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_popup_width'),
         	"name": "popupWidthDescription",
         	"type": "description",
-        	"text": "<p>This setting allows you to set the width of the browser action popup."
+        	"text": chrome.i18n.getMessage('popup_width_description')
         },
         {
-        	"tab": "Preferences",
-        	"group": "Shameless Plug",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_shameless_plug'),
         	"name": "shamelessPlug",
         	"type": "checkbox",
-        	"label": "Show the shameless plug",
+        	"label": chrome.i18n.getMessage('shameless_plug_label'),
         },
         {
-        	"tab": "Preferences",
-        	"group": "Shameless Plug",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_shameless_plug'),
         	"name": "shamelessPlugDescription",
         	"type": "description",
-        	"text": "<p>When checked, this will add the following to each commment you post from within Mostly Harmless:</p><p><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em></p>"
+        	"text": chrome.i18n.getMessage('shameless_plug_description')
         },
         {
-        	"tab": "Preferences",
-        	"group": "Orangered Notifications",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_orangered_notifications'),
         	"name": "checkMail",
         	"type": "checkbox",
         	"label": "Check for orangereds"
         },
         {
-        	"tab": "Preferences",
-        	"group": "Orangered Notifications",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_orangered_notifications'),
         	"name": "mailSound",
         	"type": "checkbox",
-        	"label": "Play a sound when you have an orangered"
+        	"label": chrome.i18n.getMessage('orangered_sound_label')
         },
         {
-        	"tab": "Preferences",
-        	"group": "Orangered Notifications",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_orangered_notifications'),
         	"name": "mailSoundPreview",
         	"type": "button",
-        	"text": "Preview the notification sound"
+        	"text": chrome.i18n.getMessage('orangered_sound_preview')
         },
         {
-        	"tab": "Preferences",
-        	"group": "Orangered Notifications",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_orangered_notifications'),
         	"name": "mailInterval",
         	"type": "slider",
         	"label": "",
@@ -100,16 +100,16 @@ this.manifest = {
         	"display": true,
         	"displayModifier": function (value) {
         		if (value === 0)
-        			return "Check every 30 seconds";
+        			return chrome.i18n.getMessage('orangered_interval_30_seconds');
         		else if (value === 1)
-        			return "Check every minute";
-        		return "Check every " + value.toString() + " minutes";
+        			return chrome.i18n.getMessage('orangered_interval_one_minute');
+        		return chrome.i18n.getMessage('orangered_interval_minutes', value.toString());
         	}
         	
         },
         {
-        	"tab": "Preferences",
-        	"group": "Orangered Notifications",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_orangered_notifications'),
         	"name": "mailDisplayTime",
         	"type": "slider",
         	"label": "",
@@ -118,20 +118,20 @@ this.manifest = {
         	"step": 1,
         	"display": true,
         	"displayModifier": function (value) {
-        		return "Show the notification for " + value.toString() + " seconds";
+        		return chrome.i18n.getMessage('orangered_display_time', value.toString());
         	}
         	
         },
         {
-        	"tab": "Preferences",
-        	"group": "Orangered Notifications",
+        	"tab": chrome.i18n.getMessage('tab_preferences'),
+        	"group": chrome.i18n.getMessage('group_orangered_notifications'),
         	"name": "mailDescription",
         	"type": "description",
-        	"text": "<p>When checked, Mostly Harmless will check for new orangereds at the interval you set. If you get an orangered, it will display a desktop notification for five seconds.</p>"
+        	"text": chrome.i18n.getMessage('orangered_description')
         },
         {
-        	"tab": "Performance",
-        	"group": "Cache Time",
+        	"tab": chrome.i18n.getMessage('tab_performance'),
+        	"group": chrome.i18n.getMessage('group_cache_time'),
         	"name": "cacheTime",
         	"type": "slider",
         	"label": "",
@@ -141,86 +141,82 @@ this.manifest = {
         	"display": true,
         	"displayModifier": function(value) {
         		if(value === 1)
-        			return value.toString() + " minute";
-        		return value.toString() + " minutes";
+        			return chrome.i18n.getMessage('cache_time_one_minute', value.toString());
+        		return chrome.i18n.getMessage('cache_time_minutes', value.toString());
         	}
         },
         {
-        	"tab": "Performance",
-        	"group": "Cache Time",
+        	"tab": chrome.i18n.getMessage('tab_performance'),
+        	"group": chrome.i18n.getMessage('group_cache_time'),
         	"name": "cacheDescription",
         	"type": "description",
-        	"text": "<p>Mostly Harmless grabs data from the Reddit API every time you load a page. However, that data can be cached, or saved for a short time, to improve performance and reduce the load on the reddit API.</p><p>This option allows you to change how long a page's data is cached. Longer cache times mean less bandwidth, faster results, and less load on reddit. Shorter cache times mean fresher data.</p>"
+        	"text": chrome.i18n.getMessage('cache_time_description')
         },
         {
-        	"tab": "Performance",
-        	"group": "Timeout Length",
+        	"tab": chrome.i18n.getMessage('tab_performance'),
+        	"group": chrome.i18n.getMessage('group_timeout_length'),
         	"name": "timeoutLength",
         	"type": "slider",
         	"label": "",
-        	"max": 16,
-        	"min": 1,
+        	"max": 31,
+        	"min": 5,
         	"step": 1,
         	"display": true,
         	"displayModifier": function(value) {
-        		if(value === 1)
-        			return value.toString() + " second";
-        		if(value <= 15)
-        			return value.toString() + " seconds";
-        		return "Do not timeout; Only error when the API is down."
+        		if(value <= 30)
+        			return chrome.i18n.getMessage('timeout_length_seconds', value.toString());
+        		return chrome.i18n.getMessage('timeout_length_never');
         	}
         },
         {
-        	"tab": "Performance",
-        	"group": "Timeout Length",
+        	"tab": chrome.i18n.getMessage('tab_performance'),
+        	"group": chrome.i18n.getMessage('group_timeout_length'),
         	"name": "tiemoutDescription",
         	"type": "description",
-        	"text": "<p>Mostly Harmless uses the reddit API, but sometimes the API will be slow or down. If that happens, Mostly Harmless can display an error after trying to reach the API for a certain amount of time.</p><p>This option allows you to change how long Mostly Harmless should try to reach the Reddit API. Longer timeout lengths mean more time waiting for a result from the reddit API. Shorter timeout lengths mean a higher possibility of timing out when reddit may only be slow instead of down."
+        	"text": chrome.i18n.getMessage('timeout_length_description')
         },
         {
-        	"tab": "Privacy",
-        	"group": "Wait for Click",
+        	"tab": chrome.i18n.getMessage('tab_privacy'),
+        	"group": chrome.i18n.getMessage('group_wait_for_click'),
         	"name": "waitForClick",
         	"type": "checkbox",
-        	"label": "Wait for click"
+        	"label": chrome.i18n.getMessage('group_wait_for_click')
         	
         },
         {
-        	"tab": "Privacy",
-        	"group": "Wait for Click",
+        	"tab": chrome.i18n.getMessage('tab_privacy'),
+        	"group": chrome.i18n.getMessage('group_wait_for_click'),
         	"name": "waitForClickDescription",
         	"type": "description",
-        	"text": "<p>If this checkbox is selected, Mostly Harmless will not activate unless you click its icon.</p>"
+        	"text": chrome.i18n.getMessage('wait_for_click_description')
         },
         {
-    		"tab": "Privacy",
-    		"group": "Excluded Domains",
+    		"tab": chrome.i18n.getMessage('tab_privacy'),
+    		"group": chrome.i18n.getMessage('excluded_domains'),
     		"name": "excludedDomains",
     		"type": "textarea",
-    		"label": "Excluded domains:",
-    		"text": "secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com"
+    		"label": chrome.i18n.getMessage('excluded_domains')
         },
         {
-        	"tab": "Privacy",
-        	"group": "Excluded Domains",
+        	"tab": chrome.i18n.getMessage('tab_privacy'),
+        	"group": chrome.i18n.getMessage('excluded_domains'),
         	"name": "excludedDomainsDescription",
         	"type": "description",
-        	"text": "<p>Put domains or subdomains, one per line, in the above text box. Any page on the listed domains will <strong>not</strong> activate Mostly Harmless.</p>"
+        	"text": chrome.i18n.getMessage('excluded_domains_description')
         },
         {
-        	"tab": "Privacy",
-        	"group": "Excluded Regex",
+        	"tab": chrome.i18n.getMessage('tab_privacy'),
+        	"group": chrome.i18n.getMessage('excluded_regex'),
         	"name": "excludedRegex",
         	"type": "textarea",
-        	"label": "Excluded regex matches",
-        	"text": "chrome:\/\/.*\nhttps?:\/\/www\.google\.com\/search.*\nhttps?:\/\/search\.yahoo\.com\/search.*\nhttps?:\/\/www\.bing\.com\/search.*"
+        	"label": chrome.i18n.getMessage('excluded_regex'),
         },
         {
-        	"tab": "Privacy",
-        	"group": "Excluded Regex",
+        	"tab": chrome.i18n.getMessage('tab_privacy'),
+        	"group": chrome.i18n.getMessage('excluded_regex'),
         	"name": "excludedRegexDescription",
         	"type": "description",
-        	"text": "<p>Put regular expressions, one per line, in the above text box. Any page that matches the listed regular expressions will <strong>not</strong> activate Mostly Harmless."
+        	"text": chrome.i18n.getMessage('excluded_regex_description')
         }
     ]
 };
