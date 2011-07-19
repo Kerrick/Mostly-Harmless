@@ -12,7 +12,7 @@ settings = new Store('settings', {
 	'mailDisplayTime': 10,
 	'mailSound': false,
 	'excludedDomains': 'secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com',
-	'excludedRegex': 'chrome://.*\nchrome-extension://.*\nview-source://.*\nftp://.*\nhttps?://www\.google\.com/search.*\nhttps?://search\.yahoo\.com/search.*\nhttps?://www\.bing\.com/search.*\nhttps?://www.reddit.com/(?:r/(?:\w|\+)+/?)?(?:$|\?count)'
+	'excludedRegex': 'chrome://.*\nchrome-extension://.*\nview-source://.*\nftp://.*\nhttps?://www\.google\.com/search.*\nhttps?://search\.yahoo\.com/search.*\nhttps?://www\.bing\.com/search.*\nhttps?://www.reddit.com/(?:r/(?:\\w|\\+)+/?)?(?:$|\\?count)'
 });
 cache = new Store('cache');
 
