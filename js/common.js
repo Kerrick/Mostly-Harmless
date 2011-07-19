@@ -8,7 +8,9 @@ settings = new Store('settings', {
 	'shamelessPlug': false,
 	'waitForClick': false,
 	'checkMail': true,
-	'mailInterval': 1
+	'mailInterval': 1,
+	'excludedDomains': 'secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com',
+	'excludedRegex': 'chrome://.*\nchrome-extension://.*\nview-source://.*\nftp://.*\nhttps?://www\.google\.com/search.*\nhttps?://search\.yahoo\.com/search.*\nhttps?://www\.bing\.com/search.*\nhttps?://www.reddit.com/(?:r/(?:\w|\+)+/?)?(?:$|\?count)'
 });
 cache = new Store('cache');
 
@@ -701,9 +703,7 @@ RedditAPI.prototype.submitComment = function (e) {
 		textarea.onkeyup = function () {return true;};
 		url = document.getElementById(fullName).parentNode.getAttribute('data-url');
 		oldCache = cache.get(url);
-		console.log(oldCache);
 		oldCache.posts[fullName].savedCommentText = '';
-		console.log(oldCache);
 		cache.set(url, oldCache);
 	}
 	
@@ -755,10 +755,25 @@ function Background() {
  */
 Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 	if (info.status === 'loading') {
-		if (settings.get('waitForClick') === false) {
+		var excludedRegex, match;
+		
+		excludedRegex = settings.get('excludedRegex').split('\n');
+		excludedDomains = settings.get('excludedDomains').split('\n');
+		match = false;
+		
+		for (var i = 0; i < excludedRegex.length; i++) {
+			if (tab.url.match(new RegExp(excludedRegex[i], "i")) !== null) {
+				match = true;
+			}
+		}
+		
+		if (utils.parseURL(tab.url).host in utils.objConvert(excludedDomains)) {
+			match = true;
+		}
+		
+		if (settings.get('waitForClick') === false && match === false) {
 			if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
 				console.log(chrome.i18n.getMessage('loading_api'));
-				console.log(utils.parseURL(tab.url));
 				reddit.getInfo(tab.url, tabId);
 			} else {
 				console.log(chrome.i18n.getMessage('loading_cache'));
@@ -787,7 +802,6 @@ Background.prototype.watchMail = function () {
 		mailInterval = (settings.get('mailInterval') === 0) ? 1000 * 30 : settings.get('mailInterval') * 1000 * 60;
 		
 		if (hasMail === true) {
-			console.log('Orangered! I need to show a notification...');
 			notification = webkitNotifications.createNotification(
 				'/pix/mail.png',  // icon url - can be relative
 				chrome.i18n.getMessage('orangered_received'),  // notification title

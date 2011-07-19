@@ -164,17 +164,10 @@ this.manifest = {
         	"text": "<p>If this checkbox is selected, Mostly Harmless will not activate unless you click its icon.</p>"
         },
         {
-        	"tab": "Privacy",
-        	"group": "Warning!",
-        	"name": "excludedDescription",
-        	"type": "description",
-        	"text": "<h3>Exclusions do not work yet!</h3><p><big>I am waiting on Fancy Settings to support textareas.</big></p><p>Mostly Harmless grabs data from the Reddit API every time you load a page. This takes time and bandwidth, taxes the reddit API, and sends the unencrypted URL to reddit. However, you can exclude certain domains or URL patterns from being looked up.</p>"
-        },
-        {
     		"tab": "Privacy",
     		"group": "Excluded Domains",
     		"name": "excludedDomains",
-    		"type": "text",
+    		"type": "textarea",
     		"label": "Excluded domains:",
     		"text": "secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com"
         },
@@ -189,7 +182,7 @@ this.manifest = {
         	"tab": "Privacy",
         	"group": "Excluded Regex",
         	"name": "excludedRegex",
-        	"type": "text",
+        	"type": "textarea",
         	"label": "Excluded regex matches",
         	"text": "chrome:\/\/.*\nhttps?:\/\/www\.google\.com\/search.*\nhttps?:\/\/search\.yahoo\.com\/search.*\nhttps?:\/\/www\.bing\.com\/search.*"
         },
@@ -198,7 +191,7 @@ this.manifest = {
         	"group": "Excluded Regex",
         	"name": "excludedRegexDescription",
         	"type": "description",
-        	"text": "<p>Put regular expressions, one per line, in the above text box. Please do not use the <code>\\n</code> character, because there should be no newlines in a URL. Any page that matches the listed regular expressions will <strong>not</strong> activate Mostly Harmless."
+        	"text": "<p>Put regular expressions, one per line, in the above text box. Any page that matches the listed regular expressions will <strong>not</strong> activate Mostly Harmless."
         }
     ]
 };
