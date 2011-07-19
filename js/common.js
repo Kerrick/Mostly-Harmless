@@ -911,9 +911,9 @@ Popup.prototype.createListHTML = function (url) {
 							listHTML += '<a class="comments" onclick="popup.showCommentForm(\'' + data.name + '\')">' + chrome.i18n.getMessage('add_comment_many', data.num_comments.toString()) + '</a>';
 							break;
 					}
-					listHTML += '<a class="share">' + chrome.i18n.getMessage('action_share') + '</a>';
-					listHTML += '<a class="save" onclick="' + saveAction + '">' + chrome.i18n.getMessage('action_save') + '</a>';
-					listHTML += '<a class="hide" onclick="' + hideAction + '">' + chrome.i18n.getMessage('action_hide') + '</a>';
+					// listHTML += '<a class="share">' + chrome.i18n.getMessage('action_share') + '</a>';
+					listHTML += '<a class="save" onclick="' + saveAction + '">' + chrome.i18n.getMessage('action_' + saveText) + '</a>';
+					listHTML += '<a class="hide" onclick="' + hideAction + '">' + chrome.i18n.getMessage('action_' + hiddenText) + '</a>';
 					listHTML += '<a class="report" onclick="reddit.confirmReport(event)">' + chrome.i18n.getMessage('action_report') + '</a>';
 				listHTML += '</div>';
 			listHTML += '</div>';
