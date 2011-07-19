@@ -101,7 +101,7 @@ MHUtils.prototype.parseURL = function (url) {
 		host: a.hostname,
 		port: a.port,
 		query: a.search,
-		params: (function(){
+		params: (function (){
 			var ret = {},
 				seg = a.search.replace(/^\?/,'').split('&'),
 				len = seg.length, i = 0, s;
@@ -223,7 +223,7 @@ BrowserAction.prototype.setBadgeIgnore = function (tabId) {
 	chrome.browserAction.setBadgeText({'text': '', 'tabId': tabId});
 	chrome.browserAction.setTitle({'title': chrome.i18n.getMessage('not_activated'), 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
-	chrome.browserAction.onClicked.addListener(function(tab) {
+	chrome.browserAction.onClicked.addListener(function (tab) {
 		reddit.getInfo(tab.url, tab.id);
 	});
 	return true;
@@ -324,8 +324,8 @@ function RedditAPI(domain) {
  * @param	{String}	type	The type of HTTP request: 'GET' or 'POST'.
  * @param	{String}	url	The URL to request.
  * @param	{Object}	data	If it exists, send this as a FormData() object.
- * @param	{Function}	cback	If it exists, call this function when the request is complete. (doesn't work yet)
- * @return	{Object}		Returns the API's response as an object.
+ * @param	{Function}	cback	If it exists, call this function when the request is complete, passing a parameter: the API's response as an object.
+ * @return	{Object}		Returns the API's response as an object if there is no callback.
  * @method 
  */
 RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
@@ -779,7 +779,7 @@ Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
  */
 function Popup() {
 	return true;
-}
+};
 
 /**
  * Create and store the HTML for a list of posts.
