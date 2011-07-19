@@ -9,6 +9,8 @@ settings = new Store('settings', {
 	'waitForClick': false,
 	'checkMail': true,
 	'mailInterval': 1,
+	'mailDisplayTime': 10,
+	'mailSound': false,
 	'excludedDomains': 'secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com',
 	'excludedRegex': 'chrome://.*\nchrome-extension://.*\nview-source://.*\nftp://.*\nhttps?://www\.google\.com/search.*\nhttps?://search\.yahoo\.com/search.*\nhttps?://www\.bing\.com/search.*\nhttps?://www.reddit.com/(?:r/(?:\w|\+)+/?)?(?:$|\?count)'
 });
@@ -794,7 +796,7 @@ Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
  * @method
  */
 Background.prototype.watchMail = function () {
-	var mailProcess;
+	var mailProcess, pop;
 	
 	function showNotification (hasMail) {
 		var notification, notificationTimeout, mailInterval;
@@ -802,6 +804,10 @@ Background.prototype.watchMail = function () {
 		mailInterval = (settings.get('mailInterval') === 0) ? 1000 * 30 : settings.get('mailInterval') * 1000 * 60;
 		
 		if (hasMail === true) {
+			if (settings.get('mailSound') === true) {
+				pop.play();
+			}
+			
 			notification = webkitNotifications.createNotification(
 				'/pix/mail.png',  // icon url - can be relative
 				chrome.i18n.getMessage('orangered_received'),  // notification title
@@ -809,7 +815,7 @@ Background.prototype.watchMail = function () {
 			);
 			notificationTimeout = window.setTimeout(function () {
 				notification.cancel();
-			}, 1000 * 5);
+			}, settings.get('mailDisplayTime') * 1000);
 			notification.onclick = function () {
 				chrome.tabs.create({'url': 'http://' + reddit.domain + '/message/unread/', 'selected': true});
 				notification.cancel();
@@ -832,6 +838,8 @@ Background.prototype.watchMail = function () {
 		}
 	}
 	
+	pop = document.createElement('audio');
+	pop.src = '/pix/pop.ogg';
 	checkPrefs();
 };
 

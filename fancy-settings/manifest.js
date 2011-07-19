@@ -77,6 +77,13 @@ this.manifest = {
         {
         	"tab": "Preferences",
         	"group": "Orangered Notifications",
+        	"name": "mailSound",
+        	"type": "checkbox",
+        	"label": "Play a sound when you have an orangered"
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Orangered Notifications",
         	"name": "mailInterval",
         	"type": "slider",
         	"label": "",
@@ -86,10 +93,25 @@ this.manifest = {
         	"display": true,
         	"displayModifier": function (value) {
         		if (value === 0)
-        			return "every 30 seconds";
+        			return "Check every 30 seconds";
         		else if (value === 1)
-        			return "every minute";
-        		return "every " + value.toString() + " minutes";
+        			return "Check every minute";
+        		return "Check every " + value.toString() + " minutes";
+        	}
+        	
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Orangered Notifications",
+        	"name": "mailDisplayTime",
+        	"type": "slider",
+        	"label": "",
+        	"max": 20,
+        	"min": 5,
+        	"step": 1,
+        	"display": true,
+        	"displayModifier": function (value) {
+        		return "Show the notification for " + value.toString() + " seconds";
         	}
         	
         },
