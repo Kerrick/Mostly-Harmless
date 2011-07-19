@@ -14,3 +14,6 @@ textarea {
 .setting.label.checkbox {
 	color: #666;
 }
+.setting.group-name {
+	text-transform: capitalize;
+}
