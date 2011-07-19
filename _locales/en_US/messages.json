@@ -388,5 +388,16 @@
 				"content": "</a>"
 			}
 		}
+	},
+	"orangered_received": {
+		"message": "You have an $ORANGERED$!",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_action": {
+		"message": "Click here to be taken to your inbox."
 	}
 }

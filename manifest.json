@@ -8,7 +8,8 @@
 	},
 	"permissions": [
 		"http://*.reddit.com/",
-		"tabs"
+		"tabs",
+		"notifications"
 	],
 	"background_page": "html/background.html",
 	"options_page": "fancy-settings/index.html",

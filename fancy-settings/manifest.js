@@ -68,6 +68,39 @@ this.manifest = {
         	"text": "<p>When checked, this will add the following to each commment you post from within Mostly Harmless:</p><p><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em></p>"
         },
         {
+        	"tab": "Preferences",
+        	"group": "Orangered Notifications",
+        	"name": "checkMail",
+        	"type": "checkbox",
+        	"label": "Check for orangereds"
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Orangered Notifications",
+        	"name": "mailInterval",
+        	"type": "slider",
+        	"label": "",
+        	"max": 5,
+        	"min": 0,
+        	"step": 1,
+        	"display": true,
+        	"displayModifier": function (value) {
+        		if (value === 0)
+        			return "every 30 seconds";
+        		else if (value === 1)
+        			return "every minute";
+        		return "every " + value.toString() + " minutes";
+        	}
+        	
+        },
+        {
+        	"tab": "Preferences",
+        	"group": "Orangered Notifications",
+        	"name": "mailDescription",
+        	"type": "description",
+        	"text": "<p>When checked, Mostly Harmless will check for new orangereds at the interval you set. If you get an orangered, it will display a desktop notification for five seconds.</p>"
+        },
+        {
         	"tab": "Performance",
         	"group": "Cache Time",
         	"name": "cacheTime",

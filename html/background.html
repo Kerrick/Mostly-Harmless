@@ -15,6 +15,7 @@
 				cache.removeAll();
 				button.setBadgeDefaults();
 				chrome.tabs.onUpdated.addListener(background.prepareBrowserAction);
+				background.watchMail();
 			}
 			
 			window.onload = initBackground;

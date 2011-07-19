@@ -6,7 +6,9 @@ settings = new Store('settings', {
 	'freshCutoff': 7,
 	'popupWidth': 640,
 	'shamelessPlug': false,
-	'waitForClick': false
+	'waitForClick': false,
+	'checkMail': true,
+	'mailInterval': 1
 });
 cache = new Store('cache');
 
@@ -205,7 +207,7 @@ BrowserAction.prototype.setBadgeDefaults = function (tabId) {
 	chrome.browserAction.setTitle({'title': 'Click to load data.', 'tabId': tabId});
 	chrome.browserAction.setBadgeBackgroundColor({'color': [192, 192, 192, 255], 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
-	chrome.browserAction.onClicked.addListener(function(tab) {
+	chrome.browserAction.onClicked.addListener(function (tab) {
 		reddit.getInfo(tab.url, tab.id);
 	});
 	return true;
@@ -258,7 +260,7 @@ BrowserAction.prototype.setBadgeError = function (tabId, text) {
 	chrome.browserAction.setTitle({'title': text, 'tabId': tabId});
 	chrome.browserAction.setBadgeBackgroundColor({'color': [200, 0, 0, 255], 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
-	chrome.browserAction.onClicked.addListener(function(tab) {
+	chrome.browserAction.onClicked.addListener(function (tab) {
 		reddit.getInfo(tab.url, tab.id);
 	});
 	return true;
@@ -768,6 +770,55 @@ Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 	}
 	
 	return true;
+};
+
+/**
+ * Sets a timeout for the next time to run checkMail.
+ * @alias				Background.watchMail()
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+Background.prototype.watchMail = function () {
+	var mailProcess;
+	
+	function showNotification (hasMail) {
+		var notification, notificationTimeout, mailInterval;
+		
+		mailInterval = (settings.get('mailInterval') === 0) ? 1000 * 30 : settings.get('mailInterval') * 1000 * 60;
+		
+		if (hasMail === true) {
+			console.log('Orangered! I need to show a notification...');
+			notification = webkitNotifications.createNotification(
+				'/pix/mail.png',  // icon url - can be relative
+				chrome.i18n.getMessage('orangered_received'),  // notification title
+				chrome.i18n.getMessage('orangered_action')  // notification body text
+			);
+			notificationTimeout = window.setTimeout(function () {
+				notification.cancel();
+			}, 1000 * 5);
+			notification.onclick = function () {
+				chrome.tabs.create({'url': 'http://' + reddit.domain + '/message/unread/', 'selected': true});
+				notification.cancel();
+				window.clearTimeout(notificationTimeout);
+			};
+			notification.show();
+			window.setTimeout(checkPrefs, mailInterval);
+		}
+	}
+	
+	function getMail () {
+		reddit.apiTransmit('GET', 'http://' + reddit.domain + '/api/me.json', null, function (response) {
+			showNotification(response.data.has_mail);
+		});
+	}
+	
+	function checkPrefs () {
+		if (settings.get('checkMail') === true) {
+			getMail();
+		}
+	}
+	
+	checkPrefs();
 };
 
 /**
