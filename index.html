@@ -52,10 +52,26 @@
 				<pre><code>$ git clone git://github.com/Kerrick/Mostly-Harmless</code></pre>
 			</div>
 			<div class="article" id="help">
-				<h2>Help and F.A.Q</h2>
-				<p>I'll be writing about the default regular expressions here, among other things.</p>
 				<h2>Submit a Ticket</h2>
 				<p>I need to write something about feature requests and bug reports.</p>
+				<h2>What do the default Excluded Regular Regex mean?</h2>
+				<p>For those that don't speak regular expressions, I'll go over the default Excluded Regex patterns here so you can know which ones to get rid of.</p>
+				<pre><code>chrome://.*</code></pre>
+				<p>This excludes all Google Chrome pages such as the new tab page, Chrome settings, et. al.</p>
+				<pre><code>chrome-extension://.*</code></pre>
+				<p>This excludes all Chrome Extension pages such as the Mostly Harmless options page.</p>
+				<pre><code>view-source://.*</code></pre>
+				<p>This excludes the tabs that open when you view the source code of a web page.</p>
+				<pre><code>ftp://.*</code></pre>
+				<p>This excludes sites that use the FTP protocol.</p>
+				<pre><code>https?://www\.google\.com/search.*</code></pre>
+				<p>This excludes Google Search results pages.</p>
+				<pre><code>https?://search\.yahoo\.com/search.*</code></pre>
+				<p>This excludes Yahoo Search results pages.</p>
+				<pre><code>https?://www\.bing\.com/search.*</code></pre>
+				<p>This excludes Bing Search results pages.</p>
+				<pre><code>https?://www.reddit.com/(?:r/(?:\w|\+)+/?)?(?:$|\?count)</code></pre>
+				<p>This excludes the reddit homepage, and the homepage for any subreddit. It also excludes paginated versions of those.</p>
 			</div>
 			<div class="article" id="credits">
 				<h2>Dependencies &amp; Libraries</h2>
