@@ -757,32 +757,36 @@ function Background() {
  */
 Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 	if (info.status === 'loading') {
-		var excludedRegex, match;
-		
-		excludedRegex = settings.get('excludedRegex').split('\n');
-		excludedDomains = settings.get('excludedDomains').split('\n');
-		match = false;
-		
-		for (var i = 0; i < excludedRegex.length; i++) {
-			if (tab.url.match(new RegExp(excludedRegex[i], "i")) !== null) {
+		try {
+			var excludedRegex, match;
+			
+			excludedRegex = settings.get('excludedRegex').split('\n');
+			excludedDomains = settings.get('excludedDomains').split('\n');
+			match = false;
+			
+			for (var i = 0; i < excludedRegex.length; i++) {
+				if (tab.url.match(new RegExp(excludedRegex[i], "i")) !== null) {
+					match = true;
+				}
+			}
+			
+			if (utils.parseURL(tab.url).host in utils.objConvert(excludedDomains)) {
 				match = true;
 			}
-		}
-		
-		if (utils.parseURL(tab.url).host in utils.objConvert(excludedDomains)) {
-			match = true;
-		}
-		
-		if (settings.get('waitForClick') === false && match === false) {
-			if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
-				console.log(chrome.i18n.getMessage('loading_api'));
-				reddit.getInfo(tab.url, tabId);
+			
+			if (settings.get('waitForClick') === false && match === false) {
+				if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
+					console.log(chrome.i18n.getMessage('loading_api'));
+					reddit.getInfo(tab.url, tabId);
+				} else {
+					console.log(chrome.i18n.getMessage('loading_cache'));
+					button.setBadgeFor(tab.url, tabId);
+				}
 			} else {
-				console.log(chrome.i18n.getMessage('loading_cache'));
-				button.setBadgeFor(tab.url, tabId);
+				button.setBadgeIgnore(tabId);
 			}
-		} else {
-			button.setBadgeIgnore(tabId);
+		} catch (error) {
+			button.setBadgeError(tabId, error.message);
 		}
 	}
 	
