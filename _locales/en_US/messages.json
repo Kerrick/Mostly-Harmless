@@ -506,7 +506,7 @@
 		}
 	},
 	"orangered_description": {
-		"message": "When checked, $MOSTLY_HARMLESS$ will check for new $ORANGERED$s at the interval you set. If you get an $ORANGERED$, it will display a desktop notification for five seconds.",
+		"message": "When checked, $MOSTLY_HARMLESS$ will check for new $ORANGERED$s at the interval you set. If you get an $ORANGERED$, it will display a desktop notification for the length of time you choose.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
