@@ -818,7 +818,7 @@ Background.prototype.watchMail = function () {
 	function showNotification (hasMail) {
 		var notification, notificationTimeout, mailInterval;
 		
-		mailInterval = (settings.get('mailInterval') === 0) ? 1000 * 30 : settings.get('mailInterval') * 1000 * 60;
+		mailInterval = settings.get('mailInterval') * 1000 * 60;
 		
 		if (hasMail === true) {
 			if (settings.get('mailSound') === true) {

@@ -94,15 +94,11 @@ this.manifest = {
         	"name": "mailInterval",
         	"type": "slider",
         	"label": "",
-        	"max": 5,
-        	"min": 0,
+        	"max": 15,
+        	"min": 5,
         	"step": 1,
         	"display": true,
         	"displayModifier": function (value) {
-        		if (value === 0)
-        			return chrome.i18n.getMessage('orangered_interval_30_seconds');
-        		else if (value === 1)
-        			return chrome.i18n.getMessage('orangered_interval_one_minute');
         		return chrome.i18n.getMessage('orangered_interval_minutes', value.toString());
         	}
         	

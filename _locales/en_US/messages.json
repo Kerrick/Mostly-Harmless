@@ -493,12 +493,6 @@
 	"orangered_sound_preview": {
 		"message": "Preview the notification sound"
 	},
-	"orangered_interval_30_seconds": {
-		"message": "Check every 30 seconds"
-	},
-	"orangered_interval_one_minute": {
-		"message": "Check every minute"
-	},
 	"orangered_interval_minutes": {
 		"message": "Check every $NUM$ minutes",
 		"placeholders": {
