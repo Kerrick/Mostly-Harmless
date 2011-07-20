@@ -733,6 +733,19 @@ RedditAPI.prototype.submitComment = function (e) {
 	}
 };
 
+/**
+ * Grabs the logged in user's reddits.
+ * @alias				RedditAPI.getReddits()
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.getReddits = function () {
+	reddit.apiTransmit('GET', 'http://' + this.domain + '/reddits/mine.json', null, function (response) {
+		cache.set('reddits', response.data.children);
+		return true;
+	});
+};
+
 reddit = new RedditAPI('www.reddit.com');
 
 /**
@@ -977,7 +990,7 @@ Popup.prototype.createSubmitForm = function (tab) {
 		submitHTML += '<fieldset>';
 			submitHTML += '<label for="submit_reddit">reddit</label>';
 			submitHTML += '<input id="submit_reddit" name="submit_reddit" type="text" />';
-			if (redditCache.length > 0) {
+			if (redditCache !== undefined || reddit.getReddits() === true) {
 				submitHTML += '<strong id="your_label">' + chrome.i18n.getMessage('popular_choices') + '</strong>';
 				submitHTML += '<ul id="your_reddits">';
 					for (var i = 0; i < redditCache.length; i++) {

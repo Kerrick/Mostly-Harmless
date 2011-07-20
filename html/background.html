@@ -16,10 +16,7 @@
 				button.setBadgeDefaults();
 				chrome.tabs.onUpdated.addListener(background.prepareBrowserAction);
 				background.watchMail();
-				reddit.apiTransmit('GET', 'http://' + reddit.domain + '/reddits/mine.json', null, function (response) {
-					cache.set('reddits', response.data.children);
-					console.log(cache.get('reddits'));
-				});
+				reddit.getRedditns();
 			}
 			
 			window.onload = initBackground;
