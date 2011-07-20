@@ -12,6 +12,7 @@ function navigate(navTo, speed, navFrom) {
 	if(navFrom === undefined) {
 		$('div#'+navTo).slideDown(speed,function(){
 			$('div#'+navTo).addClass('current');
+			window.scrollTo(0,0);
 		});
 		$('a[href*='+navTo+']').addClass('current');
 	} else if(navTo != navFrom) {
