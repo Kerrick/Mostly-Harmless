@@ -1,7 +1,7 @@
 {
 	"name": "Mostly Harmless",
 	"version": "1.0.0",
-	"description": "Easily see how many times a URL has been posted to reddit, join the discussion, and vote on, save, hide, and report the posts. If the page has not been submitted, you can post the URL, there are plenty of options for customization and privacy!",
+	"description": "Easily see how many times a URL has been posted to reddit, join the discussion, and vote on, save, hide, and report the posts. If the page has not been submitted, you can post the URL. Be notified of orangereds. There are plenty of options for customization and privacy!",
 	"browser_action": {
 		"default_icon": "pix/alien.png",
 		"popup": "html/popup.html"
