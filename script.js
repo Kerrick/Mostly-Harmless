@@ -28,6 +28,7 @@ function navigate(navTo, speed, navFrom) {
 $(document).ready(function() {
 	$('div.article').hide(0);
 	if(window.location.hash.substr(1)) {
+		window.setTimeout(window.scrollTo, 850, 0, 0);
 		navigate(window.location.hash.substr(1),400);
 	} else {
 		window.location.hash = showOnLoad;
