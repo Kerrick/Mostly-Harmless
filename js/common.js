@@ -734,6 +734,56 @@ RedditAPI.prototype.submitComment = function (e) {
 };
 
 /**
+ * Submits a link.
+ * @alias				RedditAPI.submitLink(event)
+ * @param	{Object}	event	The event object.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+RedditAPI.prototype.submitLink = function (e, tabId) {
+	var url, title, subreddit, status, submitButton, formData;
+	
+	function afterSubmission (response) {
+		console.log(response);
+		
+		if (response.jquery[22]) {
+			status.innerHTML = response.jquery[22][3][0];
+		} else {
+			status.innerHTML = 'submitted! <a href="' + response.jquery[18][3][0] + '" target="_blank">click to view your post.</a>';
+			submitButton.innerHTML = chrome.i18n.getMessage('submit_page');
+			submitButton.setAttribute('disabled');
+			title.setAttribute('readonly');
+			subreddit.setAttribute('readonly');
+			cache.remove(url);
+			button.setBadgeDefaults(parseInt(tabId));
+		}
+	}
+	
+	submitButton = e.srcElement;
+	status = submitButton.parentNode.getElementsByClassName('status')[0];
+	title = document.getElementById('submit_title');
+	subreddit = document.getElementById('submit_reddit');
+	url = document.getElementById('submit_url');
+	
+	if (title.value === '' || subreddit.value === '') {
+		status.innerHTML = chrome.i18n.getMessage('error_empty');
+	} else {
+		formData = new FormData();
+		formData.append('title', title.value);
+		formData.append('url', url.value);
+		formData.append('sr', subreddit.value);
+		formData.append('kind', 'link');
+		formData.append('uh', cache.get('modhash'));
+		status.innerHTML = 'submitting...';
+		try {
+			reddit.apiTransmit('POST', 'http://www.reddit.com/api/submit?app=mh', formData, afterSubmission);
+		} catch (error) {
+			status.innerHTML = error;
+		}
+	}
+};
+
+/**
  * Grabs the logged in user's reddits.
  * @alias				RedditAPI.getReddits()
  * @return	{Boolean}		Returns true.
