@@ -430,9 +430,9 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 		var matches;
 		
 		matches = url.match(this.commentsMatchPattern);
-		reqUrl = 'http://' + this.domain + '/by_id/t3_' + matches[3] + '.json';
+		reqUrl = 'http://' + this.domain + '/by_id/t3_' + matches[3] + '.json?app=mh';
 	} else {
-		reqUrl = 'http://' + this.domain + '/api/info.json?url=' + encodeURIComponent(url);
+		reqUrl = 'http://' + this.domain + '/api/info.json?app=mh&url=' + encodeURIComponent(url);
 	}
 	
 	req = new XMLHttpRequest();
@@ -458,7 +458,7 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
 	url = listItem.parentNode.getAttribute('data-url');
-	reqUrl = 'http://' + this.domain + '/api/vote';
+	reqUrl = 'http://' + this.domain + '/api/vote?app=mh';
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
@@ -496,7 +496,7 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
 	url = listItem.parentNode.getAttribute('data-url');
-	reqUrl = 'http://' + this.domain + '/api/vote';
+	reqUrl = 'http://' + this.domain + '/api/vote?app=mh';
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
@@ -533,7 +533,7 @@ RedditAPI.prototype.savePost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
-	reqUrl = 'http://' + this.domain + '/api/save';
+	reqUrl = 'http://' + this.domain + '/api/save?app=mh';
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
@@ -561,7 +561,7 @@ RedditAPI.prototype.unsavePost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
-	reqUrl = 'http://' + this.domain + '/api/unsave';
+	reqUrl = 'http://' + this.domain + '/api/unsave?app=mh';
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
@@ -589,7 +589,7 @@ RedditAPI.prototype.hidePost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
-	reqUrl = 'http://' + this.domain + '/api/hide';
+	reqUrl = 'http://' + this.domain + '/api/hide?app=mh';
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
@@ -615,7 +615,7 @@ RedditAPI.prototype.unhidePost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
-	reqUrl = 'http://' + this.domain + '/api/unhide';
+	reqUrl = 'http://' + this.domain + '/api/unhide?app=mh';
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
@@ -669,7 +669,7 @@ RedditAPI.prototype.reportPost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
-	reqUrl = 'http://' + this.domain + '/api/report';
+	reqUrl = 'http://' + this.domain + '/api/report?app=mh';
 	oldCache = cache.get(url);
 	formData = new FormData();
 	formData.append('id', fullName);
@@ -726,7 +726,7 @@ RedditAPI.prototype.submitComment = function (e) {
 		formData.append('uh', cache.get('modhash'));
 		status.innerHTML = 'submitting...';
 		try {
-			reddit.apiTransmit('POST', 'http://www.reddit.com/api/comment', formData, afterSubmission);
+			reddit.apiTransmit('POST', 'http://www.reddit.com/api/comment?app=mh', formData, afterSubmission);
 		} catch (error) {
 			status.innerHTML = error;
 		}
@@ -740,7 +740,7 @@ RedditAPI.prototype.submitComment = function (e) {
  * @method
  */
 RedditAPI.prototype.getReddits = function () {
-	reddit.apiTransmit('GET', 'http://' + this.domain + '/reddits/mine.json', null, function (response) {
+	reddit.apiTransmit('GET', 'http://' + this.domain + '/reddits/mine.json?app=mh', null, function (response) {
 		cache.set('reddits', response.data.children);
 		return true;
 	});
@@ -845,7 +845,7 @@ Background.prototype.watchMail = function () {
 	}
 	
 	function getMail () {
-		reddit.apiTransmit('GET', 'http://' + reddit.domain + '/api/me.json', null, function (response) {
+		reddit.apiTransmit('GET', 'http://' + reddit.domain + '/api/me.json?app=mh', null, function (response) {
 			showNotification(response.data.has_mail);
 		});
 	}
