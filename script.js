@@ -19,6 +19,7 @@ function navigate(navTo, speed, navFrom) {
 			$('div#'+navFrom).removeClass('current');
 			$('div#'+navTo).slideDown(speed,function(){
 				$('div#'+navTo).addClass('current');
+				window.scrollTo(0,0);
 			});
 		});
 		$('a[href*='+navFrom+']').removeClass('current');
@@ -28,7 +29,6 @@ function navigate(navTo, speed, navFrom) {
 $(document).ready(function() {
 	$('div.article').hide(0);
 	if(window.location.hash.substr(1)) {
-		window.setTimeout(window.scrollTo, 850, 0, 0);
 		navigate(window.location.hash.substr(1),400);
 	} else {
 		window.location.hash = showOnLoad;
