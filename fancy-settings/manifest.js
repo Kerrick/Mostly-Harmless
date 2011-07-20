@@ -109,8 +109,8 @@ this.manifest = {
         	"name": "mailDisplayTime",
         	"type": "slider",
         	"label": "",
-        	"max": 20,
-        	"min": 5,
+        	"max": 60,
+        	"min": 10,
         	"step": 1,
         	"display": true,
         	"displayModifier": function (value) {

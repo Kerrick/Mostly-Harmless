@@ -8,10 +8,10 @@ settings = new Store('settings', {
 	'shamelessPlug': false,
 	'waitForClick': false,
 	'checkMail': true,
-	'mailInterval': 1,
-	'mailDisplayTime': 10,
+	'mailInterval': 5,
+	'mailDisplayTime': 30,
 	'mailSound': false,
-	'excludedDomains': 'secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com',
+	'excludedDomains': 'secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com\nmail.google.com\ndocs.google.com',
 	'excludedRegex': 'chrome://.*\nchrome-extension://.*\nview-source://.*\nftp://.*\nhttps?://www\\.google\\.com/search.*\nhttps?://search\\.yahoo\\.com/search.*\nhttps?://www\\.bing\\.com/search.*\nhttps?://www\\.reddit\\.com/(?:r/(?:\\w|\\+)+/?)?(?:$|\\?count)'
 });
 cache = new Store('cache');
@@ -744,8 +744,6 @@ RedditAPI.prototype.submitLink = function (e, tabId) {
 	var url, title, subreddit, status, submitButton, formData;
 	
 	function afterSubmission (response) {
-		console.log(response);
-		
 		if (response.jquery[22]) {
 			status.innerHTML = response.jquery[22][3][0];
 		} else {
