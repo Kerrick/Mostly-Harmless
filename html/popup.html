@@ -17,7 +17,7 @@
 						document.getElementById('body').innerHTML = popup.createListHTML(currTab.url);
 						document.getElementById('body').style.width = settings.get('popupWidth') + 'px';
 					} else {
-						document.getElementById('body').innerHTML = popup.createSubmitForm(currTab.url);
+						document.getElementById('body').innerHTML = popup.createSubmitForm(currTab);
 					}
 				});
 			}

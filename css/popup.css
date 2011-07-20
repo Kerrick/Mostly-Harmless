@@ -205,3 +205,51 @@ ol[data-commentspage="true"] button.cancel {
 	 background-image:url('/pix/sprite.png');
 	 background-position:-4px -43px;
 }
+#submit fieldset {
+	background-color: #CEE3F8;
+	border: 0;
+	border-radius: 4px;
+	padding: 5px 10px 10px 10px;
+	margin: 0 0 10px 0;
+	width:500px;
+	font-size: small;
+}
+#submit input[type="text"] {
+	width: 492px;
+	padding: 3px;
+	margin: 0 0 5px;
+	border: 1px solid gray;
+	height: 22px;
+}
+#submit input, #submit label {
+	display: block;
+	font-size: large;
+	margin: 0 0 5px;
+}
+#submit #your_label {
+	font-weight: normal;
+	display: block;
+	margin: 5px 0 0;
+}
+#submit #your_reddits {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#submit #your_reddits li {
+	display: inline-block;
+	padding-right: 8px;
+	line-height: 125%;
+}
+#submit #your_reddits li a {
+	color: #369;
+	text-decoration: none;
+}
+#submit #submit_submit {
+	display: inline;
+	font-size: small;
+	margin-right: 10px;
+}
+#submit .status {
+	color: red;
+}

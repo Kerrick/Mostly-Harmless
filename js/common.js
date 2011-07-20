@@ -954,13 +954,43 @@ Popup.prototype.createListHTML = function (url) {
 
 /**
  * Create the HTML for a submission form.
- * @alias				Popup.createSubmitForm(url)
- * @param	{String}	url	The URL of the page to create the HTML for.
+ * @alias				Popup.createSubmitForm(tab)
+ * @param	{String}	tab	The Google Chrome Tab object.
  * @return	{String}		Returns the generated Form.
  * @method
  */
-Popup.prototype.createSubmitForm = function (url) {
-	return 'Submit form not yet programmed.';
+Popup.prototype.createSubmitForm = function (tab) {
+	var submitHTML, redditCache;
+	
+	redditCache = cache.get('reddits');
+	submitHTML = '<form id="submit">';
+		submitHTML += '<h1>' + chrome.i18n.getMessage('submit_page') + '</h1>';
+		submitHTML += '<fieldset>';
+			submitHTML += '<label for="submit_title">' + chrome.i18n.getMessage('title') + '</label>';
+			submitHTML += '<input id="submit_title" name="submit_title" type="text" />';
+			submitHTML += '<input id="submit_title_suggest" type="button" value="' + chrome.i18n.getMessage('suggest_title') + '" onclick="document.getElementById(\'submit_title\').value=\'' + tab.title + '\'" />';
+		submitHTML += '</fieldset>';
+		submitHTML += '<fieldset>';
+			submitHTML += '<label for="submit_url">' + chrome.i18n.getMessage('url') + '</label>';
+			submitHTML += '<input id="submit_url" name="submit_url" type="text" readonly value="' + tab.url + '"/>';
+		submitHTML += '</fieldset>';
+		submitHTML += '<fieldset>';
+			submitHTML += '<label for="submit_reddit">reddit</label>';
+			submitHTML += '<input id="submit_reddit" name="submit_reddit" type="text" />';
+			if (redditCache.length > 0) {
+				submitHTML += '<strong id="your_label">' + chrome.i18n.getMessage('popular_choices') + '</strong>';
+				submitHTML += '<ul id="your_reddits">';
+					for (var i = 0; i < redditCache.length; i++) {
+						submitHTML += '<li><a onclick="document.getElementById(\'submit_reddit\').value=\'' + redditCache[i].data.display_name + '\'">' + redditCache[i].data.display_name + '</a></li>';
+					}
+				submitHTML += '</ul>';
+			}
+		submitHTML += '</fieldset>';
+		submitHTML += '<input type="submit" id="submit_submit" onclick="this.parentNode.getElementsByClassName(\'status\')[0].innerHTML=\'I should be submitting the link.\';return false" value="' + chrome.i18n.getMessage('submit_page') + '" />';
+		submitHTML += '<span class="status"></span>'
+	submitHTML += '</form>';
+	
+	return submitHTML;
 }
 
 /**

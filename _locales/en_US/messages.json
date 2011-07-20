@@ -400,6 +400,18 @@
 	"orangered_action": {
 		"message": "Click here to be taken to your inbox."
 	},
+	"url": {
+		"message": "url"
+	},
+	"popular_choices": {
+		"message": "popular choices"
+	},
+	"title": {
+		"message": "title"
+	},
+	"suggest_title": {
+		"message": "suggest title"
+	},
 	"tab_preferences": {
 		"message": "Preferences"
 	},
