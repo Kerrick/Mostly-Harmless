@@ -25,16 +25,20 @@
 				<img src="./images/ss_comment.png" alt="Screenshot of Mostly Harmless showing commenting capability." width="832" height="548" />
 				<h2>Desktop Notifications</h2>
 				<p>Every redditor knows the joy of getting an orangered. Every redditor <em>also</em> knows that finding out what it&rsquo;s for, who it&rsquo;s from, and what it says is half of the fun! Mostly Harmless will check for orangereds at a specified interval and display a desktop notification when you get one. Of course, you can turn this off if you like.</p>
-				<img src="./images/ss_notification.png" alt="Screenshot of Mostly Harmless sending a desktop notification for an orangered." width="812" height="128" class="too-sharp" />
+				<img src="./images/ss_notification.png" alt="Screenshot of Mostly Harmless sending a desktop notification for an orangered." width="812" height="128" />
 				<h2>Privacy</h2>
 				<p>Your browsing habits are your own, and you probably don&rsquo;t want every page you visit checked on reddit. Instead, Mostly Harmless has an option to only look up pages when you click its icon. Of course that could get tedious, so Mostly Harmless also supports excluding lookups based on domain and regular expression matches.</p>
 				<img src="./images/ss_excludedDomains.png" alt="Screenshot of a bank website being excluded from Mostly Harmless." width="832" height="355" />
 			</div>
 			<div class="article" id="download">
 				<!-- Move this to #open-source upon release. -->
+				<h2>Fork me on Github</h2>
+				<p>If you would like to contribute to the project with your own code or translations, please <a href="https://github.com/Kerrick/Mostly-Harmless/fork">fork Mostly Harmless on Github</a>! After you make your changes, <a href="http://help.github.com/send-pull-requests/">submit a pull request</a> so I can merge it into the master branch. If your code or translations are used in Mostly Harmless, I'll link to your reddit profile on the <a href="#credits">credits page</a> as well!</p>
+				<a href="https://github.com/Kerrick/Mostly-Harmless" title="Click here to view Mostly Harmless on github!"><img src="./images/ss_fork.png" alt="Screenshot of a github network graph representing a heavily forked project." width="812" height="177"/></a>
+				<p>Or, you can run <code>git clone</code> to grab the files read-only.</p>
+				<pre><code data-language="bash">git clone git://github.com/Kerrick/Mostly-Harmless.git</code></pre>
 				<h2>Download the Source</h2>
-				<a href="https://github.com/Kerrick/Mostly-Harmless/zipball/master" title="Click to download the latest zipball"><img width="144" height="142" alt="zip" src="https://github.com/images/modules/download/zip.png" /></a>
-				<a href="https://github.com/Kerrick/Mostly-Harmless/tarball/master" title="Click to download the latest tarball"><img width="144" height="142" alt="tar" src="https://github.com/images/modules/download/tar.png" /></a>
+				<p>If you would like to install Mostly Harmless from <a hre="https://github.com/Kerrick/Mostly-Harmless">its source code</a>, visit the <a href="https://github.com/Kerrick/Mostly-Harmless/archives/master">github downloads page</a>, and click on the latest tagged download package for the most recent stable release. Alternatively, you can grab the <a href="https://github.com/Kerrick/Mostly-Harmless/tarball/master">latest tarball</a>, but consider that it could be in an unstable developmental state.</p>
 				<p>To install from source:</p>
 				<ol>
 					<li>Download the latest ZIP and extract it</li>
@@ -42,14 +46,20 @@
 					<li>Turn on <strong>developer mode</strong> if it isn&rsquo;t already</li>
 					<li>Choose <strong>load unpacked extension</strong>, and navigate to the extracted code.</li>
 				</ol>
-				<h2>Fork me on Github</h2>
-				<p>I need to write something about Github forking and pull requests.</p>
-				<p>Or, you can run <code>git clone</code> to grab the files read-only.</p>
-				<pre><code>$ git clone git://github.com/Kerrick/Mostly-Harmless.git</code></pre>
 			</div>
 			<div class="article" id="help">
 				<h2>Submit a Ticket</h2>
-				<p>I need to write something about feature requests and bug reports.</p>
+				<p>If you find a bug in Mostly Harmless, or if you would like to request a new feature, doing so is easy! Simply visit <a href="https://github.com/Kerrick/Mostly-Harmless/issues/new">github.com/Kerrick/Mostly-Harmless/issues/new</a> and submit a ticket! Be sure to be very descriptive so I can figure out exactly what is wrong, or precisely what you are requesting.</p>
+				<a href="https://github.com/Kerrick/Mostly-Harmless/issues" title="Click here to view open issues for Mostly Harmless"><img src="./images/ss_issues.png" alt="Screenshot of a new issue being submitted." width="812" height="345"/></a>
+				<h2>Why does it take so long to get an orangered notification?</h2>
+				<p>I was told by the reddit admins on <a href="http://webchat.freenode.net/?channels=reddit-dev">#reddit-dev</a> to make the minimum interval for checking orangereds five minutes. If you think Mostly Harmless should be able to poll <code>http://www.reddit.com/api/me.json</code> more often, please <a href="http://www.reddit.com/message/compose/?to=chromakode">send a PM to chromakode</a>, and then <a href="http://www.reddit.com/message/compose/?to=spladug">send one to spladug</a>.</p>
+				<blockquote>
+					<pre><code data-language="irc">&lt;chromakode&gt; KerrickLong, can you please reduce the mail interval at minimum every 5 minutes?
+&lt;KerrickLong&gt; Five minutes? Yeah I can.
+&lt;chromakode&gt; also, can you please add app=mh as an extra param to your api requests? that way we can tell you some interesting stats about its utilization!
+&lt;KerrickLong&gt; chromakode, if I make the orangereds poll /api/me.json instead of /messages/new, could I reduce the interval since it will be a LOT less load?
+&lt;spladug&gt; KerrickLong, /api/me.json would be preferable, but 5 minutes would still be nice. we've seen some crazy high load from shine the last few days and would like to try to avoid having the same issue again</code></pre>
+				</blockquote>
 				<h2>What do the default &ldquo;Excluded Regex&rdquo; mean?</h2>
 				<p>For those that don't speak regular expressions, I'll go over the default Excluded Regex patterns here so you can know which ones to get rid of.</p>
 				<pre><code>chrome://.*</code></pre>
@@ -82,7 +92,9 @@
 					<li><a href="http://www.reddit.com/user/KerrickLong/"><strong>Kerrick Long</strong>Mostly Harmless Creator</a></li
 					><li><a href="http://www.reddit.com/user/benjaminmktn121/"><strong>benjaminmktn121</strong>Beta Tester</a></li
 					><li><a href="http://www.reddit.com/user/MrArmStrong/"><strong>MrArmStrong</strong>Beta Tester</a></li
-					><li><a href="http://www.reddit.com/user/iamfromreallife/"><strong>iamfromreallife</strong>Beta Tester</a></li>
+					><li><a href="http://www.reddit.com/user/iamfromreallife/"><strong>iamfromreallife</strong>Beta Tester</a></li
+					><li><a href="http://www.reddit.com/user/McNerdius"><strong>McNerdius</strong>Beta Tester</a></li
+					><li><a href="https://github.com/Kerrick/Mostly-Harmless"><strong>Your Name Here!</strong>Contribute to the project</a></li>
 				</ul>
 			</div>
 			<div class="article" id="license">
