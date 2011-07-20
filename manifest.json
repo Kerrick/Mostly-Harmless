@@ -11,6 +11,11 @@
 		"tabs",
 		"notifications"
 	],
+	"icons": {
+		"16": "pix/icon16.png",
+		"48": "pix/icon48.png",
+		"128": "pix/icon128.png"
+	},
 	"background_page": "html/background.html",
 	"options_page": "fancy-settings/index.html",
 	"default_locale": "en_US"
