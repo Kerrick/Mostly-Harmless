@@ -999,7 +999,7 @@ Popup.prototype.createSubmitForm = function (tab) {
 				submitHTML += '</ul>';
 			}
 		submitHTML += '</fieldset>';
-		submitHTML += '<input type="submit" id="submit_submit" onclick="this.parentNode.getElementsByClassName(\'status\')[0].innerHTML=\'I should be submitting the link.\';return false" value="' + chrome.i18n.getMessage('submit_page') + '" />';
+		submitHTML += '<input type="button" id="submit_submit" onclick="reddit.submitLink(event, \'' + tab.id + '\')" value="' + chrome.i18n.getMessage('submit_page') + '" />';
 		submitHTML += '<span class="status"></span>'
 	submitHTML += '</form>';
 	
