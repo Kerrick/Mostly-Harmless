@@ -199,6 +199,17 @@ function BrowserAction() {
 }
 
 /**
+ * Handle a manual click on the browser action button. It will be called if there is no popup.
+ * @alias				BrowserAction.handleManualClick(tab)
+ * @param	{Object}	tab	The Google Chrome tab object.
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+BrowserAction.prototype.handleManualClick = function (tab) {
+	background.prepareBrowserAction(tab.id, null, tab, true);
+};
+
+/**
  * Set the browser icon badge to its defaults.
  * @alias				BrowserAction.setBadgeDefaults(tabId)
  * @param	{Number}	tabId	If given, only sets badge defaults for this tab.
@@ -211,9 +222,7 @@ BrowserAction.prototype.setBadgeDefaults = function (tabId) {
 	chrome.browserAction.setTitle({'title': 'Click to load data.', 'tabId': tabId});
 	chrome.browserAction.setBadgeBackgroundColor({'color': [192, 192, 192, 255], 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
-	chrome.browserAction.onClicked.addListener(function (tab) {
-		reddit.getInfo(tab.url, tab.id);
-	});
+	chrome.browserAction.onClicked.addListener(this.handleManualClick);
 	return true;
 };
 
@@ -229,9 +238,6 @@ BrowserAction.prototype.setBadgeIgnore = function (tabId) {
 	chrome.browserAction.setBadgeText({'text': '', 'tabId': tabId});
 	chrome.browserAction.setTitle({'title': chrome.i18n.getMessage('not_activated'), 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
-	chrome.browserAction.onClicked.addListener(function (tab) {
-		reddit.getInfo(tab.url, tab.id);
-	});
 	return true;
 };
 
@@ -264,9 +270,6 @@ BrowserAction.prototype.setBadgeError = function (tabId, text) {
 	chrome.browserAction.setTitle({'title': text, 'tabId': tabId});
 	chrome.browserAction.setBadgeBackgroundColor({'color': [200, 0, 0, 255], 'tabId': tabId});
 	chrome.browserAction.setPopup({popup: '', tabId: tabId});
-	chrome.browserAction.onClicked.addListener(function (tab) {
-		reddit.getInfo(tab.url, tab.id);
-	});
 	return true;
 };
 
@@ -813,11 +816,26 @@ function Background() {
  * @param	{Number}	tabId	The ID of the tab to get data for.
  * @param	{Object}	info	The info for the change as sent by Chrome.
  * @param	{Object}	tab	The info for the tab as sent by Chrome.
+ * @param	{Boolean}	force	Optional: If true, this bypasses any checks.
  * @return	{Boolean}		Returns true.
  * @method
  */
-Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
-	if (info.status === 'loading') {
+Background.prototype.prepareBrowserAction = function (tabId, info, tab, force) {
+	function setBadge() {
+		if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
+			console.log(chrome.i18n.getMessage('loading_api'));
+			reddit.getInfo(tab.url, tabId);
+		} else {
+			console.log(chrome.i18n.getMessage('loading_cache'));
+			button.setBadgeFor(tab.url, tabId);
+		}
+		
+		return true;
+	}
+	
+	if (force === true) {
+		setBadge();
+	} else if (info.status === 'loading') {
 		try {
 			var excludedRegex, match;
 			
@@ -836,13 +854,7 @@ Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 			}
 			
 			if (settings.get('waitForClick') === false && match === false) {
-				if (cache.get(tab.url) === undefined || cache.get(tab.url).cacheDate - utils.epoch() < -60  * settings.get('cacheTime')) {
-					console.log(chrome.i18n.getMessage('loading_api'));
-					reddit.getInfo(tab.url, tabId);
-				} else {
-					console.log(chrome.i18n.getMessage('loading_cache'));
-					button.setBadgeFor(tab.url, tabId);
-				}
+				setBadge();
 			} else {
 				button.setBadgeIgnore(tabId);
 			}
@@ -850,8 +862,6 @@ Background.prototype.prepareBrowserAction = function (tabId, info, tab) {
 			button.setBadgeError(tabId, error.message);
 		}
 	}
-	
-	return true;
 };
 
 /**
