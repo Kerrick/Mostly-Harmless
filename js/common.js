@@ -462,6 +462,24 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 RedditAPI.prototype.voteUpPost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
 	
+	function success () {
+		if (voteWas === '1') {
+			formData.append('dir','0');
+			listItem.setAttribute('data-dir','0');
+			oldCache.posts[fullName].data.likes = null;
+		} else if (voteWas === '0') {
+			formData.append('dir','1');
+			listItem.setAttribute('data-dir','1');
+			oldCache.posts[fullName].data.likes = true;
+		} else if (voteWas === '-1') {
+			formData.append('dir','1');
+			listItem.setAttribute('data-dir','1');
+			oldCache.posts[fullName].data.likes = true;
+		}
+		
+		cache.set(url, oldCache);
+	}
+	
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
@@ -471,23 +489,7 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	
-	if (voteWas === '1') {
-		formData.append('dir','0');
-		listItem.setAttribute('data-dir','0');
-		oldCache.posts[fullName].data.likes = null;
-	} else if (voteWas === '0') {
-		formData.append('dir','1');
-		listItem.setAttribute('data-dir','1');
-		oldCache.posts[fullName].data.likes = true;
-	} else if (voteWas === '-1') {
-		formData.append('dir','1');
-		listItem.setAttribute('data-dir','1');
-		oldCache.posts[fullName].data.likes = true;
-	}
-	
-	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, formData);
+	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
 /**
@@ -500,6 +502,24 @@ RedditAPI.prototype.voteUpPost = function (e) {
 RedditAPI.prototype.voteDownPost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
 	
+	function success () {
+		if (voteWas === '1') {
+			formData.append('dir','-1');
+			listItem.setAttribute('data-dir','-1');
+			oldCache.posts[fullName].data.likes = false;
+		} else if (voteWas === '0') {
+			formData.append('dir','-1');
+			listItem.setAttribute('data-dir','-1');
+			oldCache.posts[fullName].data.likes = false;
+		} else if (voteWas === '-1') {
+			formData.append('dir','0');
+			listItem.setAttribute('data-dir','0');
+			oldCache.posts[fullName].data.likes = null;
+		}
+		
+		cache.set(url, oldCache);
+	}
+	
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
@@ -509,23 +529,7 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	
-	if (voteWas === '1') {
-		formData.append('dir','-1');
-		listItem.setAttribute('data-dir','-1');
-		oldCache.posts[fullName].data.likes = false;
-	} else if (voteWas === '0') {
-		formData.append('dir','-1');
-		listItem.setAttribute('data-dir','-1');
-		oldCache.posts[fullName].data.likes = false;
-	} else if (voteWas === '-1') {
-		formData.append('dir','0');
-		listItem.setAttribute('data-dir','0');
-		oldCache.posts[fullName].data.likes = null;
-	}
-	
-	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, formData);
+	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
 /**
@@ -538,6 +542,16 @@ RedditAPI.prototype.voteDownPost = function (e) {
 RedditAPI.prototype.savePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
+	function success () {
+		listItem.setAttribute('data-saved', 'true');
+		listItem.className.replace(/\bsaved\b/,'');
+		listItem.className += ' unsave';
+		e.srcElement.innerHTML = chrome.i18n.getMessage('action_unsave');
+		e.srcElement.onclick = function (event) {reddit.unsavePost(event)};
+		oldCache.posts[fullName].data.saved = true;
+		cache.set(url, oldCache);
+	}
+	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -546,14 +560,7 @@ RedditAPI.prototype.savePost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	listItem.setAttribute('data-saved', 'true');
-	listItem.className.replace(/\bsaved\b/,'');
-	listItem.className += ' unsave';
-	e.srcElement.innerHTML = chrome.i18n.getMessage('action_unsave');
-	e.srcElement.onclick = function (event) {reddit.unsavePost(event)};
-	oldCache.posts[fullName].data.saved = true;
-	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, formData);
+	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
 /**
@@ -566,6 +573,16 @@ RedditAPI.prototype.savePost = function (e) {
 RedditAPI.prototype.unsavePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
+	function success () {
+		listItem.setAttribute('data-saved', 'false');
+		listItem.className.replace(/\bunsave\b/,'');
+		listItem.className += ' saved';
+		e.srcElement.innerHTML = chrome.i18n.getMessage('action_save');
+		e.srcElement.onclick = function (event) {reddit.savePost(event)};
+		oldCache.posts[fullName].data.saved = false;
+		cache.set(url, oldCache);
+	}
+	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -574,14 +591,7 @@ RedditAPI.prototype.unsavePost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	listItem.setAttribute('data-saved', 'false');
-	listItem.className.replace(/\bunsave\b/,'');
-	listItem.className += ' saved';
-	e.srcElement.innerHTML = chrome.i18n.getMessage('action_save');
-	e.srcElement.onclick = function (event) {reddit.savePost(event)};
-	oldCache.posts[fullName].data.saved = false;
-	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, formData);
+	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
 /**
@@ -594,6 +604,14 @@ RedditAPI.prototype.unsavePost = function (e) {
 RedditAPI.prototype.hidePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
+	function success () {
+		listItem.setAttribute('data-hidestatus', 'true');
+		e.srcElement.innerHTML = chrome.i18n.getMessage('action_unhide');
+		e.srcElement.onclick = function (event) {reddit.unhidePost(event)};
+		oldCache.posts[fullName].data.hidden = true;
+		cache.set(url, oldCache);
+	}
+	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -602,12 +620,7 @@ RedditAPI.prototype.hidePost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	listItem.setAttribute('data-hidestatus', 'true');
-	e.srcElement.innerHTML = chrome.i18n.getMessage('action_unhide');
-	e.srcElement.onclick = function (event) {reddit.unhidePost(event)};
-	oldCache.posts[fullName].data.hidden = true;
-	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, formData);
+	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
 /**
@@ -620,6 +633,14 @@ RedditAPI.prototype.hidePost = function (e) {
 RedditAPI.prototype.unhidePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
+	function success () {
+		listItem.setAttribute('data-hidestatus', 'false');
+		e.srcElement.innerHTML = chrome.i18n.getMessage('action_hide');
+		e.srcElement.onclick = function (event) {reddit.hidePost(event)};
+		oldCache.posts[fullName].data.hidden = false;
+		cache.set(url, oldCache);
+	}
+	
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -628,12 +649,7 @@ RedditAPI.prototype.unhidePost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	listItem.setAttribute('data-hidestatus', 'false');
-	e.srcElement.innerHTML = chrome.i18n.getMessage('action_hide');
-	e.srcElement.onclick = function (event) {reddit.hidePost(event)};
-	oldCache.posts[fullName].data.hidden = false;
-	cache.set(url, oldCache);
-	this.apiTransmit('POST', reqUrl, formData);
+	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
 /**
@@ -674,6 +690,16 @@ RedditAPI.prototype.denyReport = function (e) {
 RedditAPI.prototype.reportPost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
 	
+	function success () {
+		listItem.setAttribute('data-hidestatus', 'true');
+		e.srcElement.parentNode.parentNode.childNodes[3].innerHTML = 'unhide';
+		e.srcElement.parentNode.parentNode.childNodes[3].onclick = function (event) {reddit.unhidePost(event)};
+		oldCache.posts[fullName].data.hidden = true;
+		cache.set(url, oldCache);
+		listItem.setAttribute('data-reportstatus', 'true');
+		e.srcElement.parentNode.innerHTML = chrome.i18n.getMessage('action_reported');
+	}
+	
 	listItem = e.srcElement.parentNode.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -682,14 +708,7 @@ RedditAPI.prototype.reportPost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	this.apiTransmit('POST', reqUrl, formData);
-	listItem.setAttribute('data-hidestatus', 'true');
-	e.srcElement.parentNode.parentNode.childNodes[3].innerHTML = 'unhide';
-	e.srcElement.parentNode.parentNode.childNodes[3].onclick = function (event) {reddit.unhidePost(event)};
-	oldCache.posts[fullName].data.hidden = true;
-	cache.set(url, oldCache);
-	listItem.setAttribute('data-reportstatus', 'true');
-	e.srcElement.parentNode.innerHTML = chrome.i18n.getMessage('action_reported');
+	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
 /**
@@ -702,7 +721,7 @@ RedditAPI.prototype.reportPost = function (e) {
 RedditAPI.prototype.submitComment = function (e) {
 	var listItem, fullName, status, submitButton, cancelButton, textarea, comment, formData;
 	
-	function afterSubmission (response) {
+	function success (response) {
 		var url, oldCache;
 		
 		status.innerHTML = '';
@@ -734,7 +753,7 @@ RedditAPI.prototype.submitComment = function (e) {
 		formData.append('uh', cache.get('modhash'));
 		status.innerHTML = 'submitting...';
 		try {
-			reddit.apiTransmit('POST', 'http://www.reddit.com/api/comment?app=mh', formData, afterSubmission);
+			reddit.apiTransmit('POST', 'http://www.reddit.com/api/comment?app=mh', formData, success);
 		} catch (error) {
 			status.innerHTML = error;
 		}
@@ -751,7 +770,7 @@ RedditAPI.prototype.submitComment = function (e) {
 RedditAPI.prototype.submitLink = function (e, tabId) {
 	var url, title, subreddit, status, submitButton, formData;
 	
-	function afterSubmission (response) {
+	function success (response) {
 		if (response.jquery[22]) {
 			status.innerHTML = response.jquery[22][3][0];
 		} else {
@@ -782,7 +801,7 @@ RedditAPI.prototype.submitLink = function (e, tabId) {
 		formData.append('uh', cache.get('modhash'));
 		status.innerHTML = 'submitting...';
 		try {
-			reddit.apiTransmit('POST', 'http://www.reddit.com/api/submit?app=mh', formData, afterSubmission);
+			reddit.apiTransmit('POST', 'http://www.reddit.com/api/submit?app=mh', formData, success);
 		} catch (error) {
 			status.innerHTML = error;
 		}
