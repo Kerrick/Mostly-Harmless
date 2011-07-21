@@ -1,0 +1,624 @@
+{
+        "just_now": {
+                "message": "ara",
+                "description": "Descriu una cosa que acaba de passar."
+
+        },
+        "a_minute_ago": {
+                "message": "fa un minut",
+                "description": "Descriu una cosa que ha passat fa un minut."
+
+        },
+        "a_minute_from_now": {
+                "message": "en un minut",
+                "decription": "Descriu una cosa que passarà en un minut."
+        },
+        "minutes_ago": {
+                "message": "fa $NUM$ minuts",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "minutes_from_now": {
+                "message": "en $NUM$ minuts",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "an_hour_ago": {
+                "message": "fa una hora",
+                "description": "Descriu una cosa que ha passat fa una hora."
+        },
+        "an_hour_from_now": {
+                "message": "en una hora",
+                "description": "Descriu una cosa que passarà en una hora."
+        },
+        "hours_ago": {
+                "message": "fa $NUM$ hores",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "hours_from_now": {
+                "message": "en $NUM$ hores",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "yesterday": {
+                "message": "ahir",
+                "description": "El dia anterior a avui."
+        },
+        "tomorrow": {
+                "message": "demà",
+                "description": "El dia després d'avui."
+        },
+        "days_ago": {
+                "message": "fa $NUM$ dies",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "days_from_now": {
+                "message": "en $NUM$ dies",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "last_week": {
+                "message": "la setmana passada",
+                "description": "La setmana abans d'aquesta."
+        },
+        "next_week": {
+                "message": "la setmana que ve",
+                "description": "La setmana després d'aquesta."
+        },
+        "weeks_ago": {
+                "message": "fa $NUM$ setmanes",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "weeks_from_now": {
+                "message": "en $NUM$ setmanes",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "last_month": {
+                "message": "el mes passat",
+                "description": "El mes després d'aquest."
+        },
+        "next_month": {
+                "message": "el mes que ve",
+                "description": "El mes després d'aquest."
+        },
+        "months_ago": {
+                "message": "fa $NUM$ mesos",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "months_from_now": {
+                "message": "en $NUM$ mesos",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "last_year": {
+                "message": "l'any passat",
+                "description": "L'any abans d'aquest."
+        },
+        "next_year": {
+                "message": "l'any que ve",
+                "description": "L'any després d'aquest"
+        },
+        "years_ago": {
+                "message": "fa $NUM$ anys",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "years_from_now": {
+                "message": "en $NUM$ anys",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "last_century": {
+                "message": "el segle passat",
+                "description": "El segle abans d'aquest."
+        },
+        "next_century": {
+                "message": "el segle que ve",
+                "description": "El segle després d'aquest."
+        },
+        "centuries_ago": {
+                "message": "fa $NUM$ segles",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "centuries_from_now": {
+                "message": "en $NUM$ segles",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example" : "4"
+                        }
+                }
+        },
+        "not_activated": {
+                "message": "$APPNAME$ no està activada per aquesta pàgina. Fes clic aquí per activar-la.",
+                "placeholders": {
+                        "APPNAME": {
+                                "content": "Mostly Harmless"
+                        }
+                }
+        },
+        "loading": {
+                "message": "Carregant dades..."
+        },
+        "viewing_comments": {
+                "message": "Estàs veient els comentaris per aquesta pàgina."
+        },
+        "submit_page": {
+                "message": "Envia aquesta pàgina a $REDDIT$.",
+                "placeholders": {
+                        "REDDIT": {
+                                "content": "reddit"
+                        }
+                }
+        },
+        "submitted_num_times": {
+                "message": "Aquesta pàgina s'ha enviat $NUM$ vegades.",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "4"
+                        }
+                }
+        },
+        "login": {
+                "message": "Has d'estar identificat per fer això. $BEGIN_LINK$Fes clic per obrir la pàgina d'identificació.$END_LINK$",
+                "placeholders": {
+                        "BEGIN_LINK": {
+                                "content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
+                        },
+                        "END_LINK": {
+                                "content": "</a>"
+                        }
+                }
+        },
+        "api_error": {
+                "message": "Hi ha hagut un error de la API. Estat HTTP: $STATUS$. Fes clic aquí per intentar-ho altre cop.",
+                "placeholders": {
+                        "STATUS": {
+                                "content": "$1",
+                                "example": "504"
+                        }
+                }
+        },
+        "api_timeout": {
+                "message": "s'ha esgotat el temps d'espera per la API, després de $NUM$ segons. Fes clic aquí per intentar-ho de nou.",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "15"
+                        }
+                }
+        },
+        "action_unsave": {
+                "message": "oblidar"
+        },
+        "action_save": {
+                "message": "guardar"
+        },
+        "action_unhide": {
+                "message": "mostrar"
+        },
+        "action_hide": {
+                "message": "ocultar"
+        },
+        "action_share": {
+                "message": "compartir"
+        },
+        "report_confirm": {
+                "message": "estàs segur? $BEGIN_LINK_YES$sí$END_LINK_YES$/$BEGIN_LINK_NO$no$END_LINK_NO$",
+                "placeholders": {
+                        "BEGIN_LINK_YES": {
+                                "content": "<a onclick=\"reddit.reportPost(event)\">"
+                        },
+                        "END_LINK_YES": {
+                                "content": "</a>"
+                        },
+                        "BEGIN_LINK_NO": {
+                                "content": "<a onclick=\"reddit.denyReport(event)\">"
+                        },
+                        "END_LINK_NO": {
+                                "content": "</a>"
+                        }
+                }
+        },
+        "action_report": {
+                "message": "informar"
+        },
+        "action_reported": {
+                "message": "informat!"
+        },
+        "button_submit": {
+                "message": "enviar"
+        },
+        "button_hide": {
+                "message": "amagar aquest formulari"
+        },
+        "error_empty": {
+                "message": "És necesari que hi hagi alguna cosa aquí."
+        },
+        "loading_api": {
+                "message": "Carregant dades de la API..."
+        },
+        "loading_cache": {
+                "message": "Carregant dades de la caché..."
+        },
+        "error_not_cached": {
+                "message": "No es pot crear una llista per a una URL que encara no s'ha cachejat."
+        },
+        "score": {
+                "message": "$UPS$ vots positius, $DOWNS$ vots negatius.",
+                "placeholders": {
+                        "UPS": {
+                                "content": "$1",
+                                "example": "435"
+                        },
+                        "DOWNS": {
+                                "content": "$2",
+                                "example": "243"
+                        }
+                }
+        },
+        "view_on_reddit": {
+                "message": "Veure aquest post a $REDDIT$",
+                "placeholders": {
+                        "REDDIT": {
+                                "content": "reddit"
+                        }
+                }
+        },
+        "submitted_when": {
+                "message": "enviat $TIME$",
+                "placeholders": {
+                        "TIME": {
+                                "content": "$1",
+                                "example": "an hour ago"
+                        }
+                }
+        },
+        "by": {
+                "message": "per"
+        },
+        "to": {
+                "message": "a"
+        },
+        "add_comment_zero": {
+                "message": "afegir un comentari"
+        },
+        "add_comment_one": {
+                "message": "afegir el primer comentari"
+        },
+        "add_comment_many": {
+                "message": "afegir el $NUM$ comentari",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "42"
+                        }
+                }
+        },
+        "leave_comment": {
+                "message": "Deixar un comentari"
+        },
+        "stale_posts_hiding": {
+                "message": "Ocultant $NUM$ missatges vells. $BEGIN_LINK_SHOW$Ensenyar-els$END_LINK_SHOW$, o visita $BEGIN_LINK_OPTIONS$la pàgina d'opcions$END_LINK_OPTIONS$ per canviar les preferències de Contingut Nou.",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "4"
+                        },
+                        "BEGIN_LINK_SHOW": {
+                                "content": "<a onclick=\"popup.showStalePosts()\">"
+                        },
+                        "END_LINK_SHOW": {
+                                "content": "</a>"
+                        },
+                        "BEGIN_LINK_OPTIONS": {
+                                "content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+                        },
+                        "END_LINK_OPTIONS": {
+                                "content": "</a>"
+                        }
+                }
+        },
+        "stale_posts_showing": {
+                "message": "Mostrant els missatges vells. Visita $BEGIN_LINK_OPTIONS$la pàgina d'opcions$END_LINK_OPTIONS$ per canviar les preferències de Contingut Nou.",
+                "placeholders": {
+                        "BEGIN_LINK_OPTIONS": {
+                                "content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+                        },
+                        "END_LINK_OPTIONS": {
+                                "content": "</a>"
+                        }
+                }
+        },
+        "orangered_received": {
+                "message": "Tens un $ORANGERED$!",
+                "placeholders": {
+                        "ORANGERED": {
+                                "content": "orangered"
+                        }
+                }
+        },
+        "orangered_action": {
+                "message": "Fes clic per obrir la safata d'entrada."
+        },
+        "url": {
+                "message": "url"
+        },
+        "popular_choices": {
+                "message": "opcions populars"
+        },
+        "title": {
+                "message": "títol"
+        },
+        "suggest_title": {
+                "message": "suggerir títol"
+        },
+        "tab_preferences": {
+                "message": "Preferències"
+        },
+        "group_fresh_content": {
+                "message": "Contingut Nou"
+        },
+        "fresh_content_show_one_day": {
+                "message": "Només mostrar els missatges d'avui."
+        },
+        "fresh_content_show_days": {
+                "message": "Només mostrar els missatges de fa $NUM$ dies.",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "4"
+                        }
+                }
+        },
+        "fresh_content_show_weeks": {
+                "message": "Només mostrar els missatges de fa $NUM$ setmanes.",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "4"
+                        }
+                }
+        },
+        "fresh_content_show_months": {
+                "message": "Només mostrar els missatges de fa $NUM$ mesos.",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "4"
+                        }
+                }
+        },
+        "fresh_content_show_all": {
+                "message": "Mostrar tots els missatges."
+        },
+        "fresh_content_description": {
+                "message": "Aquesta opció et permet triar els missatges vells que vols veure. Tot el que s'hagi enviat abans del valor que has especificat s'indicarà al total, pero no es mostrarà a la finestra emergent."
+        },
+        "group_popup_width": {
+                "message": "Ample de la finestra emergent"
+        },
+        "popup_width_description": {
+                "message": "Aquesta opció et permet especificar l'ample de la finestra emergent."
+        },
+        "group_shameless_plug": {
+                "message": "Promoció descarada"
+        },
+        "shameless_plug_label": {
+                "message": "Mostrar la promoció descarada"
+        },
+        "shameless_plug_description": {
+                "message": "Quan està activat, s'afegirà lo següent a cada comentari que enviïs des de $MOSTLY_HARMLESS$:$PLUG_TEXT$",
+                "placeholders": {
+                        "PLUG_TEXT": {
+                                "content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
+                        },
+                        "MOSTLY_HARMLESS": {
+                                "content": "Mostly Harmless"
+                        }
+                }
+        },
+        "group_orangered_notifications": {
+                "message": "Notificacions d'$ORANGERED$",
+                "placeholders": {
+                        "ORANGERED": {
+                                "content": "orangered"
+                        }
+                }
+        },
+        "orangered_check": {
+                "message": "Comprovar $ORANGERED$s",
+                "placeholders": {
+                        "ORANGERED": {
+                                "content": "orangered"
+                        }
+                }
+        },
+        "orangered_sound_label": {
+                "message": "Reproduir un so quan tinguis un $ORANGERED$",
+                "placeholders": {
+                        "ORANGERED": {
+                                "content": "orangered"
+                        }
+                }
+        },
+        "orangered_sound_preview": {
+                "message": "Escoltar el so de la notificació"
+        },
+        "orangered_interval_minutes": {
+                "message": "Comprovar cada $NUM$ minuts",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "4"
+                        }
+                }
+        },
+        "orangered_display_time": {
+                "message": "Mostrar la notificació durant $NUM$ segons",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "4"
+                        }
+                }
+        },
+        "orangered_description": {
+                "message": "Quan està activat, $MOSTLY_HARMLESS$ buscarà nous $ORANGERED$s en un interval especificat por tu. Si tens algun $ORANGERED$, mostrarà una notificació a l'escriptori amb una duració especificada per tu.",
+                "placeholders": {
+                        "MOSTLY_HARMLESS": {
+                                "content": "Mostly Harmless"
+                        },
+                        "ORANGERED": {
+                                "content": "orangered"
+                        }
+                }
+        },
+        "tab_performance": {
+                "message": "Rendiment"
+        },
+        "group_cache_time": {
+                "message": "Temps de cache"
+        },
+        "cache_time_one_minute": {
+                "message": "Dades de la cache per un minut"
+        },
+        "cache_time_minutes": {
+                "message": "Dades de la cache per $NUM$ minuts",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "4"
+                        }
+                }
+        },
+        "cache_time_description": {
+                "message": "Les dades de la API de $REDDIT$ es poden cachejar, o guardar-se per un temps curt, per augmentar el rendiment. Una caché més gran significa usar menys ample de banda, resultats més ràpids y menys càrrega per $REDDIT$. Una caché més petita significa dades més recents.",
+                "placeholders": {
+                        "REDDIT": {
+                                "content": "reddit"
+                        }
+                }
+        },
+        "group_timeout_length": {
+                "message": "Temps d'expiració per a la resposta"
+        },
+        "timeout_length_seconds": {
+                "message": "Expirar després de $NUM$ segons d'espera i mostrar un error.",
+                "placeholders": {
+                        "NUM": {
+                                "content": "$1",
+                                "example": "15"
+                        }
+                }
+        },
+        "timeout_length_never": {
+                "message": "Que no expiri, que només mostri un missatge d'error quan la API no funcioni."
+        },
+        "timeout_length_description": {
+                "message": "Si la API de $REDDIT$ no funciona o ho fa lentament, $MOSTLY_HARMLESS$ pot mostrar un error després d'intentar interactuar amb ella durant un temps. Temps d'expiració més grans impliquen que es pot tardar més a l'esperar certes dades de la API de $REDDIT$. Temps d'expiració més curts impliquen major possibilitat d'expiració tot i que $REDDIT$ funcioni.",
+                "placeholders": {
+                        "REDDIT": {
+                                "content": "reddit"
+                        },
+                        "MOSTLY_HARMLESS": {
+                                "content": "Mostly Harmless"
+                        }
+                }
+        },
+        "tab_privacy": {
+                "message": "Privacitat"
+        },
+        "group_wait_for_click": {
+                "message": "Esperar a clicar"
+        },
+        "wait_for_click_description": {
+                "message": "Quan està activat, $MOSTLY_HARMLESS$ no s'activarà a menys que facis clic a la icona.",
+                "placeholders": {
+                        "MOSTLY_HARMLESS": {
+                                "content": "Mostly Harmless"
+                        }
+                }
+        },
+        "excluded_domains": {
+                "message": "Dominis excluits"
+        },
+        "excluded_domains_description": {
+                "message": "Escriu dominis -o subdominis,- un per línia, al quadre de dalt. Qualsevol pàgina que estigui en aquests dominis no activarà a $MOSTLY_HARMLESS$.",
+                "placeholders": {
+                        "MOSTLY_HARMLESS": {
+                                "content": "Mostly Harmless"
+                        }
+                }
+        },
+        "excluded_regex": {
+                "message": "Expressions regulars excluides"
+        },
+        "excluded_regex_description": {
+                "message": "Escriu expressions regulars, una per línia, al quadre de dalt. Qualsevol pàgina que coincideixi amb les expressions regulars no activarà a $MOSTLY_HARMLESS$.",
+                "placeholders": {
+                        "MOSTLY_HARMLESS": {
+                                "content": "Mostly Harmless"
+                        }
+                }
+        }
+}
