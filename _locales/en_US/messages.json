@@ -300,7 +300,7 @@
 	"loading_cache": {
 		"message": "Loading data from the cache..."
 	},
-	"loading_cache": {
+	"error_not_cached": {
 		"message": "Cannot create list for a URL that has not been cached."
 	},
 	"score": {
