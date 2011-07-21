@@ -485,6 +485,14 @@
 			}
 		}
 	},
+	"orangered_check": {
+		"message": "Compruebe que $ORANGERED$s",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
 	"orangered_sound_label": {
 		"message": "Reproducir un sonido cuando tienes un $ORANGERED$",
 		"placeholders": {
