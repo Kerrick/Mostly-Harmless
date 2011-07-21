@@ -318,11 +318,7 @@ button = new BrowserAction();
  * @constructor
  */
 function RedditAPI(domain) {
-	if (domain) {
-		this.domain = domain;
-	} else {
-		this.domain = 'www.reddit.com';
-	}
+	this.domain = domain ? domain : 'www.reddit.com';
 	this.commentsMatchPattern = new RegExp('https?:\/\/' + utils.regexEscape(this.domain) + '(\/r\/(.+?))?\/comments\/(.+?)\/.*');
 	return true;
 }
