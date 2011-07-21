@@ -1,4 +1,4 @@
-{
+﻿{
 	"just_now": {
 		"message": "recien",
 		"description": "Describe algo que acaba de pasar."
@@ -334,7 +334,7 @@
 		}
 	},
 	"by": {
-		"message": "por" //here it depends on the context, if I were to write a message it would be better to use "de"
+		"message": "por"
 	},
 	"to": {
 		"message": "a"
