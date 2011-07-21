@@ -1,0 +1,625 @@
+{
+	"just_now": {
+		"message": "juuri nyt",
+		"description": "Kuvailee jotakin joka tapahtui juuri nyt."
+		
+	},
+	"a_minute_ago": {
+		"message": "minuutti sitten",
+		"description": "Kuvailee jotakin joka tapahtui minuutti sitten."
+		
+	},
+	"a_minute_from_now": {
+		"message": "minuutin päästä",
+		"decription": "Kuivalee jotakin joka tapahtuu minuutin päästä."
+	},
+	"minutes_ago": {
+		"message": "$NUM$ minuuttia sitten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"minutes_from_now": {
+		"message": "$NUM$ minuutin päästä",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"an_hour_ago": {
+		"message": "tunti sitten",
+		"description": "Kuvailee jotakin joka tapahtui tunti sitten."
+	},
+	"an_hour_from_now": {
+		"message": "tunnin päästä",
+		"description": "Kuvailee jotakin joka tapahtuu tunnin päästä."
+	},
+	"hours_ago": {
+		"message": "$NUM$ tuntia sitten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"hours_from_now": {
+		"message": "$NUM$ tunnin päästä",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"yesterday": {
+		"message": "eilen",
+		"description": "Päivä ennen tätä päivää."
+	},
+	"tomorrow": {
+		"message": "huomenna",
+		"description": "Päivä tämän päivän jälkeen."
+	},
+	"days_ago": {
+		"message": "$NUM$ päivää sitten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"days_from_now": {
+		"message": "$NUM$ päivän päästä",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_week": {
+		"message": "viime viikolla",
+		"description": "Viikko ennen tätä viikkoa."
+	},
+	"next_week": {
+		"message": "ensi viikolla",
+		"description": "Viikko tämän viikon jälkeen."
+	},
+	"weeks_ago": {
+		"message": "$NUM$ viikon päästä",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"weeks_from_now": {
+		"message": "$NUM$ viikkoa sitten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_month": {
+		"message": "viime kuussa",
+		"description": "Kuukausi ennen tätä kuukautta."
+	},
+	"next_month": {
+		"message": "ensi kuussa",
+		"description": "Kuukausi tämän kuukauden jälkeen."
+	},
+	"months_ago": {
+		"message": "$NUM$ kuukautta sitten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"months_from_now": {
+		"message": "$NUM$ kuukauden päästä",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_year": {
+		"message": "viime vuonna",
+		"description": "Vuosi ennen tätä vuotta."
+	},
+	"next_year": {
+		"message": "ensi vuonna",
+		"description": "Vuosi tämän vuoden jälkeen."
+	},
+	"years_ago": {
+		"message": "$NUM$ vuotta sitten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"years_from_now": {
+		"message": "$NUM$ vuoden päästä",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_century": {
+		"message": "viime vuosisadalla",
+		"description": "Vuosisata ennen tätä vuosisataa."
+	},
+	"next_century": {
+		"message": "ensi vuosisadalla",
+		"description": "Vuosisata tämän vuosisadan jälkeen."
+	},
+	"centuries_ago": {
+		"message": "$NUM$ vuosisataa sitten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"centuries_from_now": {
+		"message": "$NUM$ vuosisadan päästä",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"not_activated": {
+		"message": "$APPNAME$ ei ole aktiivinen tällä sivulla. Paina aktivoidaksesi.",
+		"placeholders": {
+			"APPNAME": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"loading": {
+		"message": "Lataa tietoa..."
+	},
+	"viewing_comments": {
+		"message": "Katselet tällä hetkellä tämän sivun kommentteja."
+	},
+	"submit_page": {
+		"message": "Lisää tämä sivu $REDDIT$.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_num_times": {
+		"message": "Tämä sivu on lisätty $NUM$ kertaa.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"login": {
+		"message": "Sinun täytyy olla kirjautunut sisään tehdäksesi tämä. $BEGIN_LINK$Paina tästä avataksesi kirjautumissivu.$END_LINK$",
+		"placeholders": {
+			"BEGIN_LINK": {
+				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
+			},
+			"END_LINK": {
+				"content": "</a>"
+			}
+		}
+	},
+	"api_error": {
+		"message": "API virhe. HTTP Vastaus: $STATUS$. Paina tästä yrittääksesi uudelleen.",
+		"placeholders": {
+			"STATUS": {
+				"content": "$1",
+				"example": "504"
+			}
+		}
+	},
+	"api_timeout": {
+		"message": "API aikakatkaistiin $NUM$ sekuntin jälkeen. Paina tästä yrittääksesi uudelleen.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"action_unsave": {
+		"message": "poista tallennus"
+	},
+	"action_save": {
+		"message": "tallenna"
+	},
+	"action_unhide": {
+		"message": "näytä"
+	},
+	"action_hide": {
+		"message": "piilota"
+	},
+	"action_share": {
+		"message": "jaa"
+	},
+	"report_confirm": {
+		"message": "oletko varma?? $BEGIN_LINK_YES$kyllä$END_LINK_YES$/$BEGIN_LINK_NO$ei$END_LINK_NO$",
+		"placeholders": {
+			"BEGIN_LINK_YES": {
+				"content": "<a onclick=\"reddit.reportPost(event)\">"
+			},
+			"END_LINK_YES": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_NO": {
+				"content": "<a onclick=\"reddit.denyReport(event)\">"
+			},
+			"END_LINK_NO": {
+				"content": "</a>"
+			}
+		}
+	},
+	"action_report": {
+		"message": "ilmianna"
+	},
+	"action_reported": {
+		"message": "ilmiannettu!"
+	},
+	"button_submit": {
+		"message": "lisää"
+	},
+	"button_hide": {
+		"message": "piilota tämä kenttä"
+	},
+	"error_empty": {
+		"message": "Tässä tulisi olla jotain."
+	},
+	"loading_api": {
+		"message": "Lataa tieto APIsta..."
+	},
+	"loading_cache": {
+		"message": "Lataa tietoa välimuistista..."
+	},
+	"error_not_cached": {
+		"message": "Ei voi tehdä listaa URL jota ei ole varastoitu."
+	},
+	"score": {
+		"message": "$UPS$ upvotes, $DOWNS$ downvotes.",
+		"placeholders": {
+			"UPS": {
+				"content": "$1",
+				"example": "435"
+			},
+			"DOWNS": {
+				"content": "$2",
+				"example": "243"
+			}
+		}
+	},
+	"view_on_reddit": {
+		"message": "Näytä tämä vesti $REDDIT$",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_when": {
+		"message": "lisätty $TIME$",
+		"placeholders": {
+			"TIME": {
+				"content": "$1",
+				"example": "an hour ago"
+			}
+		}
+	},
+	"by": {
+		"message": "keneltä"
+	},
+	"to": {
+		"message": "kenelle"
+	},
+	"add_comment_zero": {
+		"message": "lisää kommentti"
+	},
+	"add_comment_one": {
+		"message": "lisää yhteen kommenttiin"
+	},
+	"add_comment_many": {
+		"message": "lisää $NUM$ kommenttiin",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "42"
+			}
+		}
+	},
+	"leave_comment": {
+		"message": "Jätä kommentti"
+	},
+	"stale_posts_hiding": {
+		"message": "Piilottaa $NUM$ vanhentunutta viestiä. $BEGIN_LINK_SHOW$Näytä ne nyt$END_LINK_SHOW$, tai vieraile$BEGIN_LINK_OPTIONS$asetus sivulla$END_LINK_OPTIONS$ vaihtaakesi Tuore Sisältö asetuksiasi.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			},
+			"BEGIN_LINK_SHOW": {
+				"content": "<a onclick=\"popup.showStalePosts()\">"
+			},
+			"END_LINK_SHOW": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"stale_posts_showing": {
+		"message": "Näyttää vanhentuneet viestit. Vieraile $BEGIN_LINK_OPTIONS$asetus sivulla$END_LINK_OPTIONS$ vaihtaakesi Tuore Sisältö asetuksiasi.",
+		"placeholders": {
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"orangered_received": {
+		"message": "Sinulle on $ORANGERED$!",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_action": {
+		"message": "Paina tästä mennäksesi postilaatikkoosi."
+	},
+	"url": {
+		"message": "url"
+	},
+	"popular_choices": {
+		"message": "suosittu valinta"
+	},
+	"title": {
+		"message": "otsikko"
+	},
+	"suggest_title": {
+		"message": "ehdota otsikkoa"
+	},
+	"tab_preferences": {
+		"message": "Asetukset"
+	},
+	"group_fresh_content": {
+		"message": "Tuore Sisältö"
+	},
+	"fresh_content_show_one_day": {
+		"message": "Näytä vain viestit tältä päivältä."
+	},
+	"fresh_content_show_days": {
+		"message": "Näytä vain viestit jotka ovat vähemmän kuin $NUM$ päivää vanhoja.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_weeks": {
+		"message": "Näytä vain viestit jotka ovat vähemmän kuin $NUM$ viikkoa vanhoja.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_months": {
+		"message": "Näytä vain viestit jotka ovat vähemmän kuin $NUM$ kuukautta vanhoja.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_all": {
+		"message": "Nätä viestit kaikelta ajalta."
+	},
+	"fresh_content_description": {
+		"message": "Tämä asetus antaa sinun valita vanhimmat reddit viestit jotka haluat nähdä. Kaikki ennen valitsemaasi arvoa lisätty näkyvät selaimen painikkeen määrässä, mutta eivät näy ponnahdusikkunassa."
+	},
+	"group_popup_width": {
+		"message": "Ponnahdusikkunan leveys"
+	},
+	"popup_width_description": {
+		"message": "Tämä asetus antaa sinun valita ponnahdusikkunan leveyden."
+	},
+	"group_shameless_plug": {
+		"message": "Häpeilemätön kommentti"
+	},
+	"shameless_plug_label": {
+		"message": "Näytä häpeilemätön kommentti"
+	},
+	"shameless_plug_description": {
+		"message": "Kun valittuna, tämä lisää seuraavan kommentin jokaiseen viestiisi $MOSTLY_HARMLESS$ sisältä:$PLUG_TEXT$",
+		"placeholders": {
+			"PLUG_TEXT": {
+				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+			
+	},
+	"group_orangered_notifications": {
+		"message": "$ORANGERED$ Ilmoitukset",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_check": {
+		"message": "Tarkista $ORANGERED$s",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_label": {
+		"message": "Soita ääni kun sinulla on $ORANGERED$",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_preview": {
+		"message": "Esikuuntele ilmoitusääntä"
+	},
+	"orangered_interval_minutes": {
+		"message": "Tarkista joka $NUM$ minuutti",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_display_time": {
+		"message": "Näytä ilmoitus $NUM$ sekunttia",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_description": {
+		"message": "Kun valittuna, $MOSTLY_HARMLESS$ tarkistaa uudet $ORANGERED$s aikavälein jonka sinä asetit. Jostaa saat $ORANGERED$, se näyttää työpöytäilmoituksen valitsemasi asetuksen ajan.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			},
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"tab_performance": {
+		"message": "Suorityskyky"
+	},
+	"group_cache_time": {
+		"message": "Välimuisti Aika"
+	},
+	"cache_time_one_minute": {
+		"message": "Varastoi tieto yhdeksi minuutiksi"
+	},
+	"cache_time_minutes": {
+		"message": "Varastoi tieto $NUM$ minuutiksi",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"cache_time_description": {
+		"message": "Tieto $REDDIT$ APIsta voidaan varastoida, tai tallentaa lyheksi ajaksi, suorityskyvyn lisäämiseksi. Piedempi varastointiaika tarkoittaa vähemmän tiedonsiirtoa, nopeampia tuloksia, ja vähemmän kuormaa $REDDIT$. Lyhyempi varastointiaika tarkoittaa tuoreempaa tietoa.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"group_timeout_length": {
+		"message": "Aikakatkaisun Pituus"
+	},
+	"timeout_length_seconds": {
+		"message": "Aikakatkaisu $NUM$ sekunnin päästä ja näytä virhe.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"timeout_length_never": {
+		"message": "Älä aikakatkaise; näytä virhe vain kun API on alhaalla."
+	},
+	"timeout_length_description": {
+		"message": "Jos $REDDIT$ API on hidas tai alhalla, $MOSTLY_HARMLESS$ voi näyttää virheen kun APIin on yritetty yhdistää tietty aika. Pidempi aikakatkaisu tarkoittaa pidempää vastauksen odottamista $REDDIT$ APIsta. Lyhyempi aikakatkaisu tarkoittaa suurempaa aikakatkaisun mahdollisuutta kun $REDDIT$ voi olla vain hidas eikä alhalla.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"tab_privacy": {
+		"message": "Yksityisiis"
+	},
+	"group_wait_for_click": {
+		"message": "Odota klikkausta"
+	},
+	"wait_for_click_description": {
+		"message": "Jos tämä on valittu, $MOSTLY_HARMLESS$ ei aktivoidu ennekuin klikkaat sen ikonia.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_domains": {
+		"message": "Pois suljetut domainit"
+	},
+	"excluded_domains_description": {
+		"message": "Laita domainit tai ala-domainit, yksi per rivi, yllä olevaan tekstikenttään. Mikä tahansa domain listattuna tässä ei aktivoi $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_regex": {
+		"message": "Pois suljetut säännölliset lausekkeet"
+	},
+	"excluded_regex_description": {
+		"message": "Laita säännöllinen lauseke, yksi per rivi, yllä olevaan tekstikenttään. Mikä tahansa sivu joka vastaa näihin säännöllisiin lausekkeisiin ei aktivoi $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	}
+}
