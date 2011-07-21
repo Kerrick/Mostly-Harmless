@@ -6,12 +6,12 @@
 	},
 	"a_minute_ago": {
 		"message": "hace un minuto",
-		"description": "Describe algo que sucedi&oacute; hace un minuto."
+		"description": "Describe algo que sucedió hace un minuto."
 		
 	},
 	"a_minute_from_now": {
 		"message": "dentro de un minuto",
-		"decription": "Describe algo que ocurrir&aacute; dentro de un minuto."
+		"decription": "Describe algo que ocurrirá dentro de un minuto."
 	},
 	"minutes_ago": {
 		"message": "hace $NUM$ minutos",
@@ -33,11 +33,11 @@
 	},
 	"an_hour_ago": {
 		"message": "hace una hora",
-		"description": "Describe algo que sucedi&oacute; hace una hora."
+		"description": "Describe algo que sucedió hace una hora."
 	},
 	"an_hour_from_now": {
 		"message": "dentro de una hora",
-		"description": "Describe algo que ocurrir&aacute; dentro de una hora."
+		"description": "Describe algo que ocurrirá dentro de una hora."
 	},
 	"hours_ago": {
 		"message": "hace $NUM$ horas",
@@ -59,14 +59,14 @@
 	},
 	"yesterday": {
 		"message": "ayer",
-		"description": "El d&iacute;a anterior a hoy."
+		"description": "El día anterior a hoy."
 	},
 	"tomorrow": {
-		"message": "ma�ana",
-		"description": "El d&iacute;a despu&eacute;s de hoy."
+		"message": "mañana",
+		"description": "El día después de hoy."
 	},
 	"days_ago": {
-		"message": "hace $NUM$ d&iacute;as",
+		"message": "hace $NUM$ días",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -75,7 +75,7 @@
 		}
 	},
 	"days_from_now": {
-		"message": "dentro de $NUM$ d&iacute;as",
+		"message": "dentro de $NUM$ días",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -85,11 +85,11 @@
 	},
 	"last_week": {
 		"message": "hace una semana",
-		"description": "La semana anterior a &eacute;sta."
+		"description": "La semana anterior a ésta."
 	},
 	"next_week": {
 		"message": "la proxima semana",
-		"description": "La semana despu&eacute;s de &eacute;sta."
+		"description": "La semana después de ésta."
 	},
 	"weeks_ago": {
 		"message": "hace $NUM$ semanas",
@@ -111,11 +111,11 @@
 	},
 	"last_month": {
 		"message": "hace un mes",
-		"description": "El mes anterior a &eacute;ste."
+		"description": "El mes anterior a éste."
 	},
 	"next_month": {
 		"message": "dentro de un mes",
-		"description": "El mes posterior a &eacute;ste."
+		"description": "El mes posterior a éste."
 	},
 	"months_ago": {
 		"message": "hace $NUM$ meses",
@@ -136,15 +136,15 @@
 		}
 	},
 	"last_year": {
-		"message": "hace un a�o",
-		"description": "El a�o anterior a &eacute;ste."
+		"message": "hace un año",
+		"description": "El año anterior a éste."
 	},
 	"next_year": {
-		"message": "dentro de un a�o",
-		"description": "El a�o posterior a &eacute;ste"
+		"message": "dentro de un año",
+		"description": "El año posterior a éste"
 	},
 	"years_ago": {
-		"message": "hace $NUM$ a�os",
+		"message": "hace $NUM$ años",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -153,7 +153,7 @@
 		}
 	},
 	"years_from_now": {
-		"message": "dentro de $NUM$ a�os",
+		"message": "dentro de $NUM$ años",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -188,7 +188,7 @@
 		}
 	},
 	"not_activated": {
-		"message": "$APPNAME$ no est&aacute; activada para esta p&aacute;gina. Haz clic aqu&iacute; para activarla.",
+		"message": "$APPNAME$ no está activada para esta página. Haz clic aquí para activarla.",
 		"placeholders": {
 			"APPNAME": {
 				"content": "Mostly Harmless"
@@ -199,10 +199,10 @@
 		"message": "Cargando datos..."
 	},
 	"viewing_comments": {
-		"message": "Actualmente est&aacute;s viendo los comentarios para esta p&aacute;gina."
+		"message": "Actualmente estás viendo los comentarios para esta página."
 	},
 	"submit_page": {
-		"message": "Env&iacute;a esta p&aacute;gina a $REDDIT$.",
+		"message": "Envía esta página a $REDDIT$.",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -210,7 +210,7 @@
 		}
 	},
 	"submitted_num_times": {
-		"message": "Esta p&aacute;gina se ha enviado $NUM$ veces.",
+		"message": "Esta página se ha enviado $NUM$ veces.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -219,7 +219,7 @@
 		}
 	},
 	"login": {
-		"message": "Tienes que estar identificado para hacer eso. $BEGIN_LINK$Haz clic para abrir la p&aacute;gina de identificaci&oacute;n.$END_LINK$",
+		"message": "Tienes que estar identificado para hacer eso. $BEGIN_LINK$Haz clic para abrir la página de identificación.$END_LINK$",
 		"placeholders": {
 			"BEGIN_LINK": {
 				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
@@ -230,7 +230,7 @@
 		}
 	},
 	"api_error": {
-		"message": "Ha ocurrido un error de la API. Estado HTTP: $STATUS$. Haz clic aqu&iacute; para intentar de nuevo.",
+		"message": "Ha ocurrido un error de la API. Estado HTTP: $STATUS$. Haz clic aquí para intentar de nuevo.",
 		"placeholders": {
 			"STATUS": {
 				"content": "$1",
@@ -239,7 +239,7 @@
 		}
 	},
 	"api_timeout": {
-		"message": "Se ha agotado el tiempo de espera para la API, despu&eacute;s de $NUM$ segundos. Haz clic aqu&iacute; para intentar de nuevo.",
+		"message": "Se ha agotado el tiempo de espera para la API, después de $NUM$ segundos. Haz clic aquí para intentar de nuevo.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -263,7 +263,7 @@
 		"message": "compartir"
 	},
 	"report_confirm": {
-		"message": "�est&aacute;s seguro? $BEGIN_LINK_YES$yes$END_LINK_YES$/$BEGIN_LINK_NO$no$END_LINK_NO$",
+		"message": "¿estás seguro? $BEGIN_LINK_YES$yes$END_LINK_YES$/$BEGIN_LINK_NO$no$END_LINK_NO$",
 		"placeholders": {
 			"BEGIN_LINK_YES": {
 				"content": "<a onclick=\"reddit.reportPost(event)\">"
@@ -283,7 +283,7 @@
 		"message": "reportar"
 	},
 	"action_reported": {
-		"message": "�reportado!"
+		"message": "¡reportado!"
 	},
 	"button_submit": {
 		"message": "enviar"
@@ -292,16 +292,16 @@
 		"message": "esconder este formulario"
 	},
 	"error_empty": {
-		"message": "Es necesario que haya algo aqu&iacute;."
+		"message": "Es necesario que haya algo aquí."
 	},
 	"loading_api": {
 		"message": "Cargando datos de la API..."
 	},
 	"loading_cache": {
-		"message": "Cargando datos del cach&eacute;..."
+		"message": "Cargando datos del caché..."
 	},
 	"error_not_cached": {
-		"message": "No se puede crear una lista para una URL que no se ha cacheado todav&iacute;a."
+		"message": "No se puede crear una lista para una URL que no se ha cacheado todavía."
 	},
 	"score": {
 		"message": "$UPS$ votos positivos, $DOWNS$ votos negativos.",
@@ -358,7 +358,7 @@
 		"message": "Dejar un comentario"
 	},
 	"stale_posts_hiding": {
-		"message": "Ocultando $NUM$ mensajes viejos. $BEGIN_LINK_SHOW$Mostrarlos$END_LINK_SHOW$, o visita $BEGIN_LINK_OPTIONS$la p&aacute;gina de opciones$END_LINK_OPTIONS$ para cambiar las preferencias de Contenido Nuevo.",
+		"message": "Ocultando $NUM$ mensajes viejos. $BEGIN_LINK_SHOW$Mostrarlos$END_LINK_SHOW$, o visita $BEGIN_LINK_OPTIONS$la página de opciones$END_LINK_OPTIONS$ para cambiar las preferencias de Contenido Nuevo.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -379,7 +379,7 @@
 		}
 	},
 	"stale_posts_showing": {
-		"message": "Mostrando los mensajes viejos. Visita $BEGIN_LINK_OPTIONS$la p&aacute;gina de opciones$END_LINK_OPTIONS$ para cambiar las preferencias de Contenido Nuevo.",
+		"message": "Mostrando los mensajes viejos. Visita $BEGIN_LINK_OPTIONS$la página de opciones$END_LINK_OPTIONS$ para cambiar las preferencias de Contenido Nuevo.",
 		"placeholders": {
 			"BEGIN_LINK_OPTIONS": {
 				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
@@ -390,7 +390,7 @@
 		}
 	},
 	"orangered_received": {
-		"message": "You have an $ORANGERED$!",
+		"message": "¡Usted tiene una $ORANGERED$!",
 		"placeholders": {
 			"ORANGERED": {
 				"content": "orangered"
@@ -398,7 +398,7 @@
 		}
 	},
 	"orangered_action": {
-		"message": "Haz clic aqu&iacute; para abrir la bandeja de entrada."
+		"message": "Haz clic aquí para abrir la bandeja de entrada."
 	},
 	"url": {
 		"message": "url"
@@ -407,10 +407,10 @@
 		"message": "opciones populares"
 	},
 	"title": {
-		"message": "t&iacute;tulo"
+		"message": "título"
 	},
 	"suggest_title": {
-		"message": "sugerir t&iacute;tulo"
+		"message": "sugerir título"
 	},
 	"tab_preferences": {
 		"message": "Preferencias"
@@ -419,10 +419,10 @@
 		"message": "Contenido Nuevo"
 	},
 	"fresh_content_show_one_day": {
-		"message": "S&oacute;lo mostrar los mensajes de hoy."
+		"message": "Sólo mostrar los mensajes de hoy."
 	},
 	"fresh_content_show_days": {
-		"message": "S&oacute;lo mostrar los mensajes desde hace $NUM$ d&iacute;as.",
+		"message": "Sólo mostrar los mensajes desde hace $NUM$ días.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -431,7 +431,7 @@
 		}
 	},
 	"fresh_content_show_weeks": {
-		"message": "S&oacute;lo mostrar los mensajes desde hace $NUM$ semanas.",
+		"message": "Sólo mostrar los mensajes desde hace $NUM$ semanas.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -440,7 +440,7 @@
 		}
 	},
 	"fresh_content_show_months": {
-		"message": "S&oacute;lo mostrar los mensajes desde hace $NUM$ meses.",
+		"message": "Sólo mostrar los mensajes desde hace $NUM$ meses.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -452,7 +452,7 @@
 		"message": "Mostrar todos los mensajes."
 	},
 	"fresh_content_description": {
-		"message": "Esta preferencia te permite elegir los mensajes viejos que quieras ver. Todo lo que se haya enviado antes del valor que has especificado se indicar&aacute; en el total, pero no se mostrar&aacute; en la ventana emergente."
+		"message": "Esta preferencia te permite elegir los mensajes viejos que quieras ver. Todo lo que se haya enviado antes del valor que has especificado se indicará en el total, pero no se mostrará en la ventana emergente."
 	},
 	"group_popup_width": {
 		"message": "Ancho de la ventana emergente"
@@ -461,13 +461,13 @@
 		"message": "Esta preferencia te permite especificar el anchho de la ventana emergente."
 	},
 	"group_shameless_plug": {
-		"message": "Shameless Plug"
+		"message": "Desvergonzada promoción"
 	},
 	"shameless_plug_label": {
-		"message": "Show the shameless plug"
+		"message": "Mostrar la promoción descarada"
 	},
 	"shameless_plug_description": {
-		"message": "Cuando est&eacute; activado, se a�adir&aacute; lo siguiente a cada comentario que env&iacute;as desde $MOSTLY_HARMLESS$:$PLUG_TEXT$",
+		"message": "Cuando esté activado, se añadirá lo siguiente a cada comentario que envías desde $MOSTLY_HARMLESS$:$PLUG_TEXT$",
 		"placeholders": {
 			"PLUG_TEXT": {
 				"content": "<br /><br /><em>Enviado desde <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, una extensi&oacute;n para Google Chrome para usuarios de reddit geniales.<em>"
@@ -502,7 +502,7 @@
 		}
 	},
 	"orangered_sound_preview": {
-		"message": "Escuchar el sonido de la notificaci&oacute;n"
+		"message": "Escuchar el sonido de la notificación"
 	},
 	"orangered_interval_minutes": {
 		"message": "Revisar cada $NUM$ minutos",
@@ -514,7 +514,7 @@
 		}
 	},
 	"orangered_display_time": {
-		"message": "Mostrar la notificaci&oacute;n durante $NUM$ segundos",
+		"message": "Mostrar la notificación durante $NUM$ segundos",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -523,13 +523,13 @@
 		}
 	},
 	"orangered_description": {
-		"message": "Cuando est&eacute; activado, $MOSTLY_HARMLESS$ buscar&aacute; nuevos $ORANGERED$s dentro de un intervalo especificado por t&iacute;. Si tienes alg&uacute;n $ORANGERED$, mostrar&aacute; una notificaci&oacute;n en el escritorio con una duraci&oacute;n especificada por t&iacute;.",
+		"message": "Cuando esté activado, $MOSTLY_HARMLESS$ buscará nuevos $ORANGERED$s dentro de un intervalo especificado por tí. Si tienes algún $ORANGERED$, mostrará una notificación en el escritorio con una duración especificada por tí.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
 			},
 			"ORANGERED": {
-				"content": "anaranjado"
+				"content": "orangered"
 			}
 		}
 	},
@@ -537,13 +537,13 @@
 		"message": "Rendimiento"
 	},
 	"group_cache_time": {
-		"message": "Tiempo del cach&eacute;"
+		"message": "Tiempo del caché"
 	},
 	"cache_time_one_minute": {
-		"message": "Datos del cach&eacute; por un minuto"
+		"message": "Datos del caché por un minuto"
 	},
 	"cache_time_minutes": {
-		"message": "Datos del cach&eacute; por $NUM$ minutos",
+		"message": "Datos del caché por $NUM$ minutos",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -552,7 +552,7 @@
 		}
 	},
 	"cache_time_description": {
-		"message": "Datos de la API de $REDDIT$ se pueden cachear, o guardarse por un corto tiempo, para aumentar el rendimiento. Cach&eacute; m&aacute;s grande significa menos ancho de banda, resultados m&aacute;s r&aacute;pidos y menos carga a para $REDDIT$. Cach&eacute; m&aacute;s peque�o significa datos m&aacute;s recientes.",
+		"message": "Datos de la API de $REDDIT$ se pueden cachear, o guardarse por un corto tiempo, para aumentar el rendimiento. Caché más grande significa menos ancho de banda, resultados más rápidos y menos carga a para $REDDIT$. Caché más pequeño significa datos más recientes.",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -560,7 +560,7 @@
 		}
 	},
 	"group_timeout_length": {
-		"message": "Tiempo de expiraci&oacute;n para la respuesta"
+		"message": "Tiempo de expiración para la respuesta"
 	},
 	"timeout_length_seconds": {
 		"message": "Expirar luego de $NUM$ segundos de espera y mostrar un error.",
@@ -572,10 +572,10 @@
 		}
 	},
 	"timeout_length_never": {
-		"message": "Que no expire, que s&oacute;lo muestre un mensaje de error cuando la API no funciona."
+		"message": "Que no expire, que sólo muestre un mensaje de error cuando la API no funciona."
 	},
 	"timeout_length_description": {
-		"message": "Si la API de $REDDIT$ no funciona o lo hace lentamente, $MOSTLY_HARMLESS$ puede mostrar un error luego de intentar interactuar con ella durante un tiempo. Tiempos de expiraci&oacute;n m&aacute;s grandes significa que puede tardarse m&aacute;s al esperar ciertos datos de la API de $REDDIT$. Tiempos de expiraci&oacute;n m&aacute;s cortos significa mayor posibilidad de expiraci&oacute;n aunque $REDDIT$ funcione.",
+		"message": "Si la API de $REDDIT$ no funciona o lo hace lentamente, $MOSTLY_HARMLESS$ puede mostrar un error luego de intentar interactuar con ella durante un tiempo. Tiempos de expiración más grandes significa que puede tardarse más al esperar ciertos datos de la API de $REDDIT$. Tiempos de expiración más cortos significa mayor posibilidad de expiración aunque $REDDIT$ funcione.",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -592,7 +592,7 @@
 		"message": "Esperar por clic"
 	},
 	"wait_for_click_description": {
-		"message": "Cuando est&eacute; activado, $MOSTLY_HARMLESS$ no se activar&aacute; a menos que hagas clic en el &iacute;cono.",
+		"message": "Cuando esté activado, $MOSTLY_HARMLESS$ no se activará a menos que hagas clic en el ícono.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
@@ -603,7 +603,7 @@
 		"message": "Dominios excluidos"
 	},
 	"excluded_domains_description": {
-		"message": "Escribe dominios -o subdominios,- uno por cada l&iacute;nea, en la caja de arriba. Cualquier p&aacute;gina que est&eacute; dentro de esos dominios no activar&aacute; a $MOSTLY_HARMLESS$.",
+		"message": "Escribe dominios -o subdominios,- uno por cada línea, en la caja de arriba. Cualquier página que esté dentro de esos dominios no activará a $MOSTLY_HARMLESS$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
@@ -611,10 +611,10 @@
 		}
 	},
 	"excluded_regex": {
-		"message": "Expresiones regulares exclu&iacute;das"
+		"message": "Expresiones regulares excluídas"
 	},
 	"excluded_regex_description": {
-		"message": "Escribe expresiones regulares, una por cada l&iacute;nea, en la caja de arriba. Cualquier p&aacute;gina que coincida con las expresiones regulares no activar&aacute; a $MOSTLY_HARMLESS$.",
+		"message": "Escribe expresiones regulares, una por cada línea, en la caja de arriba. Cualquier página que coincida con las expresiones regulares no activará a $MOSTLY_HARMLESS$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
