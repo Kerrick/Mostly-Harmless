@@ -37,4 +37,6 @@ div.article ul li a[href*='github.com/reddit/reddit']{background-image:url(icons
 div.article ul li a[href*='frankkohlhepp']{background-image:url(icons/frank.png);}
 div.article ul li a[href*='chrome/extensions']{background-image:url(icons/chrome.png);}
 div.article ul li a[href*='user/KerrickLong']{background-image:url(icons/kerrick.png);}
+div.article ul li a[href*='user/MrArmStrong']{background-image:url(icons/mrarmstrong.png);}
+div.article ul li a[href*='user/Logram']{background-image:url(icons/logram.png);}
 #guide{font: 100px / 90px 'Carter One', sans-serif;position: fixed;bottom: -45px;left: 0;text-align: center;width: 100%;display: block;text-transform: uppercase;color: rgba(255, 255, 255, 0.5);z-index: 5;-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);}
