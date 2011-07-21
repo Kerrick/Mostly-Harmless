@@ -334,7 +334,7 @@ function RedditAPI(domain) {
  * @method 
  */
 RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
-	var req, apiTimeout;
+	var req, apiTimeout, notificationArea;
 	
 	function processResponse () {
 		if (req.readyState === 4) {
@@ -348,8 +348,12 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 				if (cback) {
 					cback(JSON.parse(req.responseText));
 				}
+				
+				notificationArea.innerHTML = '';
+				notificationArea.style.display = 'none';
 				return JSON.parse(req.responseText);
 			} else {
+				notificationArea.innerHTML = '<span class="error">' + chrome.i18n.getMessage('api_error', req.status.toString()) + '</span>'
 				throw chrome.i18n.getMessage('api_error', req.status.toString());
 			}
 		}
@@ -360,9 +364,14 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 		throw chrome.i18n.getMessage('api_timeout', settings.get('timeoutLength').toString());
 	}
 	
+	notificationArea = document.getElementById('notificationArea');
 	req = new XMLHttpRequest();
 	req.open(type, url, true);
 	req.onreadystatechange = processResponse;
+	if (notificationArea) {
+		notificationArea.style.display = 'block';
+		notificationArea.innerHTML = '<span>' + chrome.i18n.getMessage('loading') + '</span>';
+	}
 	req.send(data);
 	if (settings.get('timeoutLength') !== 31) {
 		apiTimeout = setTimeout(handleTimeout, settings.get('timeoutLength') * 1000);
