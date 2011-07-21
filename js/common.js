@@ -949,7 +949,8 @@ Popup.prototype.createListHTML = function (url) {
 		throw chrome.i18n.getMessage('error_not_cached');
 	}
 	
-	listHTML = '<ol id="posts" data-url="' + url + '" data-commentspage="' + cache.get(url).isCommentsPage.toString() + '">';
+	listHTML = '<div id="notificationArea"></div>';
+	listHTML += '<ol id="posts" data-url="' + url + '" data-commentspage="' + cache.get(url).isCommentsPage.toString() + '">';
 	staleCounter = 0;
 	
 	utils.forEachIn(cache.get(url).posts, function (name, value) {
@@ -1039,7 +1040,8 @@ Popup.prototype.createSubmitForm = function (tab) {
 	var submitHTML, redditCache;
 	
 	redditCache = cache.get('reddits');
-	submitHTML = '<form id="submit">';
+	submitHTML = '<div id="notificationArea"></div>';
+	submitHTML += '<form id="submit">';
 		submitHTML += '<h1>' + chrome.i18n.getMessage('submit_page') + '</h1>';
 		submitHTML += '<fieldset>';
 			submitHTML += '<label for="submit_title">' + chrome.i18n.getMessage('title') + '</label>';
