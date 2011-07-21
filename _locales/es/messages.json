@@ -470,7 +470,7 @@
 		"message": "Cuando esté activado, se añadirá lo siguiente a cada comentario que envías desde $MOSTLY_HARMLESS$:$PLUG_TEXT$",
 		"placeholders": {
 			"PLUG_TEXT": {
-				"content": "<br /><br /><em>Enviado desde <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, una extensi&oacute;n para Google Chrome para usuarios de reddit geniales.<em>"
+				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
 			},
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
@@ -481,7 +481,7 @@
 		"message": "$ORANGERED$ Notificaciones",
 		"placeholders": {
 			"ORANGERED": {
-				"content": "anaranjado"
+				"content": "orangered"
 			}
 		}
 	},
@@ -497,7 +497,7 @@
 		"message": "Reproducir un sonido cuando tienes un $ORANGERED$",
 		"placeholders": {
 			"ORANGERED": {
-				"content": "anaranjado"
+				"content": "orangered"
 			}
 		}
 	},
