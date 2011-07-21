@@ -300,7 +300,7 @@
 	"loading_cache": {
 		"message": "Loading data from the cache..."
 	},
-	"loading_cache": {
+	"error_not_cached": {
 		"message": "Cannot create list for a URL that has not been cached."
 	},
 	"score": {
@@ -467,12 +467,16 @@
 		"message": "Show the shameless plug"
 	},
 	"shameless_plug_description": {
-		"message": "When checked, this will add the following to each commment you post from within Mostly Harmless:$PLUG_TEXT$",
+		"message": "When checked, this will add the following to each commment you post from within $MOSTLY_HARMLESS$:$PLUG_TEXT$",
 		"placeholders": {
 			"PLUG_TEXT": {
 				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
 			}
 		}
+			
 	},
 	"group_orangered_notifications": {
 		"message": "$ORANGERED$ Notifications",
@@ -603,7 +607,7 @@
 		"message": "Excluded regex"
 	},
 	"excluded_regex_description": {
-		"message": "Put regular expressions, one per line, in the above text box. Any page on the listed domains will not activate $MOSTLY_HARMLESS$.",
+		"message": "Put regular expressions, one per line, in the above text box. Any page that matches these regular expressions will not activate $MOSTLY_HARMLESS$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
