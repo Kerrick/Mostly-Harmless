@@ -72,7 +72,7 @@ this.manifest = {
         	"group": chrome.i18n.getMessage('group_orangered_notifications'),
         	"name": "checkMail",
         	"type": "checkbox",
-        	"label": "Check for orangereds"
+        	"label": chrome.i18n.getMessage('orangered_check')
         },
         {
         	"tab": chrome.i18n.getMessage('tab_preferences'),
