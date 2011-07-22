@@ -14,7 +14,7 @@ pre{font-family:Consolas, 'Courier New', monospace;background:#141414;padding:10
 pre code{background:none;color:#9b703f;padding:0;}
 code[data-language="bash"]:before{content: "$ ";color:#723614;}
 code[data-language="irc"]:before{content: "IRC chat log:\000A";display:block;color:#723614;}
-.article ol{list-style:decimal inside;}
+.article ol{list-style:decimal outside;margin-left:24px;}
 ul#nav{border-bottom:1px solid #a6a6a6;border-top:1px solid #fff;margin:0 -16px;}
 ul#nav li{display:-moz-inline-stack;display:inline-block;zoom:1;*display:inline;_height:29px;height:29px;margin:9px 14px 12px;width:144px;}
 ul#nav li a{-moz-border-radius:24px;-webkit-border-radius:24px;border-bottom:0;color:#444;display:block;font:bold 16px Arial, Helvetica, sans-serif;line-height:29px;height:100%;text-align:center;text-decoration:none;width:100%;background:#ccc;-moz-box-shadow:0px 1px 2px #666;-webkit-box-shadow:0px 1px 2px #666;box-shadow:0px 1px 2px #666;}
@@ -25,7 +25,7 @@ div.section{border-top:1px solid #fff;margin:0 -16px;padding:0 15px 15px;}
 div.article{-moz-box-shadow:0px 1px 2px #fff;-webkit-box-shadow:0px 1px 2px #fff;box-shadow:0px 1px 2px #fff;-moz-border-radius:5px;-webkit-border-radius:5px;background:#444;border:1px solid #222;color:#fff;font:16px Arial, Helvetica, sans-serif;line-height:24px;margin: 15px 0 0;padding:10px;}
 div.article h2{font:24px 'Carter One', sans-serif;line-height:24px;margin:24px 0 12px;text-shadow:rgba(34,34,34,.8) 0 1px 2px;text-transform:capitalize;}
 div.article h2:first-child{margin-top:0;}
-div.article p{margin:0 0 12px;}
+div.article p, div.article ol li{margin:0 0 12px;}
 div.article img[width="832"]{margin:0 -10px;}
 div.article img[width="812"]{box-shadow:0px 2px 10px black;border:1px solid white;padding:1px;background:black;margin: -2px -2px 10px -2px;}
 div.article ul{border-bottom:1px solid #848484;border-left:1px solid #121212;border-right:1px solid #848484;border-top:1px solid #121212;background:#383838;}
