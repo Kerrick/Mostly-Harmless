@@ -524,7 +524,7 @@
 		}
 	},
 	"orangered_description": {
-		"message": "Kun valittuna, $MOSTLY_HARMLESS$ tarkistaa uudet $ORANGERED$s aikavälein jonka sinä asetit. Jostaa saat $ORANGERED$, se näyttää työpöytäilmoituksen valitsemasi asetuksen ajan.",
+		"message": "Kun valittu, $MOSTLY_HARMLESS$ tarkistaa uudet $ORANGERED$s väliajoin asetettu. Jos saat $ORANGERED$, se näyttää työpöydällä ilmoituksen vasta, kun valitset tai suljet sen, tai kunnes $MOSTLY_HARMLESS$ tarkistaa uudelleen ja sinulla ei ole enää $ORANGERED$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"

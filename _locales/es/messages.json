@@ -523,7 +523,7 @@
 		}
 	},
 	"orangered_description": {
-		"message": "Cuando esté activado, $MOSTLY_HARMLESS$ buscará nuevos $ORANGERED$s dentro de un intervalo especificado por tí. Si tienes algún $ORANGERED$, mostrará una notificación en el escritorio con una duración especificada por tí.",
+		"message": "Cuando se activa, $MOSTLY_HARMLESS$ buscará $ORANGERED$s nuevo en el intervalo que ha establecido. Si usted recibe un $ORANGERED$, se mostrará una notificación en el escritorio hasta que haga clic en o cerca de ella, o hasta que los cheques $MOSTLY_HARMLESS$ de nuevo y ya no tienen un $ORANGERED$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"

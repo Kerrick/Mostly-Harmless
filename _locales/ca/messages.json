@@ -523,7 +523,7 @@
                 }
         },
         "orangered_description": {
-                "message": "Quan està activat, $MOSTLY_HARMLESS$ buscarà nous $ORANGERED$s en un interval especificat por tu. Si tens algun $ORANGERED$, mostrarà una notificació a l'escriptori amb una duració especificada per tu.",
+                "message": "Quan s'activa, $MOSTLY_HARMLESS$ buscarà $ORANGERED$s nou en l'interval que heu definit. Si vostè rep un $ORANGERED$, es mostrarà una notificació a l'escriptori fins que faci clic en o prop d'ella, o fins que els xecs $MOSTLY_HARMLESS$ de nou i ja no tenen un $ORANGERED$.",
                 "placeholders": {
                         "MOSTLY_HARMLESS": {
                                 "content": "Mostly Harmless"
