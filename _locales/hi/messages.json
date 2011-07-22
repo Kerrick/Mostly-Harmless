@@ -1,20 +1,20 @@
 ﻿{
 	"just_now": {
-		"message": "just now",
+		"message": "बस अभी",
 		"description": "Describe that something just happened."
 		
 	},
 	"a_minute_ago": {
-		"message": "a minute ago",
+		"message": "एक मिनट पेहले",
 		"description": "Describe that something happened a minute ago."
 		
 	},
 	"a_minute_from_now": {
-		"message": "a minute from now",
+		"message": "अब से एक मिनट बाद",
 		"decription": "Describe that something will happen in a minute."
 	},
 	"minutes_ago": {
-		"message": "$NUM$ minutes ago",
+		"message": "$NUM$ मिनिटों पेहले",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -23,7 +23,7 @@
 		}
 	},
 	"minutes_from_now": {
-		"message": "$NUM$ minutes from now",
+		"message": "$NUM$ मिनिटों बाद",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -32,15 +32,15 @@
 		}
 	},
 	"an_hour_ago": {
-		"message": "an hour ago",
+		"message": "एक घंटे पेहले",
 		"description": "Describe that something happened an hour ago."
 	},
 	"an_hour_from_now": {
-		"message": "an hour from now",
+		"message": "अब से एक घंटे बाद",
 		"description": "Describe that will happen in an hour."
 	},
 	"hours_ago": {
-		"message": "$NUM$ hours ago",
+		"message": "$NUM$ घंटे पेहले",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -49,7 +49,7 @@
 		}
 	},
 	"hours_from_now": {
-		"message": "$NUM$ hours from now",
+		"message": "$NUM$ घंटों बाद",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -58,15 +58,15 @@
 		}
 	},
 	"yesterday": {
-		"message": "yesterday",
+		"message": "कल",
 		"description": "The day before today."
 	},
 	"tomorrow": {
-		"message": "tomorrow",
+		"message": "कल",
 		"description": "The day after today."
 	},
 	"days_ago": {
-		"message": "$NUM$ days ago",
+		"message": "$NUM$ दिनों पेहले",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -75,7 +75,7 @@
 		}
 	},
 	"days_from_now": {
-		"message": "$NUM$ days from now",
+		"message": "$NUM$ दिनों बाद",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -84,15 +84,15 @@
 		}
 	},
 	"last_week": {
-		"message": "last week",
+		"message": "गये हफ्ते",
 		"description": "The week before this one."
 	},
 	"next_week": {
-		"message": "next week",
+		"message": "अगले  हफ्ते",
 		"description": "The week after this one."
 	},
 	"weeks_ago": {
-		"message": "$NUM$ weeks ago",
+		"message": "$NUM$ हफ्ते पहले",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -101,7 +101,7 @@
 		}
 	},
 	"weeks_from_now": {
-		"message": "$NUM$ weeks from now",
+		"message": "$NUM$ हफ़्तों के बाद",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -110,15 +110,15 @@
 		}
 	},
 	"last_month": {
-		"message": "last month",
+		"message": "गये महीने",
 		"description": "The month before this one."
 	},
 	"next_month": {
-		"message": "next month",
+		"message": "अगले  महीने",
 		"description": "The month after this one."
 	},
 	"months_ago": {
-		"message": "$NUM$ months ago",
+		"message": "$NUM$ महीनों पेहले",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -127,7 +127,7 @@
 		}
 	},
 	"months_from_now": {
-		"message": "$NUM$ months from now",
+		"message": "$NUM$ महीनों बाद",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -136,15 +136,15 @@
 		}
 	},
 	"last_year": {
-		"message": "last year",
+		"message": "गये साल",
 		"description": "The year before this one."
 	},
 	"next_year": {
-		"message": "next year",
+		"message": "अगले साल",
 		"description": "The year after this one."
 	},
 	"years_ago": {
-		"message": "$NUM$ years ago",
+		"message": "$NUM$ सालों पेहले",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -153,7 +153,7 @@
 		}
 	},
 	"years_from_now": {
-		"message": "$NUM$ years from now",
+		"message": "$NUM$ सालों बाद",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -162,15 +162,15 @@
 		}
 	},
 	"last_century": {
-		"message": "last century",
+		"message": "पिछली सदी",
 		"description": "The century before this one."
 	},
 	"next_century": {
-		"message": "next century",
+		"message": "अगली सदी",
 		"description": "The century after this one."
 	},
 	"centuries_ago": {
-		"message": "$NUM$ centuries ago",
+		"message": "$NUM$ सदियों पेहले",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -179,7 +179,7 @@
 		}
 	},
 	"centuries_from_now": {
-		"message": "$NUM$ centuries from now",
+		"message": "$NUM$ सदियों बाद",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -188,7 +188,7 @@
 		}
 	},
 	"not_activated": {
-		"message": "$APPNAME$ is not activated for this page. Click to activate.",
+		"message": "$APPNAME$ इस पेज के लिए सक्रिय नहीं है | कृपया क्लिक कर के एक्टिवेट करे |",
 		"placeholders": {
 			"APPNAME": {
 				"content": "Mostly Harmless"
@@ -196,13 +196,13 @@
 		}
 	},
 	"loading": {
-		"message": "Loading data..."
+		"message": "जानकारी प्राप्त..."
 	},
 	"viewing_comments": {
-		"message": "You are currently viewing the comments for this page."
+		"message": "आप इस पेज की टिप्पणियां पढ़ रहे है |"
 	},
 	"submit_page": {
-		"message": "Submit this page to $REDDIT$.",
+		"message": "$REDDIT$ पे प्रस्तुत करें |",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -210,7 +210,7 @@
 		}
 	},
 	"submitted_num_times": {
-		"message": "This page has been submitted $NUM$ times.",
+		"message": "यह पेज $NUM$ बार प्रस्तुत किये जा चूका है |",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -219,7 +219,7 @@
 		}
 	},
 	"login": {
-		"message": "You have to be logged in to do that. $BEGIN_LINK$Click to open the login page.$END_LINK$",
+		"message": "यह काम करने के लिए लोग इन करना ज़रूरी है | $BEGIN_LINK$लोग इन करने के लिए, यहाँ क्लिक करें |$END_LINK$",
 		"placeholders": {
 			"BEGIN_LINK": {
 				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
@@ -230,7 +230,7 @@
 		}
 	},
 	"api_error": {
-		"message": "There was an API error. HTTP Status: $STATUS$. Click to try again.",
+		"message": "एक API ऐर्रोर हुई है | HTTP की स्तिथि : $STATUS$. दोबारा कोशिश करने के लिए, कृप्या क्लिक करें |",
 		"placeholders": {
 			"STATUS": {
 				"content": "$1",
@@ -239,7 +239,7 @@
 		}
 	},
 	"api_timeout": {
-		"message": "The API timed out after $NUM$ seconds. Click to try again.",
+		"message": "API इतने $NUM$ सेकंड बाद बंद हुई | दोबारा कोशिश करने के लिए, कृप्या क्लिक करें |",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -248,22 +248,22 @@
 		}
 	},
 	"action_unsave": {
-		"message": "unsave"
+		"message": "न जमा करे"
 	},
 	"action_save": {
-		"message": "save"
+		"message": "जमा करे"
 	},
 	"action_unhide": {
-		"message": "unhide"
+		"message": "दिखाएँ"
 	},
 	"action_hide": {
-		"message": "hide"
+		"message": "छिपायें"
 	},
 	"action_share": {
-		"message": "share"
+		"message": "दोस्तों के साथ बाटें"
 	},
 	"report_confirm": {
-		"message": "are you sure? $BEGIN_LINK_YES$yes$END_LINK_YES$/$BEGIN_LINK_NO$no$END_LINK_NO$",
+		"message": "क्या आप सच मैं येह करना चाहते हैं  $BEGIN_LINK_YES$हाँ$END_LINK_YES$/$BEGIN_LINK_NO$नहीं$END_LINK_NO$",
 		"placeholders": {
 			"BEGIN_LINK_YES": {
 				"content": "<a onclick=\"reddit.reportPost(event)\">"
@@ -280,31 +280,31 @@
 		}
 	},
 	"action_report": {
-		"message": "report"
+		"message": "रिपोर्ट करें"
 	},
 	"action_reported": {
-		"message": "reported!"
+		"message": "रिपोर्ट हो चुकी ! "
 	},
 	"button_submit": {
-		"message": "submit"
+		"message": "प्रस्तुत करें"
 	},
 	"button_hide": {
-		"message": "hide this form"
+		"message": "यह फॉर्म छिपायें  "
 	},
 	"error_empty": {
-		"message": "There needs to be something here."
+		"message": "यहाँ कुछ होना चाहिएThere needs to be something here."
 	},
 	"loading_api": {
-		"message": "Loading data from the API..."
+		"message": "API से जानकारी प्राप्त हो रही है..."
 	},
 	"loading_cache": {
-		"message": "Loading data from the cache..."
+		"message": "cache से जानकारी प्राप्त हो रही है..."
 	},
 	"error_not_cached": {
-		"message": "Cannot create list for a URL that has not been cached."
+		"message": "जो URL की cache न हुई हो, उसकी लिस्ट नहीं बन सकती|"
 	},
 	"score": {
-		"message": "$UPS$ upvotes, $DOWNS$ downvotes.",
+		"message": "$UPS$ उप्वोते, $DOWNS$ डाउनवोट",
 		"placeholders": {
 			"UPS": {
 				"content": "$1",
@@ -317,7 +317,7 @@
 		}
 	},
 	"view_on_reddit": {
-		"message": "View this post on $REDDIT$",
+		"message": "$REDDIT$ पर देखे ",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -325,7 +325,7 @@
 		}
 	},
 	"submitted_when": {
-		"message": "submitted $TIME$",
+		"message": "प्रस्तुत हुई $TIME$",
 		"placeholders": {
 			"TIME": {
 				"content": "$1",
@@ -334,19 +334,19 @@
 		}
 	},
 	"by": {
-		"message": "by"
+		"message": "द्वारा"
 	},
 	"to": {
-		"message": "to"
+		"message": "से"
 	},
 	"add_comment_zero": {
-		"message": "add a comment"
+		"message": "टिपण्णी दे"
 	},
 	"add_comment_one": {
 		"message": "add to the one comment"
 	},
 	"add_comment_many": {
-		"message": "add to the $NUM$ comments",
+		"message": "$NUM$ टिप्पणियों मैं शामिल करे |",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -355,10 +355,10 @@
 		}
 	},
 	"leave_comment": {
-		"message": "Leave a comment"
+		"message": "टिपण्णी दे"
 	},
 	"stale_posts_hiding": {
-		"message": "Hiding $NUM$ stale posts. $BEGIN_LINK_SHOW$Show them now$END_LINK_SHOW$, or visit the $BEGIN_LINK_OPTIONS$options page$END_LINK_OPTIONS$ to change your Fresh Content preferences.",
+		"message": "$NUM$ पुराणी पोस्ट चिय्पयी गयी है | $BEGIN_LINK_SHOW$अभी दिखाएँ$END_LINK_SHOW$, वरना $BEGIN_LINK_OPTIONS$ओपशंस$END_LINK_OPTIONS$ में जा कर Fresh Content में जा कर की सेट्टिंग चंगे करें |",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -379,7 +379,7 @@
 		}
 	},
 	"stale_posts_showing": {
-		"message": "Showing stale posts. Visit the $BEGIN_LINK_OPTIONS$options page$END_LINK_OPTIONS$ to change your Fresh Content preferences.",
+		"message": "पुरानी पोस्ट दिखाई जा रही है |. $BEGIN_LINK_OPTIONS$ओपशंस$END_LINK_OPTIONS$ में जा कर Fresh Content में जा कर की सेट्टिंग चंगे करें |",
 		"placeholders": {
 			"BEGIN_LINK_OPTIONS": {
 				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
@@ -575,51 +575,3 @@
 	"timeout_length_never": {
 		"message": "Do not timeout; only show an error error when the API is down."
 	},
-	"timeout_length_description": {
-		"message": "If the $REDDIT$ API is slow or down, $MOSTLY_HARMLESS$ can display an error after trying to reach the API for a certain amount of time. Longer timeout lengths mean more time waiting for a result from the $REDDIT$ API. Shorter timeout lengths mean a higher possibility of timing out when $REDDIT$ may only be slow instead of down.",
-		"placeholders": {
-			"REDDIT": {
-				"content": "reddit"
-			},
-			"MOSTLY_HARMLESS": {
-				"content": "Mostly Harmless"
-			}
-		}
-	},
-	"tab_privacy": {
-		"message": "Privacy"
-	},
-	"group_wait_for_click": {
-		"message": "Wait for click"
-	},
-	"wait_for_click_description": {
-		"message": "If this checkbox is selected, $MOSTLY_HARMLESS$ will not activate unless you click its icon.",
-		"placeholders": {
-			"MOSTLY_HARMLESS": {
-				"content": "Mostly Harmless"
-			}
-		}
-	},
-	"excluded_domains": {
-		"message": "Excluded domains"
-	},
-	"excluded_domains_description": {
-		"message": "Put domains or subdomains, one per line, in the above text box. Any page on the listed domains will not activate $MOSTLY_HARMLESS$.",
-		"placeholders": {
-			"MOSTLY_HARMLESS": {
-				"content": "Mostly Harmless"
-			}
-		}
-	},
-	"excluded_regex": {
-		"message": "Excluded regex"
-	},
-	"excluded_regex_description": {
-		"message": "Put regular expressions, one per line, in the above text box. Any page that matches these regular expressions will not activate $MOSTLY_HARMLESS$.",
-		"placeholders": {
-			"MOSTLY_HARMLESS": {
-				"content": "Mostly Harmless"
-			}
-		}
-	}
-}
