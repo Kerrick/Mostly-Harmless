@@ -9,7 +9,6 @@ settings = new Store('settings', {
 	'waitForClick': false,
 	'checkMail': true,
 	'mailInterval': 5,
-	'mailDisplayTime': 30,
 	'mailSound': false,
 	'excludedDomains': 'secure.ingdirect.com\nchaseonline.chase.com\nonline.wellsfargo.com\nmail.google.com\ndocs.google.com',
 	'excludedRegex': 'chrome://.*\nchrome-extension://.*\nview-source://.*\nftp://.*\nhttps?://www\\.google\\.com/search.*\nhttps?://search\\.yahoo\\.com/search.*\nhttps?://www\\.bing\\.com/search.*\nhttps?://www\\.reddit\\.com/(?:r/(?:\\w|\\+)+/?)?(?:$|\\?count)'
@@ -349,11 +348,15 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 					cback(JSON.parse(req.responseText));
 				}
 				
-				notificationArea.innerHTML = '';
-				notificationArea.style.display = 'none';
+				if (notificationArea) {
+					notificationArea.innerHTML = '';
+					notificationArea.style.display = 'none';
+				}
 				return JSON.parse(req.responseText);
 			} else {
-				notificationArea.innerHTML = '<span class="error">' + chrome.i18n.getMessage('api_error', req.status.toString()) + '</span>'
+				if (notificationArea) {
+					notificationArea.innerHTML = '<span class="error">' + chrome.i18n.getMessage('api_error', req.status.toString()) + '</span>'
+				}
 				throw chrome.i18n.getMessage('api_error', req.status.toString());
 			}
 		}
@@ -843,6 +846,8 @@ reddit = new RedditAPI('www.reddit.com');
  * @constructor
  */
 function Background() {
+	this.notificationIsShown = false;
+	this.notification = null;
 	return true;
 }
 
@@ -910,29 +915,31 @@ Background.prototype.watchMail = function () {
 	var mailProcess, pop;
 	
 	function showNotification (hasMail) {
-		var notification, notificationTimeout, mailInterval;
+		var mailInterval;
 		
 		mailInterval = settings.get('mailInterval') * 1000 * 60;
-		
-		if (hasMail === true) {
+				
+		if (hasMail === true && background.notificationIsShown === false) {
 			if (settings.get('mailSound') === true) {
 				pop.play();
 			}
 			
-			notification = webkitNotifications.createNotification(
+			background.notification = webkitNotifications.createNotification(
 				'/pix/mail.png',  // icon url - can be relative
 				chrome.i18n.getMessage('orangered_received'),  // notification title
 				chrome.i18n.getMessage('orangered_action')  // notification body text
 			);
-			notificationTimeout = window.setTimeout(function () {
-				notification.cancel();
-			}, settings.get('mailDisplayTime') * 1000);
-			notification.onclick = function () {
+			background.notification.onclick = function () {
 				chrome.tabs.create({'url': 'http://' + reddit.domain + '/message/unread/', 'selected': true});
-				notification.cancel();
-				window.clearTimeout(notificationTimeout);
+				background.notification.cancel();
 			};
-			notification.show();
+			background.notification.onclose = function () {
+				background.notificationIsShown = false;
+			};
+			background.notificationIsShown = true;
+			background.notification.show();
+		} else if (hasMail === false && background.notificationIsShown === true) {
+			background.notification.cancel();
 		}
 		
 		window.setTimeout(checkPrefs, mailInterval);

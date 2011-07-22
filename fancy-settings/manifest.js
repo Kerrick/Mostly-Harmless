@@ -106,21 +106,6 @@ this.manifest = {
         {
         	"tab": chrome.i18n.getMessage('tab_preferences'),
         	"group": chrome.i18n.getMessage('group_orangered_notifications'),
-        	"name": "mailDisplayTime",
-        	"type": "slider",
-        	"label": "",
-        	"max": 60,
-        	"min": 10,
-        	"step": 1,
-        	"display": true,
-        	"displayModifier": function (value) {
-        		return chrome.i18n.getMessage('orangered_display_time', value.toString());
-        	}
-        	
-        },
-        {
-        	"tab": chrome.i18n.getMessage('tab_preferences'),
-        	"group": chrome.i18n.getMessage('group_orangered_notifications'),
         	"name": "mailDescription",
         	"type": "description",
         	"text": chrome.i18n.getMessage('orangered_description')
