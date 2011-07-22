@@ -464,15 +464,12 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	
 	function success () {
 		if (voteWas === '1') {
-			formData.append('dir','0');
 			listItem.setAttribute('data-dir','0');
 			oldCache.posts[fullName].data.likes = null;
 		} else if (voteWas === '0') {
-			formData.append('dir','1');
 			listItem.setAttribute('data-dir','1');
 			oldCache.posts[fullName].data.likes = true;
 		} else if (voteWas === '-1') {
-			formData.append('dir','1');
 			listItem.setAttribute('data-dir','1');
 			oldCache.posts[fullName].data.likes = true;
 		}
@@ -489,6 +486,15 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
+	
+	if (voteWas === '1') {
+		formData.append('dir','0');
+	} else if (voteWas === '0') {
+		formData.append('dir','1');
+	} else if (voteWas === '-1') {
+		formData.append('dir','1');
+	}
+	
 	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
@@ -504,15 +510,12 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	
 	function success () {
 		if (voteWas === '1') {
-			formData.append('dir','-1');
 			listItem.setAttribute('data-dir','-1');
 			oldCache.posts[fullName].data.likes = false;
 		} else if (voteWas === '0') {
-			formData.append('dir','-1');
 			listItem.setAttribute('data-dir','-1');
 			oldCache.posts[fullName].data.likes = false;
 		} else if (voteWas === '-1') {
-			formData.append('dir','0');
 			listItem.setAttribute('data-dir','0');
 			oldCache.posts[fullName].data.likes = null;
 		}
@@ -529,6 +532,15 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
+	
+	if (voteWas === '1') {
+		formData.append('dir','-1');
+	} else if (voteWas === '0') {
+		formData.append('dir','-1');
+	} else if (voteWas === '-1') {
+		formData.append('dir','0');
+	}
+	
 	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
