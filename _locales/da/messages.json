@@ -1,0 +1,625 @@
+﻿{
+	"just_now": {
+		"message": "lige nu",
+		"description": "Describe that something just happened."
+		
+	},
+	"a_minute_ago": {
+		"message": "for et øjeblik siden",
+		"description": "Describe that something happened a minute ago."
+		
+	},
+	"a_minute_from_now": {
+		"message": "om et øjeblik",
+		"decription": "Describe that something will happen in a minute."
+	},
+	"minutes_ago": {
+		"message": "$NUM$ minutter siden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"minutes_from_now": {
+		"message": "om $NUM$ minutter",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"an_hour_ago": {
+		"message": "for en time siden",
+		"description": "Describe that something happened an hour ago."
+	},
+	"an_hour_from_now": {
+		"message": "om en time",
+		"description": "Describe that will happen in an hour."
+	},
+	"hours_ago": {
+		"message": "$NUM$ timer siden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"hours_from_now": {
+		"message": "om $NUM$ timer",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"yesterday": {
+		"message": "igår",
+		"description": "The day before today."
+	},
+	"tomorrow": {
+		"message": "imorgen",
+		"description": "The day after today."
+	},
+	"days_ago": {
+		"message": "$NUM$ dage siden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"days_from_now": {
+		"message": "om $NUM$ dage",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_week": {
+		"message": "sidste uge",
+		"description": "The week before this one."
+	},
+	"next_week": {
+		"message": "næste uge",
+		"description": "The week after this one."
+	},
+	"weeks_ago": {
+		"message": "$NUM$ uger siden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"weeks_from_now": {
+		"message": "om $NUM$ uger",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_month": {
+		"message": "sidste måned",
+		"description": "The month before this one."
+	},
+	"next_month": {
+		"message": "næste måned",
+		"description": "The month after this one."
+	},
+	"months_ago": {
+		"message": "$NUM$ måneder siden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"months_from_now": {
+		"message": "om $NUM$ måneder",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_year": {
+		"message": "sidste år",
+		"description": "The year before this one."
+	},
+	"next_year": {
+		"message": "næste år",
+		"description": "The year after this one."
+	},
+	"years_ago": {
+		"message": "$NUM$ år siden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"years_from_now": {
+		"message": "om $NUM$ år",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_century": {
+		"message": "sidste århundrede",
+		"description": "The century before this one."
+	},
+	"next_century": {
+		"message": "næste århundrede",
+		"description": "The century after this one."
+	},
+	"centuries_ago": {
+		"message": "$NUM$ århundreder siden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"centuries_from_now": {
+		"message": "om $NUM$ århundreder",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"not_activated": {
+		"message": "$APPNAME$ er ikke aktiveret på denne side. Klik for at aktivere.",
+		"placeholders": {
+			"APPNAME": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"loading": {
+		"message": "Henter data..."
+	},
+	"viewing_comments": {
+		"message": "Du ser i øjeblikket kommentarerne for denne side."
+	},
+	"submit_page": {
+		"message": "Tilføj denne side til $REDDIT$.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_num_times": {
+		"message": "Denne side er blevet tilføjet $NUM$ gange.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"login": {
+		"message": "Du skal være logget ind for at gøre det. $BEGIN_LINK$Klik her for at komme logge ind.$END_LINK$",
+		"placeholders": {
+			"BEGIN_LINK": {
+				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
+			},
+			"END_LINK": {
+				"content": "</a>"
+			}
+		}
+	},
+	"api_error": {
+		"message": "Der opstod en API fejl. HTTP Status: $STATUS$. Klik her for at forsøge igen.",
+		"placeholders": {
+			"STATUS": {
+				"content": "$1",
+				"example": "504"
+			}
+		}
+	},
+	"api_timeout": {
+		"message": "API'en timede ud efter $NUM$ sekunder. Klik her for at forsøge igen.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"action_unsave": {
+		"message": "fjern"
+	},
+	"action_save": {
+		"message": "gem"
+	},
+	"action_unhide": {
+		"message": "vis"
+	},
+	"action_hide": {
+		"message": "gem"
+	},
+	"action_share": {
+		"message": "del"
+	},
+	"report_confirm": {
+		"message": "er du sikker? $BEGIN_LINK_YES$ja$END_LINK_YES$/$BEGIN_LINK_NO$nej$END_LINK_NO$",
+		"placeholders": {
+			"BEGIN_LINK_YES": {
+				"content": "<a onclick=\"reddit.reportPost(event)\">"
+			},
+			"END_LINK_YES": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_NO": {
+				"content": "<a onclick=\"reddit.denyReport(event)\">"
+			},
+			"END_LINK_NO": {
+				"content": "</a>"
+			}
+		}
+	},
+	"action_report": {
+		"message": "indrapporter"
+	},
+	"action_reported": {
+		"message": "rapporteret!"
+	},
+	"button_submit": {
+		"message": "send"
+	},
+	"button_hide": {
+		"message": "skjul denne form"
+	},
+	"error_empty": {
+		"message": "Der skal være noget here."
+	},
+	"loading_api": {
+		"message": "Henter data fra API'en..."
+	},
+	"loading_cache": {
+		"message": "Henter data fra cachen..."
+	},
+	"error_not_cached": {
+		"message": "Kan ikke lave en liste for en URL der ikke er blevet cached."
+	},
+	"score": {
+		"message": "$UPS$ op-stemmer, $DOWNS$ ned-stemmer.",
+		"placeholders": {
+			"UPS": {
+				"content": "$1",
+				"example": "435"
+			},
+			"DOWNS": {
+				"content": "$2",
+				"example": "243"
+			}
+		}
+	},
+	"view_on_reddit": {
+		"message": "Se dette indlæg på $REDDIT$",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_when": {
+		"message": "tilføjet $TIME$",
+		"placeholders": {
+			"TIME": {
+				"content": "$1",
+				"example": "an hour ago"
+			}
+		}
+	},
+	"by": {
+		"message": "af"
+	},
+	"to": {
+		"message": "til"
+	},
+	"add_comment_zero": {
+		"message": "tilføj en kommentar"
+	},
+	"add_comment_one": {
+		"message": "tilføj til den ene kommentar"
+	},
+	"add_comment_many": {
+		"message": "tilføj til de $NUM$ kommentarer",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "42"
+			}
+		}
+	},
+	"leave_comment": {
+		"message": "Efterlad en kommentar"
+	},
+	"stale_posts_hiding": {
+		"message": "Skjuler $NUM$ gamle indlæg. $BEGIN_LINK_SHOW$Vis dem nu$END_LINK_SHOW$, eller se $BEGIN_LINK_OPTIONS$indstillinger$END_LINK_OPTIONS$ for at ændre dine præferencer for Nyt Indhold.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			},
+			"BEGIN_LINK_SHOW": {
+				"content": "<a onclick=\"popup.showStalePosts()\">"
+			},
+			"END_LINK_SHOW": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"stale_posts_showing": {
+		"message": "Viser ældre indlæg. Se $BEGIN_LINK_OPTIONS$indstillinger$END_LINK_OPTIONS$ for at ændre dine præferencer for Nyt Indhold.",
+		"placeholders": {
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"orangered_received": {
+		"message": "Du fået en ny $ORANGERED$!",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_action": {
+		"message": "Klik her for at gå til din indbakke."
+	},
+	"url": {
+		"message": "url"
+	},
+	"popular_choices": {
+		"message": "populære valg"
+	},
+	"title": {
+		"message": "titel"
+	},
+	"suggest_title": {
+		"message": "foreslå titel"
+	},
+	"tab_preferences": {
+		"message": "Præferenser"
+	},
+	"group_fresh_content": {
+		"message": "Nyt Indhold"
+	},
+	"fresh_content_show_one_day": {
+		"message": "Vis kun indlæg fra idag."
+	},
+	"fresh_content_show_days": {
+		"message": "Vis kun indlæg der er mindre end $NUM$ dage gamle.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_weeks": {
+		"message": "Vis kun indlæg der er mindre end $NUM$ uger gamle.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_months": {
+		"message": "Vis kun indlæg der er mindre end $NUM$ måneder gamle.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_all": {
+		"message": "Vis alle indlæg."
+	},
+	"fresh_content_description": {
+		"message": "Denne indstilling lader dig vælge det ældste reddit indlæg du ønsker at se. Alle indlæg fra før den værdi du har valgt vil blive vist i browser knappens total, men vil ikke blive vist i pop-upvinduet."
+	},
+	"group_popup_width": {
+		"message": "Pop-up Bredde"
+	},
+	"popup_width_description": {
+		"message": "Denne indstilling lader dig bestemme bredden af pop-upvinduet."
+	},
+	"group_shameless_plug": {
+		"message": "Det Skamløse Stik"
+	},
+	"shameless_plug_label": {
+		"message": "Vis det Skamløse Stik"
+	},
+	"shameless_plug_description": {
+		"message": "Når afkrydset, vil følgende blive tilføjet til ethvert indlæg du indsender med $MOSTLY_HARMLESS$:$PLUG_TEXT$",
+		"placeholders": {
+			"PLUG_TEXT": {
+				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+			
+	},
+	"group_orangered_notifications": {
+		"message": "$ORANGERED$ Meddelelser",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_check": {
+		"message": "Kontroller for $ORANGERED$s",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_label": {
+		"message": "Afspil en lyd når du modtager en $ORANGERED$",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_preview": {
+		"message": "Afspil eksempel på meddelelseslyden"
+	},
+	"orangered_interval_minutes": {
+		"message": "Kontroller hvert $NUM$. minut",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_display_time": {
+		"message": "Vis meddelsesen i $NUM$ sekunder",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_description": {
+		"message": "Når afkrydset, vil $MOSTLY_HARMLESS$ kontrollere om der er nye $ORANGERED$s i det interval du har indstillet. Hvis du får en $ORANGERED$, vil den vise en skrivebords meddelelse indtil du klikker på den eller lukker den, eller indtil $MOSTLY_HARMLESS$ kontrollerer igen og du ikke længere har en $ORANGERED$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			},
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"tab_performance": {
+		"message": "Ydeevne"
+	},
+	"group_cache_time": {
+		"message": "Cache tid"
+	},
+	"cache_time_one_minute": {
+		"message": "Cache data i et minut"
+	},
+	"cache_time_minutes": {
+		"message": "Cache data i $NUM$ minutter",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"cache_time_description": {
+		"message": "Data fra $REDDIT$'s API caches eller gemmes i en kort periode for at optimere ydeevnen. Længere cache tider betyder mindre båndbredde, hurtigere resultater on mindre belastning på $REDDIT$. Koretere cache tider betyder friskere og nyere data.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"group_timeout_length": {
+		"message": "Timeout længde"
+	},
+	"timeout_length_seconds": {
+		"message": "Timeout efter $NUM$ sekunder og vis en fejlmeddelelse.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"timeout_length_never": {
+		"message": "Ingen timeout; vis en fejlmeddelelse hvis API'en er nede."
+	},
+	"timeout_length_description": {
+		"message": "Hvis $REDDIT$ API'en er langsom eller nede, kan $MOSTLY_HARMLESS$ vise en fejlmeddelelse efter forsøg på at nå API'en i et bestemt stykke tid. Længere timeout længde betyder længere ventetid på et resultat fra $REDDIT$ API'en. Ved koretere timeout længde er der en højere risiko for, at få timeout hvis $REDDIT$ kun er langsom og ikke nede.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"tab_privacy": {
+		"message": "Beskyttelse af personlige oplysninger"
+	},
+	"group_wait_for_click": {
+		"message": "Vent på klik"
+	},
+	"wait_for_click_description": {
+		"message": "Hvis dette felt er valgt, vil $MOSTLY_HARMLESS$ ikke blive aktiveret med mindre du klikker på dets ikon.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_domains": {
+		"message": "Ekskluderede domæner"
+	},
+	"excluded_domains_description": {
+		"message": "Tilføj domæner eller underdomæner, én per linje, i tekstboksen ovenfor. Alle sider på de pågældende domæner vil ikke aktivere $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_regex": {
+		"message": "Ekskluderede udtryk"
+	},
+	"excluded_regex_description": {
+		"message": "Tilføj udtryk, én per linje, i tekstboksen ovenfor. Alle sider der matcher de pågældende udtryk vil ikke aktivere $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	}
+}
