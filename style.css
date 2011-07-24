@@ -41,4 +41,5 @@ div.article ul li a[href*='user/KerrickLong']{background-image:url(icons/kerrick
 div.article ul li a[href*='user/MrArmStrong']{background-image:url(icons/mrarmstrong.png);}
 div.article ul li a[href*='user/Logram']{background-image:url(icons/logram.png);}
 div.article ul li a[href*='user/arrowsama']{background-image:url(icons/arrowsama.png);}
+div.article ul li a[href*='user/Chinned']{background-image:url(icons/chinned.png);}
 #guide{font: 100px / 90px 'Carter One', sans-serif;position: fixed;bottom: -45px;left: 0;text-align: center;width: 100%;display: block;text-transform: uppercase;color: rgba(255, 255, 255, 0.5);z-index: 5;-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);}
