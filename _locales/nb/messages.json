@@ -524,7 +524,7 @@
 		}
 	},
 	"orangered_description": {
-		"message": "Når aktivert, vil $MOSTLY_HARMLESS$ sjekke for nye $ORANGERED$e ved hyppigheten du velger. Hvis du har en $ORANGERED$ vil det vises en skrivebords-notifikasjon til du klikker eller lukker den, eller til du ikke har en $ORANGERED$.",
+		"message": "Når aktivert, sjekker $MOSTLY_HARMLESS$ for nye $ORANGERED$e ved hyppigheten du velger. Hvis du har en $ORANGERED$ vil det vises en skrivebords-notifikasjon til du klikker eller lukker den, eller til du ikke har en $ORANGERED$ lenger.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
@@ -553,7 +553,7 @@
 		}
 	},
 	"cache_time_description": {
-		"message": "Data fra $REDDIT$ APIen kan bli bufret, eller lagret for en kort stund, for å forbedre ytelse. Lengre bufringstider fører till mindre båndbredde, raskere resultater, og mindre belastning på $REDDIT$. Kortere bufringstid betyr nyere data.",
+		"message": "Data fra $REDDIT$ APIen kan bli bufret, eller lagret for en kort stund, for å forbedre ytelse. Lengre bufringstider fører til mindre båndbredde, raskere resultater, og mindre belastning på $REDDIT$. Kortere bufringstid betyr nyere data.",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -593,7 +593,7 @@
 		"message": "Vent på klikk"
 	},
 	"wait_for_click_description": {
-		"message": "Hvis aktivert, vil $MOSTLY_HARMLESS$ ikke aktivere før du klikker på ikonet.",
+		"message": "Hvis aktivert, aktiveres ikke $MOSTLY_HARMLESS$ før du klikker på ikonet.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
