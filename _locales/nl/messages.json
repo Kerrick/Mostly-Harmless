@@ -1,0 +1,625 @@
+﻿{
+	"just_now": {
+		"message": "nieuwe gebeurtenissen",
+		"description": "Describe that something just happened."
+		
+	},
+	"a_minute_ago": {
+		"message": "een minuut geleden",
+		"description": "Describe that something happened a minute ago."
+		
+	},
+	"a_minute_from_now": {
+		"message": "over een minuut",
+		"decription": "Describe that something will happen in a minute."
+	},
+	"minutes_ago": {
+		"message": "$NUM$ minuten geleden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"minutes_from_now": {
+		"message": "over $NUM$ minuten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"an_hour_ago": {
+		"message": "een uur geleden",
+		"description": "Describe that something happened an hour ago."
+	},
+	"an_hour_from_now": {
+		"message": "over een uur",
+		"description": "Describe that will happen in an hour."
+	},
+	"hours_ago": {
+		"message": "$NUM$ uur geleden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"hours_from_now": {
+		"message": "over $NUM$ uur",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"yesterday": {
+		"message": "gisteren",
+		"description": "The day before today."
+	},
+	"tomorrow": {
+		"message": "morgen",
+		"description": "The day after today."
+	},
+	"days_ago": {
+		"message": "$NUM$ dagen geleden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"days_from_now": {
+		"message": "over $NUM$ dagen",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_week": {
+		"message": "vorige week",
+		"description": "The week before this one."
+	},
+	"next_week": {
+		"message": "volgende week",
+		"description": "The week after this one."
+	},
+	"weeks_ago": {
+		"message": "$NUM$ weken geleden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"weeks_from_now": {
+		"message": "over $NUM$ weken",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_month": {
+		"message": "vorige maand",
+		"description": "The month before this one."
+	},
+	"next_month": {
+		"message": "volgende maand",
+		"description": "The month after this one."
+	},
+	"months_ago": {
+		"message": "$NUM$ maanden geleden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"months_from_now": {
+		"message": "over NUM$ maanden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_year": {
+		"message": "vorig jaar",
+		"description": "The year before this one."
+	},
+	"next_year": {
+		"message": "volgend jaar",
+		"description": "The year after this one."
+	},
+	"years_ago": {
+		"message": "$NUM$ jaar geleden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"years_from_now": {
+		"message": "over $NUM$ jaar",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_century": {
+		"message": "vorige eeuw",
+		"description": "The century before this one."
+	},
+	"next_century": {
+		"message": "volgende eeuw",
+		"description": "The century after this one."
+	},
+	"centuries_ago": {
+		"message": "$NUM$ eeuwen geleden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"centuries_from_now": {
+		"message": "over $NUM$ eeuwen",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"not_activated": {
+		"message": "$APPNAME$ is niet geactiveerd voor deze pagina. Klik hier om $APPNAME$ te activeren.",
+		"placeholders": {
+			"APPNAME": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"loading": {
+		"message": "Gegevens laden..."
+	},
+	"viewing_comments": {
+		"message": "Je bekijkt nu de reacties op deze pagina."
+	},
+	"submit_page": {
+		"message": "Stuur deze pagina in naar $REDDIT$.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_num_times": {
+		"message": "Deze pagina is $NUM$ ingestuurd.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"login": {
+		"message": "Je moet ingelogd zijn om dit te doen. $BEGIN_LINK$Klik hier om de login pagina te openen.$END_LINK$",
+		"placeholders": {
+			"BEGIN_LINK": {
+				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
+			},
+			"END_LINK": {
+				"content": "</a>"
+			}
+		}
+	},
+	"api_error": {
+		"message": "Er is een API fout opgetreden. HTTP Status: $STATUS$. Klik hier om het opnieuw te proberen.",
+		"placeholders": {
+			"STATUS": {
+				"content": "$1",
+				"example": "504"
+			}
+		}
+	},
+	"api_timeout": {
+		"message": "De API heeft na $NUM$ seconden de tijdslimiet overschreden. Klik hier om het opnieuw te proberen.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"action_unsave": {
+		"message": "onopslaan"
+	},
+	"action_save": {
+		"message": "sla op"
+	},
+	"action_unhide": {
+		"message": "toon"
+	},
+	"action_hide": {
+		"message": "verberg"
+	},
+	"action_share": {
+		"message": "deel"
+	},
+	"report_confirm": {
+		"message": "Weet je het zeker? $BEGIN_LINK_YES$ja$END_LINK_YES$/$BEGIN_LINK_NO$nee$END_LINK_NO$",
+		"placeholders": {
+			"BEGIN_LINK_YES": {
+				"content": "<a onclick=\"reddit.reportPost(event)\">"
+			},
+			"END_LINK_YES": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_NO": {
+				"content": "<a onclick=\"reddit.denyReport(event)\">"
+			},
+			"END_LINK_NO": {
+				"content": "</a>"
+			}
+		}
+	},
+	"action_report": {
+		"message": "geef aan"
+	},
+	"action_reported": {
+		"message": "aangegeven!"
+	},
+	"button_submit": {
+		"message": "stuur in"
+	},
+	"button_hide": {
+		"message": "verberg dit formulier"
+	},
+	"error_empty": {
+		"message": "Er hoort hier iets te zijn."
+	},
+	"loading_api": {
+		"message": "API gegevens laden..."
+	},
+	"loading_cache": {
+		"message": "Cache gegevens laden..."
+	},
+	"error_not_cached": {
+		"message": "Kan geen lijst maken voor een URL die zich niet in de cache bevindt."
+	},
+	"score": {
+		"message": "$UPS$ omhoogstemmen, $DOWNS$ omlaagstemmen.",
+		"placeholders": {
+			"UPS": {
+				"content": "$1",
+				"example": "435"
+			},
+			"DOWNS": {
+				"content": "$2",
+				"example": "243"
+			}
+		}
+	},
+	"view_on_reddit": {
+		"message": "bekijk deze pagina op $REDDIT$",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_when": {
+		"message": "$TIME$ keer ingestuurd",
+		"placeholders": {
+			"TIME": {
+				"content": "$1",
+				"example": "an hour ago"
+			}
+		}
+	},
+	"by": {
+		"message": "van"
+	},
+	"to": {
+		"message": "aan"
+	},
+	"add_comment_zero": {
+		"message": "voeg een reactie toe"
+	},
+	"add_comment_one": {
+		"message": "voeg toe aan de ene reactie"
+	},
+	"add_comment_many": {
+		"message": "voeg toe aan de $NUM$ reacties",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "42"
+			}
+		}
+	},
+	"leave_comment": {
+		"message": "Laat een reactie achter."
+	},
+	"stale_posts_hiding": {
+		"message": "$NUM$ oude berichten aan het verbergen. $BEGIN_LINK_SHOW$Toon ze nu$END_LINK_SHOW$, of ga naar je $BEGIN_LINK_OPTIONS$opties$END_LINK_OPTIONS$ om je instellingen voor nieuwe inhoud aan te passen.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			},
+			"BEGIN_LINK_SHOW": {
+				"content": "<a onclick=\"popup.showStalePosts()\">"
+			},
+			"END_LINK_SHOW": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"stale_posts_showing": {
+		"message": "Oude berichten aan het tonen. Ga naarje $BEGIN_LINK_OPTIONS$opties$END_LINK_OPTIONS$ om je instellingen voor nieuwe inhoud aan te passen.",
+		"placeholders": {
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"orangered_received": {
+		"message": "Je hebt een $ORANGERED$!",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_action": {
+		"message": "Klik hier om naar je postvak IN te gaan"
+	},
+	"url": {
+		"message": "url"
+	},
+	"popular_choices": {
+		"message": "populaire keuzes"
+	},
+	"title": {
+		"message": "titel"
+	},
+	"suggest_title": {
+		"message": "suggereer titel"
+	},
+	"tab_preferences": {
+		"message": "Voorkeuren"
+	},
+	"group_fresh_content": {
+		"message": "Nieuwe inhoud"
+	},
+	"fresh_content_show_one_day": {
+		"message": "Toon alleen inzendingen van vandaag."
+	},
+	"fresh_content_show_days": {
+		"message": "Toon alleen inzendingen van minder dan $NUM$ dagen oud.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_weeks": {
+		"message": "Toon alleen inzendingen van minder dan $NUM$ weken oud.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_months": {
+		"message": "Toon alleen inzendingen van minder dan $NUM$ maanden oud.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_all": {
+		"message": "Toon alle inzendingen."
+	},
+	"fresh_content_description": {
+		"message": "Hiermee kun je instellen hou oud de oudste reddit inzendingen zijn die je wilt zien. Alles wat eerder ingestuurd is dan de waarde die je hebt gekozen wordt wel opgenomen in het totaal dat weergegeven is in de knop van je browser, maar wordt niet getoond in de pop-up."
+	},
+	"group_popup_width": {
+		"message": "Breedte pop-up"
+	},
+	"popup_width_description": {
+		"message": "Hiermee kun je de breedte van de actie pop-up instellen."
+	},
+	"group_shameless_plug": {
+		"message": "Handtekening"
+	},
+	"shameless_plug_label": {
+		"message": "Toon mijn handtekening"
+	},
+	"shameless_plug_description": {
+		"message": "Indien aangevinkt voegt dit het volgende toe aan elke reactie die je plaatst vanuit $MOSTLY_HARMLESS$:$PLUG_TEXT$",
+		"placeholders": {
+			"PLUG_TEXT": {
+				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+			
+	},
+	"group_orangered_notifications": {
+		"message": "$ORANGERED$ Notificaties",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_check": {
+		"message": "Controleer op $ORANGERED$s",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_label": {
+		"message": "Speel een geluid af bij een $ORANGERED$",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_preview": {
+		"message": "Beluister het notificatie geluid"
+	},
+	"orangered_interval_minutes": {
+		"message": "Controleer elke $NUM$ minuten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_display_time": {
+		"message": "Toon notificaties gedurende $NUM$ seconden",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_description": {
+		"message": "Indien aangevinkt controleert $MOSTLY_HARMLESS$ op nieuwe $ORANGERED$s op het interval dat je hebt gekozen. Als je een $ORANGERED$ hebt, toont het een notificatie op je bureaublad to je deze sluit of er op klikt, of totdat $MOSTLY_HARMLESS$ nog een keer controleert en je geen $ORANGERED$ meer hebt.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			},
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"tab_performance": {
+		"message": "Prestaties"
+	},
+	"group_cache_time": {
+		"message": "Cache tijd"
+	},
+	"cache_time_one_minute": {
+		"message": "Bewaar cache gegevens één minuut."
+	},
+	"cache_time_minutes": {
+		"message": "Bewaar cache gegevens $NUM$ minuten",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"cache_time_description": {
+		"message": "Gegevens van de $REDDIT$ API kunnen worden gecached, oftewel gedurende een korte tijd opgeslagen, om prestaties te verbeteren. Een langere cache tijd heeft minder bandbreedte, snellere resultaten en minder druk op $REDDIT$ als gevolg. Een kortere cache tijd leidt tot nieuwere gegevens.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"group_timeout_length": {
+		"message": "Tijdslimiet"
+	},
+	"timeout_length_seconds": {
+		"message": "Stel een tijdslimiet in van $NUM$ seconden en geef bij overschrijding een foutmelding.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"timeout_length_never": {
+		"message": "Stel geen tijdslimiet in; geef alleen een foutmelding als de API niet werkt."
+	},
+	"timeout_length_description": {
+		"message": "Als de $REDDIT$ API langzaam is of niet werkt, kan $MOSTLY_HARMLESS$ een foutmelding weergeven na gedurende een bepaalde tijd geprobeerd te hebben de API te bereiken.Een hogere tijdslimiet heeft een langere wachttijd op een resultaat van de $REDDIT$ API tot gevolg. Een lagere tijdslimiet geeft een hogere kans op overschrijding van de tijdslimiet als $REDDIT$ langzaam is maar nog wel werkt.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"tab_privacy": {
+		"message": "Privacyinstellingen"
+	},
+	"group_wait_for_click": {
+		"message": "Wachten op klik"
+	},
+	"wait_for_click_description": {
+		"message": "Indien aangevinkt zal $MOSTLY_HARMLESS$ niet geactiveerd worden tenzij je op het icoon klikt.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_domains": {
+		"message": "Uitgesloten domeinen"
+	},
+	"excluded_domains_description": {
+		"message": "Plaats (sub)domeinen, één per regel, in het bovenstaande tekstvak. Een pagina van de uitgesloten domeinen zal $MOSTLY_HARMLESS$ niet activeren.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_regex": {
+		"message": "Uitgesloten reguliere expressies"
+	},
+	"excluded_regex_description": {
+		"message": "Plaats reguliere expressies, één per regel, in het bovenstaande tekstvak. Een pagina die één van deze reguliere expressies bevat zal $MOSTLY_HARMLESS$ niet activeren.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	}
+}
