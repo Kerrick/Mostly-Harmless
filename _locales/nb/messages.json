@@ -1,6 +1,6 @@
 ﻿{
 	"just_now": {
-		"message": "just now",
+		"message": "akkurat nå",
 		"description": "Describe that something just happened."
 		
 	},
@@ -263,7 +263,7 @@
 		"message": "del"
 	},
 	"report_confirm": {
-		"message": "are you sure? $BEGIN_LINK_YES$yes$END_LINK_YES$/$BEGIN_LINK_NO$no$END_LINK_NO$",
+		"message": "er du sikker? $BEGIN_LINK_YES$ja$END_LINK_YES$/$BEGIN_LINK_NO$nei$END_LINK_NO$",
 		"placeholders": {
 			"BEGIN_LINK_YES": {
 				"content": "<a onclick=\"reddit.reportPost(event)\">"
