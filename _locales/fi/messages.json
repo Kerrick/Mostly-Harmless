@@ -524,7 +524,7 @@
 		}
 	},
 	"orangered_description": {
-		"message": "Kun valittu, $MOSTLY_HARMLESS$ tarkistaa uudet $ORANGERED$s väliajoin asetettu. Jos saat $ORANGERED$, se näyttää työpöydällä ilmoituksen vasta, kun valitset tai suljet sen, tai kunnes $MOSTLY_HARMLESS$ tarkistaa uudelleen ja sinulla ei ole enää $ORANGERED$.",
+		"message": "Kun valittu, $MOSTLY_HARMLESS$ tarkistaa uudet $ORANGERED$s asetetuin väliajoin. Jos saat $ORANGERED$, se näyttää työpöydällä ilmoituksen kunnes valitset tai suljet sen, tai kunnes $MOSTLY_HARMLESS$ tarkistaa uudelleen ja sinulla ei ole enää $ORANGERED$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
@@ -553,7 +553,7 @@
 		}
 	},
 	"cache_time_description": {
-		"message": "Tieto $REDDIT$ APIsta voidaan varastoida, tai tallentaa lyheksi ajaksi, suorityskyvyn lisäämiseksi. Piedempi varastointiaika tarkoittaa vähemmän tiedonsiirtoa, nopeampia tuloksia, ja vähemmän kuormaa $REDDIT$. Lyhyempi varastointiaika tarkoittaa tuoreempaa tietoa.",
+		"message": "Tieto $REDDIT$ APIsta voidaan varastoida, tai tallentaa lyheksi ajaksi suorityskyvyn lisäämiseksi. Pidempi varastointiaika tarkoittaa vähemmän tiedonsiirtoa, nopeampia tuloksia, ja vähemmän kuormaa $REDDIT$. Lyhyempi varastointiaika tarkoittaa tuoreempaa tietoa.",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -615,7 +615,7 @@
 		"message": "Pois suljetut säännölliset lausekkeet"
 	},
 	"excluded_regex_description": {
-		"message": "Laita säännöllinen lauseke, yksi per rivi, yllä olevaan tekstikenttään. Mikä tahansa sivu joka vastaa näihin säännöllisiin lausekkeisiin ei aktivoi $MOSTLY_HARMLESS$.",
+		"message": "Laita säännöllinen lauseke, yksi per rivi, yllä olevaan tekstikenttään. Mikä tahansa sivu joka vastaa näitä säännöllisiä lausekkeita ei aktivoi $MOSTLY_HARMLESS$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
