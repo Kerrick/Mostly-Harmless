@@ -358,7 +358,7 @@
 		"message": "Jätä kommentti"
 	},
 	"stale_posts_hiding": {
-		"message": "Piilottaa $NUM$ vanhentunutta viestiä. $BEGIN_LINK_SHOW$Näytä ne nyt$END_LINK_SHOW$, tai vieraile$BEGIN_LINK_OPTIONS$asetus sivulla$END_LINK_OPTIONS$ vaihtaakesi Tuore Sisältö asetuksiasi.",
+		"message": "Piilottaa $NUM$ vanhentunutta viestiä. $BEGIN_LINK_SHOW$Näytä ne nyt$END_LINK_SHOW$, tai vieraile $BEGIN_LINK_OPTIONS$asetus sivulla$END_LINK_OPTIONS$ vaihtaakesi Tuore Sisältö asetuksiasi.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
