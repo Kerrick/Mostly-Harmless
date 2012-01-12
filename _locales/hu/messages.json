@@ -1,0 +1,625 @@
+﻿{
+	"just_now": {
+		"message": "épp most",
+		"description": "Describe that something just happened."
+		
+	},
+	"a_minute_ago": {
+		"message": "egy perce",
+		"description": "Describe that something happened a minute ago."
+		
+	},
+	"a_minute_from_now": {
+		"message": "egy perc múlva",
+		"decription": "Describe that something will happen in a minute."
+	},
+	"minutes_ago": {
+		"message": "$NUM$ perce",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"minutes_from_now": {
+		"message": "$NUM$ perc múlva",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"an_hour_ago": {
+		"message": "egy órája",
+		"description": "Describe that something happened an hour ago."
+	},
+	"an_hour_from_now": {
+		"message": "egy óra múlva",
+		"description": "Describe that will happen in an hour."
+	},
+	"hours_ago": {
+		"message": "$NUM$ órája",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"hours_from_now": {
+		"message": "$NUM$ óra múlva",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"yesterday": {
+		"message": "tegnap",
+		"description": "The day before today."
+	},
+	"tomorrow": {
+		"message": "holnap",
+		"description": "The day after today."
+	},
+	"days_ago": {
+		"message": "$NUM$ napja",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"days_from_now": {
+		"message": "$NUM$ nap múlva",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_week": {
+		"message": "múlt héten",
+		"description": "The week before this one."
+	},
+	"next_week": {
+		"message": "jövő héten",
+		"description": "The week after this one."
+	},
+	"weeks_ago": {
+		"message": "$NUM$ hete",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"weeks_from_now": {
+		"message": "$NUM$ hét múlva",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_month": {
+		"message": "múlt hónapban",
+		"description": "The month before this one."
+	},
+	"next_month": {
+		"message": "jövő hónapban",
+		"description": "The month after this one."
+	},
+	"months_ago": {
+		"message": "$NUM$ hónapja",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"months_from_now": {
+		"message": "$NUM$ hónap múlva",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_year": {
+		"message": "tavaly",
+		"description": "The year before this one."
+	},
+	"next_year": {
+		"message": "jövőre",
+		"description": "The year after this one."
+	},
+	"years_ago": {
+		"message": "$NUM$ éve",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"years_from_now": {
+		"message": "$NUM$ év múlva",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_century": {
+		"message": "a múlt évszázadban",
+		"description": "The century before this one."
+	},
+	"next_century": {
+		"message": "a jövő évszázadban",
+		"description": "The century after this one."
+	},
+	"centuries_ago": {
+		"message": "$NUM$ évszázaddal ezelőtt",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"centuries_from_now": {
+		"message": "$NUM$ évszázad múlva",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"not_activated": {
+		"message": "A(z) $APPNAME$ nem aktív ezen az oldalon. Kattintson az aktiválásához.",
+		"placeholders": {
+			"APPNAME": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"loading": {
+		"message": "Betöltés..."
+	},
+	"viewing_comments": {
+		"message": "Épp ennek az oldalnak a hozzászólásai láthatóak."
+	},
+	"submit_page": {
+		"message": "Oldal beküldése $REDDIT$re.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_num_times": {
+		"message": "Ez az oldal eddig $NUM$ alkalommal lett beküldve.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"login": {
+		"message": "Ehhez be kell jelentkezni. $BEGIN_LINK$Kattints ide a bejelentkezéshez.$END_LINK$",
+		"placeholders": {
+			"BEGIN_LINK": {
+				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
+			},
+			"END_LINK": {
+				"content": "</a>"
+			}
+		}
+	},
+	"api_error": {
+		"message": "API hiba történt. HTTP Hibakód: $STATUS$. Kattints ide az újrapróbáláshoz.",
+		"placeholders": {
+			"STATUS": {
+				"content": "$1",
+				"example": "504"
+			}
+		}
+	},
+	"api_timeout": {
+		"message": "Az API túllépte a $NUM$ másodperces időkorlátot. Kattints ide az újrapróbáláshoz.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"action_unsave": {
+		"message": "mentés törlése"
+	},
+	"action_save": {
+		"message": "mentés"
+	},
+	"action_unhide": {
+		"message": "elrejtés törlése"
+	},
+	"action_hide": {
+		"message": "elrejtés"
+	},
+	"action_share": {
+		"message": "megosztás"
+	},
+	"report_confirm": {
+		"message": "biztos vagy benne? $BEGIN_LINK_YES$igen$END_LINK_YES$/$BEGIN_LINK_NO$nem$END_LINK_NO$",
+		"placeholders": {
+			"BEGIN_LINK_YES": {
+				"content": "<a onclick=\"reddit.reportPost(event)\">"
+			},
+			"END_LINK_YES": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_NO": {
+				"content": "<a onclick=\"reddit.denyReport(event)\">"
+			},
+			"END_LINK_NO": {
+				"content": "</a>"
+			}
+		}
+	},
+	"action_report": {
+		"message": "jelentés"
+	},
+	"action_reported": {
+		"message": "jelentve!"
+	},
+	"button_submit": {
+		"message": "beküldés"
+	},
+	"button_hide": {
+		"message": "bezárás"
+	},
+	"error_empty": {
+		"message": "Itt kell lennie valaminek."
+	},
+	"loading_api": {
+		"message": "Adatok betöltése az API-ból..."
+	},
+	"loading_cache": {
+		"message": "Adatok betöltése a gyorsítótárból..."
+	},
+	"error_not_cached": {
+		"message": "Nem lehet egy gyorsítótárazatlan URL-hez listát készíteni."
+	},
+	"score": {
+		"message": "$UPS$ upvote, $DOWNS$ downvote.",
+		"placeholders": {
+			"UPS": {
+				"content": "$1",
+				"example": "435"
+			},
+			"DOWNS": {
+				"content": "$2",
+				"example": "243"
+			}
+		}
+	},
+	"view_on_reddit": {
+		"message": "Bejegyzés megjelenítése $REDDIT$en",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_when": {
+		"message": "beküldve $TIME$",
+		"placeholders": {
+			"TIME": {
+				"content": "$1",
+				"example": "an hour ago"
+			}
+		}
+	},
+	"by": {
+		"message": "általa:"
+	},
+	"to": {
+		"message": ", ide:"
+	},
+	"add_comment_zero": {
+		"message": "hozzászólás írása"
+	},
+	"add_comment_one": {
+		"message": "hozzászólás írása az egy meglévő mellé"
+	},
+	"add_comment_many": {
+		"message": "hozzászólás írása a(z) $NUM$ meglévő mellé",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "42"
+			}
+		}
+	},
+	"leave_comment": {
+		"message": "Hozzászólás"
+	},
+	"stale_posts_hiding": {
+		"message": "$NUM$ kóborbejegyzés elrejtve. $BEGIN_LINK_SHOW$Megjelenítés$END_LINK_SHOW$, vagy pedig átállíthatod a tartalomfrissességi beállításaid a $BEGIN_LINK_OPTIONS$beállítások oldalon$END_LINK_OPTIONS$.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			},
+			"BEGIN_LINK_SHOW": {
+				"content": "<a onclick=\"popup.showStalePosts()\">"
+			},
+			"END_LINK_SHOW": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"stale_posts_showing": {
+		"message": "Kóborbejegyzések megjelentíve. Átállíthatod a tartalomfrissességi beállításaid a $BEGIN_LINK_OPTIONS$beállítások oldalon$END_LINK_OPTIONS$.",
+		"placeholders": {
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"orangered_received": {
+		"message": "Érkezett számodra egy $ORANGERED$!",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_action": {
+		"message": "Kattints ide a bejövő üzeneteid megtekintéséhez."
+	},
+	"url": {
+		"message": "url"
+	},
+	"popular_choices": {
+		"message": "a legnépszerűbbek"
+	},
+	"title": {
+		"message": "cím"
+	},
+	"suggest_title": {
+		"message": "cím megadása automatikusan"
+	},
+	"tab_preferences": {
+		"message": "Beállítások"
+	},
+	"group_fresh_content": {
+		"message": "Tartalomfrissesség"
+	},
+	"fresh_content_show_one_day": {
+		"message": "Csak mai bejegyzések megjelenítése."
+	},
+	"fresh_content_show_days": {
+		"message": "Csak $NUM$ napnál újabb bejegyzések megjelenítése.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_weeks": {
+		"message": "Csak $NUM$ hétnél újabb bejegyzések megjelenítése.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_months": {
+		"message": "Csak $NUM$ hónapnál újabb bejegyzések megjelenítése.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_all": {
+		"message": "Minden bejegyzés megjelenítése."
+	},
+	"fresh_content_description": {
+		"message": "Ezzel beállíthatod, hogy mikori leggyen a legrégebbi bejegyzés amit látni szeretnél. A megadott időnél régebbi bejegyzések beleszámítanak a bővítmény gombján lévő számlálón lévő számba, de a felugró ablakban már nem jelennek meg."
+	},
+	"group_popup_width": {
+		"message": "Felugró Ablak Szélessége"
+	},
+	"popup_width_description": {
+		"message": "Ezzel beállíthatod, hogy milyen széles legyen a bővítmény felugró ablaka."
+	},
+	"group_shameless_plug": {
+		"message": "Bővítmény Reklámozása"
+	},
+	"shameless_plug_label": {
+		"message": "Bővítmény Reklámozása"
+	},
+	"shameless_plug_description": {
+		"message": "Ha ez be van pipálva, a $MOSTLY_HARMLESS$-en keresztül küldött kommentjeid ki lesznek egészítve a következő mondattal:$PLUG_TEXT$",
+		"placeholders": {
+			"PLUG_TEXT": {
+				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+			
+	},
+	"group_orangered_notifications": {
+		"message": "$ORANGERED$ Értesítések",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_check": {
+		"message": "Új $ORANGERED$ek ellenőrzésének gyakorisága",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_label": {
+		"message": "Hang lejátszása új $ORANGERED$ érkezésekor",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_preview": {
+		"message": "Az értesítési hang előnézete"
+	},
+	"orangered_interval_minutes": {
+		"message": "Ellenőrzés $NUM$ percenként",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_display_time": {
+		"message": "Az értesítés $NUM$ másodperc után tűnjön el",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_description": {
+		"message": "Ha ez be van pipálva, a $MOSTLY_HARMLESS$ az általad megadott gyakorisággal ellenőrzi majd, hogy érkezett-e új $ORANGERED$ a számodra. Mikor érkezik egy új $ORANGERED$, megjelenik majd egy értesítés, ami addig ott marad amig te be nem zárod, vagy amíg egy következő ellenőrzés alkalmával a $MOSTLY_HARMLESS$ úgy nem látja, hogy nincs már új $ORANGERED$ a számodra.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			},
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"tab_performance": {
+		"message": "Teljesítmény"
+	},
+	"group_cache_time": {
+		"message": "Gyorsítótárazás ideje"
+	},
+	"cache_time_one_minute": {
+		"message": "Gyorsítótárazás egy percre"
+	},
+	"cache_time_minutes": {
+		"message": "Gyorsítótárazás $NUM$ percre",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"cache_time_description": {
+		"message": "A $REDDIT$ API-tól kapott adatok gyorsítótárazhatóak, tehát le lehet menteni őket egy rövid időre a teljesítmény javításának érdekében. Egy hosszabb gyorsítótárazási idő kevesebb nethasználatot, gyorsabb betöltési időket, és a $REDDIT$ kisebb terhelését eredményezi. Egy rövidebb gyorsítótárazási idő viszont frissebb tartalomhoz enged hozzáférni.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"group_timeout_length": {
+		"message": "Időtúllépési korlát"
+	},
+	"timeout_length_seconds": {
+		"message": "Hibaüzenet megjelenítése $NUM$ másodperc eltelte után.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"timeout_length_never": {
+		"message": "Ne legyen időtúllépés; hibaüzenet megjelenítése csak ha az API épp nem működik."
+	},
+	"timeout_length_description": {
+		"message": "Ha a $REDDIT$ API lassú, vagy épp nem működik, a $MOSTLY_HARMLESS$ kiírhat egy hibaüzenetet ha egy megadott idő eltelte után sem sikerül kapcsolódni hozzá. Minél hosszabb időtúllépési korlátot adsz meg itt, annál tovább tart majd a $REDDIT$ API válaszára való várakozás maximális ideje. Rövidebb időtúllépési korlátok esetén viszont megeshet, hogy időtúllépési hibaüzenetet kapsz miközben pedig működik a $REDDIT$, csak éppen lassú.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"tab_privacy": {
+		"message": "Adatvédelem"
+	},
+	"group_wait_for_click": {
+		"message": "Kattintás megvárása"
+	},
+	"wait_for_click_description": {
+		"message": "Ha ez be van pipálva, a $MOSTLY_HARMLESS$ nem aktiválódik egyik oldalon sem, amíg rá nem nyomsz az ikonjára.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_domains": {
+		"message": "Tiltólistás domain nevek"
+	},
+	"excluded_domains_description": {
+		"message": "Ide írj be soronként egy domain- vagy subdomain nevet, amiken nem akarod, hogy a $MOSTLY_HARMLESS$ automatikusan aktiválódjon oldalbetöltéskor.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_regex": {
+		"message": "Tiltólistás regexek"
+	},
+	"excluded_regex_description": {
+		"message": "Ide írj be soronként egy reguláris kifejezést, amiknek ha megfelel egy megnyitott weboldal címe, nem akarod, hogy a $MOSTLY_HARMLESS$ automatikusan aktiválódjon oldalbetöltéskor.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	}
+}
