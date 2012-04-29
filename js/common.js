@@ -1211,7 +1211,7 @@ Popup.prototype.createSubmitForm = function (tab) {
 		submitHTML += '<h1>' + chrome.i18n.getMessage('submit_page') + '</h1>';
 		submitHTML += '<fieldset>';
 			submitHTML += '<label for="submit_title">' + chrome.i18n.getMessage('title') + '</label>';
-			submitHTML += '<input id="submit_title" name="submit_title" type="text" />';
+			submitHTML += '<textarea id="submit_title" name="submit_title" type="text"></textarea>';
 			submitHTML += '<input id="submit_title_suggest" type="button" value="' + chrome.i18n.getMessage('suggest_title') + '" onclick="document.getElementById(\'submit_title\').value=\'' + tab.title + '\'" />';
 		submitHTML += '</fieldset>';
 		submitHTML += '<fieldset>';

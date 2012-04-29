@@ -214,14 +214,16 @@ ol[data-commentspage="true"] button.cancel {
 	width:500px;
 	font-size: small;
 }
-#submit input[type="text"] {
+#submit input[type="text"], #submit textarea {
 	width: 492px;
 	padding: 3px;
 	margin: 0 0 5px;
 	border: 1px solid gray;
 	height: 22px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	max-width: 492px;
 }
-#submit input, #submit label {
+#submit input, #submit label, #submit textarea {
 	display: block;
 	font-size: large;
 	margin: 0 0 5px;
