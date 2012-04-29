@@ -516,10 +516,10 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
-	scoreWas = listItem.getAttribute('data-score');
-	upsWas = listItem.getAttribute('data-ups');
-	downsWas = listItem.getAttribute('data-downs');
-	scoreElem = listItem.getElementById('count_' + listItem.id);
+	scoreWas = parseInt(listItem.getAttribute('data-score'));
+	upsWas = parseInt(listItem.getAttribute('data-ups'));
+	downsWas = parseInt(listItem.getAttribute('data-downs'));
+	scoreElem = document.getElementById('count_' + listItem.id);
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/vote?app=mh';
 	oldCache = cache.get(url);
@@ -557,7 +557,7 @@ RedditAPI.prototype.voteDownPost = function (e) {
 			listItem.setAttribute('data-score', scoreWas - 2);
 			oldCache.posts[fullName].data.score = scoreWas - 2;
 			scoreElem.innerHTML = scoreWas - 2;
-			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas - 1).toString(), (downsWas + 2).toString()]));
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas - 1).toString(), (downsWas + 1).toString()]));
 
 			listItem.setAttribute('data-ups', upsWas - 1);
 			oldCache.posts[fullName].data.ups = upsWas - 1;
@@ -598,10 +598,10 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
-	scoreWas = listItem.getAttribute('data-score');
-	upsWas = listItem.getAttribute('data-ups');
-	downsWas = listItem.getAttribute('data-downs');
-	scoreElem = listItem.getElementById('count_' + listItem.id);
+	scoreWas = parseInt(listItem.getAttribute('data-score'));
+	upsWas = parseInt(listItem.getAttribute('data-ups'));
+	downsWas = parseInt(listItem.getAttribute('data-downs'));
+	scoreElem = document.getElementById('count_' + listItem.id);
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/vote?app=mh';
 	oldCache = cache.get(url);
