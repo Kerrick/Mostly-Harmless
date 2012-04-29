@@ -463,18 +463,51 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
  * @method
  */
 RedditAPI.prototype.voteUpPost = function (e) {
-	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
+	var listItem, fullName, url, reqUrl, oldCache, voteWas, scoreWas, upsWas, downsWas, scoreElem, formData;
 	
 	function success () {
 		if (voteWas === '1') {
+
 			listItem.setAttribute('data-dir','0');
 			oldCache.posts[fullName].data.likes = null;
+
+			listItem.setAttribute('data-score', scoreWas - 1);
+			oldCache.posts[fullName].data.score = scoreWas - 1;
+			scoreElem.innerHTML = scoreWas - 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas - 1).toString(), downsWas.toString()]));
+
+			listItem.setAttribute('data-ups', upsWas - 1);
+			oldCache.posts[fullName].data.ups = upsWas - 1;
+
 		} else if (voteWas === '0') {
+
 			listItem.setAttribute('data-dir','1');
 			oldCache.posts[fullName].data.likes = true;
+
+			listItem.setAttribute('data-score', scoreWas + 1);
+			oldCache.posts[fullName].data.score = scoreWas + 1;
+			scoreElem.innerHTML = scoreWas + 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas + 1).toString(), downsWas.toString()]));
+
+			listItem.setAttribute('data-ups', upsWas + 1);
+			oldCache.posts[fullName].data.ups = upsWas + 1;
+
 		} else if (voteWas === '-1') {
+
 			listItem.setAttribute('data-dir','1');
 			oldCache.posts[fullName].data.likes = true;
+
+			listItem.setAttribute('data-score', scoreWas + 2);
+			oldCache.posts[fullName].data.score = scoreWas + 2;
+			scoreElem.innerHTML = scoreWas + 2;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas + 2).toString(), (downsWas - 1).toString()]));
+
+			listItem.setAttribute('data-ups', upsWas + 1);
+			oldCache.posts[fullName].data.ups = upsWas + 1;
+
+			listItem.setAttribute('data-downs', downsWas - 1);
+			oldCache.posts[fullName].data.downs = downsWas - 1;
+
 		}
 		
 		cache.set(url, oldCache);
@@ -483,6 +516,10 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
+	scoreWas = listItem.getAttribute('data-score');
+	upsWas = listItem.getAttribute('data-ups');
+	downsWas = listItem.getAttribute('data-downs');
+	scoreElem = listItem.getElementById('count_' + listItem.id);
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/vote?app=mh';
 	oldCache = cache.get(url);
