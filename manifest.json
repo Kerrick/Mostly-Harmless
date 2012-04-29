@@ -1,6 +1,6 @@
 {
 	"name": "Mostly Harmless",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"description": "Find, vote on, save, hide, and report links on reddit; submit new links; These and more! http://kerrick.github.com/Mostly-Harmless",
 	"browser_action": {
 		"default_icon": "pix/alien.png",
