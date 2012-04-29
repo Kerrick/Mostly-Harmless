@@ -861,16 +861,24 @@ RedditAPI.prototype.submitLink = function (e, tabId) {
 	var url, title, subreddit, status, submitButton, formData;
 	
 	function success (response) {
-		if (response.jquery[22]) {
-			status.innerHTML = response.jquery[22][3][0];
-		} else {
-			status.innerHTML = 'submitted! <a href="' + response.jquery[18][3][0] + '" target="_blank">click to view your post.</a>';
+		if (typeof response.jquery[16][3][0] !== 'undefined' && response.jquery[16][3][0].substring(0,15) === '.error.NO_LINKS') {
+			status.innerHTML = 'that reddit only allows text posts';
+		} else if (typeof response.jquery[16][3][0] !== 'undefined' && response.jquery[16][3][0].substring(0,24) === '.error.SUBREDDIT_NOEXIST') {
+			status.innerHTML = 'that reddit does not exist';
+		} else if (typeof response.jquery[12][3][0] !== 'undefined' && response.jquery[12][3][0].substring(0,18) === '.error.ALREADY_SUB') {
+			status.innerHTML = 'already submitted! <a href="http://' + reddit.domain + response.jquery[10][3][0] + '" target="_blank">click to view that post.</a>';
+		} else if (typeof response.jquery[10][3][0] !== 'undefined' && response.jquery[10][3][0].substring(0,14) === '.error.BAD_URL') {
+			status.innerHTML = 'that URL cannot be submitted';
+		} else if (typeof response.jquery[16][3][0] !== 'undefined') {
+			status.innerHTML = 'submitted! <a href="' + response.jquery[16][3][0] + '" target="_blank">click to view your post.</a>';
 			submitButton.innerHTML = chrome.i18n.getMessage('submit_page');
 			submitButton.setAttribute('disabled');
 			title.setAttribute('readonly');
 			subreddit.setAttribute('readonly');
 			cache.remove(url);
 			button.setBadgeDefaults(parseInt(tabId));
+		} else {
+			status.innerHTML = 'unknown error occured, please try again.'
 		}
 	}
 	
