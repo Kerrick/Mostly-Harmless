@@ -463,18 +463,51 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
  * @method
  */
 RedditAPI.prototype.voteUpPost = function (e) {
-	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
+	var listItem, fullName, url, reqUrl, oldCache, voteWas, scoreWas, upsWas, downsWas, scoreElem, formData;
 	
 	function success () {
 		if (voteWas === '1') {
+
 			listItem.setAttribute('data-dir','0');
 			oldCache.posts[fullName].data.likes = null;
+
+			listItem.setAttribute('data-score', scoreWas - 1);
+			oldCache.posts[fullName].data.score = scoreWas - 1;
+			scoreElem.innerHTML = scoreWas - 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas - 1).toString(), downsWas.toString()]));
+
+			listItem.setAttribute('data-ups', upsWas - 1);
+			oldCache.posts[fullName].data.ups = upsWas - 1;
+
 		} else if (voteWas === '0') {
+
 			listItem.setAttribute('data-dir','1');
 			oldCache.posts[fullName].data.likes = true;
+
+			listItem.setAttribute('data-score', scoreWas + 1);
+			oldCache.posts[fullName].data.score = scoreWas + 1;
+			scoreElem.innerHTML = scoreWas + 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas + 1).toString(), downsWas.toString()]));
+
+			listItem.setAttribute('data-ups', upsWas + 1);
+			oldCache.posts[fullName].data.ups = upsWas + 1;
+
 		} else if (voteWas === '-1') {
+
 			listItem.setAttribute('data-dir','1');
 			oldCache.posts[fullName].data.likes = true;
+
+			listItem.setAttribute('data-score', scoreWas + 2);
+			oldCache.posts[fullName].data.score = scoreWas + 2;
+			scoreElem.innerHTML = scoreWas + 2;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas + 1).toString(), (downsWas - 1).toString()]));
+
+			listItem.setAttribute('data-ups', upsWas + 1);
+			oldCache.posts[fullName].data.ups = upsWas + 1;
+
+			listItem.setAttribute('data-downs', downsWas - 1);
+			oldCache.posts[fullName].data.downs = downsWas - 1;
+
 		}
 		
 		cache.set(url, oldCache);
@@ -483,6 +516,10 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
+	scoreWas = parseInt(listItem.getAttribute('data-score'));
+	upsWas = parseInt(listItem.getAttribute('data-ups'));
+	downsWas = parseInt(listItem.getAttribute('data-downs'));
+	scoreElem = document.getElementById('count_' + listItem.id);
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/vote?app=mh';
 	oldCache = cache.get(url);
@@ -509,18 +546,50 @@ RedditAPI.prototype.voteUpPost = function (e) {
  * @method
  */
 RedditAPI.prototype.voteDownPost = function (e) {
-	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
+	var listItem, fullName, url, reqUrl, oldCache, voteWas, scoreWas, upsWas, downsWas, scoreElem, formData;
 	
 	function success () {
 		if (voteWas === '1') {
+
 			listItem.setAttribute('data-dir','-1');
 			oldCache.posts[fullName].data.likes = false;
+
+			listItem.setAttribute('data-score', scoreWas - 2);
+			oldCache.posts[fullName].data.score = scoreWas - 2;
+			scoreElem.innerHTML = scoreWas - 2;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas - 1).toString(), (downsWas + 1).toString()]));
+
+			listItem.setAttribute('data-ups', upsWas - 1);
+			oldCache.posts[fullName].data.ups = upsWas - 1;
+
+			listItem.setAttribute('data-downs', downsWas + 1);
+			oldCache.posts[fullName].data.downs = downsWas + 1;
+
 		} else if (voteWas === '0') {
+
 			listItem.setAttribute('data-dir','-1');
 			oldCache.posts[fullName].data.likes = false;
+
+			listItem.setAttribute('data-score', scoreWas - 1);
+			oldCache.posts[fullName].data.score = scoreWas - 1;
+			scoreElem.innerHTML = scoreWas - 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [upsWas.toString(), (downsWas + 1).toString()]));
+
+			listItem.setAttribute('data-downs', downsWas + 1);
+			oldCache.posts[fullName].data.downs = downsWas + 1;
+
 		} else if (voteWas === '-1') {
 			listItem.setAttribute('data-dir','0');
 			oldCache.posts[fullName].data.likes = null;
+
+			listItem.setAttribute('data-score', scoreWas + 1);
+			oldCache.posts[fullName].data.score = scoreWas + 1;
+			scoreElem.innerHTML = scoreWas + 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [upsWas.toString(), (downsWas - 1).toString()]));
+
+			listItem.setAttribute('data-downs', downsWas - 1);
+			oldCache.posts[fullName].data.downs = downsWas - 1;
+
 		}
 		
 		cache.set(url, oldCache);
@@ -529,6 +598,10 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
+	scoreWas = parseInt(listItem.getAttribute('data-score'));
+	upsWas = parseInt(listItem.getAttribute('data-ups'));
+	downsWas = parseInt(listItem.getAttribute('data-downs'));
+	scoreElem = document.getElementById('count_' + listItem.id);
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/vote?app=mh';
 	oldCache = cache.get(url);
@@ -1012,7 +1085,7 @@ Popup.prototype.createListHTML = function (url) {
 		freshText = isFreshEnough ? 'fresh' : 'stale';
 		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
 		
-		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
+		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-score="' + data.score + '" data-ups="' + data.ups + '" data-downs="' + data.downs + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
 			listHTML += '<div class="votes">';
 				listHTML += '<a class="upmod" onclick="reddit.voteUpPost(event)"></a>';
 				listHTML += '<span class="count" id="count_' + data.name + '" title="' + chrome.i18n.getMessage('score', [data.ups.toString(), data.downs.toString()]) + '">' + data.score + '</span>';
