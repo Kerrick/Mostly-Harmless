@@ -463,18 +463,51 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
  * @method
  */
 RedditAPI.prototype.voteUpPost = function (e) {
-	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
+	var listItem, fullName, url, reqUrl, oldCache, voteWas, scoreWas, upsWas, downsWas, scoreElem, formData;
 	
 	function success () {
 		if (voteWas === '1') {
+
 			listItem.setAttribute('data-dir','0');
 			oldCache.posts[fullName].data.likes = null;
+
+			listItem.setAttribute('data-score', scoreWas - 1);
+			oldCache.posts[fullName].data.score = scoreWas - 1;
+			scoreElem.innerHTML = scoreWas - 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas - 1).toString(), downsWas.toString()]));
+
+			listItem.setAttribute('data-ups', upsWas - 1);
+			oldCache.posts[fullName].data.ups = upsWas - 1;
+
 		} else if (voteWas === '0') {
+
 			listItem.setAttribute('data-dir','1');
 			oldCache.posts[fullName].data.likes = true;
+
+			listItem.setAttribute('data-score', scoreWas + 1);
+			oldCache.posts[fullName].data.score = scoreWas + 1;
+			scoreElem.innerHTML = scoreWas + 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas + 1).toString(), downsWas.toString()]));
+
+			listItem.setAttribute('data-ups', upsWas + 1);
+			oldCache.posts[fullName].data.ups = upsWas + 1;
+
 		} else if (voteWas === '-1') {
+
 			listItem.setAttribute('data-dir','1');
 			oldCache.posts[fullName].data.likes = true;
+
+			listItem.setAttribute('data-score', scoreWas + 2);
+			oldCache.posts[fullName].data.score = scoreWas + 2;
+			scoreElem.innerHTML = scoreWas + 2;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas + 1).toString(), (downsWas - 1).toString()]));
+
+			listItem.setAttribute('data-ups', upsWas + 1);
+			oldCache.posts[fullName].data.ups = upsWas + 1;
+
+			listItem.setAttribute('data-downs', downsWas - 1);
+			oldCache.posts[fullName].data.downs = downsWas - 1;
+
 		}
 		
 		cache.set(url, oldCache);
@@ -483,6 +516,10 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
+	scoreWas = parseInt(listItem.getAttribute('data-score'));
+	upsWas = parseInt(listItem.getAttribute('data-ups'));
+	downsWas = parseInt(listItem.getAttribute('data-downs'));
+	scoreElem = document.getElementById('count_' + listItem.id);
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/vote?app=mh';
 	oldCache = cache.get(url);
@@ -509,18 +546,50 @@ RedditAPI.prototype.voteUpPost = function (e) {
  * @method
  */
 RedditAPI.prototype.voteDownPost = function (e) {
-	var listItem, fullName, url, reqUrl, oldCache, voteWas, formData;
+	var listItem, fullName, url, reqUrl, oldCache, voteWas, scoreWas, upsWas, downsWas, scoreElem, formData;
 	
 	function success () {
 		if (voteWas === '1') {
+
 			listItem.setAttribute('data-dir','-1');
 			oldCache.posts[fullName].data.likes = false;
+
+			listItem.setAttribute('data-score', scoreWas - 2);
+			oldCache.posts[fullName].data.score = scoreWas - 2;
+			scoreElem.innerHTML = scoreWas - 2;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [(upsWas - 1).toString(), (downsWas + 1).toString()]));
+
+			listItem.setAttribute('data-ups', upsWas - 1);
+			oldCache.posts[fullName].data.ups = upsWas - 1;
+
+			listItem.setAttribute('data-downs', downsWas + 1);
+			oldCache.posts[fullName].data.downs = downsWas + 1;
+
 		} else if (voteWas === '0') {
+
 			listItem.setAttribute('data-dir','-1');
 			oldCache.posts[fullName].data.likes = false;
+
+			listItem.setAttribute('data-score', scoreWas - 1);
+			oldCache.posts[fullName].data.score = scoreWas - 1;
+			scoreElem.innerHTML = scoreWas - 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [upsWas.toString(), (downsWas + 1).toString()]));
+
+			listItem.setAttribute('data-downs', downsWas + 1);
+			oldCache.posts[fullName].data.downs = downsWas + 1;
+
 		} else if (voteWas === '-1') {
 			listItem.setAttribute('data-dir','0');
 			oldCache.posts[fullName].data.likes = null;
+
+			listItem.setAttribute('data-score', scoreWas + 1);
+			oldCache.posts[fullName].data.score = scoreWas + 1;
+			scoreElem.innerHTML = scoreWas + 1;
+			scoreElem.setAttribute('title', chrome.i18n.getMessage('score', [upsWas.toString(), (downsWas - 1).toString()]));
+
+			listItem.setAttribute('data-downs', downsWas - 1);
+			oldCache.posts[fullName].data.downs = downsWas - 1;
+
 		}
 		
 		cache.set(url, oldCache);
@@ -529,6 +598,10 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
+	scoreWas = parseInt(listItem.getAttribute('data-score'));
+	upsWas = parseInt(listItem.getAttribute('data-ups'));
+	downsWas = parseInt(listItem.getAttribute('data-downs'));
+	scoreElem = document.getElementById('count_' + listItem.id);
 	url = listItem.parentNode.getAttribute('data-url');
 	reqUrl = 'http://' + this.domain + '/api/vote?app=mh';
 	oldCache = cache.get(url);
@@ -737,9 +810,11 @@ RedditAPI.prototype.submitComment = function (e) {
 	var listItem, fullName, status, submitButton, cancelButton, textarea, comment, formData;
 	
 	function success (response) {
-		var url, oldCache;
+		var postedCommentUrl, commentsUrl, url, oldCache;
 		
-		status.innerHTML = '';
+		postedCommentUrl = response.jquery[18][3][0][0].data.id.split('_')[1];
+		commentsUrl = document.getElementById(fullName).parentNode.getElementsByClassName('thumblink')[0].getAttribute('href');
+		status.innerHTML = 'submitted! <a href="' + commentsUrl + postedCommentUrl + '" target="_blank">click to view your comment.</a>';
 		submitButton.innerHTML = chrome.i18n.getMessage('button_submit');
 		cancelButton.innerHTML = chrome.i18n.getMessage('button_hide');
 		submitButton.setAttribute('disabled');
@@ -768,7 +843,7 @@ RedditAPI.prototype.submitComment = function (e) {
 		formData.append('uh', cache.get('modhash'));
 		status.innerHTML = 'submitting...';
 		try {
-			reddit.apiTransmit('POST', 'http://www.reddit.com/api/comment?app=mh', formData, success);
+			reddit.apiTransmit('POST', 'http://' + this.domain + '/api/comment?app=mh', formData, success);
 		} catch (error) {
 			status.innerHTML = error;
 		}
@@ -786,16 +861,24 @@ RedditAPI.prototype.submitLink = function (e, tabId) {
 	var url, title, subreddit, status, submitButton, formData;
 	
 	function success (response) {
-		if (response.jquery[22]) {
-			status.innerHTML = response.jquery[22][3][0];
-		} else {
-			status.innerHTML = 'submitted! <a href="' + response.jquery[18][3][0] + '" target="_blank">click to view your post.</a>';
+		if (typeof response.jquery[16][3][0] !== 'undefined' && response.jquery[16][3][0].substring(0,15) === '.error.NO_LINKS') {
+			status.innerHTML = 'that reddit only allows text posts';
+		} else if (typeof response.jquery[16][3][0] !== 'undefined' && response.jquery[16][3][0].substring(0,24) === '.error.SUBREDDIT_NOEXIST') {
+			status.innerHTML = 'that reddit does not exist';
+		} else if (typeof response.jquery[12][3][0] !== 'undefined' && response.jquery[12][3][0].substring(0,18) === '.error.ALREADY_SUB') {
+			status.innerHTML = 'already submitted! <a href="http://' + reddit.domain + response.jquery[10][3][0] + '" target="_blank">click to view that post.</a>';
+		} else if (typeof response.jquery[10][3][0] !== 'undefined' && response.jquery[10][3][0].substring(0,14) === '.error.BAD_URL') {
+			status.innerHTML = 'that URL cannot be submitted';
+		} else if (typeof response.jquery[16][3][0] !== 'undefined') {
+			status.innerHTML = 'submitted! <a href="' + response.jquery[16][3][0] + '" target="_blank">click to view your post.</a>';
 			submitButton.innerHTML = chrome.i18n.getMessage('submit_page');
 			submitButton.setAttribute('disabled');
 			title.setAttribute('readonly');
 			subreddit.setAttribute('readonly');
 			cache.remove(url);
 			button.setBadgeDefaults(parseInt(tabId));
+		} else {
+			status.innerHTML = 'unknown error occured, please try again.'
 		}
 	}
 	
@@ -816,7 +899,7 @@ RedditAPI.prototype.submitLink = function (e, tabId) {
 		formData.append('uh', cache.get('modhash'));
 		status.innerHTML = 'submitting...';
 		try {
-			reddit.apiTransmit('POST', 'http://www.reddit.com/api/submit?app=mh', formData, success);
+			reddit.apiTransmit('POST', 'http://' + this.domain + '/api/submit?app=mh', formData, success);
 		} catch (error) {
 			status.innerHTML = error;
 		}
@@ -831,6 +914,7 @@ RedditAPI.prototype.submitLink = function (e, tabId) {
  */
 RedditAPI.prototype.getReddits = function () {
 	reddit.apiTransmit('GET', 'http://' + this.domain + '/reddits/mine.json?app=mh', null, function (response) {
+		cache.remove('reddits');
 		cache.set('reddits', response.data.children);
 		return true;
 	});
@@ -850,6 +934,21 @@ function Background() {
 	this.notification = null;
 	return true;
 }
+
+/**
+ * Clear cached data and reset cleared browser buttons
+ * @alias				Background.clearCache(tabId, info, tab)
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+ Background.prototype.clearCache = function () {
+ 	var oldReddits;
+
+ 	oldReddits = cache.get('reddits');
+ 	cache.removeAll();
+ 	button.setBadgeDefaults();
+ 	cache.set('reddits', oldReddits)
+ };
 
 /**
  * Prepare the browser action (badge, popup, etc.) for a given tab.
@@ -1008,24 +1107,24 @@ Popup.prototype.createListHTML = function (url) {
 		commentText = value.savedCommentText === undefined ? '' : value.savedCommentText;
 		if (!isFreshEnough) staleCounter++;
 		freshText = isFreshEnough ? 'fresh' : 'stale';
-		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
+		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://' + reddit.domain + data.thumbnail : data.thumbnail;
 		
-		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
+		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-score="' + data.score + '" data-ups="' + data.ups + '" data-downs="' + data.downs + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
 			listHTML += '<div class="votes">';
 				listHTML += '<a class="upmod" onclick="reddit.voteUpPost(event)"></a>';
 				listHTML += '<span class="count" id="count_' + data.name + '" title="' + chrome.i18n.getMessage('score', [data.ups.toString(), data.downs.toString()]) + '">' + data.score + '</span>';
 				listHTML += '<a class="downmod" onclick="reddit.voteDownPost(event)"></a>';
 			listHTML += '</div>';
-			listHTML += '<a class="thumblink" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">';
+			listHTML += '<a class="thumblink" href="http://' + reddit.domain + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">';
 				listHTML += '<img class="thumb" src="' + thumbSrc + '" alt="' + data.title + '" width="70"/>';
 			listHTML += '</a>';
 			listHTML += '<div class="post">';
-				listHTML += '<a class="link" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">' + data.title + '</a> ';
-				listHTML += '<a class="domain" href="http://www.reddit.com/domain/' + data.domain + '" target="_blank">(' + data.domain + ')</a>';
+				listHTML += '<a class="link" href="http://' + reddit.domain + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">' + data.title + '</a> ';
+				listHTML += '<a class="domain" href="http://' + reddit.domain + '/domain/' + data.domain + '" target="_blank">(' + data.domain + ')</a>';
 				listHTML += '<div class="meta">';
 					listHTML += '<span class="timestamp">' + chrome.i18n.getMessage('submitted_when', utils.prettyDate(utils.ISODateString(new Date(data.created_utc * 1000)))) + '</span> ' + chrome.i18n.getMessage('by') + ' ';
-					listHTML += '<a class="submitter" href="http://www.reddit.com/user/' + data.author + '" target="_blank">' + data.author + '</a> ' + chrome.i18n.getMessage('to') + ' ';
-					listHTML += '<a class="subreddit" href="http://www.reddit.com/r/' + data.subreddit + '/" target="_blank">' + data.subreddit + '</a>';
+					listHTML += '<a class="submitter" href="http://' + reddit.domain + '/user/' + data.author + '" target="_blank">' + data.author + '</a> ' + chrome.i18n.getMessage('to') + ' ';
+					listHTML += '<a class="subreddit" href="http://' + reddit.domain + '/r/' + data.subreddit + '/" target="_blank">' + data.subreddit + '</a>';
 				listHTML += '</div>';
 				listHTML += '<div class="actions">';
 					switch (data.num_comments) {
@@ -1097,7 +1196,7 @@ Popup.prototype.createSubmitForm = function (tab) {
 				submitHTML += '<strong id="your_label">' + chrome.i18n.getMessage('popular_choices') + '</strong>';
 				submitHTML += '<ul id="your_reddits">';
 					for (var i = 0; i < redditCache.length; i++) {
-						submitHTML += '<li><a onclick="document.getElementById(\'submit_reddit\').value=\'' + redditCache[i].data.display_name + '\'">' + redditCache[i].data.display_name + '</a></li>';
+						submitHTML += '<li><a title="' + redditCache[i].data.title + '" onclick="document.getElementById(\'submit_reddit\').value=\'' + redditCache[i].data.display_name + '\'">' + redditCache[i].data.display_name + '</a></li>';
 					}
 				submitHTML += '</ul>';
 			}
