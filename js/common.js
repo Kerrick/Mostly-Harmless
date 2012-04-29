@@ -935,6 +935,17 @@ function Background() {
 }
 
 /**
+ * Clear cached data and reset cleared browser buttons
+ * @alias				Background.clearCache(tabId, info, tab)
+ * @return	{Boolean}		Returns true.
+ * @method
+ */
+ Background.prototype.clearCache = function () {
+ 	cache.removeAll();
+ 	button.setBadgeDefaults();
+ };
+
+/**
  * Prepare the browser action (badge, popup, etc.) for a given tab.
  * @alias				Background.prepareBrowserAction(tabId, info, tab)
  * @param	{Number}	tabId	The ID of the tab to get data for.

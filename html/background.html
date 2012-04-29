@@ -12,8 +12,7 @@
 			background = new Background();
 			
 			function initBackground() {
-				cache.removeAll();
-				button.setBadgeDefaults();
+				background.clearCache();
 				chrome.tabs.onUpdated.addListener(background.prepareBrowserAction);
 				background.watchMail();
 				reddit.getReddits();
