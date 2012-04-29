@@ -216,13 +216,32 @@ BrowserAction.prototype.handleManualClick = function (tab) {
  * @method
  */
 BrowserAction.prototype.setBadgeDefaults = function (tabId) {
-	chrome.browserAction.setIcon({'path': '/pix/alien-fade.png', 'tabId': tabId});
-	chrome.browserAction.setBadgeText({'text': '?', 'tabId': tabId});
-	chrome.browserAction.setTitle({'title': 'Click to load data.', 'tabId': tabId});
-	chrome.browserAction.setBadgeBackgroundColor({'color': [192, 192, 192, 255], 'tabId': tabId});
-	chrome.browserAction.setPopup({popup: '', tabId: tabId});
-	chrome.browserAction.onClicked.addListener(this.handleManualClick);
-	return true;
+  var tabArray;
+
+  function setTheseBadgeDefaults (tabArray) {
+    utils.forEach(tabArray, function (tab) {
+      chrome.browserAction.setIcon({'path': '/pix/alien-fade.png', 'tabId': tab.id});
+      chrome.browserAction.setBadgeText({'text': '?', 'tabId': tab.id});
+      chrome.browserAction.setTitle({'title': 'Click to load data.', 'tabId': tab.id});
+      chrome.browserAction.setBadgeBackgroundColor({'color': [192, 192, 192, 255], 'tabId': tab.id});
+      chrome.browserAction.setPopup({popup: '', tabId: tab.id});
+    });
+  }
+
+  if (typeof tabId !== 'undefined') {
+    chrome.tabs.get(tabId, function (tabs) {
+      tabArray = tabs;
+      setTheseBadgeDefaults(tabArray);
+    });
+  } else {
+    chrome.tabs.query({}, function (tabs) {
+      tabArray = tabs;
+      setTheseBadgeDefaults(tabArray);
+    });
+  }
+
+  chrome.browserAction.onClicked.addListener(this.handleManualClick);
+  return true;
 };
 
 /**
