@@ -914,6 +914,7 @@ RedditAPI.prototype.submitLink = function (e, tabId) {
  */
 RedditAPI.prototype.getReddits = function () {
 	reddit.apiTransmit('GET', 'http://' + this.domain + '/reddits/mine.json?app=mh', null, function (response) {
+		cache.remove('reddits');
 		cache.set('reddits', response.data.children);
 		return true;
 	});
@@ -941,8 +942,12 @@ function Background() {
  * @method
  */
  Background.prototype.clearCache = function () {
+ 	var oldReddits;
+
+ 	oldReddits = cache.get('reddits');
  	cache.removeAll();
  	button.setBadgeDefaults();
+ 	cache.set('reddits', oldReddits)
  };
 
 /**
