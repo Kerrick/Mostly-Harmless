@@ -961,12 +961,22 @@ function Background() {
  * @method
  */
  Background.prototype.clearCache = function () {
- 	var oldReddits;
+ 	var oldCache, newCache;
 
- 	oldReddits = cache.get('reddits');
- 	cache.removeAll();
- 	button.setBadgeDefaults();
- 	cache.set('reddits', oldReddits)
+ 	oldCache = cache.toObject();
+ 	newCache = {
+ 		modhash: oldCache.modhash,
+ 		reddits: oldCache.reddits
+ 	};
+
+ 	utils.forEachIn(oldCache, function (cachedUrl, data) {
+ 		chrome.tabs.query({url: cachedUrl}, function (results) {
+ 			if (results.length > 0) {
+ 				newCache[cachedUrl] = oldCache[cachedUrl];
+ 			}
+ 			cache.fromObject(newCache); // It's messy to put it here since it'll get called over and over, but chrome.tabs.query is asynch.
+ 		});
+ 	});
  };
 
 /**
