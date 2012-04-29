@@ -843,7 +843,7 @@ RedditAPI.prototype.submitComment = function (e) {
 		formData.append('uh', cache.get('modhash'));
 		status.innerHTML = 'submitting...';
 		try {
-			reddit.apiTransmit('POST', 'http://www.reddit.com/api/comment?app=mh', formData, success);
+			reddit.apiTransmit('POST', 'http://' + this.domain + '/api/comment?app=mh', formData, success);
 		} catch (error) {
 			status.innerHTML = error;
 		}
@@ -891,7 +891,7 @@ RedditAPI.prototype.submitLink = function (e, tabId) {
 		formData.append('uh', cache.get('modhash'));
 		status.innerHTML = 'submitting...';
 		try {
-			reddit.apiTransmit('POST', 'http://www.reddit.com/api/submit?app=mh', formData, success);
+			reddit.apiTransmit('POST', 'http://' + this.domain + '/api/submit?app=mh', formData, success);
 		} catch (error) {
 			status.innerHTML = error;
 		}
@@ -1083,7 +1083,7 @@ Popup.prototype.createListHTML = function (url) {
 		commentText = value.savedCommentText === undefined ? '' : value.savedCommentText;
 		if (!isFreshEnough) staleCounter++;
 		freshText = isFreshEnough ? 'fresh' : 'stale';
-		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
+		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://' + reddit.domain + data.thumbnail : data.thumbnail;
 		
 		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-score="' + data.score + '" data-ups="' + data.ups + '" data-downs="' + data.downs + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
 			listHTML += '<div class="votes">';
@@ -1091,16 +1091,16 @@ Popup.prototype.createListHTML = function (url) {
 				listHTML += '<span class="count" id="count_' + data.name + '" title="' + chrome.i18n.getMessage('score', [data.ups.toString(), data.downs.toString()]) + '">' + data.score + '</span>';
 				listHTML += '<a class="downmod" onclick="reddit.voteDownPost(event)"></a>';
 			listHTML += '</div>';
-			listHTML += '<a class="thumblink" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">';
+			listHTML += '<a class="thumblink" href="http://' + reddit.domain + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">';
 				listHTML += '<img class="thumb" src="' + thumbSrc + '" alt="' + data.title + '" width="70"/>';
 			listHTML += '</a>';
 			listHTML += '<div class="post">';
-				listHTML += '<a class="link" href="http://www.reddit.com' + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">' + data.title + '</a> ';
-				listHTML += '<a class="domain" href="http://www.reddit.com/domain/' + data.domain + '" target="_blank">(' + data.domain + ')</a>';
+				listHTML += '<a class="link" href="http://' + reddit.domain + data.permalink + '" target="_blank" title="' + chrome.i18n.getMessage('view_on_reddit') + '">' + data.title + '</a> ';
+				listHTML += '<a class="domain" href="http://' + reddit.domain + '/domain/' + data.domain + '" target="_blank">(' + data.domain + ')</a>';
 				listHTML += '<div class="meta">';
 					listHTML += '<span class="timestamp">' + chrome.i18n.getMessage('submitted_when', utils.prettyDate(utils.ISODateString(new Date(data.created_utc * 1000)))) + '</span> ' + chrome.i18n.getMessage('by') + ' ';
-					listHTML += '<a class="submitter" href="http://www.reddit.com/user/' + data.author + '" target="_blank">' + data.author + '</a> ' + chrome.i18n.getMessage('to') + ' ';
-					listHTML += '<a class="subreddit" href="http://www.reddit.com/r/' + data.subreddit + '/" target="_blank">' + data.subreddit + '</a>';
+					listHTML += '<a class="submitter" href="http://' + reddit.domain + '/user/' + data.author + '" target="_blank">' + data.author + '</a> ' + chrome.i18n.getMessage('to') + ' ';
+					listHTML += '<a class="subreddit" href="http://' + reddit.domain + '/r/' + data.subreddit + '/" target="_blank">' + data.subreddit + '</a>';
 				listHTML += '</div>';
 				listHTML += '<div class="actions">';
 					switch (data.num_comments) {
