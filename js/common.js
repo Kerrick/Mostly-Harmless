@@ -1196,7 +1196,7 @@ Popup.prototype.createSubmitForm = function (tab) {
 				submitHTML += '<strong id="your_label">' + chrome.i18n.getMessage('popular_choices') + '</strong>';
 				submitHTML += '<ul id="your_reddits">';
 					for (var i = 0; i < redditCache.length; i++) {
-						submitHTML += '<li><a onclick="document.getElementById(\'submit_reddit\').value=\'' + redditCache[i].data.display_name + '\'">' + redditCache[i].data.display_name + '</a></li>';
+						submitHTML += '<li><a title="' + redditCache[i].data.title + '" onclick="document.getElementById(\'submit_reddit\').value=\'' + redditCache[i].data.display_name + '\'">' + redditCache[i].data.display_name + '</a></li>';
 					}
 				submitHTML += '</ul>';
 			}
