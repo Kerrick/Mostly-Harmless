@@ -737,9 +737,11 @@ RedditAPI.prototype.submitComment = function (e) {
 	var listItem, fullName, status, submitButton, cancelButton, textarea, comment, formData;
 	
 	function success (response) {
-		var url, oldCache;
+		var postedCommentUrl, commentsUrl, url, oldCache;
 		
-		status.innerHTML = '';
+		postedCommentUrl = response.jquery[18][3][0][0].data.id.split('_')[1];
+		commentsUrl = document.getElementById(fullName).parentNode.getElementsByClassName('thumblink')[0].getAttribute('href');
+		status.innerHTML = 'submitted! <a href="' + commentsUrl + postedCommentUrl + '" target="_blank">click to view your comment.</a>';
 		submitButton.innerHTML = chrome.i18n.getMessage('button_submit');
 		cancelButton.innerHTML = chrome.i18n.getMessage('button_hide');
 		submitButton.setAttribute('disabled');
