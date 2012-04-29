@@ -1012,7 +1012,7 @@ Popup.prototype.createListHTML = function (url) {
 		freshText = isFreshEnough ? 'fresh' : 'stale';
 		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://www.reddit.com' + data.thumbnail : data.thumbnail;
 		
-		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
+		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-score="' + data.score + '" data-ups="' + data.ups + '" data-downs="' + data.downs + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
 			listHTML += '<div class="votes">';
 				listHTML += '<a class="upmod" onclick="reddit.voteUpPost(event)"></a>';
 				listHTML += '<span class="count" id="count_' + data.name + '" title="' + chrome.i18n.getMessage('score', [data.ups.toString(), data.downs.toString()]) + '">' + data.score + '</span>';
