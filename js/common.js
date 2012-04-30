@@ -1184,15 +1184,19 @@ Popup.prototype.createListHTML = function (url) {
 			listHTML += '</form>';
 		listHTML += '</li>';
 	});
-	
-	listHTML += '</ol>'
-	
+
+	listHTML += '</ol>';
+	listHTML += '<div class="morelink">';
+		listHTML += '<a onclick="popup.replaceWithSubmitForm()">' + chrome.i18n.getMessage('submit_again') + '</a>';
+		listHTML += '<div class="nub"></div>';
+	listHTML += '</div>';
+
 	if (staleCounter > 0) {
 		listHTML += '<div id="information">' + chrome.i18n.getMessage('stale_posts_hiding', staleCounter.toString()) + '</div>';
 	}
-	
+
 	return listHTML;
-	
+
 };
 
 /**
