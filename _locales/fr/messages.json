@@ -1,20 +1,20 @@
 ﻿{
 	"just_now": {
-		"message": "just now",
+		"message": "à l'instant",
 		"description": "Describe that something just happened."
 		
 	},
 	"a_minute_ago": {
-		"message": "a minute ago",
+		"message": "Il y a une minute",
 		"description": "Describe that something happened a minute ago."
 		
 	},
 	"a_minute_from_now": {
-		"message": "a minute from now",
+		"message": "Dans une minute",
 		"decription": "Describe that something will happen in a minute."
 	},
 	"minutes_ago": {
-		"message": "$NUM$ minutes ago",
+		"message": "$NUM$ Il y a quelques minutes",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -23,7 +23,7 @@
 		}
 	},
 	"minutes_from_now": {
-		"message": "$NUM$ minutes from now",
+		"message": "$NUM$ Dans quelques minutes",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -32,15 +32,15 @@
 		}
 	},
 	"an_hour_ago": {
-		"message": "an hour ago",
+		"message": "Il y a une heure",
 		"description": "Describe that something happened an hour ago."
 	},
 	"an_hour_from_now": {
-		"message": "an hour from now",
+		"message": "Dans une heure",
 		"description": "Describe that will happen in an hour."
 	},
 	"hours_ago": {
-		"message": "$NUM$ hours ago",
+		"message": "$NUM$ Il y a quelques heures",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -49,7 +49,7 @@
 		}
 	},
 	"hours_from_now": {
-		"message": "$NUM$ hours from now",
+		"message": "$NUM$ Dans quelques heures",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -58,15 +58,15 @@
 		}
 	},
 	"yesterday": {
-		"message": "yesterday",
+		"message": "Hier",
 		"description": "The day before today."
 	},
 	"tomorrow": {
-		"message": "tomorrow",
+		"message": "Demain",
 		"description": "The day after today."
 	},
 	"days_ago": {
-		"message": "$NUM$ days ago",
+		"message": "$NUM$ Il y a quelques jours",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -75,7 +75,7 @@
 		}
 	},
 	"days_from_now": {
-		"message": "$NUM$ days from now",
+		"message": "$NUM$ Dans quelques jours",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -84,15 +84,15 @@
 		}
 	},
 	"last_week": {
-		"message": "last week",
+		"message": "La semaine dernière",
 		"description": "The week before this one."
 	},
 	"next_week": {
-		"message": "next week",
+		"message": "La semaine prochaine",
 		"description": "The week after this one."
 	},
 	"weeks_ago": {
-		"message": "$NUM$ weeks ago",
+		"message": "$NUM$ Il y a quelques semaines",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -101,7 +101,7 @@
 		}
 	},
 	"weeks_from_now": {
-		"message": "$NUM$ weeks from now",
+		"message": "$NUM$ Dans quelques semaines",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -110,15 +110,15 @@
 		}
 	},
 	"last_month": {
-		"message": "last month",
+		"message": "Le mois dernier",
 		"description": "The month before this one."
 	},
 	"next_month": {
-		"message": "next month",
+		"message": "Le mois prochain",
 		"description": "The month after this one."
 	},
 	"months_ago": {
-		"message": "$NUM$ months ago",
+		"message": "$NUM$ Il y a quelques mois",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -127,7 +127,7 @@
 		}
 	},
 	"months_from_now": {
-		"message": "$NUM$ months from now",
+		"message": "$NUM$ Dans quelques mois",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -136,15 +136,15 @@
 		}
 	},
 	"last_year": {
-		"message": "last year",
+		"message": "L'année dernière",
 		"description": "The year before this one."
 	},
 	"next_year": {
-		"message": "next year",
+		"message": "L'an prochain",
 		"description": "The year after this one."
 	},
 	"years_ago": {
-		"message": "$NUM$ years ago",
+		"message": "$NUM$ Il y a quelques années",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -153,7 +153,7 @@
 		}
 	},
 	"years_from_now": {
-		"message": "$NUM$ years from now",
+		"message": "$NUM$ Il y a quelques années",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -162,15 +162,15 @@
 		}
 	},
 	"last_century": {
-		"message": "last century",
+		"message": "Le siècle dernier",
 		"description": "The century before this one."
 	},
 	"next_century": {
-		"message": "next century",
+		"message": "Le siècle prochain",
 		"description": "The century after this one."
 	},
 	"centuries_ago": {
-		"message": "$NUM$ centuries ago",
+		"message": "$NUM$ Il y a quelques siècles",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -179,7 +179,7 @@
 		}
 	},
 	"centuries_from_now": {
-		"message": "$NUM$ centuries from now",
+		"message": "$NUM$ Dans quelques siècles",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -188,7 +188,7 @@
 		}
 	},
 	"not_activated": {
-		"message": "$APPNAME$ is not activated for this page. Click to activate.",
+		"message": "$APPNAME$ n'est pas activé sur cette page. Cliquez pour activer.",
 		"placeholders": {
 			"APPNAME": {
 				"content": "Mostly Harmless"
@@ -196,13 +196,13 @@
 		}
 	},
 	"loading": {
-		"message": "Loading data..."
+		"message": "Chargement..."
 	},
 	"viewing_comments": {
-		"message": "You are currently viewing the comments for this page."
+		"message": "Voici les commentaires pour cette page."
 	},
 	"submit_page": {
-		"message": "Submit this page to $REDDIT$.",
+		"message": "Poster sur $REDDIT$.",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -210,7 +210,7 @@
 		}
 	},
 	"submitted_num_times": {
-		"message": "This page has been submitted $NUM$ times.",
+		"message": "Cette page a été postée $NUM$ fois.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -219,7 +219,7 @@
 		}
 	},
 	"login": {
-		"message": "You have to be logged in to do that. $BEGIN_LINK$Click to open the login page.$END_LINK$",
+		"message": "Vous devez être connecté pour effectuer cette action. $BEGIN_LINK$Cliquez pour ouvrir la page de connexion.$END_LINK$",
 		"placeholders": {
 			"BEGIN_LINK": {
 				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
@@ -248,22 +248,22 @@
 		}
 	},
 	"action_unsave": {
-		"message": "unsave"
+		"message": "Ne pas sauvegarder"
 	},
 	"action_save": {
-		"message": "save"
+		"message": "Sauvegarder"
 	},
 	"action_unhide": {
-		"message": "unhide"
+		"message": "Ne plus cacher"
 	},
 	"action_hide": {
-		"message": "hide"
+		"message": "Cacher"
 	},
 	"action_share": {
-		"message": "share"
+		"message": "Partager"
 	},
 	"report_confirm": {
-		"message": "are you sure? $BEGIN_LINK_YES$yes$END_LINK_YES$/$BEGIN_LINK_NO$no$END_LINK_NO$",
+		"message": "Êtes vous sûr ? $BEGIN_LINK_YES$oui$END_LINK_YES$/$BEGIN_LINK_NO$non$END_LINK_NO$",
 		"placeholders": {
 			"BEGIN_LINK_YES": {
 				"content": "<a onclick=\"reddit.reportPost(event)\">"
@@ -280,25 +280,25 @@
 		}
 	},
 	"action_report": {
-		"message": "report"
+		"message": "signaler"
 	},
 	"action_reported": {
-		"message": "reported!"
+		"message": "signalé !"
 	},
 	"button_submit": {
-		"message": "submit"
+		"message": "soumettre"
 	},
 	"button_hide": {
-		"message": "hide this form"
+		"message": "cacher ce rapport"
 	},
 	"error_empty": {
-		"message": "There needs to be something here."
+		"message": "Vous devez mettre quelque chose ici."
 	},
 	"loading_api": {
 		"message": "Loading data from the API..."
 	},
 	"loading_cache": {
-		"message": "Loading data from the cache..."
+		"message": "Chargement du cache..."
 	},
 	"error_not_cached": {
 		"message": "Cannot create list for a URL that has not been cached."
@@ -317,7 +317,7 @@
 		}
 	},
 	"view_on_reddit": {
-		"message": "View this post on $REDDIT$",
+		"message": "Voir ce poste sur $REDDIT$",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -325,7 +325,7 @@
 		}
 	},
 	"submitted_when": {
-		"message": "submitted $TIME$",
+		"message": "Soumis $TIME$",
 		"placeholders": {
 			"TIME": {
 				"content": "$1",
@@ -334,13 +334,13 @@
 		}
 	},
 	"by": {
-		"message": "by"
+		"message": "de"
 	},
 	"to": {
-		"message": "to"
+		"message": "à"
 	},
 	"add_comment_zero": {
-		"message": "add a comment"
+		"message": "Ajouter un commentaire"
 	},
 	"add_comment_one": {
 		"message": "add to the one comment"
@@ -355,7 +355,7 @@
 		}
 	},
 	"leave_comment": {
-		"message": "Leave a comment"
+		"message": "Laisser un commentaire"
 	},
 	"stale_posts_hiding": {
 		"message": "Hiding $NUM$ stale posts. $BEGIN_LINK_SHOW$Show them now$END_LINK_SHOW$, or visit the $BEGIN_LINK_OPTIONS$options page$END_LINK_OPTIONS$ to change your Fresh Content preferences.",
@@ -390,7 +390,7 @@
 		}
 	},
 	"orangered_received": {
-		"message": "You have an $ORANGERED$!",
+		"message": "Vous avez une $ORANGERED$!",
 		"placeholders": {
 			"ORANGERED": {
 				"content": "orangered"
@@ -398,31 +398,31 @@
 		}
 	},
 	"orangered_action": {
-		"message": "Click here to be taken to your inbox."
+		"message": "Cliquez ici pour accéder à votre messaerie."
 	},
 	"url": {
 		"message": "url"
 	},
 	"popular_choices": {
-		"message": "popular choices"
+		"message": "choix populaires"
 	},
 	"title": {
-		"message": "title"
+		"message": "titre"
 	},
 	"suggest_title": {
-		"message": "suggest title"
+		"message": "suggérer un titre"
 	},
 	"tab_preferences": {
-		"message": "Preferences"
+		"message": "Préférences"
 	},
 	"group_fresh_content": {
 		"message": "Fresh Content"
 	},
 	"fresh_content_show_one_day": {
-		"message": "Only show posts from today."
+		"message": "Montrer seulement les messages datant d'aujourd'hui."
 	},
 	"fresh_content_show_days": {
-		"message": "Only show posts less than $NUM$ days old.",
+		"message": "Montrer seulement les messages datant de moins de $NUM$ jours.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -431,7 +431,7 @@
 		}
 	},
 	"fresh_content_show_weeks": {
-		"message": "Only show posts less than $NUM$ weeks old.",
+		"message": "Montrer seulement les messages datant de moins de $NUM$ semaines.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -440,7 +440,7 @@
 		}
 	},
 	"fresh_content_show_months": {
-		"message": "Only show posts less than $NUM$ months old.",
+		"message": "Montrer seulement les messages datant de moins de $NUM$ mois.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -449,22 +449,22 @@
 		}
 	},
 	"fresh_content_show_all": {
-		"message": "Show posts from all time."
+		"message": "Montrer tous les messages."
 	},
 	"fresh_content_description": {
-		"message": "This setting allows you to choose the oldest reddit posts you&rsquo;d like to see. Anything posted before the value you&rsquo;ve chosen will be indicated in the browser button&rsquo;s total, but will not be shown in the popup."
+		"message": "Cette option vous permet de ne voir les posts de Reddit qu'à partir d'une date donnée. Les post ultérieur à cette date seront inscrits dans le total des posts mais n'apparaîtront pas dans le pop-up."
 	},
 	"group_popup_width": {
-		"message": "Popup Width"
+		"message": "Hauteur du popup"
 	},
 	"popup_width_description": {
-		"message": "This setting allows you to set the width of the browser action popup."
+		"message": "Cette option vous permet de choisir la hauteur du pop-up."
 	},
 	"group_shameless_plug": {
-		"message": "Shameless Plug"
+		"message": "Plug éhonté"
 	},
 	"shameless_plug_label": {
-		"message": "Show the shameless plug"
+		"message": "Montrer le plug éhonté"
 	},
 	"shameless_plug_description": {
 		"message": "When checked, this will add the following to each commment you post from within $MOSTLY_HARMLESS$:$PLUG_TEXT$",
@@ -487,7 +487,7 @@
 		}
 	},
 	"orangered_check": {
-		"message": "Check for $ORANGERED$s",
+		"message": "Vérifier vos $ORANGERED$s",
 		"placeholders": {
 			"ORANGERED": {
 				"content": "orangered"
@@ -495,7 +495,7 @@
 		}
 	},
 	"orangered_sound_label": {
-		"message": "Play a sound when you have an $ORANGERED$",
+		"message": "Jouer un son lorsque vous recevez un $ORANGERED$",
 		"placeholders": {
 			"ORANGERED": {
 				"content": "orangered"
@@ -503,10 +503,10 @@
 		}
 	},
 	"orangered_sound_preview": {
-		"message": "Preview the notification sound"
+		"message": "Écouter le son de la notification"
 	},
 	"orangered_interval_minutes": {
-		"message": "Check every $NUM$ minutes",
+		"message": "Vérifier toutes les $NUM$ minutes",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -515,7 +515,7 @@
 		}
 	},
 	"orangered_display_time": {
-		"message": "Display notification for $NUM$ seconds",
+		"message": "Montrer la notification pendant $NUM$ seconds",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
