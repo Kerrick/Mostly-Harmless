@@ -301,10 +301,10 @@ BrowserAction.prototype.setBadgeError = function (tabId, text) {
  */
 BrowserAction.prototype.setBadgeFor = function (url, tabId) {
 	var cachedPosts;
-	
+
 	cachedPosts = cache.get(url);
 	chrome.browserAction.setIcon({'path': '/pix/alien.png', 'tabId': tabId});
-	
+
 	if (cachedPosts.isCommentsPage === true) {
 		chrome.browserAction.setBadgeText({'text': '...', 'tabId': tabId});
 		chrome.browserAction.setTitle({'title': chrome.i18n.getMessage('viewing_comments'), 'tabId': tabId});
@@ -321,7 +321,7 @@ BrowserAction.prototype.setBadgeFor = function (url, tabId) {
 		chrome.browserAction.setBadgeBackgroundColor({'color': [255, 69, 0, 255], 'tabId': tabId});
 		chrome.browserAction.setPopup({popup: '/html/popup.html', tabId: tabId});
 	}
-	
+
 	return true;
 };
 
@@ -349,24 +349,24 @@ function RedditAPI(domain) {
  * @param	{Object}	data	If it exists, send this as a FormData() object.
  * @param	{Function}	cback	If it exists, call this function when the request is complete, passing a parameter: the API's response as an object.
  * @return	{Object}		Returns the API's response as an object if there is no callback.
- * @method 
+ * @method
  */
 RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 	var req, apiTimeout, notificationArea;
-	
+
 	function processResponse () {
 		if (req.readyState === 4) {
 			if (req.status === 200) {
 				if (JSON.parse(req.responseText).jquery && JSON.parse(req.responseText).jquery[3][3][0] === '.error.USER_REQUIRED') {
 					throw chrome.i18n.getMessage('login');
 				}
-				
+
 				clearTimeout(apiTimeout);
-				
+
 				if (cback) {
 					cback(JSON.parse(req.responseText));
 				}
-				
+
 				if (notificationArea) {
 					notificationArea.innerHTML = '';
 					notificationArea.style.display = 'none';
@@ -380,12 +380,12 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
 			}
 		}
 	}
-	
+
 	function handleTimeout () {
 		req.abort();
 		throw chrome.i18n.getMessage('api_timeout', settings.get('timeoutLength').toString());
 	}
-	
+
 	notificationArea = document.getElementById('notificationArea');
 	req = new XMLHttpRequest();
 	req.open(type, url, true);
@@ -411,21 +411,21 @@ RedditAPI.prototype.apiTransmit = function (type, url, data, cback) {
  */
 RedditAPI.prototype.getInfo = function (url, tabId) {
 	var apiTimeout, isCommentsPage, reqUrl, req, postsObj, postCount;
-	
+
 	function processResponse () {
 		if (req.readyState === 4) {
 			if (req.status === 200) {
 				var response;
-				
+
 				clearTimeout(apiTimeout);
 				response = JSON.parse(req.responseText);
 				cache.set('modhash', response.data.modhash);
 				postsObj = {};
 				postCount = 0;
-				
+
 				for (i = 0; i < response.data.children.length; i++) {
 					var child;
-					
+
 					child =  response.data.children[i];
 					postsObj[child.data.name] = {
 						'url': url,
@@ -433,7 +433,7 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 					};
 					postCount++;
 				}
-				
+
 				cache.set(url, {
 					'count': postCount,
 					'posts': postsObj,
@@ -447,24 +447,24 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
 			}
 		}
 	}
-	
+
 	function handleTimeout () {
 		req.abort();
 		button.setBadgeError(tabId, chrome.i18n.getMessage('api_timeout', settings.get('timeoutLength').toString()));
 	}
-	
+
 	button.setBadgeLoading(tabId);
 	isCommentsPage = this.commentsMatchPattern.test(url);
-	
+
 	if (isCommentsPage) {
 		var matches;
-		
+
 		matches = url.match(this.commentsMatchPattern);
 		reqUrl = 'http://' + this.domain + '/by_id/t3_' + matches[3] + '.json?app=mh';
 	} else {
 		reqUrl = 'http://' + this.domain + '/api/info.json?app=mh&url=' + encodeURIComponent(url);
 	}
-	
+
 	req = new XMLHttpRequest();
 	req.open('GET', reqUrl, true);
 	req.onreadystatechange = processResponse;
@@ -483,7 +483,7 @@ RedditAPI.prototype.getInfo = function (url, tabId) {
  */
 RedditAPI.prototype.voteUpPost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, voteWas, scoreWas, upsWas, downsWas, scoreElem, formData;
-	
+
 	function success () {
 		if (voteWas === '1') {
 
@@ -528,10 +528,10 @@ RedditAPI.prototype.voteUpPost = function (e) {
 			oldCache.posts[fullName].data.downs = downsWas - 1;
 
 		}
-		
+
 		cache.set(url, oldCache);
 	}
-	
+
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
@@ -545,7 +545,7 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	
+
 	if (voteWas === '1') {
 		formData.append('dir','0');
 	} else if (voteWas === '0') {
@@ -553,7 +553,7 @@ RedditAPI.prototype.voteUpPost = function (e) {
 	} else if (voteWas === '-1') {
 		formData.append('dir','1');
 	}
-	
+
 	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
@@ -566,7 +566,7 @@ RedditAPI.prototype.voteUpPost = function (e) {
  */
 RedditAPI.prototype.voteDownPost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, voteWas, scoreWas, upsWas, downsWas, scoreElem, formData;
-	
+
 	function success () {
 		if (voteWas === '1') {
 
@@ -610,10 +610,10 @@ RedditAPI.prototype.voteDownPost = function (e) {
 			oldCache.posts[fullName].data.downs = downsWas - 1;
 
 		}
-		
+
 		cache.set(url, oldCache);
 	}
-	
+
 	listItem = e.srcElement.parentNode.parentNode;
 	fullName = listItem.id;
 	voteWas = listItem.getAttribute('data-dir');
@@ -627,7 +627,7 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	formData = new FormData();
 	formData.append('id', fullName);
 	formData.append('uh', cache.get('modhash'));
-	
+
 	if (voteWas === '1') {
 		formData.append('dir','-1');
 	} else if (voteWas === '0') {
@@ -635,7 +635,7 @@ RedditAPI.prototype.voteDownPost = function (e) {
 	} else if (voteWas === '-1') {
 		formData.append('dir','0');
 	}
-	
+
 	this.apiTransmit('POST', reqUrl, formData, success);
 };
 
@@ -648,7 +648,7 @@ RedditAPI.prototype.voteDownPost = function (e) {
  */
 RedditAPI.prototype.savePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
-	
+
 	function success () {
 		listItem.setAttribute('data-saved', 'true');
 		listItem.className.replace(/\bsaved\b/,'');
@@ -658,7 +658,7 @@ RedditAPI.prototype.savePost = function (e) {
 		oldCache.posts[fullName].data.saved = true;
 		cache.set(url, oldCache);
 	}
-	
+
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -679,7 +679,7 @@ RedditAPI.prototype.savePost = function (e) {
  */
 RedditAPI.prototype.unsavePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
-	
+
 	function success () {
 		listItem.setAttribute('data-saved', 'false');
 		listItem.className.replace(/\bunsave\b/,'');
@@ -689,7 +689,7 @@ RedditAPI.prototype.unsavePost = function (e) {
 		oldCache.posts[fullName].data.saved = false;
 		cache.set(url, oldCache);
 	}
-	
+
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -710,7 +710,7 @@ RedditAPI.prototype.unsavePost = function (e) {
  */
 RedditAPI.prototype.hidePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
-	
+
 	function success () {
 		listItem.setAttribute('data-hidestatus', 'true');
 		e.srcElement.innerHTML = chrome.i18n.getMessage('action_unhide');
@@ -718,7 +718,7 @@ RedditAPI.prototype.hidePost = function (e) {
 		oldCache.posts[fullName].data.hidden = true;
 		cache.set(url, oldCache);
 	}
-	
+
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -739,7 +739,7 @@ RedditAPI.prototype.hidePost = function (e) {
  */
 RedditAPI.prototype.unhidePost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
-	
+
 	function success () {
 		listItem.setAttribute('data-hidestatus', 'false');
 		e.srcElement.innerHTML = chrome.i18n.getMessage('action_hide');
@@ -747,7 +747,7 @@ RedditAPI.prototype.unhidePost = function (e) {
 		oldCache.posts[fullName].data.hidden = false;
 		cache.set(url, oldCache);
 	}
-	
+
 	listItem = e.srcElement.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -796,7 +796,7 @@ RedditAPI.prototype.denyReport = function (e) {
  */
 RedditAPI.prototype.reportPost = function (e) {
 	var listItem, fullName, url, reqUrl, oldCache, formData;
-	
+
 	function success () {
 		listItem.setAttribute('data-hidestatus', 'true');
 		e.srcElement.parentNode.parentNode.childNodes[3].innerHTML = 'unhide';
@@ -806,7 +806,7 @@ RedditAPI.prototype.reportPost = function (e) {
 		listItem.setAttribute('data-reportstatus', 'true');
 		e.srcElement.parentNode.innerHTML = chrome.i18n.getMessage('action_reported');
 	}
-	
+
 	listItem = e.srcElement.parentNode.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
 	url = listItem.parentNode.getAttribute('data-url');
@@ -827,10 +827,10 @@ RedditAPI.prototype.reportPost = function (e) {
  */
 RedditAPI.prototype.submitComment = function (e) {
 	var listItem, fullName, status, submitButton, cancelButton, textarea, comment, formData;
-	
+
 	function success (response) {
 		var postedCommentUrl, commentsUrl, url, oldCache;
-		
+
 		postedCommentUrl = response.jquery[18][3][0][0].data.id.split('_')[1];
 		commentsUrl = document.getElementById(fullName).parentNode.getElementsByClassName('thumblink')[0].getAttribute('href');
 		status.innerHTML = 'submitted! <a href="' + commentsUrl + postedCommentUrl + '" target="_blank">click to view your comment.</a>';
@@ -844,7 +844,7 @@ RedditAPI.prototype.submitComment = function (e) {
 		oldCache.posts[fullName].savedCommentText = '';
 		cache.set(url, oldCache);
 	}
-	
+
 	submitButton = e.srcElement;
 	listItem = submitButton.parentNode.parentNode.parentNode;
 	fullName = listItem.id;
@@ -852,7 +852,7 @@ RedditAPI.prototype.submitComment = function (e) {
 	cancelButton = submitButton.parentNode.getElementsByClassName('cancel')[0];
 	textarea = e.srcElement.parentNode.getElementsByTagName('textarea')[0];
 	comment = settings.get('shamelessPlug') ? textarea.value + '\n\n*Posted from [Mostly Harmless](http://kerrick.github.com/Mostly-Harmless), a Google Chrome extension for awesome redditors.*' : textarea.value;
-	
+
 	if (textarea.value === '') {
 		status.innerHTML = chrome.i18n.getMessage('error_empty');
 	} else {
@@ -878,7 +878,7 @@ RedditAPI.prototype.submitComment = function (e) {
  */
 RedditAPI.prototype.submitLink = function (e, tabId) {
 	var url, title, subreddit, status, submitButton, formData;
-	
+
 	function success (response) {
 		if (typeof response.jquery[16][3][0] !== 'undefined' && response.jquery[16][3][0].substring(0,15) === '.error.NO_LINKS') {
 			status.innerHTML = 'that reddit only allows text posts';
@@ -900,13 +900,13 @@ RedditAPI.prototype.submitLink = function (e, tabId) {
 			status.innerHTML = 'unknown error occured, please try again.'
 		}
 	}
-	
+
 	submitButton = e.srcElement;
 	status = submitButton.parentNode.getElementsByClassName('status')[0];
 	title = document.getElementById('submit_title');
 	subreddit = document.getElementById('submit_reddit');
 	url = document.getElementById('submit_url');
-	
+
 	if (title.value === '' || subreddit.value === '') {
 		status.innerHTML = chrome.i18n.getMessage('error_empty');
 	} else {
@@ -998,30 +998,30 @@ Background.prototype.prepareBrowserAction = function (tabId, info, tab, force) {
 			console.log(chrome.i18n.getMessage('loading_cache'));
 			button.setBadgeFor(tab.url, tabId);
 		}
-		
+
 		return true;
 	}
-	
+
 	if (force === true) {
 		setBadge();
 	} else if (info.status === 'loading') {
 		try {
 			var excludedRegex, match;
-			
+
 			excludedRegex = settings.get('excludedRegex').split('\n');
 			excludedDomains = settings.get('excludedDomains').split('\n');
 			match = false;
-			
+
 			for (var i = 0; i < excludedRegex.length; i++) {
 				if (tab.url.match(new RegExp(excludedRegex[i], "i")) !== null) {
 					match = true;
 				}
 			}
-			
+
 			if (utils.parseURL(tab.url).host in utils.objConvert(excludedDomains)) {
 				match = true;
 			}
-			
+
 			if (settings.get('waitForClick') === false && match === false) {
 				setBadge();
 			} else {
@@ -1041,17 +1041,17 @@ Background.prototype.prepareBrowserAction = function (tabId, info, tab, force) {
  */
 Background.prototype.watchMail = function () {
 	var mailProcess, pop;
-	
+
 	function showNotification (hasMail) {
 		var mailInterval;
-		
+
 		mailInterval = settings.get('mailInterval') * 1000 * 60;
-				
+
 		if (hasMail === true && background.notificationIsShown === false) {
 			if (settings.get('mailSound') === true) {
 				pop.play();
 			}
-			
+
 			background.notification = webkitNotifications.createNotification(
 				'/pix/mail.png',  // icon url - can be relative
 				chrome.i18n.getMessage('orangered_received'),  // notification title
@@ -1069,22 +1069,22 @@ Background.prototype.watchMail = function () {
 		} else if (hasMail === false && background.notificationIsShown === true) {
 			background.notification.cancel();
 		}
-		
+
 		window.setTimeout(checkPrefs, mailInterval);
 	}
-	
+
 	function getMail () {
 		reddit.apiTransmit('GET', 'http://' + reddit.domain + '/api/me.json?app=mh', null, function (response) {
 			showNotification(response.data.has_mail);
 		});
 	}
-	
+
 	function checkPrefs () {
 		if (settings.get('checkMail') === true) {
 			getMail();
 		}
 	}
-	
+
 	pop = document.createElement('audio');
 	pop.src = '/pix/pop.ogg';
 	checkPrefs();
@@ -1110,25 +1110,25 @@ function Popup() {
  */
 Popup.prototype.createListHTML = function (url) {
 	var listHTML, staleCounter;
-	
+
 	if (cache.get(url) === undefined) {
 		throw chrome.i18n.getMessage('error_not_cached');
 	}
-	
+
 	listHTML = '<div id="notificationArea"></div>';
 	listHTML += '<ol id="posts" data-url="' + url + '" data-commentspage="' + cache.get(url).isCommentsPage.toString() + '">';
 	staleCounter = 0;
-	
+
 	utils.forEachIn(cache.get(url).posts, function (name, value) {
 		var data, voteDir, hiddenText, hideStatus, hideAction, saveText, saveStatus, saveAction, isFreshEnough, freshText, thumbSrc, commentText;
-		
+
 		data = value.data;
 		if (data.likes === true) voteDir = 1;
 		if (data.likes === null)  voteDir = 0;
 		if (data.likes === false) voteDir = -1;
 		hideStatus = data.hidden;
 		hiddenText = hideStatus === true ? 'unhide' : 'hide';
-		hideAction = hideStatus === true ? 'reddit.unhidePost(event)' : 'reddit.hidePost(event)'; 
+		hideAction = hideStatus === true ? 'reddit.unhidePost(event)' : 'reddit.hidePost(event)';
 		saveStatus = data.saved;
 		saveText = saveStatus === true ? 'unsave' : 'save';
 		saveAction = saveStatus === true ? 'reddit.unsavePost(event)' : 'reddit.savePost(event)';
@@ -1137,7 +1137,7 @@ Popup.prototype.createListHTML = function (url) {
 		if (!isFreshEnough) staleCounter++;
 		freshText = isFreshEnough ? 'fresh' : 'stale';
 		thumbSrc = data.thumbnail.indexOf('/') === 0 ? 'http://' + reddit.domain + data.thumbnail : data.thumbnail;
-		
+
 		listHTML += '<li id="' + data.name + '" class="' + freshText  + '" data-dir="' + voteDir.toString() + '" data-score="' + data.score + '" data-ups="' + data.ups + '" data-downs="' + data.downs + '" data-savestatus="' + saveStatus + '" data-hidestatus="' + hideStatus + '">';
 			listHTML += '<div class="votes">';
 				listHTML += '<a class="upmod" onclick="reddit.voteUpPost(event)"></a>';
@@ -1184,15 +1184,19 @@ Popup.prototype.createListHTML = function (url) {
 			listHTML += '</form>';
 		listHTML += '</li>';
 	});
-	
-	listHTML += '</ol>'
-	
+
+	listHTML += '</ol>';
+	listHTML += '<div class="morelink">';
+		listHTML += '<a onclick="popup.replaceWithSubmitForm()">' + chrome.i18n.getMessage('submit_again') + '</a>';
+		listHTML += '<div class="nub"></div>';
+	listHTML += '</div>';
+
 	if (staleCounter > 0) {
 		listHTML += '<div id="information">' + chrome.i18n.getMessage('stale_posts_hiding', staleCounter.toString()) + '</div>';
 	}
-	
+
 	return listHTML;
-	
+
 };
 
 /**
@@ -1204,7 +1208,7 @@ Popup.prototype.createListHTML = function (url) {
  */
 Popup.prototype.createSubmitForm = function (tab) {
 	var submitHTML, redditCache;
-	
+
 	redditCache = cache.get('reddits');
 	submitHTML = '<div id="notificationArea"></div>';
 	submitHTML += '<form id="submit">';
@@ -1233,9 +1237,29 @@ Popup.prototype.createSubmitForm = function (tab) {
 		submitHTML += '<input type="button" id="submit_submit" onclick="reddit.submitLink(event, \'' + tab.id + '\')" value="' + chrome.i18n.getMessage('submit_page') + '" />';
 		submitHTML += '<span class="status"></span>'
 	submitHTML += '</form>';
-	
+
 	return submitHTML;
 }
+
+/**
+ * Replace the contents of the popup with a submit form.
+ * @alias                Popup.replaceWithSubmitForm()
+ * @return  {Boolean}    Returns true.
+ * @method
+ */
+Popup.prototype.replaceWithSubmitForm = function () {
+	var close;
+
+	chrome.tabs.getSelected(null, function(currTab) {
+		document.getElementById('body').style.width = '';
+		document.getElementById('body').innerHTML = popup.createSubmitForm(currTab);
+		close = document.createElement('button');
+		close = document.body.appendChild(close);
+		close.innerHTML = chrome.i18n.getMessage('cancel_submission');
+		close.className = 'close-button';
+		close.setAttribute('onclick', 'window.close()');
+	});
+};
 
 /**
  * Show stale posts.
@@ -1245,10 +1269,10 @@ Popup.prototype.createSubmitForm = function (tab) {
  */
 Popup.prototype.showStalePosts = function () {
 	var stalePosts;
-	
+
 	stalePosts = document.getElementsByClassName('stale');
 	document.getElementById('information').innerHTML = chrome.i18n.getMessage('stale_posts_showing');
-	
+
 	while (stalePosts.length > 0) {
 		stalePosts[0].className = 'stale-shown';
 	}
@@ -1275,7 +1299,7 @@ Popup.prototype.showCommentForm = function (postId) {
  */
 Popup.prototype.cacheComment = function (e) {
 	var value, postId, url, oldCache;
-	
+
 	value = e.srcElement.value;
 	postId = e.srcElement.parentNode.parentNode.parentNode.id
 	url = e.srcElement.parentNode.parentNode.parentNode.parentNode.getAttribute('data-url');
