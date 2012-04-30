@@ -2,12 +2,12 @@
 	"just_now": {
 		"message": "बस अभी",
 		"description": "Describe that something just happened."
-		
+
 	},
 	"a_minute_ago": {
 		"message": "एक मिनट पेहले",
 		"description": "Describe that something happened a minute ago."
-		
+
 	},
 	"a_minute_from_now": {
 		"message": "अब से एक मिनट बाद",
@@ -476,7 +476,7 @@
 				"content": "Mostly Harmless"
 			}
 		}
-			
+
 	},
 	"group_orangered_notifications": {
 		"message": "$ORANGERED$ Notifications",
@@ -574,4 +574,5 @@
 	},
 	"timeout_length_never": {
 		"message": "Do not timeout; only show an error error when the API is down."
-	},
+	}
+}
