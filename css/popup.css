@@ -178,6 +178,7 @@ ol[data-commentspage="true"] button.cancel {
 	 letter-spacing:-1px;
 	 line-height:29px;
 	 height:29px;
+	 margin: 5px 0 0 62px;
 }
 .morelink:hover, .mlh {
 	 border-color:#879eb4;
@@ -205,6 +206,11 @@ ol[data-commentspage="true"] button.cancel {
 	 background-image:url('/pix/sprite.png');
 	 background-position:-4px -43px;
 }
+.close-button {
+	position: absolute;
+	right: 8px;
+	bottom: 10px;
+}
 #submit fieldset {
 	background-color: #CEE3F8;
 	border: 0;
@@ -214,14 +220,16 @@ ol[data-commentspage="true"] button.cancel {
 	width:500px;
 	font-size: small;
 }
-#submit input[type="text"] {
+#submit input[type="text"], #submit textarea {
 	width: 492px;
 	padding: 3px;
 	margin: 0 0 5px;
 	border: 1px solid gray;
 	height: 22px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	max-width: 492px;
 }
-#submit input, #submit label {
+#submit input, #submit label, #submit textarea {
 	display: block;
 	font-size: large;
 	margin: 0 0 5px;

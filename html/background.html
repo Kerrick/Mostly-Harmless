@@ -12,7 +12,8 @@
 			background = new Background();
 			
 			function initBackground() {
-				background.clearCache();
+				cache.removeAll();
+				button.setBadgeDefaults();
 				chrome.tabs.onUpdated.addListener(background.prepareBrowserAction);
 				background.watchMail();
 				window.setInterval(background.clearCache, (settings.get('cacheTime') * 60 * 1000));
