@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Mostly Harmless: A Google Chrome extension for awesome redditors</title>
-		
+
 		<link href='http://fonts.googleapis.com/css?family=Carter+One&amp;v2' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" media="screen" href="style.css">
 		<link rel="shortcut icon" href="icons/favicon.png">
@@ -18,7 +18,7 @@
 		<div class="section">
 			<div class="article" id="features">
 				<h2>Discovery &amp; Voting</h2>
-				<p>Mostly Harmless looks up the page you are currently viewing to see if it has been submitted to reddit. If so, you can see everywhere it has been posted, vote the story up or down, and even save, hide, and report the post straight from the popup.</p>
+				<p>Mostly Harmless looks up the page you are currently viewing to see if it has been submitted to reddit. If so, you can see everywhere it has been posted, vote the story up or down, and even save, hide, and report the post straight from the popup. You can even resubmit the post to another subreddit.</p>
 				<img src="./images/ss_popup.png" alt="Screenshot of Mostly Harmless showing all the places a page was posted." width="832" height="483" />
 				<h2>Commenting</h2>
 				<p>Comments and discussion are a huge part of reddit, so it was important to bake that capability right into Mostly Harmless. You can add a comment from the popup, and if you&rsquo;re typing a particularly long comment and accidentally close the popup, Mostly Harmless should still have it cached!</p>
@@ -36,7 +36,7 @@
 				<p>Mostly Harmless has plenty of options to make it your own, but it doesn't get confusing because of the slick interface and explanations for each setting.</p>
 				<img src="./images/ss_settings.png" alt="Screenshot of the Mostly Harmless settings." width="832" height="378" />
 				<h2>Internationalization</h2>
-				<p>The internet is powered a wide and diverse group of people, so Mostly Harmless supports internationalization. Currently the extension has been translated into English, Spanish, Catalan, Danish, and Finnish. If you <a href="#download">fork Mostly Harmless on Github</a> and write your own translation, it could be in <a href="http://code.google.com/chrome/webstore/docs/i18n.html#localeTable">any language the Chrome Web Store supports</a>!</p>
+				<p>The internet is powered a wide and diverse group of people, so Mostly Harmless supports internationalization. Currently the extension has been translated into English, French, Dutch, Catalan, Danish, Spanish, Hungarian, Finnish, and Hindi. If you <a href="#download">fork Mostly Harmless on Github</a> and write your own translation, it could be in <a href="http://code.google.com/chrome/webstore/docs/i18n.html#localeTable">any language the Chrome Web Store supports</a>!</p>
 				<img src="./images/ss_spanish.png" alt="Screenshot Mostly Harmless running in Spanish." width="832" height="520" />
 			</div>
 			<div class="article" id="download">
@@ -49,7 +49,7 @@
 				<p>Or, you can run <code>git clone</code> to grab the files read-only.</p>
 				<pre><code data-language="bash">git clone git://github.com/Kerrick/Mostly-Harmless.git</code></pre>
 				<h2>Download the Source</h2>
-				<p>If you would like to install Mostly Harmless from <a hre="https://github.com/Kerrick/Mostly-Harmless">its source code</a>, visit the <a href="https://github.com/Kerrick/Mostly-Harmless/archives/master">github downloads page</a>, and click on the latest tagged download package for the most recent stable release. Alternatively, you can grab the <a href="https://github.com/Kerrick/Mostly-Harmless/tarball/master">latest tarball</a>, but consider that it could be in an unstable developmental state.</p>
+				<p>If you would like to install Mostly Harmless from <a hre="https://github.com/Kerrick/Mostly-Harmless">its source code</a>, visit the <a href="https://github.com/Kerrick/Mostly-Harmless/archives/master">github downloads page</a>, and click on the latest tagged download package for the most recent stable release. Alternatively, you can grab the <a href="https://github.com/Kerrick/Mostly-Harmless/tarball/develop">latest tarball from the development branch</a>, but consider that it could be in an unstable state.</p>
 				<a href="https://github.com/Kerrick/Mostly-Harmless" title="Click here to view Mostly Harmless on github!"><img src="./images/ss_sourcecode.png" alt="Screenshot of a part of the Mostly Harmless source code." width="812" height="177"/></a>
 				<p>To install from source:</p>
 				<ol>
@@ -62,7 +62,6 @@
 			<div class="article" id="help">
 				<h2>What are some of the known issues with Mostly Harmless?</h2>
 				<ol>
-					<li>After clicking a vote icon, hide, or report, the state may not <em>appear</em> to change unless you move your mouse over the vote icons (for voting) or the post (for hiding/reporting). This is a <a href="http://code.google.com/p/chromium/issues/detail?id=77246">known bug in Google Chrome</a>. If you want this to be fixed, please star the issue in the Chrome bug tracker.</li>
 					<li>If Google Chrome is minimized when you click on an orangered notification, a new tab will open for your inbox in your <em>most recently focused window</em>, but it will not bring the window to the foreground. This is a <a href="http://code.google.com/p/chromium/issues/detail?id=31434">known bug in Google Chrome</a>. If you want this to be fixed, please star the issue in the Chrome bug tracker.</li>
 				</ol>
 				<h2>How can I suggest a feature or report a bug?</h2>
@@ -117,6 +116,9 @@
 					><li><a href="http://www.reddit.com/user/arrowsama"><strong>arrowsama</strong>Translation: Catalan</a></li
 					><li><a href="http://www.reddit.com/user/M4T1A5"><strong>M4T1A5</strong>Translation: Finnish</a></li
 					><li><a href="http://www.reddit.com/user/Chinned"><strong>Chinned</strong>Translation: Danish</a></li
+					><li><a href="http://www.reddit.com/user/Underyx"><strong>Underyx</strong>Translation: Hungarian</a></li
+					><li><a href="http://www.reddit.com/user/Poivron"><strong>Poivron</strong>Translation: French</a></li
+					><li><a href="http://www.reddit.com/user/vveksuvarna"><strong>vveksuvarna</strong>Translation: Hindi</a></li
 					><li><a href="https://github.com/Kerrick/Mostly-Harmless"><strong>Your Name Here!</strong>Contribute to the project</a></li>
 				</ul>
 			</div>
@@ -139,7 +141,7 @@
 			try {
 				var pageTracker = _gat._getTracker("UA-18432597-7");
 				pageTracker._trackPageview();
-			} 
+			}
 			catch (err) {
 			}
 		</script>
