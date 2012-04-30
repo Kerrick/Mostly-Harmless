@@ -206,6 +206,11 @@ ol[data-commentspage="true"] button.cancel {
 	 background-image:url('/pix/sprite.png');
 	 background-position:-4px -43px;
 }
+.close-button {
+	position: absolute;
+	right: 8px;
+	bottom: 10px;
+}
 #submit fieldset {
 	background-color: #CEE3F8;
 	border: 0;

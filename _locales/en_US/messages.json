@@ -2,12 +2,12 @@
 	"just_now": {
 		"message": "just now",
 		"description": "Describe that something just happened."
-		
+
 	},
 	"a_minute_ago": {
 		"message": "a minute ago",
 		"description": "Describe that something happened a minute ago."
-		
+
 	},
 	"a_minute_from_now": {
 		"message": "a minute from now",
@@ -291,6 +291,12 @@
 	"button_hide": {
 		"message": "hide this form"
 	},
+	"submit_again": {
+		"message": "submit again"
+		},
+	"cancel_submission": {
+		"message": "cancel submission"
+	},
 	"error_empty": {
 		"message": "There needs to be something here."
 	},
@@ -476,7 +482,7 @@
 				"content": "Mostly Harmless"
 			}
 		}
-			
+
 	},
 	"group_orangered_notifications": {
 		"message": "$ORANGERED$ Notifications",

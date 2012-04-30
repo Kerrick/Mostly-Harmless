@@ -1237,9 +1237,29 @@ Popup.prototype.createSubmitForm = function (tab) {
 		submitHTML += '<input type="button" id="submit_submit" onclick="reddit.submitLink(event, \'' + tab.id + '\')" value="' + chrome.i18n.getMessage('submit_page') + '" />';
 		submitHTML += '<span class="status"></span>'
 	submitHTML += '</form>';
-	
+
 	return submitHTML;
 }
+
+/**
+ * Replace the contents of the popup with a submit form.
+ * @alias                Popup.replaceWithSubmitForm()
+ * @return  {Boolean}    Returns true.
+ * @method
+ */
+Popup.prototype.replaceWithSubmitForm = function () {
+	var close;
+
+	chrome.tabs.getSelected(null, function(currTab) {
+		document.getElementById('body').style.width = '';
+		document.getElementById('body').innerHTML = popup.createSubmitForm(currTab);
+		close = document.createElement('button');
+		close = document.body.appendChild(close);
+		close.innerHTML = chrome.i18n.getMessage('cancel_submission');
+		close.className = 'close-button';
+		close.setAttribute('onclick', 'window.close()');
+	});
+};
 
 /**
  * Show stale posts.
