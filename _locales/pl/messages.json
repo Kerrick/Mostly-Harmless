@@ -49,7 +49,7 @@
 		}
 	},
 	"hours_from_now": {
-		"message": "Za $NUM$ godzin(ę)",
+		"message": "Za $NUM$ godzin",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -75,7 +75,7 @@
 		}
 	},
 	"days_from_now": {
-		"message": "Za $NUM$ dzień/dni",
+		"message": "Za $NUM$ dni",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -101,7 +101,7 @@
 		}
 	},
 	"weeks_from_now": {
-		"message": "Za $NUM$ tydzień/tygodni",
+		"message": "Za $NUM$ tygodnie",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -582,7 +582,7 @@
 		"message": "Nie pokazuj informacji o przekroczeniu czasu, pokazuj błędy tylko gdy API nie działa."
 	},
 	"timeout_length_description": {
-		"message": "Je�eli $REDDIT$ API dzia�a wolno, lub pad�o ca�kowicie, $MOSTLY_HARMLESS$ mo�e wyrzuci� b��d gdy pr�buje po��czy� si� z API po pewnym czasie. Wi�kszy limit czasu zwi�ksza czas oczekiwania na rezultaty z $REDDIT$ API. Mniejszy limit czasu oznacza wi�ksz� mo�liwo�� wysypania si� gdy $REDDIT$ dzia�a wolno, ale jednak.",
+		"message": "Jeżeli API $REDDIT$a działa wolno, lub padło całkowicie, $MOSTLY_HARMLESS$ może po pewnym czasie wyrzucić błąd gdy próbuje połączyć się z API. Większy limit czasu zwiększa czas oczekiwania na rezultaty z $REDDIT$ API. Mniejszy limit czasu oznacza większą możliwość wysypania si gdy $REDDIT$ działa wolno, ale jednak.",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -593,13 +593,13 @@
 		}
 	},
 	"tab_privacy": {
-		"message": "Prywatno��"
+		"message": "Prywatność"
 	},
 	"group_wait_for_click": {
-		"message": "zaczekaj aby klikn��"
+		"message": "zaczekaj aby kliknąć"
 	},
 	"wait_for_click_description": {
-		"message": "Je�li zaznaczone, $MOSTLY_HARMLESS$ nie aktywuje si� do czasu naci�ni�cia ikonki.",
+		"message": "Jeśli zaznaczone, $MOSTLY_HARMLESS$ nie aktywuje się do czasu naciśnięcia ikonki.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
@@ -610,7 +610,7 @@
 		"message": "Wykluczone domeny"
 	},
 	"excluded_domains_description": {
-		"message": "Dodaj domeny, lub subdomeny, jedn� na lini�, w powy�szym okienku. �adna strona znajduj�ca si� na tej li�cie nie aktywuje $MOSTLY_HARMLESS$.",
+		"message": "Dodaj domeny, lub subdomeny, jedną na linię, w powyższym okienku. Żadna strona znajdująca się na tej liście nie aktywuje $MOSTLY_HARMLESS$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
@@ -618,10 +618,10 @@
 		}
 	},
 	"excluded_regex": {
-		"message": "Cz�sto spotykane wyra�enia"
+		"message": "Często spotykane wyrażenia"
 	},
 	"excluded_regex_description": {
-		"message": "Dodaj tu cz�sto u�ywane wyra�enia, jedno na lini�, w powy�szym okienku. Ka�da strona kt�ra b�dzie je zawiera�a, nie b�dzie aktywowa� $MOSTLY_HARMLESS$.",
+		"message": "Dodaj tu często spotykane wyrażenia, jedno na linię, w powyższym okienku. Żadna strona która będzie je zawierać, nie będzie aktywować $MOSTLY_HARMLESS$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
