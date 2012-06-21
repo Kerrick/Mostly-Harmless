@@ -210,7 +210,7 @@
 		}
 	},
 	"submitted_num_times": {
-		"message": "Strona została dodana$NUM$ raz/razy",
+		"message": "Strona została dodana $NUM$ raz/razy",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
