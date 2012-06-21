@@ -10,7 +10,7 @@
 
 	},
 	"a_minute_from_now": {
-		"message": "Za minut�",
+		"message": "Za minutę",
 		"decription": "Describe that something will happen in a minute."
 	},
 	"minutes_ago": {
@@ -32,11 +32,11 @@
 		}
 	},
 	"an_hour_ago": {
-		"message": "Godzin� temu",
+		"message": "Godzinę temu",
 		"description": "Describe that something happened an hour ago."
 	},
 	"an_hour_from_now": {
-		"message": "Za godzin�",
+		"message": "Za godzinę",
 		"description": "Describe that will happen in an hour."
 	},
 	"hours_ago": {
@@ -49,7 +49,7 @@
 		}
 	},
 	"hours_from_now": {
-		"message": "Za $NUM$ godzin(�)",
+		"message": "Za $NUM$ godzin(ę)",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -75,7 +75,7 @@
 		}
 	},
 	"days_from_now": {
-		"message": "Za $NUM$ dzie�/dni",
+		"message": "Za $NUM$ dzień/dni",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -84,11 +84,11 @@
 		}
 	},
 	"last_week": {
-		"message": "Tydzie� temu",
+		"message": "Tydzień temu",
 		"description": "The week before this one."
 	},
 	"next_week": {
-		"message": "Za tydzie�",
+		"message": "Za tydzień",
 		"description": "The week after this one."
 	},
 	"weeks_ago": {
@@ -101,7 +101,7 @@
 		}
 	},
 	"weeks_from_now": {
-		"message": "Za $NUM$ tydzie�/tygodni",
+		"message": "Za $NUM$ tydzień/tygodni",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -110,15 +110,15 @@
 		}
 	},
 	"last_month": {
-		"message": "Miesi�c temu",
+		"message": "Miesiąc temu",
 		"description": "The month before this one."
 	},
 	"next_month": {
-		"message": "Za miesi�c",
+		"message": "Za miesiąc",
 		"description": "The month after this one."
 	},
 	"months_ago": {
-		"message": "$NUM$ miesi�c/miesi�cy temu",
+		"message": "$NUM$ miesięcy temu",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -127,7 +127,7 @@
 		}
 	},
 	"months_from_now": {
-		"message": "Za $NUM$ miesi�c/miesi�ce",
+		"message": "Za $NUM$ miesiące",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -144,7 +144,7 @@
 		"description": "The year after this one."
 	},
 	"years_ago": {
-		"message": "$NUM$ rok/lat temu",
+		"message": "$NUM$ lata temu",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -153,7 +153,7 @@
 		}
 	},
 	"years_from_now": {
-		"message": "Za $NUM$ rok/lat",
+		"message": "Za $NUM$ lata",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -166,11 +166,11 @@
 		"description": "The century before this one."
 	},
 	"next_century": {
-		"message": "W nast�pnym wieku",
+		"message": "W następnym wieku",
 		"description": "The century after this one."
 	},
 	"centuries_ago": {
-		"message": "$NUM$ wiek�w temu",
+		"message": "$NUM$ wieków temu",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -179,7 +179,7 @@
 		}
 	},
 	"centuries_from_now": {
-		"message": "Za $NUM$ wiek/wieki",
+		"message": "Za $NUM$ wieki",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -188,7 +188,7 @@
 		}
 	},
 	"not_activated": {
-		"message": "$APPNAME$ nie jest aktywna na tej stronie. Kliknij aby aktywowa�.",
+		"message": "$APPNAME$ nie jest aktywna na tej stronie. Kliknij aby aktywować.",
 		"placeholders": {
 			"APPNAME": {
 				"content": "Mostly Harmless"
@@ -196,13 +196,13 @@
 		}
 	},
 	"loading": {
-		"message": "�adowanie..."
+		"message": "Ładowanie..."
 	},
 	"viewing_comments": {
-		"message": "W tym momencie przegl�dasz komentarze do tej strony."
+		"message": "W tym momencie przeglądasz komentarze do tej strony."
 	},
 	"submit_page": {
-		"message": "Wrzu� na $REDDIT$.",
+		"message": "Wrzuć na $REDDIT$.",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -210,7 +210,7 @@
 		}
 	},
 	"submitted_num_times": {
-		"message": "Strona zosta�a dodana$NUM$ raz/razy",
+		"message": "Strona została dodana$NUM$ raz/razy",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -219,7 +219,7 @@
 		}
 	},
 	"login": {
-		"message": "Musisz si� zalogowa� aby to zrobi�. $BEGIN_LINK$Kliknij aby si� zalogowa�.$END_LINK$",
+		"message": "Musisz się zalogować aby to zrobić. $BEGIN_LINK$Kliknij aby się zalogować.$END_LINK$",
 		"placeholders": {
 			"BEGIN_LINK": {
 				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
@@ -230,7 +230,7 @@
 		}
 	},
 	"api_error": {
-		"message": "Ups, wyst�pi� b��d API. Status HTTP: $STATUS$. Kliknij aby spr�bowa� ponownie.",
+		"message": "Ups, wystąpił błąd API. Status HTTP: $STATUS$. Kliknij aby spróbować ponownie.",
 		"placeholders": {
 			"STATUS": {
 				"content": "$1",
@@ -239,7 +239,7 @@
 		}
 	},
 	"api_timeout": {
-		"message": "API przekroczy�o czas oczekiwania po $NUM$ sekundach. Kliknij aby spr�bowa� ponownie.",
+		"message": "Przekroczono czas oczekiwania na API po $NUM$ sekundach. Kliknij aby spróbować ponownie.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -248,7 +248,7 @@
 		}
 	},
 	"action_unsave": {
-		"message": "usu�"
+		"message": "usuń"
 	},
 	"action_save": {
 		"message": "zapisz"
@@ -260,10 +260,10 @@
 		"message": "ukryj"
 	},
 	"action_share": {
-		"message": "podziel si�"
+		"message": "podziel się"
 	},
 	"report_confirm": {
-		"message": "jeste� pewien? $BEGIN_LINK_YES$yes$END_LINK_YES$/$BEGIN_LINK_NO$no$END_LINK_NO$",
+		"message": "jesteś pewien? $BEGIN_LINK_YES$Tak$END_LINK_YES$/$BEGIN_LINK_NO$Nie$END_LINK_NO$",
 		"placeholders": {
 			"BEGIN_LINK_YES": {
 				"content": "<a onclick=\"reddit.reportPost(event)\">"
@@ -280,10 +280,10 @@
 		}
 	},
 	"action_report": {
-		"message": "zg�o�"
+		"message": "zgłoś"
 	},
 	"action_reported": {
-		"message": "zg�oszone!"
+		"message": "zgłoszone!"
 	},
 	"button_submit": {
 		"message": "dodaj"
@@ -295,22 +295,22 @@
 		"message": "dodaj jeszcze raz"
 		},
 	"cancel_submission": {
-		"message": "usu� znalezisko"
+		"message": "usuń znalezisko"
 	},
 	"error_empty": {
-		"message": "Musisz tu co� wstawi� :("
+		"message": "Musisz tu coś wstawić :("
 	},
 	"loading_api": {
-		"message": "�adowanie danych z API..."
+		"message": "Ładowanie danych z API..."
 	},
 	"loading_cache": {
-		"message": "�adowanie danych z cache..."
+		"message": "Ładowanie danych z cache..."
 	},
 	"error_not_cached": {
-		"message": "nie mo�na stworzy� listy dla nieskatalogowanego linku."
+		"message": "nie można stworzyć listy dla nieskatalogowanego linku."
 	},
 	"score": {
-		"message": "$UPS$ g�rg�osy, $DOWNS$ d��g�osy.",
+		"message": "$UPS$ górgłosy, $DOWNS$ dółgłosy.",
 		"placeholders": {
 			"UPS": {
 				"content": "$1",
@@ -364,7 +364,7 @@
 		"message": "Zostaw komentarz"
 	},
 	"stale_posts_hiding": {
-		"message": "Ukrywanie $NUM$ nieaktywnych post�w. $BEGIN_LINK_SHOW$Poka�$END_LINK_SHOW$, albo odwied� $BEGIN_LINK_OPTIONS$opcje$END_LINK_OPTIONS$ �eby zmieni� swoje opcje zawarto�ci.",
+		"message": "Ukrywanie $NUM$ nieaktywnych postów. $BEGIN_LINK_SHOW$Pokaż$END_LINK_SHOW$, albo odwiedź $BEGIN_LINK_OPTIONS$opcje$END_LINK_OPTIONS$ żeby zmienić swoje ustawienia zawartości.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -385,7 +385,7 @@
 		}
 	},
 	"stale_posts_showing": {
-		"message": "Pokazywanie nieaktywnych post�w. Odwied� $BEGIN_LINK_OPTIONS$opcje$END_LINK_OPTIONS$ �eby zmieni� swoje opcje zawarto�ci.",
+		"message": "Pokazywanie nieaktywnych postów. Odwiedź $BEGIN_LINK_OPTIONS$opcje$END_LINK_OPTIONS$ żeby zmienić swoje ustawienia treści.",
 		"placeholders": {
 			"BEGIN_LINK_OPTIONS": {
 				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
@@ -404,7 +404,7 @@
 		}
 	},
 	"orangered_action": {
-		"message": "Kliknij �eby przej�� do odebranych"
+		"message": "Kliknij żeby przejść do odebranych"
 	},
 	"url": {
 		"message": "url"
@@ -413,22 +413,22 @@
 		"message": "popularne opcje"
 	},
 	"title": {
-		"message": "tytu�"
+		"message": "tytuł"
 	},
 	"suggest_title": {
-		"message": "zasugeruj tytu�"
+		"message": "zasugeruj tytuł"
 	},
 	"tab_preferences": {
 		"message": "opcje"
 	},
 	"group_fresh_content": {
-		"message": "�wie�a zawarto��"
+		"message": "nowe treści"
 	},
 	"fresh_content_show_one_day": {
 		"message": "Pokazuj tylko dzisiejsze posty."
 	},
 	"fresh_content_show_days": {
-		"message": "Pokazuj posty �wie�sze ni� $NUM$ dni.",
+		"message": "Pokazuj posty nowsze niż $NUM$ dni.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -437,7 +437,7 @@
 		}
 	},
 	"fresh_content_show_weeks": {
-		"message": "Pokazuj posty �wie�sze ni� $NUM$ tygodni",
+		"message": "Pokazuj posty nowsze niż $NUM$ tygodni",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -446,7 +446,7 @@
 		}
 	},
 	"fresh_content_show_months": {
-		"message": "Pokazuj posty �wie�sze ni� $NUM$ miesi�cy.",
+		"message": "Pokazuj posty nowsze niż $NUM$ miesięcy.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
