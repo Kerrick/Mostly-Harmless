@@ -455,25 +455,25 @@
 		}
 	},
 	"fresh_content_show_all": {
-		"message": "Poka� wszystkie posty."
+		"message": "Pokaż wszystkie posty."
 	},
 	"fresh_content_description": {
-		"message": "Ta opcja pozwala ci wybra� najstarsze posty kt�re chcesz zobaczy�. Wszystkie posty przed warto�ci� kt�r� wybra�e�, b�d� pokazywane w przycisku w przegl�darce, ale nie b�dziesz ich widzia� w wyskakuj�cym okienku."
+		"message": "Ta opcja pozwala ci wybrać najstarsze posty które chcesz zobaczyć. Wszystkie posty przed wartością którą wybrałeś, będą pokazywane w przycisku w przeglądarce, ale nie będziesz ich widział w wyskakującym okienku."
 	},
 	"group_popup_width": {
-		"message": "Szeroko�� okienka"
+		"message": "Szerokość okienka"
 	},
 	"popup_width_description": {
-		"message": "Ta opcja pozwala ci zmieni� szeroko�� okienka"
+		"message": "Ta opcja pozwala ci zmienić szerokość okienka"
 	},
 	"group_shameless_plug": {
-		"message": "Bezwstydny wtyk"
+		"message": "Spam"
 	},
 	"shameless_plug_label": {
-		"message": "Poka� bezwstydny wtyk"
+		"message": "Pokaż spam"
 	},
 	"shameless_plug_description": {
-		"message": "gdy zaznaczone, doda zaznaczenie do ka�dego komentarza w przedziale$MOSTLY_HARMLESS$:$PLUG_TEXT$",
+		"message": "Gdy aktywne, doda zaznaczone do każdego komentarza w przedziale$MOSTLY_HARMLESS$:$PLUG_TEXT$",
 		"placeholders": {
 			"PLUG_TEXT": {
 				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
@@ -493,7 +493,7 @@
 		}
 	},
 	"orangered_check": {
-		"message": "Sprawd� $ORANGERED$",
+		"message": "Sprawdź $ORANGERED$",
 		"placeholders": {
 			"ORANGERED": {
 				"content": "orangered"
@@ -501,7 +501,7 @@
 		}
 	},
 	"orangered_sound_label": {
-		"message": "Powiadamiaj mnie d�wi�kowo gdy dostan� $ORANGERED$",
+		"message": "Powiadamiaj mnie dźwiękowo gdy dostanę $ORANGERED$",
 		"placeholders": {
 			"ORANGERED": {
 				"content": "orangered"
@@ -509,10 +509,10 @@
 		}
 	},
 	"orangered_sound_preview": {
-		"message": "Pos�uchaj d�wi�ku powiadomie�"
+		"message": "Posłuchaj dźwięku powiadomień"
 	},
 	"orangered_interval_minutes": {
-		"message": "Sprawdzaj co $NUM$ minut�",
+		"message": "Sprawdzaj co $NUM$ minut",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -521,7 +521,7 @@
 		}
 	},
 	"orangered_display_time": {
-		"message": "Wy�wietlaj powiadomienie przez $NUM$ sekund",
+		"message": "Wyświetlaj powiadomienie przez $NUM$ sekund",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -530,7 +530,7 @@
 		}
 	},
 	"orangered_description": {
-		"message": "Gdy zaznaczone, $MOSTLY_HARMLESS$ b�dzie sprawdza� czy nie ma $ORANGERED$ co ustawiony przez ciebie czas. Je�li dostaniesz $ORANGERED$, b�dzie wy�wietla� powiadomienie na pulpicie do czasu a� go nie zamkniesz, albo do czasu gdy $MOSTLY_HARMLESS$ sprawdzi raz jeszcze, i oka�e si� �e nie masz �adnej $ORANGERED$.",
+		"message": "Gdy zaznaczone, $MOSTLY_HARMLESS$ będzie sprawdzał czy nie ma $ORANGERED$ co ustawiony przez ciebie czas. Jeśli dostaniesz $ORANGERED$, $MOSTLY_HARMLESS$ będzie wyświetlał powiadomienie na pulpicie do czasu aż go nie zamkniesz, albo do czasu gdy $MOSTLY_HARMLESS$ sprawdzi raz jeszcze, i okaże się że nie masz żadnej $ORANGERED$.",
 		"placeholders": {
 			"MOSTLY_HARMLESS": {
 				"content": "Mostly Harmless"
@@ -541,13 +541,13 @@
 		}
 	},
 	"tab_performance": {
-		"message":  "Dzia�anie"
+		"message":  "Działanie"
 	},
 	"group_cache_time": {
 		"message": "Czas buforowania"
 	},
 	"cache_time_one_minute": {
-		"message": "Buforuj przez minut�"
+		"message": "Buforuj przez minutę"
 	},
 	"cache_time_minutes": {
 		"message": "Buforuj przez $NUM$ minut",
@@ -559,7 +559,7 @@
 		}
 	},
 	"cache_time_description": {
-		"message": "Dane z API $REDDIT$ mog� by� zbuforowane, albo zapisane na pewien czas, �eby przy�pieszy� dzia�anie. D�u�szy czas buforowania oznacza mniejsze zu�ycie ��cza, szybsze rezultaty, oraz kr�tszy czas �adowania $REDDIT$. Kr�tszy czas buforowania natomiast, zapewnia ci �wie�sze wyniki.",
+		"message": "Dane z API $REDDIT$ mogą być zbuforowane, albo zapisane na pewien czas, żeby przyśpieszyć działanie. Dłuższy czas buforowania powoduje mniejsze zużycie łącza, szybsze otrzymywanie rezultatów, oraz krótszy czas ładowania $REDDIT$. Krótszy czas buforowania natomiast, zapewnia ci nowsze wyniki.",
 		"placeholders": {
 			"REDDIT": {
 				"content": "reddit"
@@ -570,7 +570,7 @@
 		"message": "Limit czasu"
 	},
 	"timeout_length_seconds": {
-		"message": "Przekroczenie czasu oczekiwania po $NUM$, wyrzu� b��d.",
+		"message": "Przekroczenie czasu oczekiwania po $NUM$, wyrzuć błąd.",
 		"placeholders": {
 			"NUM": {
 				"content": "$1",
@@ -579,7 +579,7 @@
 		}
 	},
 	"timeout_length_never": {
-		"message": "Nie pokazuj informacji o przekroczeniu czasu, pokazuj b��dy tylko gdy API nie dzia�a."
+		"message": "Nie pokazuj informacji o przekroczeniu czasu, pokazuj błędy tylko gdy API nie działa."
 	},
 	"timeout_length_description": {
 		"message": "Je�eli $REDDIT$ API dzia�a wolno, lub pad�o ca�kowicie, $MOSTLY_HARMLESS$ mo�e wyrzuci� b��d gdy pr�buje po��czy� si� z API po pewnym czasie. Wi�kszy limit czasu zwi�ksza czas oczekiwania na rezultaty z $REDDIT$ API. Mniejszy limit czasu oznacza wi�ksz� mo�liwo�� wysypania si� gdy $REDDIT$ dzia�a wolno, ale jednak.",
