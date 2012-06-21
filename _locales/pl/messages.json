@@ -1,0 +1,631 @@
+{
+	"just_now": {
+		"message": "Przed chwil¹",
+		"description": "Describe that something just happened."
+
+	},
+	"a_minute_ago": {
+		"message": "Minutê temu",
+		"description": "Describe that something happened a minute ago."
+
+	},
+	"a_minute_from_now": {
+		"message": "Za minutê",
+		"decription": "Describe that something will happen in a minute."
+	},
+	"minutes_ago": {
+		"message": "$NUM$ minut temu",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"minutes_from_now": {
+		"message": "Za $NUM$ minut",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"an_hour_ago": {
+		"message": "Godzinê temu",
+		"description": "Describe that something happened an hour ago."
+	},
+	"an_hour_from_now": {
+		"message": "Za godzinê",
+		"description": "Describe that will happen in an hour."
+	},
+	"hours_ago": {
+		"message": "$NUM$ godzin temu",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"hours_from_now": {
+		"message": "Za $NUM$ godzin(ê)",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"yesterday": {
+		"message": "Wczoraj",
+		"description": "The day before today."
+	},
+	"tomorrow": {
+		"message": "Jutro",
+		"description": "The day after today."
+	},
+	"days_ago": {
+		"message": "$NUM$ dni temu",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"days_from_now": {
+		"message": "Za $NUM$ dzieñ/dni",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_week": {
+		"message": "Tydzieñ temu",
+		"description": "The week before this one."
+	},
+	"next_week": {
+		"message": "Za tydzieñ",
+		"description": "The week after this one."
+	},
+	"weeks_ago": {
+		"message": "$NUM$ tygodni temu",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"weeks_from_now": {
+		"message": "Za $NUM$ tydzieñ/tygodni",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_month": {
+		"message": "Miesi¹c temu",
+		"description": "The month before this one."
+	},
+	"next_month": {
+		"message": "Za miesi¹c",
+		"description": "The month after this one."
+	},
+	"months_ago": {
+		"message": "$NUM$ miesi¹c/miesiêcy temu",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"months_from_now": {
+		"message": "Za $NUM$ miesi¹c/miesi¹ce",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_year": {
+		"message": "Rok temu",
+		"description": "The year before this one."
+	},
+	"next_year": {
+		"message": "Za rok",
+		"description": "The year after this one."
+	},
+	"years_ago": {
+		"message": "$NUM$ rok/lat temu",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"years_from_now": {
+		"message": "Za $NUM$ rok/lat",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_century": {
+		"message": "Wiek temu",
+		"description": "The century before this one."
+	},
+	"next_century": {
+		"message": "W nastêpnym wieku",
+		"description": "The century after this one."
+	},
+	"centuries_ago": {
+		"message": "$NUM$ wieków temu",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"centuries_from_now": {
+		"message": "Za $NUM$ wiek/wieki",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"not_activated": {
+		"message": "$APPNAME$ nie jest aktywna na tej stronie. Kliknij aby aktywowaæ.",
+		"placeholders": {
+			"APPNAME": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"loading": {
+		"message": "£adowanie..."
+	},
+	"viewing_comments": {
+		"message": "W tym momencie przegl¹dasz komentarze do tej strony."
+	},
+	"submit_page": {
+		"message": "Wrzuæ na $REDDIT$.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_num_times": {
+		"message": "Strona zosta³a dodana$NUM$ raz/razy",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"login": {
+		"message": "Musisz siê zalogowaæ aby to zrobiæ. $BEGIN_LINK$Kliknij aby siê zalogowaæ.$END_LINK$",
+		"placeholders": {
+			"BEGIN_LINK": {
+				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
+			},
+			"END_LINK": {
+				"content": "</a>"
+			}
+		}
+	},
+	"api_error": {
+		"message": "Ups, wyst¹pi³ b³¹d API. Status HTTP: $STATUS$. Kliknij aby spróbowaæ ponownie.",
+		"placeholders": {
+			"STATUS": {
+				"content": "$1",
+				"example": "504"
+			}
+		}
+	},
+	"api_timeout": {
+		"message": "API przekroczy³o czas oczekiwania po $NUM$ sekundach. Kliknij aby spróbowaæ ponownie.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"action_unsave": {
+		"message": "usuñ"
+	},
+	"action_save": {
+		"message": "zapisz"
+	},
+	"action_unhide": {
+		"message": "odkryj"
+	},
+	"action_hide": {
+		"message": "ukryj"
+	},
+	"action_share": {
+		"message": "podziel siê"
+	},
+	"report_confirm": {
+		"message": "jesteœ pewien? $BEGIN_LINK_YES$yes$END_LINK_YES$/$BEGIN_LINK_NO$no$END_LINK_NO$",
+		"placeholders": {
+			"BEGIN_LINK_YES": {
+				"content": "<a onclick=\"reddit.reportPost(event)\">"
+			},
+			"END_LINK_YES": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_NO": {
+				"content": "<a onclick=\"reddit.denyReport(event)\">"
+			},
+			"END_LINK_NO": {
+				"content": "</a>"
+			}
+		}
+	},
+	"action_report": {
+		"message": "zg³oœ"
+	},
+	"action_reported": {
+		"message": "zg³oszone!"
+	},
+	"button_submit": {
+		"message": "dodaj"
+	},
+	"button_hide": {
+		"message": "ukryj formularz"
+	},
+	"submit_again": {
+		"message": "dodaj jeszcze raz"
+		},
+	"cancel_submission": {
+		"message": "usuñ znalezisko"
+	},
+	"error_empty": {
+		"message": "Musisz tu coœ wstawiæ :("
+	},
+	"loading_api": {
+		"message": "£adowanie danych z API..."
+	},
+	"loading_cache": {
+		"message": "£adowanie danych z cache..."
+	},
+	"error_not_cached": {
+		"message": "nie mo¿na stworzyæ listy dla nieskatalogowanego linku."
+	},
+	"score": {
+		"message": "$UPS$ górg³osy, $DOWNS$ dó³g³osy.",
+		"placeholders": {
+			"UPS": {
+				"content": "$1",
+				"example": "435"
+			},
+			"DOWNS": {
+				"content": "$2",
+				"example": "243"
+			}
+		}
+	},
+	"view_on_reddit": {
+		"message": "zobacz post na $REDDIT$",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_when": {
+		"message": "dodane $TIME$ razy",
+		"placeholders": {
+			"TIME": {
+				"content": "$1",
+				"example": "an hour ago"
+			}
+		}
+	},
+	"by": {
+		"message": "przez"
+	},
+	"to": {
+		"message": "do"
+	},
+	"add_comment_zero": {
+		"message": "dodaj komentarz"
+	},
+	"add_comment_one": {
+		"message": "dodaj do jednego komentarza"
+	},
+	"add_comment_many": {
+		"message": "dodaj do $NUM$ komentarzy",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "42"
+			}
+		}
+	},
+	"leave_comment": {
+		"message": "Zostaw komentarz"
+	},
+	"stale_posts_hiding": {
+		"message": "Ukrywanie $NUM$ nieaktywnych postów. $BEGIN_LINK_SHOW$Poka¿$END_LINK_SHOW$, albo odwiedŸ $BEGIN_LINK_OPTIONS$opcje$END_LINK_OPTIONS$ ¿eby zmieniæ swoje opcje zawartoœci.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			},
+			"BEGIN_LINK_SHOW": {
+				"content": "<a onclick=\"popup.showStalePosts()\">"
+			},
+			"END_LINK_SHOW": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"stale_posts_showing": {
+		"message": "Pokazywanie nieaktywnych postów. OdwiedŸ $BEGIN_LINK_OPTIONS$opcje$END_LINK_OPTIONS$ ¿eby zmieniæ swoje opcje zawartoœci.",
+		"placeholders": {
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"orangered_received": {
+		"message": "Masz $ORANGERED$!",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_action": {
+		"message": "Kliknij ¿eby przejœæ do odebranych"
+	},
+	"url": {
+		"message": "url"
+	},
+	"popular_choices": {
+		"message": "popularne opcje"
+	},
+	"title": {
+		"message": "tytu³"
+	},
+	"suggest_title": {
+		"message": "zasugeruj tytu³"
+	},
+	"tab_preferences": {
+		"message": "opcje"
+	},
+	"group_fresh_content": {
+		"message": "œwie¿a zawartoœæ"
+	},
+	"fresh_content_show_one_day": {
+		"message": "Pokazuj tylko dzisiejsze posty."
+	},
+	"fresh_content_show_days": {
+		"message": "Pokazuj posty œwie¿sze ni¿ $NUM$ dni.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_weeks": {
+		"message": "Pokazuj posty œwie¿sze ni¿ $NUM$ tygodni",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_months": {
+		"message": "Pokazuj posty œwie¿sze ni¿ $NUM$ miesiêcy.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_all": {
+		"message": "Poka¿ wszystkie posty."
+	},
+	"fresh_content_description": {
+		"message": "Ta opcja pozwala ci wybraæ najstarsze posty które chcesz zobaczyæ. Wszystkie posty przed wartoœci¹ któr¹ wybra³eœ, bêd¹ pokazywane w przycisku w przegl¹darce, ale nie bêdziesz ich widzia³ w wyskakuj¹cym okienku."
+	},
+	"group_popup_width": {
+		"message": "Szerokoœæ okienka"
+	},
+	"popup_width_description": {
+		"message": "Ta opcja pozwala ci zmieniæ szerokoœæ okienka"
+	},
+	"group_shameless_plug": {
+		"message": "Bezwstydny wtyk"
+	},
+	"shameless_plug_label": {
+		"message": "Poka¿ bezwstydny wtyk"
+	},
+	"shameless_plug_description": {
+		"message": "gdy zaznaczone, doda zaznaczenie do ka¿dego komentarza w przedziale$MOSTLY_HARMLESS$:$PLUG_TEXT$",
+		"placeholders": {
+			"PLUG_TEXT": {
+				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+
+	},
+	"group_orangered_notifications": {
+		"message": "$ORANGERED$ Powiadomienia",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_check": {
+		"message": "SprawdŸ $ORANGERED$",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_label": {
+		"message": "Powiadamiaj mnie dŸwiêkowo gdy dostanê $ORANGERED$",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_preview": {
+		"message": "Pos³uchaj dŸwiêku powiadomieñ"
+	},
+	"orangered_interval_minutes": {
+		"message": "Sprawdzaj co $NUM$ minutê",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_display_time": {
+		"message": "Wyœwietlaj powiadomienie przez $NUM$ sekund",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_description": {
+		"message": "Gdy zaznaczone, $MOSTLY_HARMLESS$ bêdzie sprawdza³ czy nie ma $ORANGERED$ co ustawiony przez ciebie czas. Jeœli dostaniesz $ORANGERED$, bêdzie wyœwietla³ powiadomienie na pulpicie do czasu a¿ go nie zamkniesz, albo do czasu gdy $MOSTLY_HARMLESS$ sprawdzi raz jeszcze, i oka¿e siê ¿e nie masz ¿adnej $ORANGERED$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			},
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"tab_performance": {
+		"message":  "Dzia³anie"
+	},
+	"group_cache_time": {
+		"message": "Czas buforowania"
+	},
+	"cache_time_one_minute": {
+		"message": "Buforuj przez minutê"
+	},
+	"cache_time_minutes": {
+		"message": "Buforuj przez $NUM$ minut",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"cache_time_description": {
+		"message": "Dane z API $REDDIT$ mog¹ byæ zbuforowane, albo zapisane na pewien czas, ¿eby przyœpieszyæ dzia³anie. D³u¿szy czas buforowania oznacza mniejsze zu¿ycie ³¹cza, szybsze rezultaty, oraz krótszy czas ³adowania $REDDIT$. Krótszy czas buforowania natomiast, zapewnia ci œwie¿sze wyniki.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"group_timeout_length": {
+		"message": "Limit czasu"
+	},
+	"timeout_length_seconds": {
+		"message": "Przekroczenie czasu oczekiwania po $NUM$, wyrzuæ b³¹d.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"timeout_length_never": {
+		"message": "Nie pokazuj informacji o przekroczeniu czasu, pokazuj b³êdy tylko gdy API nie dzia³a."
+	},
+	"timeout_length_description": {
+		"message": "Je¿eli $REDDIT$ API dzia³a wolno, lub pad³o ca³kowicie, $MOSTLY_HARMLESS$ mo¿e wyrzuciæ b³¹d gdy próbuje po³¹czyæ siê z API po pewnym czasie. Wiêkszy limit czasu zwiêksza czas oczekiwania na rezultaty z $REDDIT$ API. Mniejszy limit czasu oznacza wiêksz¹ mo¿liwoœæ wysypania siê gdy $REDDIT$ dzia³a wolno, ale jednak.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"tab_privacy": {
+		"message": "Prywatnoœæ"
+	},
+	"group_wait_for_click": {
+		"message": "zaczekaj aby klikn¹æ"
+	},
+	"wait_for_click_description": {
+		"message": "Jeœli zaznaczone, $MOSTLY_HARMLESS$ nie aktywuje siê do czasu naciœniêcia ikonki.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_domains": {
+		"message": "Wykluczone domeny"
+	},
+	"excluded_domains_description": {
+		"message": "Dodaj domeny, lub subdomeny, jedn¹ na liniê, w powy¿szym okienku. ¯adna strona znajduj¹ca siê na tej liœcie nie aktywuje $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_regex": {
+		"message": "Czêsto spotykane wyra¿enia"
+	},
+	"excluded_regex_description": {
+		"message": "Dodaj tu czêsto u¿ywane wyra¿enia, jedno na liniê, w powy¿szym okienku. Ka¿da strona która bêdzie je zawiera³a, nie bêdzie aktywowaæ $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	}
+}
