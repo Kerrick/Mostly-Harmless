@@ -11,7 +11,7 @@ found and forked at https://github.com/frankkohlhepp/fancy-settings/ on Github.
 
 The following license applies to all other files unless noted within the file:
 
-Copyright (C) 2011 by Kerrick Long
+Copyright (C) 2011-2013 by Kerrick Long
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
