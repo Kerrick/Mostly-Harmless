@@ -1,0 +1,631 @@
+{
+	"just_now": {
+		"message": "Agora",
+		"description": "Describe that something just happened."
+
+	},
+	"a_minute_ago": {
+		"message": "Um minuto atrás",
+		"description": "Describe that something happened a minute ago."
+
+	},
+	"a_minute_from_now": {
+		"message": "Em um minuto",
+		"decription": "Describe that something will happen in a minute."
+	},
+	"minutes_ago": {
+		"message": "$NUM$ minutos atrás",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"minutes_from_now": {
+		"message": "Em $NUM$ minutos",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"an_hour_ago": {
+		"message": "Uma hora atrás",
+		"description": "Describe that something happened an hour ago."
+	},
+	"an_hour_from_now": {
+		"message": "Em uma hora",
+		"description": "Describe that will happen in an hour."
+	},
+	"hours_ago": {
+		"message": "$NUM$ horas atrás",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"hours_from_now": {
+		"message": "Em $NUM$ horas",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"yesterday": {
+		"message": "Ontem",
+		"description": "The day before today."
+	},
+	"tomorrow": {
+		"message": "Amanhã",
+		"description": "The day after today."
+	},
+	"days_ago": {
+		"message": "$NUM$ dias atrás",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"days_from_now": {
+		"message": "Em $NUM$ dias",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_week": {
+		"message": "Semana passada",
+		"description": "The week before this one."
+	},
+	"next_week": {
+		"message": "Semana que vem",
+		"description": "The week after this one."
+	},
+	"weeks_ago": {
+		"message": "$NUM$ semanas atrás",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"weeks_from_now": {
+		"message": "Em $NUM$ semanas",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_month": {
+		"message": "Mês passado",
+		"description": "The month before this one."
+	},
+	"next_month": {
+		"message": "Mês que vem",
+		"description": "The month after this one."
+	},
+	"months_ago": {
+		"message": "$NUM$ meses atrás",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"months_from_now": {
+		"message": "Em $NUM$ meses",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_year": {
+		"message": "Ano passado",
+		"description": "The year before this one."
+	},
+	"next_year": {
+		"message": "Ano que vem",
+		"description": "The year after this one."
+	},
+	"years_ago": {
+		"message": "$NUM$ anos atrás",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"years_from_now": {
+		"message": "Em $NUM$ anos",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"last_century": {
+		"message": "Século passado",
+		"description": "The century before this one."
+	},
+	"next_century": {
+		"message": "Século que vem",
+		"description": "The century after this one."
+	},
+	"centuries_ago": {
+		"message": "$NUM$ seculos atrás",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"centuries_from_now": {
+		"message": "Em $NUM$ séculos",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example" : "4"
+			}
+		}
+	},
+	"not_activated": {
+		"message": "$APPNAME$ não está ativado nesta página. Clique aqui para ativar.",
+		"placeholders": {
+			"APPNAME": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"loading": {
+		"message": "Carregando..."
+	},
+	"viewing_comments": {
+		"message": "Você está visualizando os comentários para esta página."
+	},
+	"submit_page": {
+		"message": "Enviar esta pagina para o $REDDIT$.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_num_times": {
+		"message": "Esta página foi enviada $NUM$ vez(es)",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"login": {
+		"message": "Você deve estar logado para fazer isso. $BEGIN_LINK$Clique para abrir a página de login.$END_LINK$",
+		"placeholders": {
+			"BEGIN_LINK": {
+				"content": "<a href=\"http://www.reddit.com/login\" target=\"_blank\">"
+			},
+			"END_LINK": {
+				"content": "</a>"
+			}
+		}
+	},
+	"api_error": {
+		"message": "Há um erro na API. Status do HTTP: $STATUS$. Clique para tentar novamente.",
+		"placeholders": {
+			"STATUS": {
+				"content": "$1",
+				"example": "504"
+			}
+		}
+	},
+	"api_timeout": {
+		"message": "O tempo da API se esgotou após $NUM$ segundos. Clique para tentar novamente.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"action_unsave": {
+		"message": "descartar"
+	},
+	"action_save": {
+		"message": "salvar"
+	},
+	"action_unhide": {
+		"message": "mostrar"
+	},
+	"action_hide": {
+		"message": "esconder"
+	},
+	"action_share": {
+		"message": "compartilhar"
+	},
+	"report_confirm": {
+		"message": "você tem certeza? $BEGIN_LINK_YES$sim$END_LINK_YES$/$BEGIN_LINK_NO$não$END_LINK_NO$",
+		"placeholders": {
+			"BEGIN_LINK_YES": {
+				"content": "<a onclick=\"reddit.reportPost(event)\">"
+			},
+			"END_LINK_YES": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_NO": {
+				"content": "<a onclick=\"reddit.denyReport(event)\">"
+			},
+			"END_LINK_NO": {
+				"content": "</a>"
+			}
+		}
+	},
+	"action_report": {
+		"message": "reportar"
+	},
+	"action_reported": {
+		"message": "reportado!"
+	},
+	"button_submit": {
+		"message": "enviar"
+	},
+	"button_hide": {
+		"message": "esconder formulário"
+	},
+	"submit_again": {
+		"message": "enviar novamente"
+		},
+	"cancel_submission": {
+		"message": "cancelar envio"
+	},
+	"error_empty": {
+		"message": "É necessário que tenha algo aqui."
+	},
+	"loading_api": {
+		"message": "Carregando informação da API..."
+	},
+	"loading_cache": {
+		"message": "Carregando informação do cache..."
+	},
+	"error_not_cached": {
+		"message": "Não é possível criar lista para um URL que não foi carregado no cache."
+	},
+	"score": {
+		"message": "$UPS$ upvotes, $DOWNS$ downvotes.",
+		"placeholders": {
+			"UPS": {
+				"content": "$1",
+				"example": "435"
+			},
+			"DOWNS": {
+				"content": "$2",
+				"example": "243"
+			}
+		}
+	},
+	"view_on_reddit": {
+		"message": "Ver este post no $REDDIT$",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"submitted_when": {
+		"message": "enviado $TIME$",
+		"placeholders": {
+			"TIME": {
+				"content": "$1",
+				"example": "an hour ago"
+			}
+		}
+	},
+	"by": {
+		"message": "por"
+	},
+	"to": {
+		"message": "para"
+	},
+	"add_comment_zero": {
+		"message": "adicionar comentário"
+	},
+	"add_comment_one": {
+		"message": "adicionar comentário ao primeiro comentário"
+	},
+	"add_comment_many": {
+		"message": "comentar aos $NUM$ comentários",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "42"
+			}
+		}
+	},
+	"leave_comment": {
+		"message": "Comentar"
+	},
+	"stale_posts_hiding": {
+		"message": "Escondendo $NUM$ postagens obsoletas. $BEGIN_LINK_SHOW$Mostrar agora$END_LINK_SHOW$, ou visite $BEGIN_LINK_OPTIONS$a página de opções$END_LINK_OPTIONS$ para alterar suas preferências.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			},
+			"BEGIN_LINK_SHOW": {
+				"content": "<a onclick=\"popup.showStalePosts()\">"
+			},
+			"END_LINK_SHOW": {
+				"content": "</a>"
+			},
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"stale_posts_showing": {
+		"message": "Mostrando postagens obsoletas. Visite $BEGIN_LINK_OPTIONS$a página de opções$END_LINK_OPTIONS$ para alterar suas preferências.",
+		"placeholders": {
+			"BEGIN_LINK_OPTIONS": {
+				"content": "<a target=\"_blank\" href=\"/fancy-settings/index.html\">"
+			},
+			"END_LINK_OPTIONS": {
+				"content": "</a>"
+			}
+		}
+	},
+	"orangered_received": {
+		"message": "Você tem uma $ORANGERED$!",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "mensagem"
+			}
+		}
+	},
+	"orangered_action": {
+		"message": "Clique aqui para ir a sua caixa de entrada."
+	},
+	"url": {
+		"message": "url"
+	},
+	"popular_choices": {
+		"message": "escolhas populares"
+	},
+	"title": {
+		"message": "título"
+	},
+	"suggest_title": {
+		"message": "título sugerido"
+	},
+	"tab_preferences": {
+		"message": "Preferências"
+	},
+	"group_fresh_content": {
+		"message": "Conteúdo novo"
+	},
+	"fresh_content_show_one_day": {
+		"message": "Apenas mostrar postagens de hoje."
+	},
+	"fresh_content_show_days": {
+		"message": "Apenas mostrar postagens com menos de $NUM$ dias.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_weeks": {
+		"message": "Apenas mostrar postagens com menos de $NUM$ semanas.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_months": {
+		"message": "Apenas mostrar postagens com menos de $NUM$ meses.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"fresh_content_show_all": {
+		"message": "Mostrar postagens desde sempre."
+	},
+	"fresh_content_description": {
+		"message": "Essa configuração permite que você escolha as postagens mais antigas que você queira ver. Qualquer coisa postada antes do valor que você escolheu será exibida no botão do browser, mas não será exibida no pop-up."
+	},
+	"group_popup_width": {
+		"message": "Largura do pop-up"
+	},
+	"popup_width_description": {
+		"message": "Essa configuração permite que você configura a largura do pop-up"
+	},
+	"group_shameless_plug": {
+		"message": "Propaganda"
+	},
+	"shameless_plug_label": {
+		"message": "Mostrar propaganda"
+	},
+	"shameless_plug_description": {
+		"message": "Quando marcada, adicionará o seguinte a todos os comentários que você postar pelo $MOSTLY_HARMLESS$:$PLUG_TEXT$",
+		"placeholders": {
+			"PLUG_TEXT": {
+				"content": "<br /><br /><em>Posted from <a href='http://kerrick.github.com/Mostly-Harmless'>Mostly Harmless</a>, a Google Chrome extension for awesome redditors.<em>"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+
+	},
+	"group_orangered_notifications": {
+		"message": "$ORANGERED$ Notificações",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_check": {
+		"message": "Procurar por $ORANGERED$",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_label": {
+		"message": "Tocar um som quando receber uma $ORANGERED$",
+		"placeholders": {
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"orangered_sound_preview": {
+		"message": "Pré-visualizar o som"
+	},
+	"orangered_interval_minutes": {
+		"message": "Procurar a cada $NUM$ minutos",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_display_time": {
+		"message": "Mostrar a notificação por $NUM$ segundos",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"orangered_description": {
+		"message": "Quando marcado, $MOSTLY_HARMLESS$ vai checar por novas $ORANGERED$ no intervalo que você definir. Se você receber uma $ORANGERED$, $MOSTLY_HARMLESS$ vai exibir uma notificação até que você clique ou feche a mesma, ou até que o $MOSTLY_HARMLESS$ cheque novamente e você não tenha mais $ORANGERED$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			},
+			"ORANGERED": {
+				"content": "orangered"
+			}
+		}
+	},
+	"tab_performance": {
+		"message":  "Performance"
+	},
+	"group_cache_time": {
+		"message": "Tempo de Cache"
+	},
+	"cache_time_one_minute": {
+		"message": "Cache para um minuto"
+	},
+	"cache_time_minutes": {
+		"message": "Cache para $NUM$ minutos",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "4"
+			}
+		}
+	},
+	"cache_time_description": {
+		"message": "Informação do API do $REDDIT$ pode estar no cache ou ser salva por um curto período para melhorar a performance. Tempo de cache maior significa melhor performance, menos bandwidth gasta, rapidez nos resultados, e menos carregamento no $REDDIT$. Menos tempo de cache significa informação mais nova/atual.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			}
+		}
+	},
+	"group_timeout_length": {
+		"message": "Largura do timeout"
+	},
+	"timeout_length_seconds": {
+		"message": "O tempo se esgotará em $NUM$ segundos, e mostrará um erro.",
+		"placeholders": {
+			"NUM": {
+				"content": "$1",
+				"example": "15"
+			}
+		}
+	},
+	"timeout_length_never": {
+		"message": "O tempo não se esgotará, somente mostrar um erro caso a API tenha caido."
+	},
+	"timeout_length_description": {
+		"message": "Se a API do $REDDIT$ está lenta ou cair, $MOSTLY_HARMLESS$ pode mostrar um erro após tentar se conectar a API. Quanto maior o tempo de esgotamento, maior será o tempo esperando pela resposta da API do $REDDIT$. Quanto menor o tempo de esgotamento, será mais provável que o tempo se esgote esperando resposta quando o $REDDIT$ estiver lento em vez de ter caido.",
+		"placeholders": {
+			"REDDIT": {
+				"content": "reddit"
+			},
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"tab_privacy": {
+		"message": "Privacidade"
+	},
+	"group_wait_for_click": {
+		"message": "Esperar por clique"
+	},
+	"wait_for_click_description": {
+		"message": "Se isto estiver marcado, $MOSTLY_HARMLESS$ não será ativado enquanto você não clicar em seu ícone.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_domains": {
+		"message": "Excluir domínios"
+	},
+	"excluded_domains_description": {
+		"message": "Colocar domínios e sub-domínio, um por linha, na caixa de texto acima. Qualquer página nesta lista de domínios não ativará o $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	},
+	"excluded_regex": {
+		"message": "Excluir expressões regulares"
+	},
+	"excluded_regex_description": {
+		"message": "Colocar expressões regulares, uma por linha, na caixa de texto acima. Qualquer página nesta lista de expressões regulares não ativará o $MOSTLY_HARMLESS$.",
+		"placeholders": {
+			"MOSTLY_HARMLESS": {
+				"content": "Mostly Harmless"
+			}
+		}
+	}
+}
