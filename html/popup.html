@@ -6,24 +6,7 @@
 		<link type="text/css" rel="stylesheet" href="/css/popup.css">
 		<script type="text/javascript" src="/fancy-settings/lib/store.js"></script>
 		<script type="text/javascript" src="/js/common.js"></script>
-		<script type="text/javascript">
-			var popup;
-			
-			popup = new Popup();
-			
-			function initPopup() {
-				chrome.tabs.getSelected(null, function(currTab) {
-					if (cache.get(currTab.url) !== undefined && cache.get(currTab.url).count >= 1) {
-						document.getElementById('body').innerHTML = popup.createListHTML(currTab.url);
-						document.getElementById('body').style.width = settings.get('popupWidth') + 'px';
-					} else {
-						document.getElementById('body').innerHTML = popup.createSubmitForm(currTab);
-					}
-				});
-			}
-			
-			window.addEventListener('load', initPopup);
-		</script>
+		<script type="text/javascript" src="/js/popup.js"></script>
 	</head>
 	<body id="body">
 		<img id="loading" src="/pix/ajaxload.info.gif" width="32" height="32" alt="Loading..." />

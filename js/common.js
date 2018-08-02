@@ -1308,3 +1308,5 @@ Popup.prototype.cacheComment = function (e) {
 	cache.set(url, oldCache);
 	return true;
 };
+
+
