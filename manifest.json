@@ -1,7 +1,9 @@
 {
 	"name": "Mostly Harmless",
 	"version": "1.5.1",
+        "manifest_version": 2,
 	"description": "Find, vote on, save, hide, and report links on reddit; submit new links; These and more! http://kerrick.github.com/Mostly-Harmless",
+	"content_security_policy": "default-src 'self'; connect-src 'self' https://www.reddit.com",
 	"browser_action": {
 		"default_icon": "pix/alien.png",
 		"popup": "html/popup.html"
@@ -16,7 +18,7 @@
 		"48": "pix/icon48.png",
 		"128": "pix/icon128.png"
 	},
-	"background_page": "html/background.html",
+        "background": {"page":"html/background.html","persistent": true},
 	"options_page": "fancy-settings/index.html",
 	"default_locale": "en_US"
 }
