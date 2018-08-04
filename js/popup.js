@@ -10,6 +10,11 @@ function initPopup() {
 		} else {
 			document.getElementById('body').innerHTML = popup.createSubmitForm(currTab);
 		}
+		var upmods = document.getElementsByClassName("upmod")
+		for (i = 0; i < upmods.length; i++) {
+			upmods[i].addEventListener("click", reddit.voteUpPost.bind(reddit));
+		}
+		// document.getElementsByClassName("downmod").map(elem => elem.addEventListener("click", reddit.voteDownPost))
 	});
 }
 
